@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/onselectcolors"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/headerColor"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+        android:background="#0b6bb7"
+        android:gravity="top"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/headerColor1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.7"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/sta_logo" />
+
+            <TextView
+                android:id="@+id/vWB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:text="@string/app_name"
+                android:textColor="#ffffff"
+                android:textSize="18dp"
+                android:textStyle="normal"
+                android:fontFamily="@string/fontfamily" >
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="#81DAF5"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvconnectionsatusstnnamefillreason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:text=""
+            android:padding="5dp"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:fontFamily="@string/fontfamily" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="5dp"
+            android:background="#B6B6B4"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edsationname"
+        android:layout_width="270sp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="25sp"
+        android:layout_marginTop="50sp"
+        android:hint="Fill Reason"
+        android:onClick="StationList"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:fontFamily="@string/fontfamily"
+        android:padding="7dp"
+        android:paddingLeft="5dp"
+        android:background="@drawable/edittext_border">
+    </EditText>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarFadeDuration="0"
+        android:scrollbars="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/btncsneasonsave1"
+                        android:layout_width="0dp"
+                        android:layout_height="45sp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_pressed_glossy"
+                        android:onClick="changeactivity"
+                        android:text="Change"
+                        android:fontFamily="@string/fontfamily"
+                        android:textColor="#ffffff"
+                        android:textSize="18dp" />
+
+                    <Button
+                        android:id="@+id/btncsnncancel1"
+                        android:layout_width="0dp"
+                        android:layout_height="45sp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_pressed_glossy"
+                        android:onClick="cancelactivityassign"
+                        android:text="Cancel"
+                        android:textColor="#ffffff"
+                        android:textSize="18dp"
+                        android:fontFamily="@string/fontfamily"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

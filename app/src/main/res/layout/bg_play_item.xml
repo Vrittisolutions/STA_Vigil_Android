@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="3dp"
+    android:orientation="vertical"
+    android:background="@drawable/newborder">
+
+    <TextView
+        android:id="@+id/textview_playName_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#0288D1"
+        android:focusable="false"
+        android:gravity="left"
+        android:paddingLeft="18dp"
+        android:text="PlayListName"
+        android:textColor="#f9f93d"
+        android:textSize="17dp"
+        android:padding="5dp"
+        android:fontFamily="@string/fontfamily"/>
+
+    <LinearLayout
+        android:id="@+id/layouttxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="#B3E5FC"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:padding="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight=".5"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/efffrom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="3dp"
+                android:layout_weight="0.82"
+                android:padding="2dp"
+                android:text="Effective From"
+                android:textColor="#000000"
+                android:textSize="10dp"
+                android:fontFamily="@string/fontfamily" />
+
+            <TextView
+                android:id="@+id/efftoDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="2dp"
+                android:gravity="left"
+                android:text="Date"
+                android:textColor="#000000"
+                android:textSize="12dp"
+                android:fontFamily="@string/fontfamily" />
+
+            <TextView
+                android:id="@+id/efftoTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="2dp"
+                android:gravity="left"
+                android:text="Time"
+                android:textColor="#000000"
+                android:textSize="12dp"
+                android:fontFamily="@string/fontfamily" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight=".5"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="3dp"
+                android:layout_weight="0.82"
+                android:padding="2dp"
+                android:text="Effective To"
+                android:textColor="#000000"
+                android:textSize="10dp"
+                android:fontFamily="@string/fontfamily" />
+
+            <TextView
+                android:id="@+id/efftodate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="2dp"
+                android:gravity="left"
+                android:text="Date"
+                android:textColor="#000000"
+                android:textSize="12dp"
+                android:typeface="serif" />
+
+            <TextView
+                android:id="@+id/efftotime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="2dp"
+                android:gravity="left"
+                android:text="Time"
+                android:textColor="#000000"
+                android:textSize="12dp"
+                android:fontFamily="@string/fontfamily" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="8"
+        android:padding="3dp"
+        android:background="#ededed">
+
+        <ImageView
+            android:id="@+id/flag"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:src="@drawable/rating2" />
+
+        <TextView
+            android:id="@+id/ScheduledFlag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Schedule"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:typeface="serif" />
+
+        <ImageView
+            android:id="@+id/flag1"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:src="@drawable/rating3" />
+
+        <TextView
+            android:id="@+id/MasterFlag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="Master"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:typeface="serif" />
+
+        <ImageView
+            android:id="@+id/flag2"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:src="@drawable/rating4" />
+
+        <TextView
+            android:id="@+id/contentFlag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="Content"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:typeface="serif" />
+
+        <ImageView
+            android:id="@+id/flag3"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:src="@drawable/rating1" />
+
+        <TextView
+            android:id="@+id/clipFlag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="Bg_Clip"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:typeface="serif" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/chiledcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical"
+        android:weightSum="1"
+        >
+    </LinearLayout>
+
+</LinearLayout>

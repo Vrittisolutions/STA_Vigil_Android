@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/txtdate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ededed"
+        android:focusable="false"
+        android:gravity="left"
+        android:paddingLeft="18dp"
+        android:text="12 Jan 2014"
+        android:textColor="#2c2c2c"
+        android:textSize="17dp"
+        android:fontFamily="@string/fontfamily"/>
+    <!--       android:background="#9400D3"-->
+
+    <LinearLayout
+        android:id="@+id/layouttxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/callibrationtime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="0.25"
+            android:text="Time"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/calibrationStd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="0.25"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="Standard"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/txtactual"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="0.25"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="Cal Volume"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/txtpercentage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="0.25"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="Sys Volume"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NotificationsList"
+    android:orientation="vertical"
+    android:background="@drawable/newborder">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:background="#0b6bb7"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/siv1"
+            android:layout_width="35sp"
+            android:layout_height="35sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="3sp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/sta_logo" />
+
+        <TextView
+            android:id="@+id/vWB"
+            android:layout_width="0sp"
+            android:layout_height="40sp"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@id/siv"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="5sp"
+            android:text="@string/app_name"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:textStyle="normal"
+            android:fontFamily="@string/fontfamily" >
+        </TextView>
+
+        <ImageView
+            android:id="@+id/button_invent_filter"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/btnfilter"
+            android:visibility="gone">
+        </ImageView>
+
+        <ProgressBar
+            android:id="@+id/progressinvent"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/button_refresh_invent"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/btnrefresh" >
+        </ImageView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="3dp"
+        android:background="#81DAF5"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/stationInvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:text="Notifications"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:fontFamily="@string/fontfamily"
+            android:padding="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:layout_margin="10dp"
+        android:visibility="gone">
+
+        <!--notificationtype-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="2dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notification Type :"
+                android:layout_weight="0.65"/>
+
+            <TextView
+                android:id="@+id/txtnotifytype"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Test Sound Level"
+                android:layout_weight="0.35"
+                android:textColor="#111"/>
+
+        </LinearLayout>
+
+        <!--installationid-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="2dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Installation ID :"
+                android:layout_weight="0.65"/>
+
+            <TextView
+                android:id="@+id/txtinstid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="4087847687486"
+                android:layout_weight="0.35"
+                android:textColor="#111"/>
+
+        </LinearLayout>
+
+        <!--notificationtext-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="2dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notification Text :"
+                android:layout_weight="0.65"/>
+
+            <TextView
+                android:id="@+id/txtnotifytext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Test Sound Level is 89%"
+                android:layout_weight="0.35"
+                android:textColor="#111"/>
+
+        </LinearLayout>
+
+        <!--notificationdata-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="2dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notification Data :"
+                android:layout_weight="0.65"/>
+
+            <TextView
+                android:id="@+id/txtnotifydata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Test Sound Level"
+                android:layout_weight="0.35"
+                android:textColor="#111"/>
+
+        </LinearLayout>
+
+        <!--datetime-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="2dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date Time :"
+                android:layout_weight="0.65"/>
+
+            <TextView
+                android:id="@+id/txtdatetime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2019-08-19  05:05"
+                android:layout_weight="0.35"
+                android:textColor="#111"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:background="#dcdcdc">
+
+        <!--Sound level-->
+        <LinearLayout
+            android:id="@+id/layout_sl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:layout_margin="3dp">
+
+            <TextView
+                android:id="@+id/txtdt_sl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:layout_weight="0.33"
+                android:layout_gravity="left"
+                android:gravity="left"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/txttime_sl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Time"
+                android:textSize="13sp"
+                android:layout_weight="0.33"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:paddingRight="25dp"/>
+
+            <TextView
+                android:id="@+id/txtpctgval_sl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="% Val"
+                android:textSize="13sp"
+                android:layout_weight="0.33"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+        </LinearLayout>
+
+        <!--pc on-off-->
+        <LinearLayout
+            android:id="@+id/layout_pconoff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:layout_margin="3dp">
+
+            <TextView
+                android:id="@+id/txtdt_pc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textSize="13sp"
+                android:layout_weight="0.25"
+                android:layout_gravity="left"
+                android:gravity="left"/>
+
+            <TextView
+                android:id="@+id/txttime_pc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Time"
+                android:textSize="13sp"
+                android:layout_weight="0.25"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:paddingRight="25dp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/txttimerestart_pc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Restart Time"
+                android:textSize="13sp"
+                android:layout_weight="0.25"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/txtduration_pc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Duration"
+                android:layout_weight="0.25"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+        <!--Adv First Play-->
+        <LinearLayout
+            android:id="@+id/layout_advfplay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:layout_margin="3dp">
+
+            <TextView
+                android:id="@+id/txtdt_fplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textSize="13sp"
+                android:layout_weight="0.25"
+                android:layout_gravity="left"
+                android:gravity="left"/>
+
+            <TextView
+                android:id="@+id/txttime_fplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Time"
+                android:textSize="13sp"
+                android:layout_weight="0.25"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/txtschtime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sch. Time"
+                android:textSize="13sp"
+                android:layout_weight="0.25"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/txtplaytime_fplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1st Play Time"
+                android:textSize="13sp"
+                android:layout_weight="0.25"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+        </LinearLayout>
+
+        <!--Daily Bus Ann-->
+        <LinearLayout
+            android:id="@+id/layout_busann"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:layout_margin="3dp">
+
+            <TextView
+                android:id="@+id/txtdt_busann"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textSize="13sp"
+                android:layout_weight="0.33"
+                android:layout_gravity="left"
+                android:gravity="left"/>
+
+            <TextView
+                android:id="@+id/txt_shift1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Shift 1"
+                android:textSize="13sp"
+                android:layout_weight="0.33"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/txt_shift2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Shift 2"
+                android:textSize="13sp"
+                android:layout_weight="0.33"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+        </LinearLayout>
+
+        <!--Adv not run-->
+        <LinearLayout
+            android:id="@+id/layout_advnotrun"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:layout_margin="3dp">
+
+            <TextView
+                android:id="@+id/txtdt_notrun"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textSize="11sp"
+                android:layout_weight="0.25"
+                android:layout_gravity="left"
+                android:gravity="left"/>
+
+            <TextView
+                android:id="@+id/txttime_notrun"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Time"
+                android:textSize="13sp"
+                android:layout_weight="0.25"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/txtdur_notrun"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Duration"
+                android:textSize="12sp"
+                android:layout_weight="0.33"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/txtofftime_notrun"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Get off time"
+                android:textSize="11sp"
+                android:layout_weight="0.25"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+        </LinearLayout>
+
+        <!--Tv status-->
+        <LinearLayout
+            android:id="@+id/layout_tvstatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_margin="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="0.55">
+
+                <TextView
+                    android:id="@+id/txtdt_tvstat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Date"
+                    android:textSize="12sp"
+                    android:layout_weight="0.65"
+                    android:layout_gravity="left"
+                    android:gravity="left"/>
+
+                <TextView
+                    android:id="@+id/txttime_tvstat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.45"
+                    android:gravity="center_horizontal"
+                    android:text="Time"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TV Status"
+                android:textSize="12sp"
+                android:layout_weight="0.5"
+                android:paddingRight="10dp"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listnotifications"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="#000000"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:scrollingCache="false" />
+
+</LinearLayout>

@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.stavigilmonitoring.selectmenu" >
+
+    <item
+        android:id="@+id/done"
+        android:orderInCategory="100"
+        android:showAsAction="collapseActionView"
+        android:title="Work Done"
+        tools:ignore="AppCompatResource" />
+    <item
+        android:id="@+id/Stationenq"
+        android:orderInCategory="100"
+        android:showAsAction="collapseActionView"
+        android:title="Station Enquiry"
+        tools:ignore="AppCompatResource" />
+
+   <!--  <item
+        android:id="@+id/miActionProgress"
+        android:orderInCategory="100"
+        android:title="Loading..."
+        android:visible="false"
+        app:actionLayout="@layout/action_progress"
+        app:showAsAction="ifRoom"/>  -->
+    
+</menu>

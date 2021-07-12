@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:id="@+id/onselectcolors" 
+	android:background="@drawable/newborder">
+
+	<LinearLayout android:layout_width="fill_parent"
+		android:id="@+id/headerColor" android:layout_height="50dp"
+		android:orientation="horizontal" android:gravity="top" 
+		android:background="#0b6bb7" android:layout_gravity="center_vertical">
+		
+	    <LinearLayout
+	        android:id="@+id/headerColor1"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:layout_weight="0.7"
+	        android:orientation="horizontal" >
+
+	        <ImageView
+	            android:layout_width="50dp"
+	            android:layout_height="40dp"
+	           
+	            android:background="@android:color/transparent"
+	            android:src="@drawable/sta_logo" />
+
+	        <TextView
+	            android:id="@+id/vWB"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center"
+	            android:layout_marginTop="0dp"
+	            android:text="@string/app_name"
+				android:textColor="#ffffff"
+				android:textSize="18dp"
+				android:textStyle="normal"
+				android:fontFamily="@string/fontfamily" >
+	        </TextView>
+	    </LinearLayout>
+
+	</LinearLayout>
+
+	 <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#81DAF5"
+		android:padding="7dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+      
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:text="Station Password"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+					android:padding="5dp"
+					android:fontFamily="@string/fontfamily"/>
+    </LinearLayout>
+
+             <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+				 android:layout_margin="5dp"
+				 android:background="#ededed">
+
+				 <EditText
+					 android:id="@+id/edsationname"
+					 android:layout_width="270sp"
+					 android:layout_height="40dp"
+					 android:layout_marginTop="10sp"
+					 android:paddingLeft="7dp"
+					 android:background="@drawable/edittext_border"
+					 android:hint="Select station name"
+					 android:onClick="StationList"
+					 android:textColor="#000000"
+					 android:textSize="15dp"
+					 android:fontFamily="@string/fontfamily"
+					 >
+				 </EditText>
+
+		<Button 
+		    android:layout_width="270sp" 
+		    android:layout_marginTop="5sp"
+		    android:layout_height="45dp"
+			android:layout_marginBottom="10dp"
+			android:id="@+id/btngetpwd"
+			android:text="Get Password"
+			android:textSize="18dp"
+			style="@android:style/ButtonBar"
+			android:background="@drawable/btn_pressed_glossy"
+			android:onClick="GetPassword"
+			android:textColor="#ffffff"
+			android:layout_weight="1"
+			android:fontFamily="@string/fontfamily"/>
+
+	</LinearLayout>
+
+	<LinearLayout android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+		android:layout_marginLeft="10dp"
+	    android:layout_marginRight="10dp"
+		android:orientation="horizontal"
+	    android:layout_marginTop="15dp"
+		android:padding="10dp">
+
+		<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Password: "
+		android:textColor="#ffffff"
+		android:textSize="18dp"
+			android:fontFamily="@string/fontfamily" />
+	    
+		<TextView android:id="@+id/getpwd"
+		android:textStyle="bold"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text=" "
+		android:textColor="#000000"
+		android:textSize="20dp"
+			android:fontFamily="@string/fontfamily" />
+	    
+	</LinearLayout>
+	    
+	</LinearLayout>
+	
+	

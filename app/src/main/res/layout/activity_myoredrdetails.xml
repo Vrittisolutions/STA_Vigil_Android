@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/newborder"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/headerColor"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:background="#0b6bb7"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/siv"
+            android:layout_width="35sp"
+            android:layout_height="35sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="3sp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/sta_logo" />
+
+        <TextView
+            android:id="@+id/vWB"
+            android:layout_width="0sp"
+            android:layout_height="40sp"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@id/siv"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="5sp"
+            android:text="@string/app_name"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:textStyle="normal"
+            android:fontFamily="@string/fontfamily" />
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:visibility="gone" />
+
+        <ImageView
+                android:id="@+id/button_delete"
+                android:layout_width="50sp"
+                android:layout_height="30sp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:src="@drawable/delete" />
+       
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:background="#ededed">
+
+        <Button
+            android:id="@+id/btnedtStationNmae"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_border"
+            android:gravity="left|center"
+            android:hint="Select Station Name"
+            android:padding="10dp"
+            android:textSize="15dp"
+            android:fontFamily="@string/fontfamily"/>
+
+        <Button
+            android:id="@+id/btnedtMaterialName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_border"
+            android:gravity="left|center"
+            android:hint="Select Material Name"
+            android:padding="10dp"
+            android:textSize="15dp"
+            android:fontFamily="@string/fontfamily"/>
+
+        <EditText
+            android:id="@+id/editedtTextQty"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_border"
+            android:gravity="left|center"
+            android:hint="Enter Quantity"
+            android:inputType="number"
+            android:padding="10dp"
+            android:textSize="15dp"
+            android:fontFamily="@string/fontfamily">
+        </EditText>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/ButtonedtReason"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext_border"
+                android:gravity="left|center"
+                android:hint="Select Reason"
+                android:padding="10dp"
+                android:textSize="15dp"
+                android:layout_weight="5"
+                android:fontFamily="@string/fontfamily"/>
+
+            <Button
+                android:id="@+id/ButtonSeldate"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext_border"
+                android:gravity="left|center"
+                android:hint="Select Used from Date"
+                android:padding="10dp"
+                android:fontFamily="@string/fontfamily"
+                android:textSize="15dp"
+                android:layout_weight="5"
+                android:visibility="visible"/>
+
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/radiogroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <RadioButton
+                android:id="@+id/radio_undr_warr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="Under Warranty" />
+
+            <RadioButton
+                android:id="@+id/radio_not_in_warr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="Not In Warranty" />
+
+        </RadioGroup>
+
+        <Spinner
+            android:id="@+id/spinneredtScrap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@string/fontfamily"
+            android:entries="@array/sr_array"
+            android:gravity="left|center"
+            android:spinnerMode="dropdown"
+            android:prompt="@string/scraprepair"
+            android:padding="10dp"/>
+
+        <Button
+            android:id="@+id/btnMaterialedtReqTO"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_border"
+            android:gravity="left|center"
+            android:hint="Send Request to"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:fontFamily="@string/fontfamily"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/button_update"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/btn_pressed_glossy"
+                android:text="Update"
+                android:textSize="18dp"
+                android:textColor="#ffffff"
+                android:fontFamily="@string/fontfamily"/>
+
+            <Button
+                android:id="@+id/button_returns"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="0.5"
+                android:textSize="18dp"
+                android:background="@drawable/newbtnborder"
+                android:text="Cancel"
+                android:textColor="#111"
+                android:fontFamily="@string/fontfamily"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

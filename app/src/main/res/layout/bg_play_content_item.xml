@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="0dp"
+    android:layout_marginRight="0dp"
+    android:background="#ededed"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:padding="3dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_marginTop="3dp"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_gravity="center_vertical"
+           android:background="#F06292"/>
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:gravity="left"
+            android:text="Content Name :"
+            android:textColor="#b5b5b5"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/contentname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="13.10"
+            android:gravity="left"
+            android:text="Y"
+            android:textColor="#4527A0"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="8" >
+
+        <ImageView
+            android:id="@+id/flag"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:src="@drawable/rating2"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/ScheduledFlag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Y"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <ImageView
+            android:id="@+id/flag1"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:src="@drawable/rating3"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/MasterFlag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="N"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <ImageView
+            android:id="@+id/flag2"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:src="@drawable/rating4"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/contentFlag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="N"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <ImageView
+            android:id="@+id/flag3"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:src="@drawable/rating1"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/clipFlag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="N"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1sp"
+        android:background="#b5b5b5"
+        android:layout_marginTop="5dp"/>
+
+</LinearLayout>

@@ -1,0 +1,1011 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.stavigilmonitoring">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- Accessing camera hardware -->
+    <uses-feature android:name="android.hardware.camera" /> <!-- GCM requires a Google account. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Creates a custom permission so only this app can receive its messages. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <permission
+        android:name="com.stavigilmonitoring.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.stavigilmonitoring.permission.C2D_MESSAGE" /> <!-- This app has permission to register and receive data message. -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /> <!-- Permission to vibrate -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:icon="@drawable/sta_logo"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <activity android:name=".UnreleasedAdvertisements"
+            android:theme="@style/AppCompTheme" ></activity>
+        <activity
+            android:name=".LangVideoActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AdvDtlsStationsList"
+            android:theme="@style/AppCompTheme" />
+        <activity
+            android:name=".SE_StationwiseHistory_Activity"
+            android:theme="@style/AppCompTheme" />
+        <activity
+            android:name=".SEActivitiesHistoryActivity"
+            android:theme="@style/AppCompTheme" />
+        <activity
+            android:name=".SupporterWiseStationsListActivity"
+            android:theme="@style/AppCompTheme" />
+        <activity
+            android:name=".SupportersListActivity"
+            android:theme="@style/AppCompTheme" />
+        <activity
+            android:name=".NetworkListActivity"
+            android:theme="@style/AppCompTheme" />
+        <activity
+            android:name=".SEAssignActivityToSupp"
+            android:theme="@style/AppCompTheme" />
+        <activity
+            android:name=".SEAssignActivity"
+            android:theme="@style/AppCompTheme" />
+        <activity
+            android:name=".SEWiseActivity"
+            android:theme="@style/AppCompTheme" />
+        <activity
+            android:name=".MyDispatchOrders"
+            android:theme="@style/AppCompTheme" />
+        <activity
+            android:name=".SendReqDispMaterial"
+            android:theme="@style/AppCompTheme" />
+        <activity
+            android:name=".AdvDetailActivity"
+            android:theme="@style/AppCompTheme" />
+        <activity
+            android:name=".NewMaterialRequirementActivity"
+            android:theme="@style/AppCompTheme" />
+        <activity
+            android:name=".Inventory_WH_Stock_StationActivity"
+            android:theme="@style/AppCompTheme" />
+        <activity android:name=".SelectMenu_TEST" />
+        <activity android:name=".NotificationsList" />
+        <activity android:name=".NotificationsType" />
+        <activity android:name=".STNotifyNetworksActivity" />
+        <activity android:name=".STNotifyStnListAll" />
+        <activity
+            android:name=".NotificationsNewActivity"
+            android:theme="@style/AppCompTheme" />
+        <activity android:name=".SendEmailPDF" />
+        <activity android:name=".StationPerformanceDetails" />
+        <activity android:name=".AllStnPerformanceList" />
+        <activity android:name=".StnPerformance_dayselection" />
+        <activity android:name=".StationPerformance" />
+        <activity android:name=".AdvStationDayCount" />
+        <activity android:name=".AdvTimingDtlsReport" />
+        <activity android:name=".AdvClipsReports" />
+        <activity android:name=".AdvFirstPlayRprt_StationsList" />
+        <activity android:name=".AdvFirstPlayReport_NetworkActivity" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity
+            android:name=".RegistrationUS"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PersonalReortActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NonrepeatedAdMain"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PlayStoreVersionDialogActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.DeviceDefault.Dialog" />
+        <activity
+            android:name=".NonrepeatedAdFilter"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AlrtListActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DmCcategorizeActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".VideoListActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".VideoPlayerActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".DmCstnwiseActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DmCStateFilter"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DmCStateStnFilter"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DmCStateStnSoNoDetails"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DmCStateStnSoNoDetails_Activity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DmCsonowiseActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DmCSonoFilter"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DmCSonoStnFilter"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DmCSoNoStateStnDetails"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AlrtDetailsWithCommentsActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="ACTIVITY_COMMENT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AlrtCreateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AlrtsStatewise"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AlrtsStnListAll"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NonReportedAdStatewise"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BarChart"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PendingClipsStateWise"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SelectMenu"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WorkAssigncategorizeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".WorkAssignSupporterNameListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".WorkAssignNetworkNameListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".WorkAssignSubNetworkListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".WorkAssignStationListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".WorkAssignSupporter_ActivityDetails"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".WorkAssignStation_ActivityDetails"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".WorkAssign_AssignActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".WorkAssign_StnReqMain"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".workassignStateselectActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".WorkDoneStation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".WorkDoneFillDetail"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".WorkDoneType"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".WorkDoneTypeselect"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".WorkDonematerialType"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".ConnectionStatus"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PendingClipsMain"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PendingClips"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PendingClipStateFilter"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PendingClipsMainAll"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConnectionStatusStatewise"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConnectionStatusStateFilter"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConnectionStatusMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConnectionStatusMainAll"
+            android:screenOrientation="portrait" />
+        <activity android:name="org.achartengine.GraphicalActivity" />
+        <activity
+            android:name=".NonrepeatedAd"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NonrepeatedAdMainAll"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DowntimeStateWise"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".SoundLevelStateWise"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".SoundLevelStateFilter"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".SoundLevelMain"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".SoundLevelMainAll"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".AlertStnReqMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AlertStnReqStatewiseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Downtime"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DowntimeMain"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DowntimeReasonMain"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DowntimeReason"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Suspected"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SuspectedMain"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SoundLevel"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme" />
+        <activity
+            android:name=".SoundLevelCalibrationStandard"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme" />
+        <activity
+            android:name=".MyDialog"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DowntimeReasonFill"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SuspectedHistory"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".ConnectionStatusFillreason"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".Inspection"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".InsspectionMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GetPassword"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.sendimage.ImageSelectionClaim"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GetPassMain"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".GetpassList"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConnReasonList"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DowntimeReasonFillStateWise"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".DowntimeReasonList"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".TvStatusStateWise"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".TvStatusMain"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".TvStatusMainAll"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".TvStatusStateFilter"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".TVStatusfillReason"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".TvStatusReasonList"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".MaterialReqStatewiseActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".MaterialRequest"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".LMSNetworkCodeActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".MaterialReqMain"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".MaterialListActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".SelectMaterialReqType"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".MaterialReason"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".MaterialReqSendTo"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".MaterialReqAckDetails"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".MaterialReqAckList"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".MaterialDeliveredListActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".MaterialDeliveryListDetails"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".MaterialReqPendingList"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".MaterialReqPendingDetails"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MaterialDispatchedbutnotReceived"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".MaterialReceivedConfirmation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".MaterialReceivedConfirmationDetails"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".MaterialRejectedOrders"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".LmsConnectionStateWise"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".LmsConnectionStatusMain"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".StationEnquiryStateFilter"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".StationEnquiryStatewise"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".StationEnquiry"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".StationEnquiryStationList"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".StationEnquiryStnListAll"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".StationEnquirySoundLevel"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".StationEnquiryDowntimeHistory"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".StationEnquiryMaterialRequest"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".StationEnquiryWorkHistory"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".StationEnquiryAdvSchedule"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".StationEnquiryAdvHistory"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".StationEnquiryBusReporting"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".StationEnquirySoundLevelData"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".StationEnquiryMaterialHiscom"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".StationInventoryCategory"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".StationInventorySupporterName"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".StationInventoryStatewise"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".StationInventoryItemNameListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".StationInventoryItemList"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".StationInventoryAddEditItems"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".StationInventoryStnListAll"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".SupporterEnquiryStatewise"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".SupporterEnquiryStateFilter"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".SupporterList"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".SupportListAll"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".SupporterWorkDone"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".SupporterMaterialDisplay"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".SupporterGpsLocation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".BackgroundPlaylistStatewise"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".BckgroundPlaylistStatefilter"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".BackgroundPlaylist"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".BackgroundPlaylistAll"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".BackgroundPlaylistData"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".BackgroundPlaylistDetail"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".NotificationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light">
+            <intent-filter>
+                <action android:name="ACTIVITY_DI" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".NotifyExpandActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light">
+
+            <!--
+            <intent-filter>
+                <action android:name="ACTIVITY_DI" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".NotifyMultiLevelActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".AdvNonReportedStatewise"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".AdvNonRepAdvList"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".AdvNonRepStationList"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".ClipwisePendingClipsState"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".ClipwisePendingClips"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".ClipwisePendingClipStations"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".DownTimeAnalysis"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".DT_Analysis_Details"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".DTA_Networks"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".DTA_EC_LS_StationNames"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".DT_StationDetails"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".WorkAssign_Networks"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".WorkPlanAllStationsList"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".SupporterList_stnwise"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".WrkPlan_stationRelatedActivities"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".StationVisitForm"
+            android:theme="@android:style/Theme.Holo.Light"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" /> <!-- android:windowSoftInputMode="adjustPan" -->
+        <service android:name="com.services.PaidLocationFusedLocationTracker1" />
+        <service android:name="com.services.DmCertificateService" />
+        <!--
+        <service android:name="com.services.PlaystoreVersionService" >
+        </service>
+        -->
+        <!-- <service android:name="com.services.SoundLevelService" /> -->
+        <!--
+        <service android:name="com.services.NonreportedService" >
+        </service>
+        <service android:name="com.services.GpsTracking" >
+        </service>
+        -->
+        <!-- <service android:name="com.services.SynchDtataCount" /> -->
+        <!--
+        <service android:name="com.services.SynchDtataCountNonreported" >
+        </service>
+        <service android:name="com.services.SynchDtataCountCSN" >
+        </service>
+        <service android:name="com.services.SynchDtataCountNonreportedActivity" >
+        </service>
+        -->
+        <service android:name="com.services.GPSServiceVigil" />
+        <service android:name="com.services.GPSTracker" /> <!-- <service android:name="com.services.WorkDoneService" /> -->
+        <!--
+ <receiver
+            android:name="com.receiver.AlarmManagerBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:label="AlarmManagerBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        -->
+        <!--
+<receiver
+            android:name="com.receiver.AlarmManagerBroadcastReceiverGPSL"
+            android:enabled="true"
+            android:exported="true"
+            android:label="AlarmManagerBroadcastReceiverGPSL">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        -->
+        <!--
+        <receiver
+            android:name="com.receiver.AlarmManagerBroadcastReceiverGPS"
+            android:enabled="true"
+            android:exported="true"
+            android:label="AlarmManagerBroadcastReceiverGPS" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        -->
+        <!--
+  <receiver
+            android:name="com.receiver.WorkTypeBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:label="WorkTypeBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        -->
+        <!--
+ <receiver
+            android:name="com.receiver.SoundLevelBrodcastReciver"
+            android:enabled="true"
+            android:exported="true"
+            android:label="SoundLevelBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        -->
+        <receiver
+            android:name="com.receiver.AlarmManagerBroadcastReceiverGPG"
+            android:enabled="true"
+            android:exported="true"
+            android:label="AlarmManagerBroadcastReceiverGPG">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+
+                <data
+                    android:path="com.stavigilmonitoring"
+                    android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <!--
+        <receiver
+            android:name="com.google.android.gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+
+                &lt;!&ndash; Receives the actual messages. &ndash;&gt;
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                &lt;!&ndash; Receives the registration id. &ndash;&gt;
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.stavigilmonitoring" />
+            </intent-filter>
+        </receiver>
+        -->
+        <!--
+        <receiver
+            android:name="com.google.android.gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.stavigilmonitoring" />
+            </intent-filter>
+        </receiver>
+        -->
+        <receiver
+            android:name=".GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.stavigilmonitoring" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".UninstallIntentReceiver">
+            <intent-filter android:priority="0">
+                <action android:name="android.intent.action.QUERY_PACKAGE_RESTART" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.services.AlertFirebaseNotificationService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service> <!-- <service android:name=".GCMNotificationIntentService" /> -->
+        <service
+            android:name="com.services.MyFirebaseInstanceIDService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.services.JobService_Test"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.services.JobService_SyncDataCount"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.services.JobService_DMCertificate"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.services.JobService_PaidLocationFusedLocationTracker1"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.services.JobService_WorkDone"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".WrkPlanActivitiesList"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".SupporterEnquiry_New"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".SupEnq_ConnStatus"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".SupporterEnquiryStationsList"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".BusReportingDetails"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name=".Adv_StationsList"
+            android:theme="@android:style/Theme.Holo.Light" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+    </application>
+
+</manifest>

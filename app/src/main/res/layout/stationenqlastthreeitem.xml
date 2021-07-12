@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
+    card_view:cardElevation="1dp"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="3dp"
+        android:background="#ffffff">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/advname"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="3dp"
+            android:layout_weight="0.92"
+            android:text="vritti Advetising kirti gold"
+            android:textColor="#311B92"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/advcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_weight="0.33"
+            android:text="123456"
+            android:textColor="#b60802"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="10dp"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/advdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="0.83"
+            android:gravity="left"
+            android:text="No Info"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <ImageView
+            android:layout_width="20sp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
+            android:src="@drawable/audiolevel" />
+
+        <TextView
+            android:id="@+id/audioop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="0.24"
+            android:gravity="left"
+            android:text="No Info"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/fromstn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="0.2"
+            android:gravity="right"
+            android:text="No info"
+            android:textColor="#1B5E20"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <ImageView
+            android:layout_width="18sp"
+            android:layout_height="18sp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/arrfor" />
+
+        <TextView
+            android:id="@+id/tostn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="0.2"
+            android:gravity="left"
+            android:text="No Info"
+            android:textColor="#1B5E20"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/q"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="2dp"
+            android:gravity="left"
+            android:text="Bus Time :"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/bustime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="left"
+            android:text="No Info"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="2dp"
+            android:gravity="left"
+            android:text="Actual ann :"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/anntime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="left"
+            android:text="No Info"
+            android:layout_marginLeft="5dp"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="2dp"
+            android:gravity="left"
+            android:text="Added Date :"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/addeddate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="left"
+            android:text="No Info"
+             android:layout_marginLeft="5dp"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

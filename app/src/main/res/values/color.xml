@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="selected">#BA68C8</color>
+    <color name="unselected">#ff8cae3b</color>
+    <color name="selectedimage">#ff000080</color>
+    <color name="unselectedimage">#ff9b9cfb</color>
+    <color name="resolvedalert">#0b6bb7</color>
+    <color name="alertbg">#4863A0</color>
+    <color name="overdue">#ff4c4c</color> <!--#ff7f7f-->
+    <color name="transparent">#73191919</color>
+    <color name="listviewdivider">#B6B6B4</color>
+    <color name="buttoncolor">#0b6bb7</color>
+    <color name="questioncolor">#7f2626</color>
+    <!--<color name="quesclr">#414141</color>-->
+    <color name="quesclr">#414141</color>
+    <color name="answercolor">#3b88c5</color>
+    <color name="iconsbackgroundcolor">#47A4ED</color>
+    <color name="header_clr">#81DAF5</color>
+    <color name="backend_clr">#74C4DC</color>
+    <!--<color name="dialogbuttons">#C5C6C6</color>-->
+    <color name="dialogbuttons">#4863A0</color>
+    <!--<color name="dialogboxcolor">#4863A0</color>-->
+    <color name="dialogboxcolor">#e5e5e5</color>
+    <color name="iconscolor">#5A95C4</color>
+
+</resources>

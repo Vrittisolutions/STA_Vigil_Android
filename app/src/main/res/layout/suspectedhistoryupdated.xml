@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tvsuspectedhisdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="a"
+                android:textColor="#000000"
+                android:textSize="13sp"
+                android:fontFamily="@string/fontfamily"/>
+            
+              <TextView
+                android:id="@+id/tvsushistorydateday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:text=""
+                android:textColor="#FE2E2E"
+                android:textSize="14dp"
+
+                  android:fontFamily="@string/fontfamily" />
+              
+                   <TextView
+                android:id="@+id/tvsushistime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="5dp"
+                android:text=""
+                android:textColor="#000000"
+                android:textSize="14dp"
+
+                       android:fontFamily="@string/fontfamily" />
+        </LinearLayout>
+            
+
+    </LinearLayout>
+
+</LinearLayout>

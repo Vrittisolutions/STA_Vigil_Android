@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/newborder"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="#0b6bb7"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="34sp"
+            android:layout_height="34sp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/sta_logo" />
+
+        <TextView
+            android:layout_width="0sp"
+            android:layout_height="40sp"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@id/siv"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="5sp"
+            android:text="@string/app_name"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:textStyle="normal"
+            android:fontFamily="@string/fontfamily" >
+        </TextView>
+
+        <ImageView
+            android:id="@+id/button_alert_add"
+            android:layout_width="50sp"
+            android:layout_height="40sp"
+            android:visibility="gone"
+            android:background="@android:color/transparent"
+            android:src="@drawable/plusaddicon" >
+        </ImageView>
+
+        <ProgressBar
+            android:id="@+id/soundlevelFilterState"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/button_refresh_sound_filter"
+            android:layout_width="60sp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/btnrefresh" >
+        </ImageView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#81DAF5"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/soundfilter"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:text="Sound Level-SubNetwork"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:fontFamily="@string/fontfamily"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/networksumsound"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="horizontal"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp">
+
+    <ImageView
+        android:layout_width="28sp"
+        android:layout_height="28sp"
+        android:layout_marginBottom="5sp"
+        android:layout_marginLeft="5sp"
+        android:layout_marginTop="8sp"
+        android:background="@drawable/announcement" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.48"
+        android:paddingLeft="10sp"
+        android:text="KSRTC"
+        android:textColor="#000000"
+        android:textSize="13sp"
+        android:fontFamily="@string/fontfamily"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"/>
+
+    <TextView
+        android:id="@+id/tvCntc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5sp"
+        android:text="aa"
+        android:textColor="#ff0000"
+        android:textSize="15sp"
+        android:fontFamily="@string/fontfamily"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical|right"/>
+
+</LinearLayout>
+
+    <GridView
+        android:id="@+id/listsoundFiterSate"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="#000000"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:scrollingCache="false"
+        android:numColumns="2"/>
+
+</LinearLayout>

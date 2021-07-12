@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:id="@+id/lvtitle_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+             android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <TextView
+                android:id="@+id/tvstnnamesoundlevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Station Name"
+                android:textColor="#000000"
+                android:textSize="13sp"
+                android:padding="3dp"
+                android:fontFamily="@string/fontfamily" />
+
+            <TextView  android:id="@+id/tvsCntc"
+                android:layout_width="0sp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textColor="#ff0000"
+                 android:layout_alignParentRight="true"
+                 android:textSize="13sp"
+                android:gravity="right"
+                android:hint="anc"
+                android:padding="3dp"
+                android:fontFamily="@string/fontfamily"
+                android:layout_marginRight="30sp"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#000000"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+</LinearLayout>

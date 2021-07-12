@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:paddingLeft="10dip" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
+        android:orientation="vertical" >
+        
+         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginLeft="5dp" >
+           
+           
+           <ImageView android:layout_width="40dp" android:layout_height="40dp" android:src="@drawable/arrownewright"
+                android:layout_gravity="center_vertical"/>
+        
+        <TextView android:autoLink="web"
+            android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="10dp"
+                  android:id="@+id/txtdaterefreshlink"
+                  android:layout_marginLeft="40dp"
+                   android:textColor="#000000"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily"
+            android:text="Click To see History"/>
+                   
+      </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+             android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" >
+
+            <TextView
+                android:id="@+id/tvsusadvcode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                
+                android:layout_marginTop="5dp"
+                android:text="no Info"
+                android:textColor="#000000"
+                
+                android:textSize="14dp"
+                android:fontFamily="@string/fontfamily" />
+
+            <TextView
+                android:id="@+id/tvsusadvname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:text="No Info"
+                android:textColor="#000000"
+                android:textSize="14dp"
+
+                android:fontFamily="@string/fontfamily" />
+
+            
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" 
+             android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
+
+            <TextView
+                android:id="@+id/tvtyiff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+              
+                android:layout_marginTop="5dp"
+                 
+                android:text="Date From."
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:fontFamily="@string/fontfamily" />
+
+            <TextView
+                android:id="@+id/tvsusdatefrom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:text="No Info"
+                android:textColor="#FE2E2E"
+                android:textSize="14dp"
+
+                android:fontFamily="@string/fontfamily" />
+            
+            
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" 
+             android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
+
+            <TextView
+                android:id="@+id/tvworkspacewisdaptertassigned"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                
+                android:layout_marginTop="5dp"
+                android:text="Date to"
+                android:textColor="#000000"
+                android:textSize="14dp"
+
+                android:fontFamily="@string/fontfamily" />
+
+            <TextView
+                android:id="@+id/tvsusdateto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="5dp"
+                android:text="No Info"
+                android:textColor="#000000"
+                android:textSize="14dp"
+
+                android:fontFamily="@string/fontfamily" />
+           
+        </LinearLayout>
+
+      
+       
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" 
+             android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
+
+            <TextView
+                android:id="@+id/tvversin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+              
+                android:layout_marginTop="5dp"
+                android:text="Station Spots"
+                android:textColor="#000000"
+                android:textSize="14dp"
+
+                android:fontFamily="@string/fontfamily" />
+
+            <TextView
+                android:id="@+id/tvsusstationspot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="42dp"
+                android:layout_marginTop="5dp"
+                android:text="No Info"
+               
+                android:textColor="#000000"
+                android:textSize="14dp"
+
+                android:fontFamily="@string/fontfamily" />
+            
+      
+        </LinearLayout>
+        
+         <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" 
+             android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
+
+            <TextView
+                android:id="@+id/tvversin1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                
+                android:layout_marginTop="5dp"
+                android:text="Total Spot"
+                android:textColor="#000000"
+                android:textSize="14dp"
+
+                android:fontFamily="@string/fontfamily" />
+
+            <TextView
+                android:id="@+id/tvsustotalspot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="57dp"
+                android:layout_marginTop="5dp"
+                android:text="No Info"
+                android:textColor="#000000"
+                android:textSize="14dp"
+
+                android:fontFamily="@string/fontfamily" />
+            
+                  
+        </LinearLayout>
+        
+          <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" 
+             android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
+
+            <TextView
+                android:id="@+id/tvversin2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               
+                android:layout_marginTop="5dp"
+                android:text="Spot Wise Percentage"
+                android:textColor="#000000"
+            
+                android:textSize="14dp"
+                android:fontFamily="@string/fontfamily"/>
+
+            <TextView
+                android:id="@+id/tvspotwiseper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="5dp"
+                android:text="No Info"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:fontFamily="@string/fontfamily" />
+        </LinearLayout>
+        
+           <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" 
+             android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
+
+            <TextView
+                android:id="@+id/tvversin3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+              
+                android:layout_marginTop="5dp"
+                android:text="Percentage"
+                android:textColor="#000000"
+              
+                android:textSize="14dp"
+                android:fontFamily="@string/fontfamily" />
+            
+            
+            <TextView
+                android:id="@+id/tvsusrepeatition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="no"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:fontFamily="@string/fontfamily" />
+            
+             <TextView
+                android:id="@+id/tvversin11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+              android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="out"
+                android:textColor="#000000"
+              
+                android:textSize="14dp"
+                 android:fontFamily="@string/fontfamily" />
+            
+            
+            <TextView
+                android:id="@+id/tvversin12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+              android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="of"
+                android:textColor="#000000"
+              
+                android:textSize="14dp"
+                android:fontFamily="@string/fontfamily" />
+            
+            <TextView
+                android:id="@+id/tvsusrepet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="No"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:fontFamily="@string/fontfamily" />
+            <TextView
+                android:id="@+id/tvversin13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+              android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="is"
+                android:textColor="#000000"
+              
+                android:textSize="14dp"
+                android:fontFamily="@string/fontfamily" />
+
+            <TextView
+                android:id="@+id/tvsusper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="No Info"
+                android:textColor="#000000"
+                android:textSize="14dp"
+
+                android:fontFamily="@string/fontfamily" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="5dp"
+            android:background="#B6B6B4" />
+    </LinearLayout>
+
+</LinearLayout>

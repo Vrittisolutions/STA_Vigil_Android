@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:id="@+id/maincolors"
+	android:background="@drawable/newborder">
+
+	 <LinearLayout
+		android:layout_width="fill_parent"
+		android:id="@+id/headerColor"
+		android:layout_height="50dp"
+		android:orientation="horizontal"
+		android:gravity="top"
+		android:background="#0b6bb7"
+		android:layout_gravity="center_vertical">
+		
+	    <LinearLayout            
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.7"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/sta_logo" />
+
+            <TextView
+                android:id="@+id/vWB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:text="@string/app_name"
+                android:textColor="#ffffff"
+                android:textSize="18dp"
+				android:fontFamily="@string/fontfamily" >
+            </TextView>
+
+        </LinearLayout>
+  <LinearLayout android:layout_width="0dp"
+		 android:layout_height="wrap_content"
+		android:orientation="horizontal" 
+		 android:layout_weight="0.3" android:layout_gravity="center_vertical">
+		
+		
+		<ImageView android:background="@android:color/transparent"
+			android:layout_width="wrap_content" android:id="@+id/button_menu"
+			android:onClick="menu" android:layout_height="30dp"
+			android:paddingRight="5dp" android:src="@drawable/menu" 
+			  android:layout_weight="1" android:layout_gravity="center_vertical" android:visibility="invisible"></ImageView>
+		<ImageView android:background="@android:color/transparent"
+			android:layout_width="wrap_content"
+			 android:id="@+id/button_refresh"
+			android:onClick="refreshactivity" android:layout_height="40dp"
+			android:paddingLeft="0dp" android:src="@drawable/refresh_final" 
+			android:layout_gravity="center_vertical" android:layout_weight="1" android:visibility="invisible"></ImageView>
+</LinearLayout>
+
+	</LinearLayout>
+	
+	 <LinearLayout android:layout_width="fill_parent" 
+	      android:layout_height="wrap_content" 
+	       android:orientation="vertical" 
+	        android:layout_marginLeft="10dp" 
+	         android:layout_marginRight="10dp" 
+	          android:layout_marginTop="10dp"
+		 android:background="#ededed"
+		 android:layout_margin="10dp"
+		 android:padding="10dp">
+	 
+	 <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scrollbars="vertical">
+            <LinearLayout 
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                 <TextView
+					 android:layout_width="fill_parent"
+					 android:layout_height="wrap_content"
+	        		 android:text="Enter your STA Monitoring details"
+					 android:textColor="#111"
+					 android:fontFamily="@string/fontfamily"
+					 android:textSize="15sp"
+					 android:gravity="center_horizontal"/>
+	   
+
+	<LinearLayout 
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+				android:layout_marginTop="5dp">
+                
+	    <EditText android:layout_height="50dp" 
+		android:layout_width="fill_parent"
+		android:id="@+id/edit_login"
+		android:hint="Enter User Id"  
+		android:paddingLeft="5dp"
+		android:textColorHint="#d2d2d2"
+		android:fontFamily="@string/fontfamily"
+		android:layout_marginTop="10dp"
+		android:textColor="#000000"
+		android:background="@drawable/edittext"/>
+		<requestFocus />
+	    
+	    <EditText android:layout_height="50dp" 
+		android:layout_width="fill_parent"  android:id="@+id/edit_password"
+		android:hint="Enter password"  
+		 android:textColorHint="#d2d2d2"
+		 android:paddingLeft="5dp"
+		 android:layout_marginTop="5dp"
+			android:fontFamily="@string/fontfamily"
+			android:textColor="#000000" android:background="@drawable/edittext"
+		   android:inputType="textPassword" ></EditText>
+	
+	    <EditText android:layout_height="50dp" 
+		android:layout_width="fill_parent"  android:id="@+id/edit_mobile"
+		android:hint="Enter your registered mobile no"  
+		 android:textColorHint="#d2d2d2"
+		 android:paddingLeft="5dp"
+		 android:numeric="integer"
+		 android:layout_marginTop="10dp"
+			android:fontFamily="@string/fontfamily"
+			android:textColor="#000000"
+			android:background="@drawable/edittext"
+		   ></EditText>
+
+	    </LinearLayout>
+
+	<Button
+		android:id="@+id/button_s"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:text="@string/button_small"
+		android:onClick="sendMessage"  
+		 android:layout_marginTop="10dp"
+		android:textSize="18dp"
+		android:textColor="#fff"
+		android:textStyle="bold"
+		android:background="@drawable/btn_pressed_glossy"
+		android:fontFamily="@string/fontfamily" />
+
+        <LinearLayout
+			android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+			android:gravity="center"
+			android:layout_marginTop="50dp">
+
+		<ImageView
+			android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logoabout"
+			android:layout_gravity="center_horizontal"
+			android:id="@+id/ivvmainlogo"
+			android:padding="5dp"/>
+
+        </LinearLayout>
+        
+	 </LinearLayout>
+	 </ScrollView>
+	 </LinearLayout>
+
+</LinearLayout>

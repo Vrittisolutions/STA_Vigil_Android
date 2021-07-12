@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.adapters.WrkPlan_Activities_Adapter">
+
+    <LinearLayout
+        android:id="@+id/row_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+
+        <LinearLayout
+            android:id="@+id/lay_PriorityIndex"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.15"
+            android:background="@color/unselected"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/tv_SorceType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+
+                    android:text=""
+                    android:textSize="14dp" />
+
+                <ImageView
+                    android:id="@+id/tv_activityStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:text=""
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_endDate1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="2dp"
+                android:text="4 jan"
+                android:textColor="#fff"
+                android:textSize="10dp"
+                android:fontFamily="@string/fontfamily"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="0.8"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/lay_ticketDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/tv_activityCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:paddingTop="2dp"
+                    android:text="SPRT/1234"
+                    android:textColor="#F06B6B"
+                    android:textSize="14sp"
+                    android:fontFamily="@string/fontfamily" />
+
+                <TextView
+                    android:id="@+id/tv_ConsigneeName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="2dp"
+                    android:text=" - SPRT/1234"
+                    android:textColor="#6382A7"
+                    android:textSize="14sp"
+                    android:fontFamily="@string/fontfamily" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_activity_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Activity has been assigned to you by payal jain"
+                    android:textColor="#4C5051"
+                    android:textSize="14dp"
+                    android:fontFamily="@string/fontfamily" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_workspace"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.65"
+                        android:paddingTop="2dp"
+                        android:text="Under Agile vwb"
+                        android:textColor="#6382A7"
+                        android:fontFamily="@string/fontfamily"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_assignedBy"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.35"
+                        android:fontFamily="@string/fontfamily"
+                        android:textColor="#000"
+                        android:textSize="12sp"
+                        android:text="By Rucha" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:id="@+id/tv_hoursbook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="2dp"
+                    android:text="Booked 3:30 of"
+                    android:textColor="#4C5051"
+                    android:fontFamily="@string/fontfamily"
+                    android:textSize="12dp"
+                    android:visibility="gone"/>
+
+                <TextView
+
+                    android:id="@+id/tv_hoursreq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="2dp"
+                    android:text="4"
+                    android:fontFamily="@string/fontfamily"
+                    android:textColor="#4C5051"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_endDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="2dp"
+                    android:fontFamily="@string/fontfamily"
+                    android:text="ends on today"
+                    android:textColor="#F06B6B"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

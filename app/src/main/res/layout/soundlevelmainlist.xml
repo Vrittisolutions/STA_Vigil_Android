@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/newborder"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+        android:id="@+id/headerColor"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:background="#0b6bb7" 
+        android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="35sp"
+                android:layout_height="35sp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/sta_logo"
+                android:layout_marginTop="3sp"
+                android:layout_marginLeft="5sp" 
+                android:id="@+id/siv"  />
+
+    <TextView
+        android:id="@+id/vWB"
+        android:layout_width="0sp"
+        android:layout_height="40sp"
+        android:layout_gravity="center_vertical"
+        android:layout_toRightOf="@id/siv"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:paddingLeft="5sp"
+        android:text="@string/app_name"
+        android:textColor="#ffffff"
+        android:textSize="18dp"
+        android:textStyle="normal"
+        android:fontFamily="@string/fontfamily"></TextView>
+
+    <ImageView
+        android:id="@+id/button_alert_add"
+        android:layout_width="50sp"
+        android:layout_height="40sp"
+        android:visibility="gone"
+        android:background="@android:color/transparent"
+        android:src="@drawable/plusaddicon" >
+    </ImageView>
+               
+            <ImageView
+                android:id="@+id/button_filter"
+                android:layout_width="60sp"
+                android:layout_height="40sp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/btnfilter" 
+                android:onClick="FilterClick"
+                >
+            </ImageView>
+            
+			<ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="60sp"
+        android:layout_height="40sp"
+          android:visibility="gone" />
+
+         <ImageView
+                android:id="@+id/button_refresh_sound"
+                android:layout_width="60sp"
+                android:layout_height="40sp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/btnrefreshborder" 
+               >
+            </ImageView>
+           
+    </LinearLayout>
+    
+    <EditText android:id="@+id/edfitertext"
+        android:layout_width="fill_parent"
+        android:layout_height="30sp"
+        android:layout_marginLeft="5sp"
+        android:paddingLeft="10sp"
+        android:layout_marginRight="5sp"
+        android:background="@drawable/edback"  
+        android:hint="Search here..." 
+        android:textColor="#000000"
+        android:fontFamily="@string/fontfamily"
+        android:visibility="gone" />
+    	
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#81DAF5"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical" >
+      
+        <TextView
+                    android:id="@+id/title"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:text="Sound Level"
+                    android:textColor="#000000"
+                      android:textStyle="bold"
+                    android:textSize="15sp"
+                   android:padding="5dp"
+                    android:fontFamily="@string/fontfamily"/>
+
+    </LinearLayout>
+
+     <ListView
+                    android:id="@+id/soundlevelmainlist"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:cacheColorHint="#000000"
+                    android:divider="#000000"
+                    android:scrollingCache="false"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginRight="5sp" >
+                </ListView>
+    
+</LinearLayout>

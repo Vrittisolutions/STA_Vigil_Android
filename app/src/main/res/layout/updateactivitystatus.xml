@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/updatestatuscolors"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/newborder"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/headerColor"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+        android:background="#0b6bb7"
+        android:gravity="top"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.7"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/vlogonew" />
+
+            <TextView
+                android:id="@+id/vWB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:text="@string/app_name"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                android:textStyle="normal"
+                android:fontFamily="@string/fontfamily" >
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/headerColor"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarFadeDuration="0"
+        android:scrollbars="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/onupdateactivityname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Activity Name:"
+                    android:textColor="#fff"
+                    android:textSize="14dp"
+                    android:fontFamily="@string/fontfamily" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:background="#B6B6B4" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <Spinner
+                    android:id="@+id/spinner1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/selectorsp"
+                    android:entries="@array/plant_arrays"
+                    android:prompt="@string/plant_prompt"
+                    android:fontFamily="@string/fontfamily">
+                </Spinner>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/statusremarks"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext"
+                    android:gravity="top|left"
+                    android:hint="Enter Remark"
+                    android:inputType="textMultiLine"
+                    android:lines="4"
+                    android:singleLine="false"
+                    android:textColor="#000000"
+                    android:fontFamily="@string/fontfamily"
+                    android:paddingLeft="7dp"
+                    android:textColorHint="#d2d2d2" />
+
+                <requestFocus />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScroll"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:fadingEdgeLength="20dp"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50sp"
+            android:background="@drawable/btn_pressed_glossy"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="140sp"
+                android:layout_height="47sp"
+                android:layout_marginLeft="2sp"
+                android:background="@drawable/btn_pressed_glossy"
+                android:clickable="true"
+                android:onClick="updateactivity" >
+
+                <ImageView
+                    android:id="@+id/btnUpdate"
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2sp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/save" >
+                </ImageView>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btnUpdate"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="Update"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp"
+                    android:fontFamily="@string/fontfamily"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="140sp"
+                android:layout_height="47sp"
+                android:layout_marginLeft="2sp"
+                android:background="@drawable/btn_pressed_glossy"
+                android:clickable="true"
+                android:onClick="cancelactivity" >
+
+                <ImageView
+                    android:id="@+id/btncancel"
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2sp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/cancel" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btncancel"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="Cancel"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp"
+                    android:fontFamily="@string/fontfamily"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="140sp"
+                android:layout_height="47sp"
+                android:background="@drawable/btn_pressed_glossy"
+                android:clickable="true"
+                android:onClick="logo" >
+
+                <ImageView
+                    android:id="@+id/buttonmenu"
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2sp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/menu" >
+                </ImageView>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/buttonmenu"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="Menu"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp"
+                    android:fontFamily="@string/fontfamily"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</RelativeLayout>

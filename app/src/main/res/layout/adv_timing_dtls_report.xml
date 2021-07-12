@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
+    card_view:cardElevation="0.5dp"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardUseCompatPadding="true">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:paddingTop="2dp"
+       android:paddingBottom="2dp"
+       android:paddingRight="5dp"
+       android:paddingLeft="5dp">
+
+       <TextView
+           android:id="@+id/txtschdtime"
+           android:layout_width="230dp"
+           android:layout_height="wrap_content"
+           android:text="Schedule Time"
+           android:textColor="#111"
+           android:layout_weight="0.5"
+           android:layout_gravity="right"
+           android:gravity="right"
+           android:paddingLeft="5dp"
+           android:textSize="13sp"/>
+
+       <TextView
+           android:id="@+id/txtacttime"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Actual Time"
+           android:textColor="#111"
+           android:layout_weight="0.5"
+           android:layout_gravity="right"
+           android:gravity="right"
+           android:textSize="13sp"
+           android:paddingRight="10dp"/>
+
+   </LinearLayout>
+
+</android.support.v7.widget.CardView>

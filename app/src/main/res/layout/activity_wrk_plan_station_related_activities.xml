@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/newborder"
+    android:orientation="vertical"
+    tools:context=".WrkPlan_stationRelatedActivities">
+
+    <LinearLayout
+        android:id="@+id/headerColor"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:background="#0b6bb7"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/LinearLayout01"
+            android:layout_width="fill_parent"
+            android:layout_height="40sp"
+            android:background="#0b6bb7"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/ImageView01"
+                android:layout_width="35sp"
+                android:layout_height="35sp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginTop="3sp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/sta_logo" />
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="0sp"
+                android:layout_height="40sp"
+                android:layout_gravity="center_vertical"
+                android:layout_toRightOf="@id/siv"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingLeft="5sp"
+                android:text="@string/app_name"
+                android:textColor="#ffffff"
+                android:textSize="18dp"
+                android:textStyle="normal"
+                android:fontFamily="@string/fontfamily" />
+
+            <ImageView
+                android:id="@+id/button_filter"
+                android:layout_width="60sp"
+                android:layout_height="40sp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/btnfilter" />
+            <!--android:onClick="FilterClick"-->
+
+            <ProgressBar
+                android:id="@+id/ProgressBar_01"
+                android:layout_width="60sp"
+                android:layout_height="40sp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/button_refresh_connection_main"
+                android:layout_width="60sp"
+                android:layout_height="40sp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/btnrefreshborder" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/siv"
+            android:layout_width="35sp"
+            android:layout_height="35sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="3sp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/sta_logo" />
+
+        <TextView
+            android:id="@+id/vWB"
+            android:layout_width="0sp"
+            android:layout_height="40sp"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@id/siv"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="5sp"
+            android:text="@string/app_name"
+            android:textColor="#ffffff"
+            android:textSize="15dp"
+            android:textStyle="normal"
+            android:fontFamily="@string/fontfamily" >
+        </TextView>
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/button_refresh_connection"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/btnrefresh" >
+        </ImageView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#81DAF5"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvheader"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:padding="7dp"
+            android:text="Station wise Activities"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:fontFamily="@string/fontfamily"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:background="#B6B6B4" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_seldate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        android:orientation="horizontal"
+        android:background="#ededed">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5">
+
+            <Button
+                android:id="@+id/btn_selectdate"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/edittext_border"
+                android:gravity="center"
+                android:fontFamily="@string/fontfamily"
+                android:hint="Select date "
+                android:textColor="#000000"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5">
+
+            <Button
+                android:id="@+id/btnview"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/btn_pressed_glossy"
+                android:text="Show Activities"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="16dp"
+                android:fontFamily="@string/fontfamily"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_activities"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="2dp"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ListView
+            android:id="@+id/list_activitiesnames"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="#000000"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:scrollingCache="false"
+            android:visibility="visible"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_supportees"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="2dp"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/list_sprtnames"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="#000000"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:scrollingCache="false"
+            android:visibility="visible"/>
+
+    </LinearLayout>
+
+</LinearLayout>

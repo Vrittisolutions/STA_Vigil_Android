@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="2dp"
+    card_view:cardElevation="0.5dp"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/listitemselector"
+        android:padding="2dp">
+
+    <ImageView
+        android:layout_width="28sp"
+        android:layout_height="28sp"
+        android:layout_marginLeft="2sp"
+        android:background="@drawable/announcement" />
+        <!--android:layout_marginTop="8sp"
+        android:layout_marginBottom="5sp"-->
+
+    <TextView
+        android:id="@+id/tvsNamec"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.48"
+        android:paddingLeft="5sp"
+        android:text="KSRTC"
+        android:textColor="#000000"
+        android:textSize="13sp"
+        android:layout_gravity="center"
+        android:fontFamily="@string/fontfamily" />
+        <!-- android:layout_marginTop="15sp"-->
+
+    <TextView
+        android:id="@+id/tvsCntc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5sp"
+        android:gravity="right"
+        android:text="aa"
+        android:layout_gravity="center"
+        android:textColor="#ff0000"
+        android:textSize="13sp"
+        android:fontFamily="@string/fontfamily"
+       /><!--android:layout_marginTop="15sp"-->
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

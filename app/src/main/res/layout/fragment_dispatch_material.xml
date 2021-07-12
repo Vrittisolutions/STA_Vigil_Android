@@ -1,0 +1,263 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/newborder"
+    tools:context="com.fragments.DispatchMaterialFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/matreq"
+                android:layout_gravity="center_vertical"
+                android:background="#fff"
+                android:padding="2dp"/>
+
+            <Button
+                android:id="@+id/btnMaterialRequest"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_gravity="center_vertical"
+                android:background="#ededed"
+                android:textColor="#2c2c2c"
+                android:text="Material Request"
+                android:textSize="13sp"
+                android:fontFamily="@string/fontfamily"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/matmyords"
+                android:layout_gravity="center_vertical"
+                android:background="#fff"
+                android:padding="2dp"/>
+
+            <Button
+                android:id="@+id/btnmydisporders"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:text="My Dispatch Orders"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:background="#ededed"
+                android:textColor="#2c2c2c"
+                android:textSize="13sp"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@string/fontfamily"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <ImageView
+                android:id="@+id/imgpending"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/matpndin"
+                android:layout_gravity="center_vertical"
+                android:stateListAnimator="@anim/heartbeat"
+                android:background="#fff"
+                android:padding="2dp"/>
+
+            <Button
+                android:id="@+id/btnmatdispatches"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:text="Material Dispatches"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:background="#ededed"
+                android:textColor="#2c2c2c"
+                android:textSize="13sp"
+                android:fontFamily="@string/fontfamily"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <ImageView
+                android:id="@+id/imgnotdisp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/matnodisp"
+                android:layout_gravity="center_vertical"
+                android:stateListAnimator="@anim/heartbeat"
+                android:background="#fff"
+                android:padding="2dp"/>
+
+            <Button
+                android:id="@+id/btnscrappedmaterials"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="Scrapped Materials"
+                android:background="#ededed"
+                android:textColor="#2c2c2c"
+                android:textSize="13sp"
+                android:fontFamily="@string/fontfamily"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/matrejords"
+                android:layout_gravity="center_vertical"
+                android:background="#fff"
+                android:padding="2dp"/>
+
+            <Button
+                android:id="@+id/btnmaterialrepaired"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="Repaired Materials"
+                android:background="#ededed"
+                android:textColor="#2c2c2c"
+                android:textSize="13sp"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@string/fontfamily"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/matrcvcnfrm"
+                android:layout_gravity="center_vertical"
+                android:background="#fff"/>
+
+            <Button
+                android:id="@+id/btndispconfirmation"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="Dispatched Material Confirmation"
+                android:background="#ededed"
+                android:textColor="#2c2c2c"
+                android:textSize="13sp"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@string/fontfamily"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/matdisp"
+                android:layout_gravity="center_vertical"
+                android:background="#fff"
+                android:padding="2dp"/>
+
+            <Button
+                android:id="@+id/btndispnotrcvd"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_marginRight="5dp"
+                android:text="Material Dispatched but not Received"
+                android:background="#ededed"
+                android:textColor="#2c2c2c"
+                android:textSize="13sp"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@string/fontfamily"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

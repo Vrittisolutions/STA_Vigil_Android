@@ -1,0 +1,91 @@
+protected boolean isvalid() {
+		// TODO Auto-generated method stub
+
+		if (mLinMaterial.getVisibility() == View.GONE
+				&& mLinWork.getVisibility() == View.VISIBLE) {
+			if (!(mSetDate.getText().toString().length() > 0)) {
+				toast();
+				return false;
+			} else if (!(mSelectWork.getText().toString().length() > 0)) {
+				toast();
+				return false;
+			} else {
+				return true;
+			}
+
+		} else if (mLinMaterial.getVisibility() == View.VISIBLE
+				&& mLinWork.getVisibility() == View.GONE) {
+			if (!(msetDatemat.getText().toString().length() > 0)) {
+				toast();
+				return false;
+			} else if (!(mMAterialtype.getText().toString().length() > 0)) {
+				toast();
+				return false;
+			} else {
+				return true;
+			}
+		} else if (mLinMaterial.getVisibility() == View.VISIBLE
+				&& mLinWork.getVisibility() == View.VISIBLE) {
+			int work = mSelectWork.getText().length();
+			int workmat = mMAterialtype.getText().length();
+			if ((mSelectWork.getText().length() == 0)
+					|| mMAterialtype.getText().length() == 0) {
+				if (mSelectWork.getText().length() == 0
+						&& mMAterialtype.getText().length() == 0) {
+					if (!(msetDatemat.getText().toString().length() > 0)) {
+						toast();
+						return false;
+					} else if (!(mSetDate.getText().toString().length() > 0)) {
+						toast();
+						return false;
+					} else {
+						toast();
+						return false;
+					}
+				} else {
+					if (!(mSelectWork.getText().length() == 0)) {
+						if (!(mSetDate.getText().toString().length() > 0)) {
+							toast();
+							return false;
+						} else {
+							return true;
+						}
+
+					} else if (!(mMAterialtype.getText().length() == 0)) {
+						if (!(msetDatemat.getText().toString().length() > 0)) {
+							toast();
+							return false;
+						} else {
+							return true;
+						}
+					}
+
+				}
+
+			} else {
+				if (!(msetDatemat.getText().toString().length() > 0)) {
+					toast();
+					return false;
+				} else if (!(mSetDate.getText().toString().length() > 0)) {
+					toast();
+					return false;
+				} else if (!(mMAterialtype.getText().toString().length() > 0)) {
+					toast();
+					return false;
+				} else if (!(mSelectWork.getText().toString().length() > 0)) {
+					toast();
+					return false;
+				} else {
+					return true;
+				}
+
+			}
+		} else if (mLinMaterial.getVisibility() == View.GONE
+				&& mLinWork.getVisibility() == View.GONE) {
+			toast();
+			return false;
+		}
+
+		return true;
+
+	}

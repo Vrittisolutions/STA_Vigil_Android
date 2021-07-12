@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="1dp"
+    card_view:cardElevation="1dp"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardUseCompatPadding="true">
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="5dp"
+    android:background="#ededed"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="5sp"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/mat"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".1"
+            android:gravity="center"
+            android:text="Timesheet Activity :"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/timeshtdisplay"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3sp"
+            android:layout_weight=".8"
+            android:paddingLeft="10sp"
+            android:text="No Info"
+            android:textColor="#e720ad"
+            android:textSize="13dp"
+            android:fontFamily="@string/fontfamily"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+         ><!--android:weightSum="5.2"-->
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="0dp"
+            android:layout_weight="1.45"
+            android:layout_height="wrap_content"
+            android:text="Added Date :"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily"/>
+
+        <TextView
+            android:id="@+id/dateDisplay"
+            android:layout_width="0dp"
+            android:layout_weight="3.55"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="ssss"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <ImageView
+            android:id="@+id/imgavailable"
+            android:layout_width="30dp"
+            android:layout_weight="0.2"
+            android:layout_height="20dp"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/imgattach"
+            android:visibility="gone"
+            android:fontFamily="@string/fontfamily"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="5" >
+
+        <TextView
+            android:id="@+id/work"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.3"
+            android:text="Work type :"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/workdisplay"
+            android:layout_width="0dp"
+            android:layout_weight="3.7"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="ssss"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="5" >
+
+        <TextView
+            android:id="@+id/sender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.3"
+            android:text="Remark :"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/wkremdisplay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.7"
+            android:layout_marginLeft="5sp"
+            android:layout_marginStart="0sp"
+            android:text="ssss"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal" 
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/reportee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Material Used:"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/matedisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginStart="10sp"
+            android:text="ssss"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/DAte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remark :"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/matremDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="ssss"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <TextView
+            android:id="@+id/mob"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Mobile No :"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:layout_weight="1.3"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/mobDisplay"
+            android:layout_width="0dp"
+            android:layout_weight="3.7"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="ssss"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="5" >
+
+        <TextView
+            android:id="@+id/Status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.3"
+            android:text="Location :"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/LocationDispaly"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.7"
+            android:layout_marginLeft="5dp"
+            android:text="ssss"
+            android:textColor="#089c7f"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,0 +1,110 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/newborder"
+    tools:context="com.fragments.StationInvFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="2dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:background="#ededed"
+            android:orientation="vertical" >
+            <!--android:background="#81DAF5"-->
+
+            <TextView
+                android:id="@+id/stationInvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Station Inventory -"
+                android:textColor="#111111"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:fontFamily="@string/fontfamily"
+                android:padding="3dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <EditText android:id="@+id/edfitertext"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginLeft="5sp"
+                android:paddingLeft="10sp"
+                android:layout_marginRight="5sp"
+                android:background="@drawable/edback"
+                android:hint="Search here..."
+                android:textColor="#000000"
+                android:visibility="visible"
+                android:layout_weight="0.15"
+                android:textSize="13sp"
+                android:fontFamily="@string/fontfamily"/>
+
+            <ImageView
+                android:id="@+id/button_refresh_invent"
+                android:layout_width="match_parent"
+                android:layout_height="30sp"
+                android:layout_weight="0.85"
+                android:src="@drawable/refresh_final" >
+            </ImageView>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:orientation="vertical">
+
+                <ListView
+                    android:id="@+id/listInventitems"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:cacheColorHint="#000000"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:divider="@null"
+                    android:dividerHeight="0dp"
+                    android:scrollingCache="false" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/txtAddInvtItem"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:background="@drawable/btn_pressed_glossy"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="Add Items"
+                android:textColor="#ffffff"
+                android:textSize="15dp"
+                android:fontFamily="@string/fontfamily"
+                android:visibility="visible"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
