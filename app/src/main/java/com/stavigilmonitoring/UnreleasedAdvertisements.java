@@ -190,6 +190,10 @@ public class UnreleasedAdvertisements extends AppCompatActivity {
 
             } catch (Exception e) {
                 e.printStackTrace();
+                button_refresh_work_Done.setVisibility(View.VISIBLE);
+                progressbar.setVisibility(View.GONE);
+                pdialogue.dismiss();
+                Toast.makeText(UnreleasedAdvertisements.this,"No data available",Toast.LENGTH_LONG).show();
             }
         }
     }

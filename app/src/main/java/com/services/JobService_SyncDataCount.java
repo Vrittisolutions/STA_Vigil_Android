@@ -1,7 +1,9 @@
 package com.services;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.ContentValues;
@@ -17,6 +19,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.beanclasses.AdvVideoDataBean;
 import com.database.DBInterface;
 import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
@@ -26,6 +29,7 @@ import com.beanclasses.LmsConnectionStatewiseBean;
 import com.stavigilmonitoring.R;
 import com.beanclasses.StatelevelList;
 import com.beanclasses.TvStatusStateBean;
+import com.stavigilmonitoring.SelectMenu;
 import com.stavigilmonitoring.utility;
 
 import org.w3c.dom.Element;
@@ -68,6 +72,14 @@ public class JobService_SyncDataCount extends JobService {
     DatabaseHandler db;
     SQLiteDatabase sql;
 
+    /*unreleased adv*/
+    String AdvertisementCode="",AdvertisementDesc="", ApproveDate ="", SOPReleaseDate = "",
+            SOHeaderStatus = "", SoNumber = "", NetworkCode ="", Statuschangedate ="";
+    ArrayList<AdvVideoDataBean> list_advdata;
+
+    long AlarmStopTime;
+    boolean setAlarm = false;
+
     @Override
     public boolean onStartJob(JobParameters job) {
         Log.e("Back Timer : ","JobServiceStarted");
@@ -86,8 +98,7 @@ public class JobService_SyncDataCount extends JobService {
 
     public void init(){
 
-        registerReceiver(mHandleMessageReceiver, new IntentFilter(
-                Config.DISPLAY_MESSAGE_ACTION));
+        registerReceiver(mHandleMessageReceiver, new IntentFilter(Config.DISPLAY_MESSAGE_ACTION));
 
         System.out.println("...............csn service started............");
         Log.e("Tag", " ******* WORKING ON SYNCDATA *********");
@@ -108,8 +119,13 @@ public class JobService_SyncDataCount extends JobService {
 			     else
 			         new UploadTS_new().execute();*/
             }
-    }
 
+        list_advdata = new ArrayList<AdvVideoDataBean>();
+
+        SharedPreferences sp = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        AlarmStopTime = sp.getLong("AlarmStopTime", 0);
+        setAlarm = sp.getBoolean("SetAlarm", true);
+    }
 
     protected boolean isnet() {
         // TODO Auto-generated method stub
@@ -131,11 +147,6 @@ public class JobService_SyncDataCount extends JobService {
         protected String doInBackground(String... params) {
 
             try {
-				/*progressDialog = new ProgressDialog(SynchDtataCount.this);
-				progressDialog.setMessage("In Synch Data Count...");
-				progressDialog.setCanceledOnTouchOutside(false);
-				progressDialog.setCancelable(false);
-				progressDialog.show();*/
                 Log.e("Tag", " ******* WORKING ON SYNCDATA *********");
                 String xx = "";
 
@@ -1050,197 +1061,78 @@ public class JobService_SyncDataCount extends JobService {
             }
 
 // **********************************************************************************************************/
+            /*unreleased advs*/
+            list_advdata.clear();
+            url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetUnreleasedAdv";
 
-			/*url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNForWebLMS";
+            Log.e("unreleased advs", "url : " + url);
+            url = url.replaceAll(" ", "%20");
 
-			Log.e("Lms status", "url : " + url);
-			Log.e("Tag", " ******* WORKING ON SYNCDATA *********");
-			url = url.replaceAll(" ", "%20");
-			db = new DatabaseHandler(getBaseContext());
-			sql = db.getWritableDatabase();
-			try {
-				responsemsg = ut.httpGet(url);
-				Log.e("csn status", "resmsg : " + responsemsg);
-				sql.execSQL("DROP TABLE IF EXISTS LmsConnectionStatus");
-				sql.execSQL(ut.getLmsConnectionStatus());
-				if (responsemsg.contains("<Table>")) {
-					String Postckeck = "valid";
-					String columnName, columnValue;
-					Cursor cur = sql.rawQuery(
-							"SELECT *   FROM LmsConnectionStatus", null);
-					int lmscount = cur.getCount();
-					//Log.e("lmscount", "lmscount" + lmscount);
-					ContentValues values1 = new ContentValues();
-					NodeList nl1 = ut.getnode(responsemsg, "Table");
-					//Log.e("sts main...", " fetch data : " + nl1.getLength());
-					for (int i = 0; i < nl1.getLength(); i++) {
-						String connlms = "invalid";
-						Element e = (Element) nl1.item(i);
-						for (int j = 0; j < cur.getColumnCount(); j++) {
-							columnName = cur.getColumnName(j);
-							columnValue = ut.getValue(e, columnName);
+            try {
+                String responsemsg = ut.httpGet(url);
 
-							if (columnName
-									.equalsIgnoreCase("LastConnectionTime")) {
-								try {
-									String val = ut.getValue(e,
-											"LastConnectionTime");
-									String s = val.substring(0,
-											val.indexOf("."));
-									Calendar cal = Calendar.getInstance();
-									SimpleDateFormat format = new SimpleDateFormat(
-											"yyyy-MM-dd HH:mm:ss");
-									Date Startdate = format.parse(val);
-									Date Enddate = cal.getTime();
-									long diff = Enddate.getTime()
-											- Startdate.getTime();
-									long diffSeconds = diff / 1000 % 60;
-									long diffMinutes = diff / (60 * 1000) % 60;
-									long diffHours = diff / (60 * 60 * 1000)
-											% 24;
-									long diffDays = diff
-											/ (24 * 60 * 60 * 1000);
+                if (responsemsg.contains("<AdvertisementCode>")) {
+                    sop = "valid";
+                    NodeList nl1 = ut.getnode(responsemsg, "Table1");
 
-									*//*Log.e("getdetails", "sd : " + Startdate
-											+ " ed: " + Enddate + " d: "
-											+ diffDays + " h: " + diffHours
-											+ " m:" + diffMinutes);*//*
+                    for (int i = 0; i < nl1.getLength(); i++) {
 
-									if (diffDays == 0 && diffHours == 0
-											&& diffMinutes <= 30) {
-										connlms = "Invalid";
-									} else {
-										connlms = "valid";
-									}
-								} catch (Exception ex) {
-									dff = new SimpleDateFormat("HH:mm:ss");
-									Ldate = dff.format(new Date());
+                        Element e = (Element) nl1.item(i);
+                        AdvertisementCode = ut.getValue(e,"AdvertisementCode");
+                        AdvertisementDesc = ut.getValue(e,"AdvertisementDesc");
+                        ApproveDate = ut.getValue(e,"ApproveDate");
+                        SOPReleaseDate = ut.getValue(e,"SOPReleaseDate");
+                        SOHeaderStatus = ut.getValue(e,"SOHeaderStatus");
+                        SoNumber = ut.getValue(e,"SoNumber");
+                        NetworkCode = ut.getValue(e,"NetworkCode");
+                        Statuschangedate = ut.getValue(e,"Statuschangedate");
 
-									StackTraceElement l = new Exception()
-											.getStackTrace()[0];
-									System.out.println(l.getClassName() + "/"
-											+ l.getMethodName() + ":"
-											+ l.getLineNumber());
-									ut = new utility();
-									if (!ut.checkErrLogFile()) {
+                       //String strDate = "22 Jul 2021 11:41:07:000";
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy hh:mm:ss");
+                        Date date = null;
+                        try {
+                            date = dateFormat.parse(ApproveDate);
+                        } catch (ParseException ep) {
+                            ep.printStackTrace();
+                        }
 
-										ut.ErrLogFile();
-									}
-									if (ut.checkErrLogFile()) {
-										ut.addErrLog(l.getClassName() + "/"
-												+ l.getMethodName() + ":"
-												+ l.getLineNumber() + "	"
-												+ ex.getMessage() + " " + Ldate);
-									}
+                        long tstamp = date.getTime();
 
-								}
-							}
+                        AdvVideoDataBean adv = new AdvVideoDataBean();
+                        adv.setAdvertisementCode(AdvertisementCode);
+                        adv.setAdvertisementDesc(AdvertisementDesc);
+                        adv.setApproveDate(ApproveDate);
+                        adv.setSOPReleaseDate(SOPReleaseDate);
+                        adv.setSOHeaderStatus(SOHeaderStatus);
+                        adv.setSoNumber(SoNumber);
+                        adv.setNetworkCode(NetworkCode);
+                        adv.setStatuschangedate(Statuschangedate);
 
-							values1.put(columnName, columnValue);
+                        list_advdata.add(adv);
 
-							// Log.e("DownloadxmlsDataURL_new...on back...."," count i: "+i+"  j:"+j);
-						}
+                        if(setAlarm == true){
+                            if(tstamp > AlarmStopTime){
+                                //play alarm again
+                                Intent intent = new Intent(JobService_SyncDataCount.this, MyAlarmReceiver.class);
+                                PendingIntent pendingIntent = PendingIntent.getBroadcast(JobService_SyncDataCount.this,
+                                        234324243, intent, 0);
+                                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
+                                Toast.makeText(JobService_SyncDataCount.this, "Alarm set in 1 seconds",Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    }
 
-						Log.e("ckeck......", connlms);
+                } else {
+                    sop = "invalid";
+                    System.out
+                            .println("--------- invalid for project list --- ");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            /*******************************************************************************************/
 
-						if (connlms.equalsIgnoreCase("valid")) {
-							long inst = sql.insert("LmsConnectionStatus", null,
-									values1);
-						}
-					}
-
-					cur.close();
-
-				}
-
-			} catch (IOException e) {
-				e.printStackTrace();
-				dff = new SimpleDateFormat("HH:mm:ss");
-				Ldate = dff.format(new Date());
-
-				StackTraceElement l = new Exception().getStackTrace()[0];
-				System.out.println(l.getClassName() + "/" + l.getMethodName()
-						+ ":" + l.getLineNumber());
-				ut = new utility();
-				if (!ut.checkErrLogFile()) {
-
-					ut.ErrLogFile();
-				}
-				if (ut.checkErrLogFile()) {
-					ut.addErrLog(l.getClassName() + "/" + l.getMethodName()
-							+ ":" + l.getLineNumber() + "	" + e.getMessage()
-							+ " " + Ldate);
-				}
-			}*/
-
-
-            // **********************************************************************************************************/
-			/*String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetBGPlaylistContent?MobileNo="
-					+ mobno;
-
-			Log.e("csn status", "url : " + url);
-			Log.e("Tag", " ******* WORKING ON SYNCDATA *********");
-			url = url.replaceAll(" ", "%20");
-			try {
-				String responsemsg = ut.httpGet(url);
-				Log.e("csn status", "resmsg : " + responsemsg);
-				int b =1;
-				db = new DatabaseHandler(getBaseContext());
-				sql = db.getWritableDatabase();
-
-				if (responsemsg.contains("<PlaylistName>")) {
-					sql.execSQL("DROP TABLE IF EXISTS Backgroundplaylist");
-					sql.execSQL(ut.Databg());
-					Cursor cur = sql.rawQuery(
-							"SELECT *   FROM Backgroundplaylist", null);
-					Log.e("Table values----", "" + cur.getCount());
-					String columnName, columnValue;
-					ContentValues values1 = new ContentValues();
-					NodeList nl1 = ut.getnode(responsemsg, "Table");
-					//Log.e("sts main...", " fetch data : " + nl1.getLength());
-					for (int i = 0; i < nl1.getLength(); i++) {
-						String conn = "invalid";
-						Element e = (Element) nl1.item(i);
-						for (int j = 0; j < cur.getColumnCount(); j++) {
-							columnName = cur.getColumnName(j);
-							columnValue = ut.getValue(e, columnName);
-							values1.put(columnName, columnValue);
-							*//*Log.e("DownloadxmlsDataURL_new...on back....",
-									" count i: " + i + "  j:" + j);*//*
-						}
-
-
-						sql.insert("Backgroundplaylist", null, values1);
-						Log.e("Count BG----", "" + b);
-						b++;
-
-					}
-
-					cur.close();
-
-				} else {
-
-				}
-
-			} catch (IOException e) {
-				e.printStackTrace();
-				dff = new SimpleDateFormat("HH:mm:ss");
-				Ldate = dff.format(new Date());
-
-				StackTraceElement l = new Exception().getStackTrace()[0];
-				System.out.println(l.getClassName() + "/" + l.getMethodName()
-						+ ":" + l.getLineNumber());
-				ut = new utility();
-				if (!ut.checkErrLogFile()) {
-
-					ut.ErrLogFile();
-				}
-				if (ut.checkErrLogFile()) {
-					ut.addErrLog(l.getClassName() + "/" + l.getMethodName()
-							+ ":" + l.getLineNumber() + "	" + e.getMessage()
-							+ " " + Ldate);
-				}
-			}*/
             return null;
         }
 
@@ -1272,8 +1164,7 @@ public class JobService_SyncDataCount extends JobService {
                 int s1 = 6;
                 int s2 = 22;
                 // /////////////////////////////////////////////////////
-                SharedPreferences pref = getApplicationContext()
-                        .getSharedPreferences("MyPrefnon", Context.MODE_PRIVATE); // 0
+                SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPrefnon", Context.MODE_PRIVATE); // 0
 
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putString("nonreportedStatus",
@@ -1368,40 +1259,7 @@ public class JobService_SyncDataCount extends JobService {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-						/*
-						NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-						Notification notification = new Notification(icon,
-								text, time);
-
-						NotificationCompat.Builder mBuilder =   new NotificationCompat.Builder(SynchDtataCount.this)
-								.setSmallIcon(R.drawable.sta_logo) // notification icon
-								.setContentTitle(title) // title for notification
-								.setContentText(text) // message for notification
-								.setAutoCancel(true); // clear notification after click
-
-						Intent notificationIntent = new Intent(
-								getApplicationContext(), SelectMenu.class);
-						notificationIntent.putExtra("NotificationMessage", z);
-						notificationIntent
-								.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP
-										| Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-						PendingIntent contentIntent = PendingIntent
-								.getActivity(getApplicationContext(), 0,
-										notificationIntent,
-										PendingIntent.FLAG_UPDATE_CURRENT);
-
-						*//*notification.setLatestEventInfo(
-								getApplicationContext(), title, text,
-								contentIntent);*//*
-
-						// Clear the notification when it is pressed
-						notification.defaults |= Notification.DEFAULT_VIBRATE;
-						notification.flags |= Notification.FLAG_AUTO_CANCEL;
-
-						mNotificationManager.notify(NOTIFICATION, notification);
-						stopSelf();*/
                     } else {
                         System.out.println("Alarm stop...........");
                     }

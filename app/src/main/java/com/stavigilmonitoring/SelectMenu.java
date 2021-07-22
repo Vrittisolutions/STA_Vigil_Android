@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -18,6 +19,7 @@ import org.jsoup.nodes.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import com.beanclasses.AdvVideoDataBean;
 import com.beanclasses.StatelevelList;
 import com.beanclasses.TvStatusStateBean;
 import com.firebase.jobdispatcher.Constraint;
@@ -33,6 +35,7 @@ import com.services.JobService_DMCertificate;
 import com.services.JobService_PaidLocationFusedLocationTracker1;
 import com.services.JobService_SyncDataCount;
 import com.services.JobService_Test;
+import com.services.MyAlarmReceiver;
 import com.services.WakeLocker;
 import com.database.DBInterface;
 
@@ -68,6 +71,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
+import android.os.SystemClock;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.content.FileProvider;
 import android.util.DisplayMetrics;
@@ -100,6 +104,8 @@ public class SelectMenu extends Activity {
 	public static FirebaseJobDispatcher dispatcher;
 	public static Job myJob = null;
 	boolean AppCommon = false;
+	long AlarmStopTime;
+	boolean setAlarm = false;
 
 	List<StatelevelList> searchResults;
 	private LinearLayout followup;
@@ -131,6 +137,12 @@ public class SelectMenu extends Activity {
 	private TextView status, soundcunt, alertcounts, dmccounts, NonRepStationCount, NonRepAddCount, nonreportedStatus, datess,
 			bg_palycount, bloglink, tvstaversion, tvcsnstatuscnt, tvclips, tvclipscnt, tvmaterialrequirementStationcount,
 			PDCClipCount, PDCStatncount, LmsconnectionStatuscount,txtusername,txtmob;
+
+	Button btnsetalarm,btncancelalarm;
+	/*unreleased adv*/
+	String AdvertisementCode="",AdvertisementDesc="", ApproveDate ="", SOPReleaseDate = "",
+			SOHeaderStatus = "", SoNumber = "", NetworkCode ="", Statuschangedate ="";
+	ArrayList<AdvVideoDataBean> list_advdata = new ArrayList<AdvVideoDataBean>();
 
 	private ImageView personalReport;
 	MenuItem miActionProgressItem;
@@ -239,6 +251,13 @@ public class SelectMenu extends Activity {
 		String BgPaly = Prefbgplay.getString("bgPlayCount", null);
 		bg_palycount.setText(BgPaly);
 		// ***********************************************************************//
+
+		/*****************************************************************************/
+
+		SharedPreferences spa = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+		AlarmStopTime = spa.getLong("AlarmStopTime", 0);
+		setAlarm = spa.getBoolean("SetAlarm", true);
+		/*****************************************************************************/
 
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 		StrictMode.setThreadPolicy(policy);
@@ -349,7 +368,11 @@ public class SelectMenu extends Activity {
 
 			if (FLAG_PSTORE.equalsIgnoreCase("SHOW_DIALOG")) {
 				//if date not matched then call
-				callforplayStore();
+				try{
+			//		callforplayStore();
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 				//Toast.makeText(getApplicationContext(),"Playstore update popup showing once", Toast.LENGTH_SHORT).show();
 			} else {
 				//Toast.makeText(getApplicationContext(),"Already cancelled playstore update popup", Toast.LENGTH_SHORT).show();
@@ -426,6 +449,16 @@ public class SelectMenu extends Activity {
 		nonreportedStatus = (TextView) findViewById(R.id.tvnonreportedstatus);
 		txtusername = findViewById(R.id.txtusername);
 		txtmob = findViewById(R.id.txtmob);
+		btnsetalarm = findViewById(R.id.btnsetalarm);
+		btncancelalarm = findViewById(R.id.btncancelalarm);
+
+		if(setAlarm == true){
+			btnsetalarm.setVisibility(View.GONE);
+			btncancelalarm.setVisibility(View.VISIBLE);
+		}else {
+			btnsetalarm.setVisibility(View.VISIBLE);
+			btncancelalarm.setVisibility(View.GONE);
+		}
 
 		personalReport = (ImageView) findViewById(R.id.personalReport);
 		personalReport.setVisibility(View.GONE);
@@ -437,6 +470,45 @@ public class SelectMenu extends Activity {
 	}
 
 	public void setListeners() {
+
+		btncancelalarm.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				MyAlarmReceiver.stopAlarm();
+				btnsetalarm.setVisibility(View.VISIBLE);
+				btncancelalarm.setVisibility(View.GONE);
+
+				Date currentTime = Calendar.getInstance().getTime();
+				SimpleDateFormat dateFormat = new SimpleDateFormat("hh.mm.ss aa");
+				String output = dateFormat.format(currentTime);
+				//Toast.makeText(getApplicationContext(),"Time Is :" + output, Toast.LENGTH_LONG).show();
+
+				SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+				Editor editor = pref.edit();
+				editor.putLong("AlarmStopTime", currentTime.getTime());
+				editor.apply();
+			}
+		});
+
+		btnsetalarm.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				btnsetalarm.setVisibility(View.GONE);
+				btncancelalarm.setVisibility(View.VISIBLE);
+				SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+				Editor editor = pref.edit();
+				editor.putBoolean("SetAlarm", true);
+				editor.apply();
+
+				/*Intent intent = new Intent(SelectMenu.this, MyAlarmReceiver.class);
+				PendingIntent pendingIntent = PendingIntent.getBroadcast(SelectMenu.this,
+						234324243, intent, 0);
+				AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+				alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1* 1000), pendingIntent);
+				//alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + 1 * 1000, pendingIntent);
+				Toast.makeText(SelectMenu.this, "Alarm set in 1 seconds",Toast.LENGTH_LONG).show();*/
+			}
+		});
 
 		Blog.setOnClickListener(new OnClickListener() {
 
@@ -781,6 +853,19 @@ public class SelectMenu extends Activity {
 		lay_unrel_advs.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				/*SharedPreferences sp = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+				long AlarmStopTime = sp.getLong("AlarmStopTime", 0);
+
+				String strDate = "22 Jul 2021 11:41:07:000";
+				SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy hh:mm:ss ");
+				Date date = null;
+				try {
+					date = dateFormat.parse(strDate);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				System.out.println(date);*/
+
 				Intent intent = new Intent(SelectMenu.this,UnreleasedAdvertisements.class);
 				startActivity(intent);
 			}
@@ -831,85 +916,17 @@ public class SelectMenu extends Activity {
 
 		setJobShedulder("DMCertificateService");
 
-		/* *//*____________________________________________________________________________________________*//*
-
-		//DatabaseHandler db = new DatabaseHandler(SelectMenu.this);
-		String val = db.getSetting();
-
-		int itime = Integer.parseInt(val);
-
-		long aTime = 1000 * 60 * itime;
-
-		//long aTime = 1000 * 60 * 15;
-		Intent igpsalarm = new Intent(getBaseContext(),	com.services.DmCertificateService.class);
-				//com.services.SynchCSNnNonRepoCount.class);
-		PendingIntent piHeartBeatService = PendingIntent.getService(
-				getBaseContext(), 0, igpsalarm,
-				PendingIntent.FLAG_UPDATE_CURRENT);
-		AlarmManager alarmManager = (AlarmManager) getBaseContext()
-				.getSystemService(Context.ALARM_SERVICE);
-
-		alarmManager.cancel(piHeartBeatService);
-		alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
-				System.currentTimeMillis(), aTime, piHeartBeatService);
-        *//*____________________________________________________________________________________________*/
-
 	}
 
 	public void timerMethod2() {
 
 		setJobShedulder("SoundLevelService");
 
-		/*  *//*_____________________________________________________________________________________*//*
-        //DatabaseHandler db = new DatabaseHandler(SelectMenu.this);
-		String val = db.getSetting();
-
-		int itime = Integer.parseInt(val);
-
-		long aTime = 1000 * 60 * itime;
-
-		//long aTime = 1000 * 60 * 15;
-		Intent igpsalarm = new Intent(getBaseContext(),
-				com.services.SoundLevelService.class);
-		PendingIntent piHeartBeatService = PendingIntent.getService(
-				getBaseContext(), 0, igpsalarm,
-				PendingIntent.FLAG_UPDATE_CURRENT);
-		AlarmManager alarmManager = (AlarmManager) getBaseContext()
-				.getSystemService(Context.ALARM_SERVICE);
-
-		alarmManager.cancel(piHeartBeatService);
-		alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
-				System.currentTimeMillis(), aTime, piHeartBeatService);
-        *//*_____________________________________________________________________________________*/
-
 	}
 
 	public void timerMethod3() {
 
 		setJobShedulder("SyncDataCountService");
-
-		/*____________________________________________________________________________________________*//*
-
-		//DatabaseHandler db = new DatabaseHandler(SelectMenu.this);
-		String val = db.getSetting();
-
-		int itime = Integer.parseInt(val);
-
-		long aTime = 1000 * 60 * itime;
-
-		//long aTime = 1000 * 60 * 30;
-		Intent igpsalarm = new Intent(getBaseContext(),
-				com.services.SynchDtataCount.class);
-		PendingIntent piHeartBeatService = PendingIntent.getService(
-				getBaseContext(), 0, igpsalarm,
-				PendingIntent.FLAG_UPDATE_CURRENT);
-		AlarmManager alarmManager = (AlarmManager) getBaseContext()
-				.getSystemService(Context.ALARM_SERVICE);
-
-		alarmManager.cancel(piHeartBeatService);
-		alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
-				System.currentTimeMillis(), aTime, piHeartBeatService);
-        *//*____________________________________________________________________________________________*/
 
 	}
 
@@ -2754,8 +2771,7 @@ public class SelectMenu extends Activity {
             try {
                 MyAppVersion = (getPackageManager().getPackageInfo(getPackageName(), 0).versionName);
 
-                Document doc = Jsoup.connect("https://play.google.com/store/apps/details?id="//com.stavigilmonitoring
-                        + "com.stavigilmonitoring").get();
+                Document doc = Jsoup.connect("https://play.google.com/store/apps/details?id=" + "com.stavigilmonitoring").get();
                 String AllStr = doc.text();
                 String parts[] = AllStr.split("Current Version");
                 String newparts[] = parts[1].split("Requires Android");
@@ -3213,13 +3229,6 @@ public class SelectMenu extends Activity {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			progressDialog = new ProgressDialog(SelectMenu.this);
-			//progressDialog.setMessage("Updating data...");
-			//progressDialog.setCanceledOnTouchOutside(false);
-			//progressDialog.setCancelable(false);
-			//progressDialog.show();
-			//iv.setVisibility(View.GONE);
-			/*((ProgressBar) findViewById(R.id.progressBar1))
-					.setVisibility(View.VISIBLE);*/
 		}
 	}
 

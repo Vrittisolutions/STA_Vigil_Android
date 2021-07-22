@@ -984,6 +984,9 @@
             </intent-filter>
         </service>
 
+        <!--alarm play for unreleased advs-->
+        <receiver android:name="com.services.MyAlarmReceiver" ></receiver>
+
         <activity
             android:name=".WrkPlanActivitiesList"
             android:theme="@android:style/Theme.Holo.Light" />
