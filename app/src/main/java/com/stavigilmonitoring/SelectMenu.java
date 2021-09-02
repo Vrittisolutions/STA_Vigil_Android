@@ -74,6 +74,7 @@ import android.os.StrictMode;
 import android.os.SystemClock;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.content.FileProvider;
+import android.support.v7.widget.SwitchCompat;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -106,6 +107,7 @@ public class SelectMenu extends Activity {
 	boolean AppCommon = false;
 	long AlarmStopTime;
 	boolean setAlarm = false;
+	boolean setAlarm_UnRelease = false;
 
 	List<StatelevelList> searchResults;
 	private LinearLayout followup;
@@ -173,6 +175,7 @@ public class SelectMenu extends Activity {
 	Button btnSave_setrfrsh;
 	LinearLayout llscroll;
 	Bitmap bitmap;
+	SwitchCompat alarm_switch;
 
 	public void onCreate(Bundle savedInstanceState) {
 		// requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
@@ -193,6 +196,7 @@ public class SelectMenu extends Activity {
 		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
 		Editor editor = pref.edit();
 		String CSNStatusCount = pref.getString("csnStatusCount", null);
+		//setAlarm_UnRelease = pref.getBoolean("csnStatusCount", false);
 
 		// ////////********Connection Status ***********//////////////
 		SharedPreferences prefDate = getApplicationContext().getSharedPreferences("MyPrefDate", Context.MODE_PRIVATE);
@@ -257,6 +261,7 @@ public class SelectMenu extends Activity {
 		SharedPreferences spa = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
 		AlarmStopTime = spa.getLong("AlarmStopTime", 0);
 		setAlarm = spa.getBoolean("SetAlarm", true);
+		setAlarm_UnRelease = spa.getBoolean("SetAlarmFinal", true);
 		/*****************************************************************************/
 
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -378,7 +383,15 @@ public class SelectMenu extends Activity {
 				//Toast.makeText(getApplicationContext(),"Already cancelled playstore update popup", Toast.LENGTH_SHORT).show();
 			}
 		}
+
+		if(setAlarm_UnRelease){
+			alarm_switch.setChecked(true);
+		}else{
+			alarm_switch.setChecked(false);
+		}
+
 		setListeners();
+
 	}
 
 	public void init() {
@@ -451,6 +464,8 @@ public class SelectMenu extends Activity {
 		txtmob = findViewById(R.id.txtmob);
 		btnsetalarm = findViewById(R.id.btnsetalarm);
 		btncancelalarm = findViewById(R.id.btncancelalarm);
+		alarm_switch = findViewById(R.id.alarm_switch);
+
 
 		if(setAlarm == true){
 			btnsetalarm.setVisibility(View.GONE);
@@ -471,6 +486,25 @@ public class SelectMenu extends Activity {
 
 	public void setListeners() {
 
+		alarm_switch.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(alarm_switch.isChecked()){
+					SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+					Editor editor = pref.edit();
+					//editor.putBoolean("SetAlarm", true);
+					editor.putBoolean("SetAlarmFinal", true);
+					editor.apply();
+				}else{
+					SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+					Editor editor = pref.edit();
+					//editor.putBoolean("SetAlarm", false);
+					editor.putBoolean("SetAlarmFinal", false);
+					editor.apply();
+				}
+			}
+		});
+
 		btncancelalarm.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -486,6 +520,7 @@ public class SelectMenu extends Activity {
 				SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
 				Editor editor = pref.edit();
 				editor.putLong("AlarmStopTime", currentTime.getTime());
+				//editor.putBoolean("SetAlarm", false);
 				editor.apply();
 			}
 		});
