@@ -90,7 +90,7 @@ public class Suspected extends Activity {
 		this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 
 		setContentView(R.layout.suspected);
-	//	historysus=(Button)findViewById(R.id.btnsushistory);
+		//	historysus=(Button)findViewById(R.id.btnsushistory);
 		susstnnsme=(TextView)findViewById(R.id.tvsuspectedstnname);
 		Bundle extras = getIntent().getExtras();
 		System.out.println("'''''''''''1...........");
@@ -118,7 +118,7 @@ public class Suspected extends Activity {
 			} else {
 				fetchdata();
 			}*/
-		
+
 		iv.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -132,14 +132,14 @@ public class Suspected extends Activity {
 					showD("nonet");
 				}
 
-				
+
 			}
 		});
-		
+
 		suspectedDetails.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> a, View v, int position,
-					long id) {
+									long id) {
 
 				Object o = suspectedDetails.getItemAtPosition(position);
 				SuspectedHelper fullObject = (SuspectedHelper) o;
@@ -160,7 +160,7 @@ public class Suspected extends Activity {
 			}
 		});
 	}
-	
+
 	private boolean isnet() {
 		// TODO Auto-generated method stub
 		Context context = this.getApplicationContext();
@@ -173,8 +173,8 @@ public class Suspected extends Activity {
 		return false;
 	}
 
-public void editActivity(String stName,String instId,String Advertisementname) {
-		
+	public void editActivity(String stName,String instId,String Advertisementname) {
+
 		// MOMA --- mom attend request
 		// System.out.println("----------  type --- " + type);
 
@@ -188,7 +188,7 @@ public void editActivity(String stName,String instId,String Advertisementname) {
 		myIntent.putExtras(dataBundle);
 		startActivity(myIntent);
 		//finish();
-		 System.out.println("------------- 1");
+		System.out.println("------------- 1");
 
 	}
 	private boolean dbvalue() {
@@ -223,7 +223,7 @@ public void editActivity(String stName,String instId,String Advertisementname) {
 	private void updatelist() {
 		// TODO Auto-generated method stub
 
-		 searchResults = GetDetail();
+		searchResults = GetDetail();
 
 		//suspectedDetails.setAdapter(new SuspectedAdapt(this, searchResults));
 		suspectedDetails.setAdapter(new SuspectedAdapter_new(this, searchResults));
@@ -299,14 +299,14 @@ public void editActivity(String stName,String instId,String Advertisementname) {
 		return results;
 
 	}
-	
+
 	private String splittime(String tf) {
 		// TODO Auto-generated method stub
-		
-		 long diffDays=0;
+
+		long diffDays=0;
 		System.out.println("---value of tf for date...."+tf);
 		String fromtimetw = "";
-		
+
 		String k = tf.substring(0, tf.length() - 11);
 		System.out.println("---value of k for date..."+k);
 
@@ -338,58 +338,58 @@ public void editActivity(String stName,String instId,String Advertisementname) {
 		}
 		SimpleDateFormat timeFormat = new SimpleDateFormat("dd MMM, yyyy");
 		String finalDate = timeFormat.format(myDate);
-		
-		
+
+
 		final String dateStart = finalDate;
-		  DateFormat dateFormat1 = new SimpleDateFormat("dd MMM, yyyy");
-		  Date date = new Date();
-		 System.out.println("date format of system......................"+dateFormat1.format(date));
-		 System.out.println("date format of web tym......................"+date);
-		  final String dateStop =dateFormat1.format(date);
-		  
-		  Date d1 = null;
-			Date d2 = null;
-			String diffTym="";
-			
-			try {
-				d1 = dateFormat1.parse(dateStart);
-				d2 = dateFormat1.parse(dateStop);
-				 System.out.println("d2......................"+d2);
-				//in milliseconds
-				long diff = d2.getTime() - d1.getTime();
-	 
-				diffDays = diff / (24 * 60 * 60 * 1000);
-		
-			} catch (Exception e) {
-				e.printStackTrace();
-				dff = new SimpleDateFormat("HH:mm:ss");
-				Ldate = dff.format(new Date());
+		DateFormat dateFormat1 = new SimpleDateFormat("dd MMM, yyyy");
+		Date date = new Date();
+		System.out.println("date format of system......................"+dateFormat1.format(date));
+		System.out.println("date format of web tym......................"+date);
+		final String dateStop =dateFormat1.format(date);
 
-				StackTraceElement l = new Exception().getStackTrace()[0];
-				System.out.println(l.getClassName() + "/" + l.getMethodName() + ":"
-						+ l.getLineNumber());
-				ut = new com.stavigilmonitoring.utility();
-				if (!ut.checkErrLogFile()) {
+		Date d1 = null;
+		Date d2 = null;
+		String diffTym="";
 
-					ut.ErrLogFile();
-				}
-				if (ut.checkErrLogFile()) {
-					ut.addErrLog(l.getClassName() + "/" + l.getMethodName() + ":"
-							+ l.getLineNumber() + "	" + e.getMessage() + " "
-							+ Ldate);
-				}
+		try {
+			d1 = dateFormat1.parse(dateStart);
+			d2 = dateFormat1.parse(dateStop);
+			System.out.println("d2......................"+d2);
+			//in milliseconds
+			long diff = d2.getTime() - d1.getTime();
 
+			diffDays = diff / (24 * 60 * 60 * 1000);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			dff = new SimpleDateFormat("HH:mm:ss");
+			Ldate = dff.format(new Date());
+
+			StackTraceElement l = new Exception().getStackTrace()[0];
+			System.out.println(l.getClassName() + "/" + l.getMethodName() + ":"
+					+ l.getLineNumber());
+			ut = new com.stavigilmonitoring.utility();
+			if (!ut.checkErrLogFile()) {
+
+				ut.ErrLogFile();
 			}
-			
-
-			if (diffDays == 0) {
-				return "Today";
-
-			} else if (diffDays == 1) {
-				return "Yesterday";
-			} else {
-				return finalDate;
+			if (ut.checkErrLogFile()) {
+				ut.addErrLog(l.getClassName() + "/" + l.getMethodName() + ":"
+						+ l.getLineNumber() + "	" + e.getMessage() + " "
+						+ Ldate);
 			}
+
+		}
+
+
+		if (diffDays == 0) {
+			return "Today";
+
+		} else if (diffDays == 1) {
+			return "Yesterday";
+		} else {
+			return finalDate;
+		}
 
 	}
 
@@ -400,19 +400,19 @@ public void editActivity(String stName,String instId,String Advertisementname) {
 		System.out.println("---21111111111111111111...."+tf);
 		String k = tf.substring(11, tf.length() - 0);
 		System.out.println("---value of khr..."+k);
-		
+
 		String[] v1hr={  k };
-		
-	
-			return v1hr;
+
+
+		return v1hr;
 	}
-	
+
 	private String[] splitfrom2(String tf2) {
 		// TODO Auto-generated method stub
 		String s= tf2 + " % ";
 		String [] vs2={s};
 		return vs2;
-		
+
 	}
 
 
@@ -463,7 +463,7 @@ public void editActivity(String stName,String instId,String Advertisementname) {
 
 					System.out.println("-------------  xx vale-- "
 							+ responsemsg);
-				} 
+				}
 				catch(NullPointerException e)
 				{
 					e.printStackTrace();
@@ -490,7 +490,7 @@ public void editActivity(String stName,String instId,String Advertisementname) {
 
 					responsemsg = "wrong" + e.toString();
 					System.out
-					.println("--------- invalid for message type list --- "+responsemsg);
+							.println("--------- invalid for message type list --- "+responsemsg);
 					dff = new SimpleDateFormat("HH:mm:ss");
 					Ldate = dff.format(new Date());
 
@@ -509,7 +509,7 @@ public void editActivity(String stName,String instId,String Advertisementname) {
 					}
 
 				}
-				
+
 //
 				if (responsemsg.contains("<InstalationId>")) {
 					sop = "valid";
@@ -550,7 +550,7 @@ public void editActivity(String stName,String instId,String Advertisementname) {
 
 							System.out.println("-------------column name"+ columnName);
 							System.out.println("-------------column value"+ columnValue);
-							
+
 							values.put(columnName, columnValue);
 						}*/
 
@@ -596,17 +596,17 @@ public void editActivity(String stName,String instId,String Advertisementname) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
 			try{
-			pd.cancel();
-			
-			System.out.println("...............value of sop"+ sop);
-			if (sop.equals("valid")) {
+				pd.cancel();
 
-				updatelist();
+				System.out.println("...............value of sop"+ sop);
+				if (sop.equals("valid")) {
 
-			} else {
+					updatelist();
 
-				showD("invalid");
-			}
+				} else {
+
+					showD("invalid");
+				}
 
 			}catch(Exception e)
 			{
@@ -629,15 +629,15 @@ public void editActivity(String stName,String instId,String Advertisementname) {
 				}
 
 			}
-			
+
 
 		}
 
 	}
-	
-	
 
-	
+
+
+
 	protected void showD(String string) {
 		// TODO Auto-generated method stub
 
@@ -688,27 +688,27 @@ public void editActivity(String stName,String instId,String Advertisementname) {
 		}
 		return false;
 	}
-	
-	 @Override
-	   protected void onResume() {
-	      super.onResume();
-	   SharedPreferences preferences = getApplicationContext().getSharedPreferences("SCROLLSUSHIS", Context.MODE_PRIVATE);
-	      int scroll = preferences.getInt("ScrollValueSusHis", 0);
-	      System.out.println(".............value of scroll at resume>>>>>>>>>>>>>>>>>>>"+scroll);
-	    //  connectionstatus.scrollTo(0, scroll); 
-	      suspectedDetails.smoothScrollToPosition(scroll);
-	 }
-	
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		SharedPreferences preferences = getApplicationContext().getSharedPreferences("SCROLLSUSHIS", Context.MODE_PRIVATE);
+		int scroll = preferences.getInt("ScrollValueSusHis", 0);
+		System.out.println(".............value of scroll at resume>>>>>>>>>>>>>>>>>>>"+scroll);
+		//  connectionstatus.scrollTo(0, scroll);
+		suspectedDetails.smoothScrollToPosition(scroll);
+	}
+
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		 SharedPreferences preferences = getApplicationContext().getSharedPreferences("SCROLLSUSHIS", Context.MODE_PRIVATE);
-		    SharedPreferences.Editor editor = preferences.edit();
-		    int scroll = suspectedDetails.getFirstVisiblePosition();
-		  //  int scrollx = connectionstatus.getScrollX();
-		    System.out.println(".............value of scroll>>>>>>>>>>>>>>>>>>>"+scroll);
-		    editor.putInt("ScrollValueSusHis", scroll);
-		    editor.commit();
+		SharedPreferences preferences = getApplicationContext().getSharedPreferences("SCROLLSUSHIS", Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = preferences.edit();
+		int scroll = suspectedDetails.getFirstVisiblePosition();
+		//  int scrollx = connectionstatus.getScrollX();
+		System.out.println(".............value of scroll>>>>>>>>>>>>>>>>>>>"+scroll);
+		editor.putInt("ScrollValueSusHis", scroll);
+		editor.commit();
 		// finish();
 	}
 
@@ -717,7 +717,7 @@ public void editActivity(String stName,String instId,String Advertisementname) {
 		// TODO Auto-generated method stub
 		super.onBackPressed();
 
-	Bundle dataBundle = new Bundle();
+		Bundle dataBundle = new Bundle();
 		dataBundle.putString("stnname", Stationname);
 		//dataBundle.putString("ActivityName", ActivityName);
 		Intent i = new Intent(Suspected.this, SuspectedMain.class);

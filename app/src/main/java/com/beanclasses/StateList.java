@@ -18,6 +18,7 @@ public class StateList {
 	String LS_EC_Key;
 	String notificationCnt = "0";
 	String userId = "";
+	String alertId="";
 
 	public Date getDdate() {
 		return ddate;
@@ -188,4 +189,12 @@ public class StateList {
 	public String getUserId() { return userId; }
 
 	public void setUserId(String userId) { this.userId = userId; }
+
+	public String getAlertId() {
+		return alertId;
+	}
+
+	public void setAlertId(String alertId) {
+		this.alertId = alertId;
+	}
 }

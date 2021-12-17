@@ -323,6 +323,7 @@
                                 android:layout_gravity="center_horizontal|left"
                                 android:fontFamily="@string/fontfamily"
                                 android:text="Alert"
+                                android:layout_weight="0.5"
                                 android:textColor="#726E6D"
                                 android:textSize="13dp"
                                 android:textStyle="bold" />
@@ -331,11 +332,11 @@
                                 android:id="@+id/tvalertcounts"
                                 android:layout_width="wrap_content"
                                 android:layout_height="fill_parent"
-                                android:layout_alignParentRight="true"
                                 android:layout_gravity="center_horizontal|left"
                                 android:layout_marginRight="14dp"
                                 android:fontFamily="@string/fontfamily"
-                                android:text="0"
+                                android:text="06567565"
+                                android:layout_weight="0.5"
                                 android:textColor="#FE2E2E"
                                 android:textSize="15dp"
                                 android:textStyle="bold" />

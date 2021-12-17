@@ -2,33 +2,51 @@ package com.stavigilmonitoring;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.provider.OpenableColumns;
+import android.support.v4.content.FileProvider;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.adapters.DMCStateAdapter;
+import com.adapters.DMCStateDetailsAdapter;
+import com.beanclasses.StateDetailsList;
 import com.database.DBInterface;
 
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -51,6 +69,7 @@ public class DmCStateStnFilter extends Activity {
     private com.stavigilmonitoring.utility ut;
     private static DmCRefresh asynk_new;
     DatabaseHandler db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,6 +136,7 @@ public class DmCStateStnFilter extends Activity {
         asynk_new = new DmCRefresh();
         asynk_new.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
+
 
     public class DmCRefresh extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
@@ -355,5 +375,10 @@ public class DmCStateStnFilter extends Activity {
         }
         return result;
     }
+
+
+
+
+
 
 }

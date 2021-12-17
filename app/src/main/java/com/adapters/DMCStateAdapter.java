@@ -22,8 +22,7 @@ public class DMCStateAdapter extends BaseAdapter {
 	private LayoutInflater mInflater;
 	Context context;
 
-	public DMCStateAdapter(Context c, List<DmCstnwiseActivity.StateList> data)
-	{
+	public DMCStateAdapter(Context c, List<DmCstnwiseActivity.StateList> data) {
 		context=c;
 		mInflater = LayoutInflater.from(context);
 		searchArrayList=data;

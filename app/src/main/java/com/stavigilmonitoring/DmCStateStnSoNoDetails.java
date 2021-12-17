@@ -3,6 +3,7 @@ package com.stavigilmonitoring;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -16,7 +17,10 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.support.v4.content.FileProvider;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -26,6 +30,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -49,7 +54,13 @@ import org.w3c.dom.NodeList;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -73,6 +84,7 @@ public class DmCStateStnSoNoDetails extends Activity {
     String mCurrentPhotoPath;
     EditText editTextfileName;
     Object responsemsg3 ;
+    Context context;
 
     //private static ActivityUpdateURL asynk;
     private static ReasonUpdateURL asynktask;
@@ -92,6 +104,10 @@ public class DmCStateStnSoNoDetails extends Activity {
 
     private static DmCRefresh asynk_new;
     DatabaseHandler db;
+    private static final int MEGABYTE = 1024 * 1024;
+    File output;
+    Uri downloadFileUri;
+    private Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +115,9 @@ public class DmCStateStnSoNoDetails extends Activity {
         this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         //setContentView(com.stavigilmonitoring.R.layout.csnstatewise);
         setContentView(R.layout.dmc_details_activity);
+
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
 
         initView();
 
@@ -198,7 +217,8 @@ public class DmCStateStnSoNoDetails extends Activity {
                     showNewPrompt();
                 }
             });
-        }else if(Activity.equals("SupporterList")){
+        }
+        else if(Activity.equals("SupporterList")){
             lstcsn.setClickable(false);
         }
 
@@ -1450,5 +1470,317 @@ public class DmCStateStnSoNoDetails extends Activity {
 
 
     }
+
+    public void downloadAttachment(StateDetailsList stateDetailsList, String fileUrl, String fileName) {
+
+      //  output = commonDocumentDirPathDownload("STAVigil", "DMCertificatepdf");
+        output = commonDocumentDirPathDownload("STAVigil/DMCertificatepdf", fileName);
+        File file2 = new File(output.getAbsolutePath());
+        downloadFileUri = FileProvider.getUriForFile(DmCStateStnSoNoDetails.this,
+                getPackageName() + ".provider", file2);
+        Log.e("URI ", downloadFileUri.toString());
+
+        if (output.exists()) {
+            callAgainApi(output.toString(), fileName,fileUrl);
+        } else {
+            cllDownloadApi1(fileUrl,fileName);
+            // new DownloadFile().execute(fileUrl, fileName);
+        }
+
+
+        //  new DownloadFile().execute(fileUrl, fileName);
+
+
+    }
+
+    private class DownloadFile extends AsyncTask<String, Void, Void> {
+        String dwnlod;
+        File pdfdown;
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            String fileUrl = strings[0];   // -> http://www.androhub.com/demo/demo.pdf
+            //fileUrl = "http://vritti.ekatm.co.in//certificatepdfs/MSRTCAmbajogaiPSOIM17-18-716.htm";
+            String[] word = fileUrl.split("/");
+            fileUrl = "https:"+"//vritti.ekatm.co.in/"+word[4]+"/"+word[5]; //w
+            String fileNamefull  = strings[1];// ord[0]
+            String fileName = strings[1];  // -> demo.pdf
+            //fileName = "MSRTCAmbajogaiPSOIM17-18-716.htm";
+            String[] words = fileName.split("\\.");
+            fileName = words[0];
+            //fileName = "MarDemo";
+            String suffix = words[1];
+            //suffix = "htm";
+             pdfdown  = commonDocumentDirPath("STAVigil/DMCertificatepdf", fileNamefull,
+                    DmCStateStnSoNoDetails.this);
+
+
+            //commented by sayali latest
+        /*    File storageDir = new File(Environment.getExternalStorageDirectory(), "DMCertificatepdf");
+            if (!storageDir.exists()){  // Checks that Directory/Folder Doesn't Exists!
+                storageDir.mkdir();
+            }
+            File pdfdown  = new File(storageDir + "/" + "DMCertificatepdf" + "/" + "File" + "/" +
+                    fileName);*/
+            //commented by sayali
+           // fileNew.createNewFile();
+
+         //   File pdfdown = new File(storageDir+"/"+fileName+"."+suffix);
+            try {
+                //pdfdown = File. createTempFile( fileName /* prefix */,".jpg", storageDir  /* directory */ );
+                pdfdown.createNewFile();
+
+
+                dwnlod = downloadFile(fileUrl, pdfdown);
+                //DownloadMP3(fileUrl, Environment.getExternalStorageDirectory()+"/DMCertificatepdf/"+fileName+"."+suffix);
+
+            } catch (IOException e) {
+                dwnlod = "No File Found";
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Toast.makeText(DmCStateStnSoNoDetails.this, dwnlod, Toast.LENGTH_SHORT).show();
+
+			/*if(!dwnlod.equalsIgnoreCase("No File Found")){
+				holder.btnpdfdownload.setImageResource(R.drawable.dwnldedpdf);
+				searchArrayList.get(position).setIsFileDownload(true);
+			}else {
+				searchArrayList.get(position).setIsFileDownload(false);
+			}*/
+        }
+
+
+
+    }
+    public String downloadFile(String fileUrl, final File directory) {
+        String isdownload;
+        try {
+            URL url = new URL(fileUrl);
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("GET");
+            //urlConnection.setDoOutput(true);
+            //urlConnection.connect();
+
+            InputStream inputStream = urlConnection.getInputStream();
+            FileOutputStream fileOutputStream = new FileOutputStream(directory);
+            int totalSize = urlConnection.getContentLength();
+
+            byte[] buffer = new byte[MEGABYTE];
+            int bufferLength = 0;
+            while ((bufferLength = inputStream.read(buffer,0,1024)) > 0) {
+                fileOutputStream.write(buffer, 0, bufferLength);
+            }
+            fileOutputStream.close();
+
+            isdownload =  "File Downloaded Successfully";
+            Log.e("Directory Path", String.valueOf(directory));
+
+            Handler handler = new Handler(DmCStateStnSoNoDetails.this.getMainLooper());
+            handler.post(new Runnable() {
+                public void run() {
+
+                    urlGetMimeType(String.valueOf(directory));
+
+
+
+                }
+            });
+            //holder.btnpdfdownload.setImageResource(R.drawable.dwnldedpdf);
+            //set file downloaded icon
+            //set status of filedownload
+        } catch (FileNotFoundException e) {
+            isdownload =  "No File Found";
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            isdownload =  "No File Found";
+            e.printStackTrace();
+        } catch (IOException e) {
+            isdownload =  "No File Found";
+            e.printStackTrace();
+        } catch (Exception e) {
+            isdownload =  "No File Found";
+            e.printStackTrace();
+        }
+        return isdownload;
+    }
+
+    public static File commonDocumentDirPathDownload(String newDirName, String FolderName) {
+        File dir = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) +
+                    "/" + newDirName + "/" + FolderName);
+        } else {
+            dir = new File(Environment.getExternalStorageDirectory() + "/" +
+                    newDirName + "/" + FolderName);
+        }
+
+        // Make sure the path directory exists.
+        if (!dir.exists()) {
+            // Make it, if it doesn't exit
+            boolean success = dir.getParentFile().mkdirs();
+            if (!success) {
+                return dir;
+            }
+        }
+        return dir;
+    }
+
+    private void callAgainApi(final String path, final String attachmentName1, String fileUrl) {
+        if (ut.isnet(DmCStateStnSoNoDetails.this)) {
+            Log.e("AttachmentName   ", attachmentName1);
+
+            //final File file1 = new File(copyFileToInternalStorage(downloadFileUri, "HYVA", "FromDownload"));
+            final File file1 = new File(copyFileToInternalStorage(downloadFileUri,
+                    "STAVigil/DMCertificatepdf"));
+
+            if (file1.exists()) {
+
+                Handler handler = new Handler(DmCStateStnSoNoDetails.this.getMainLooper());
+                handler.post(new Runnable() {
+                    public void run() {
+                        Toast.makeText(parent, "File Already downloaded", Toast.LENGTH_SHORT).show();
+                        urlGetMimeType(String.valueOf(file1));
+
+                        /*
+                        MimeTypeMap myMime = MimeTypeMap.getSingleton();
+                        Intent newIntent = new Intent(Intent.ACTION_VIEW);
+                        newIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                        String extension = android.webkit.MimeTypeMap.getFileExtensionFromUrl(Uri.fromFile(file1).toString());
+                        String mimeType = myMime.getMimeTypeFromExtension(file1.getAbsolutePath());
+                        String file = file1.getAbsolutePath();
+                        newIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                        newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        newIntent.setDataAndType(Uri.fromFile(file1), mimeType);
+
+// End New Approach
+                        try {
+                            parent.startActivity(newIntent);
+
+                        } catch (ActivityNotFoundException e) {
+                            Toast.makeText(parent, e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+*/
+
+                    }
+                });
+            } else {
+                cllDownloadApi1(path, attachmentName1);
+            }
+
+        }
+    }
+
+    private void cllDownloadApi1(String fileUrl, String fileName) {
+
+        new DownloadFile().execute(fileUrl, fileName);
+    }
+
+    public String copyFileToInternalStorage(Uri uri, String newDirName) {
+
+        Uri returnUri = uri;
+        Cursor returnCursor = null;
+
+
+        returnCursor = getContentResolver().query(returnUri, new String[]{
+                OpenableColumns.DISPLAY_NAME, OpenableColumns.SIZE
+        }, null, null, null);
+
+
+        int nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+        int sizeIndex = returnCursor.getColumnIndex(OpenableColumns.SIZE);
+        returnCursor.moveToFirst();
+        String name = (returnCursor.getString(nameIndex));
+
+        File output;
+        output = commonDocumentDirPath(newDirName, name,DmCStateStnSoNoDetails.this);
+        File myFile = new File(String.valueOf(output));
+        uri= Uri.parse(myFile.getAbsolutePath());
+
+        Log.d("File Output Name",uri.toString());
+        try {
+            InputStream inputStream = DmCStateStnSoNoDetails.this.getContentResolver().openInputStream(uri);
+            FileOutputStream outputStream = new FileOutputStream(output);
+            int read = 0;
+            int bufferSize = 1024;
+            final byte[] buffers = new byte[bufferSize];
+            while ((read = inputStream.read(buffers)) != -1) {
+                outputStream.write(buffers, 0, read);
+            }
+
+            inputStream.close();
+            outputStream.close();
+
+        } catch (Exception e) {
+            //  Toast.makeText(VehicleLoadingActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+
+            Log.e("Exception", e.getMessage());
+        }
+
+
+        return output.getPath();
+    }
+
+    public static File commonDocumentDirPath(String newDirName, String FolderName,
+                                             Context context) {
+        File dir = null;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)
+                        + "/" + newDirName + "/" + FolderName);
+        }else {
+                dir = new File(Environment.getExternalStorageDirectory() + "/" + newDirName + "/" + FolderName);
+        }
+
+        // Make sure the path directory exists.
+        if (!dir.exists()) {
+            // Make it, if it doesn't exit
+            boolean success = dir.getParentFile().mkdirs();
+            if (!success) {
+                return dir;
+            }
+        }
+        Log.d("DirectoryName",dir.toString());
+
+        return dir;
+    }
+
+    private void urlGetMimeType(String path) {
+        File file = new File(path);
+//        MimeTypeMap map = MimeTypeMap.getSingleton();
+//        String ext = MimeTypeMap.getFileExtensionFromUrl(file.getName());
+//        String type = map.getMimeTypeFromExtension(ext);
+//
+//        if (type == null)
+//            type = "*/*";
+//
+//        Intent intent = new Intent(Intent.ACTION_VIEW);
+//        Uri data = Uri.fromFile(file);
+//
+//        intent.setDataAndType(data, type);
+//
+//        startActivity(intent);
+
+        MimeTypeMap myMime = MimeTypeMap.getSingleton();
+        Intent newIntent = new Intent(Intent.ACTION_VIEW);
+        newIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        String extension = android.webkit.MimeTypeMap.getFileExtensionFromUrl(Uri.fromFile(file).toString());
+        String mimeType = myMime.getMimeTypeFromExtension(file.getAbsolutePath());
+        newIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        newIntent.setDataAndType(Uri.fromFile(file), mimeType);
+        try {
+            parent.startActivity(newIntent);
+
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText( DmCStateStnSoNoDetails.this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+
 
 }

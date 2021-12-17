@@ -59,7 +59,7 @@ public class AlertFirebaseNotificationService extends FirebaseMessagingService {
     //DBHelper db1;
     private static final String TAG = "MyFirebaseMsgService";
     NotificationChannel channel;
-    String channel_id="one";
+    String channel_id = "one";
     JSONObject obj;
     String Msgcontent = "", MsgType = "", InstallationId = "", date = "",
             notification_data = "", MsgText = "", MsgVal = "", StationName = "";
@@ -67,10 +67,10 @@ public class AlertFirebaseNotificationService extends FirebaseMessagingService {
 
     /**
      * Called when message is received.
+     *
      * @param remoteMessage Object representing the message received from Firebase Cloud Messaging.
      */
 // [START receive_message]
-
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
@@ -80,32 +80,31 @@ public class AlertFirebaseNotificationService extends FirebaseMessagingService {
         String notification2 = remoteMessage.getMessageId().toString();
         notification_data = remoteMessage.getData().get("message");
 
-        PowerManager pm = (PowerManager)getApplicationContext().getSystemService(Context.POWER_SERVICE);
+        PowerManager pm = (PowerManager) getApplicationContext().getSystemService(Context.POWER_SERVICE);
         boolean isScreenOn = pm.isScreenOn();
-        if(isScreenOn==false)
-        {
-            @SuppressLint("InvalidWakeLockTag") PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.ON_AFTER_RELEASE,"MyLock");
+        if (isScreenOn == false) {
+            @SuppressLint("InvalidWakeLockTag") PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.ON_AFTER_RELEASE, "MyLock");
             wl.acquire(10000);
-            @SuppressLint("InvalidWakeLockTag") PowerManager.WakeLock wl_cpu = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"MyCpuLock");
+            @SuppressLint("InvalidWakeLockTag") PowerManager.WakeLock wl_cpu = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MyCpuLock");
 
             wl_cpu.acquire(10000);
-        }else {
+        } else {
 
         }
 
-        if(notification_data.contains("Station (")){
+        if (notification_data.contains("Station (")) {
             // do not display notification
-        }else {
-            try{
+        } else {
+            try {
                 getnotification(notification_data);    //off for testing purpose
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
     private String getDateinFormat(String amcExpireDt) {
-        String result= null;
+        String result = null;
         SimpleDateFormat dateFormat1 = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
         SimpleDateFormat dateFormat3 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         //SimpleDateFormat dateFormat2 = new SimpleDateFormat("dd MMM, yyyy hh:mm aa");
@@ -114,24 +113,24 @@ public class AlertFirebaseNotificationService extends FirebaseMessagingService {
             result = dateFormat3.format(date2);
             //date2 = dateFormat3.parse(result);
             //result = dateFormat2.format(date2);
-        }catch( Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
     }
 
     private String getUserid(String InstaId) {
-        String result= null;
-        try{
+        String result = null;
+        try {
             DatabaseHandler db1 = new DatabaseHandler(getBaseContext());
             SQLiteDatabase sql = db1.getWritableDatabase();
-            Cursor cursor = sql.rawQuery("Select InstalationId from "+"ConnectionStatusFilter"+" WHERE InstallationDesc='"+InstaId+"'", null);
+            Cursor cursor = sql.rawQuery("Select InstalationId from " + "ConnectionStatusFilter" + " WHERE InstallationDesc='" + InstaId + "'", null);
             cursor.moveToFirst();
-            if (cursor != null && cursor.getCount()>0) {
+            if (cursor != null && cursor.getCount() > 0) {
                 result = cursor.getString(cursor.getColumnIndex("InstalationId"));
-            }else{
+            } else {
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
@@ -144,12 +143,12 @@ public class AlertFirebaseNotificationService extends FirebaseMessagingService {
         intent.putExtra("InstallationID", InstallationId);
         intent.putExtra("Station", StationName);
 
-        PendingIntent piResult = PendingIntent.getActivity(this, 0, intent,PendingIntent.FLAG_UPDATE_CURRENT );
+        PendingIntent piResult = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-            channel= new NotificationChannel(channel_id,
+            channel = new NotificationChannel(channel_id,
                     "Level",
                     NotificationManager.IMPORTANCE_HIGH);
             channel.enableLights(true);
@@ -164,7 +163,7 @@ public class AlertFirebaseNotificationService extends FirebaseMessagingService {
         }
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
-                this,channel_id);
+                this, channel_id);
         NotificationCompat.Builder notification = mBuilder
                 .setAutoCancel(true)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.sta_logo))
@@ -199,7 +198,7 @@ public class AlertFirebaseNotificationService extends FirebaseMessagingService {
             notificationManager.createNotificationChannel(channel);
         }
         Random random = new Random();
-        int code=random.nextInt(9999 - 1000) + 1000;
+        int code = random.nextInt(9999 - 1000) + 1000;
         notificationManager.notify(code, notification.build());
 
     }
@@ -210,12 +209,12 @@ public class AlertFirebaseNotificationService extends FirebaseMessagingService {
 
         final String message = intent.getStringExtra("message");
 
-        if (message!=null) {
+        if (message != null) {
             // if (isAppRunning(message)) ;
-            if(isApplicationSentToBackground(getApplicationContext())){
+            if (isApplicationSentToBackground(getApplicationContext())) {
                 try {
                     getnotification(message);       //off for testing purpose
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -237,7 +236,7 @@ public class AlertFirebaseNotificationService extends FirebaseMessagingService {
                 e.printStackTrace();
             }*/
 
-            try{
+            try {
                 ComponentName topActivity = null;
                 if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     topActivity = tasks.get(0).topActivity;
@@ -246,7 +245,7 @@ public class AlertFirebaseNotificationService extends FirebaseMessagingService {
                 if (!topActivity.getPackageName().equals(mcontext.getPackageName())) {
                     return true;
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -262,165 +261,171 @@ public class AlertFirebaseNotificationService extends FirebaseMessagingService {
 
 //        if (!flag) {
 
+        try {
+            obj = new JSONObject(notification);
+            MsgType = obj.getString("MsgType");
+            Msgcontent = obj.getString("MsgVal");
+            InstallationId = obj.getString("InstallationId");
+            date = obj.getString("date");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        String query = "Select StatioName from AllStation Where InstallationId ='" + InstallationId + "'";
+        Cursor c = sql.rawQuery(query, null);
+        if (c.getCount() > 0) {
+            c.moveToFirst();
+            StationName = c.getString(c.getColumnIndex("StatioName"));
+        }
+
+        if (MsgType.equalsIgnoreCase("SL")) {
+            notifyType_Title = "Sound Level";
+
             try {
-                obj = new JSONObject(notification);
-                MsgType = obj.getString("MsgType");
-                Msgcontent = obj.getString("MsgVal");
+                Msgcontent = obj.getString("MsgText");
                 InstallationId = obj.getString("InstallationId");
                 date = obj.getString("date");
+                MsgText = obj.getString("MsgText");
+                MsgVal = obj.getString("MsgVal");
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-            String query = "Select StatioName from AllStation Where InstallationId ='"+InstallationId+"'";
-            Cursor c = sql.rawQuery(query,null);
-            if(c.getCount() > 0){
-                c.moveToFirst();
-                StationName = c.getString(c.getColumnIndex("StatioName"));
+            if (MsgText.contains("Station (")) {
+                // do not display notification
+            } else {
+                GetNotificationData(notifyType_Title, MsgType, InstallationId, StationName);
             }
 
-            if (MsgType.equalsIgnoreCase("SL")) {
-                notifyType_Title = "Sound Level";
+            // GetNotificationData(notifyType_Title);
+            if (!flag) {
+                // GetNotificationData(notifyType_Title);
+                flag = true;
+            }
 
-                try {
-                    Msgcontent = obj.getString("MsgText");
-                    InstallationId = obj.getString("InstallationId");
-                    date = obj.getString("date");
-                    MsgText = obj.getString("MsgText");
-                    MsgVal = obj.getString("MsgVal");
+            //add notifyID =  Type + 1st 4digit of instId + date(ddmmhhss)
+            db.addNotification("", InstallationId, StationName, date, Msgcontent, MsgType, MsgVal, MsgText);
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+        } else if (MsgType.equalsIgnoreCase("PCONOFF")) {
+            //pc on off
+            notifyType_Title = "PC On/Off";
 
-                if(MsgText.contains("Station (")){
-                    // do not display notification
-                }else {
-                    GetNotificationData(notifyType_Title, MsgType,InstallationId,StationName);
-                }
+            try {
+                Msgcontent = obj.getString("MsgText");
+                InstallationId = obj.getString("InstallationId");
+                date = obj.getString("date");
+                MsgText = obj.getString("MsgText");
+                MsgVal = obj.getString("MsgVal");
 
-               // GetNotificationData(notifyType_Title);
-                if (!flag) {
-                   // GetNotificationData(notifyType_Title);
-                    flag = true;
-                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
-                //add notifyID =  Type + 1st 4digit of instId + date(ddmmhhss)
-                db.addNotification("",InstallationId, StationName, date, Msgcontent, MsgType, MsgVal, MsgText);
+            GetNotificationData(notifyType_Title, MsgType, InstallationId, StationName);
+            if (!flag) {
+                // GetNotificationData(notifyType_Title);
+                flag = true;
+            }
 
-            }else if(MsgType.equalsIgnoreCase("PCONOFF")){
-                //pc on off
-                notifyType_Title = "PC On/Off";
+            db.addNotification("", InstallationId, StationName, date, Msgcontent, MsgType, MsgVal, MsgText);
+        } else if (MsgType.equalsIgnoreCase("ADVFPLAY")) {
+            //pc on off
+            notifyType_Title = "Advertisement First Play Time";
 
-                try{
-                    Msgcontent = obj.getString("MsgText");
-                    InstallationId = obj.getString("InstallationId");
-                    date = obj.getString("date");
-                    MsgText = obj.getString("MsgText");
-                    MsgVal = obj.getString("MsgVal");
+            try {
+                Msgcontent = obj.getString("MsgText");
+                InstallationId = obj.getString("InstallationId");
+                date = obj.getString("date");
+                MsgText = obj.getString("MsgText");
+                MsgVal = obj.getString("MsgVal");
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
-                GetNotificationData(notifyType_Title, MsgType,InstallationId,StationName);
-                if (!flag) {
-                   // GetNotificationData(notifyType_Title);
-                    flag = true;
-                }
+            GetNotificationData(notifyType_Title, MsgType, InstallationId, StationName);
+            if (!flag) {
+                // GetNotificationData(notifyType_Title);
+                flag = true;
+            }
 
-                db.addNotification("",InstallationId, StationName, date, Msgcontent, MsgType, MsgVal, MsgText);
-            }else if(MsgType.equalsIgnoreCase("ADVFPLAY")){
-                //pc on off
-                notifyType_Title = "Advertisement First Play Time";
+            db.addNotification("", InstallationId, StationName, date, Msgcontent, MsgType, MsgVal, MsgText);
+        } else if (MsgType.equalsIgnoreCase("BUSANN")) {
+            //pc on off
+            notifyType_Title = "Daily Bus Announcement";
 
-                try{
-                    Msgcontent = obj.getString("MsgText");
-                    InstallationId = obj.getString("InstallationId");
-                    date = obj.getString("date");
-                    MsgText = obj.getString("MsgText");
-                    MsgVal = obj.getString("MsgVal");
+            try {
+                Msgcontent = obj.getString("MsgText");
+                InstallationId = obj.getString("InstallationId");
+                date = obj.getString("date");
+                MsgText = obj.getString("MsgText");
+                MsgVal = obj.getString("MsgVal");
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
-                GetNotificationData(notifyType_Title, MsgType,InstallationId,StationName);
-                if (!flag) {
-                    // GetNotificationData(notifyType_Title);
-                    flag = true;
-                }
+            GetNotificationData(notifyType_Title, MsgType, InstallationId, StationName);
+            if (!flag) {
+                // GetNotificationData(notifyType_Title);
+                flag = true;
+            }
 
-                db.addNotification("",InstallationId, StationName, date, Msgcontent, MsgType, MsgVal, MsgText);
-            }else if(MsgType.equalsIgnoreCase("BUSANN")){
-                //pc on off
-                notifyType_Title = "Daily Bus Announcement";
+            db.addNotification("", InstallationId, StationName, date, Msgcontent, MsgType, MsgVal, MsgText);
+        } else if (MsgType.equalsIgnoreCase("ADVNOTRUN")) {
+            //pc on off
+            notifyType_Title = "Advertisement Not Running";
 
-                try{
-                    Msgcontent = obj.getString("MsgText");
-                    InstallationId = obj.getString("InstallationId");
-                    date = obj.getString("date");
-                    MsgText = obj.getString("MsgText");
-                    MsgVal = obj.getString("MsgVal");
+            try {
+                Msgcontent = obj.getString("MsgText");
+                InstallationId = obj.getString("InstallationId");
+                date = obj.getString("date");
+                MsgText = obj.getString("MsgText");
+                MsgVal = obj.getString("MsgVal");
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
-                GetNotificationData(notifyType_Title, MsgType,InstallationId,StationName);
-                if (!flag) {
-                    // GetNotificationData(notifyType_Title);
-                    flag = true;
-                }
+            GetNotificationData(notifyType_Title, MsgType, InstallationId, StationName);
+            if (!flag) {
+                // GetNotificationData(notifyType_Title);
+                flag = true;
+            }
 
-                db.addNotification("",InstallationId, StationName, date, Msgcontent, MsgType, MsgVal, MsgText);
-            }else if(MsgType.equalsIgnoreCase("ADVNOTRUN")){
-                //pc on off
-                notifyType_Title = "Advertisement Not Running";
+            db.addNotification("", InstallationId, StationName, date, Msgcontent, MsgType, MsgVal, MsgText);
+        } else if (MsgType.equalsIgnoreCase("TVSTAT")) {
+            //pc on off
+            notifyType_Title = "TV Status";
 
-                try{
-                    Msgcontent = obj.getString("MsgText");
-                    InstallationId = obj.getString("InstallationId");
-                    date = obj.getString("date");
-                    MsgText = obj.getString("MsgText");
-                    MsgVal = obj.getString("MsgVal");
+            try {
+                Msgcontent = obj.getString("MsgText");
+                InstallationId = obj.getString("InstallationId");
+                date = obj.getString("date");
+                MsgText = obj.getString("MsgText");
+                MsgVal = obj.getString("MsgVal");
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
-                GetNotificationData(notifyType_Title, MsgType,InstallationId,StationName);
-                if (!flag) {
-                    // GetNotificationData(notifyType_Title);
-                    flag = true;
-                }
+            GetNotificationData(notifyType_Title, MsgType, InstallationId, StationName);
+            if (!flag) {
+                // GetNotificationData(notifyType_Title);
+                flag = true;
+            }
 
-                db.addNotification("",InstallationId, StationName, date, Msgcontent, MsgType, MsgVal, MsgText);
-            }else if(MsgType.equalsIgnoreCase("TVSTAT")){
-                //pc on off
-                notifyType_Title = "TV Status";
+            db.addNotification("", InstallationId, StationName, date, Msgcontent, MsgType, MsgVal, MsgText);
+        } else {
+            if (MsgType.equals("CSN")) {
 
-                try{
-                    Msgcontent = obj.getString("MsgText");
-                    InstallationId = obj.getString("InstallationId");
-                    date = obj.getString("date");
-                    MsgText = obj.getString("MsgText");
-                    MsgVal = obj.getString("MsgVal");
+            } else if (MsgType.equals("NonReportedADV")) {
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                GetNotificationData(notifyType_Title, MsgType,InstallationId,StationName);
-                if (!flag) {
-                    // GetNotificationData(notifyType_Title);
-                    flag = true;
-                }
-
-                db.addNotification("",InstallationId, StationName, date, Msgcontent, MsgType, MsgVal, MsgText);
-            }else {
+            } else if (MsgType.equals("")) {
 
             }
+        }
 
           /*  } else {
                 Log.e("Notification", "Already sent notification");

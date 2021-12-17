@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
+    android:id="@+id/card_view"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:background="#ffffff"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
@@ -16,7 +17,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-       android:background="@drawable/listitemselector"
+
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:paddingBottom="0.5dp"
@@ -35,7 +36,7 @@
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
             android:layout_weight="5"
-            android:text="InstallationId"
+            tools:text="InstallationId"
             android:textColor="#000000"
             android:textSize="13sp"
             android:fontFamily="@string/fontfamily" />
@@ -47,7 +48,7 @@
             android:layout_gravity="center|right"
             android:gravity="center|right"
             android:layout_weight="5"
-            android:text="ServerTime"
+            tools:text="ServerTime"
             android:textSize="13sp"
             android:textColor="#FE2E2E"
             android:fontFamily="@string/fontfamily" />
@@ -62,7 +63,7 @@
         android:layout_below="@+id/tvservertimemain"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
-        android:text="abc"
+        tools:text="abc"
         android:textSize="13sp"
         android:textColor="#726E6D"
         android:fontFamily="@string/fontfamily" />

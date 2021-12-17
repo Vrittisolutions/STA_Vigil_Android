@@ -328,7 +328,7 @@ public class AlrtListActivity extends Activity {
 			}while(c.moveToNext());
 		}
 		
-		
+		Log.e("count list",mSearchList.toString());
 		AlrtStatewiseAdptr adp = new AlrtStatewiseAdptr(AlrtListActivity.this, mSearchList);
 		adp.notifyDataSetChanged();
 		invtlist.setAdapter(adp);
@@ -374,6 +374,20 @@ public class AlrtListActivity extends Activity {
 		String sumdata2;
 
 		@Override
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			super.onPreExecute();
+			progressDialog = new ProgressDialog(AlrtListActivity.this);
+			progressDialog.setMessage("Loading...");
+			progressDialog.setCanceledOnTouchOutside(false);
+			progressDialog.setCancelable(false);
+			progressDialog.show();
+			//Log.e("prgdlg", "Started");
+			btnrefresh.setVisibility(View.GONE);
+			mprogressBar.setVisibility(View.VISIBLE);
+		}
+
+		@Override
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
 			String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AlertCount?Mobile="+mobno;
@@ -399,7 +413,8 @@ public class AlrtListActivity extends Activity {
 				sql.execSQL("Delete from AlrtListTable");
 				//up
 				
-			}else if(resposmsg.contains("<InstalationId>")){
+			}
+			else if(resposmsg.contains("<InstalationId>")){
 				sop = "valid";
 				//DatabaseHandler db = new DatabaseHandler(AlrtListActivity.this);
 				SQLiteDatabase sql = db.getWritableDatabase();
@@ -434,19 +449,7 @@ public class AlrtListActivity extends Activity {
 			
 			return sop;
 		}
-		@Override
-		protected void onPreExecute() {
-			// TODO Auto-generated method stub
-			super.onPreExecute();
-			progressDialog = new ProgressDialog(AlrtListActivity.this);
-			progressDialog.setMessage("Loading...");
-			progressDialog.setCanceledOnTouchOutside(false);
-			progressDialog.setCancelable(false);
-			progressDialog.show();
-			//Log.e("prgdlg", "Started");
-			btnrefresh.setVisibility(View.GONE);
-			mprogressBar.setVisibility(View.VISIBLE);
-		}
+
 		
 		@Override
 		protected void onPostExecute(String result) {
@@ -464,7 +467,8 @@ public class AlrtListActivity extends Activity {
 					async = null;
 					async = new AlrtListURL();
 					async.executeOnExecutor(THREAD_POOL_EXECUTOR);
-				} else if(sop.equals("nodata")){
+				}
+				else if(sop.equals("nodata")){
 					
 					updatelist2();
 					//updateAlertCount();
@@ -725,6 +729,7 @@ public class AlrtListActivity extends Activity {
 				String RejectedBy  = c.getString( c.getColumnIndex("RejectedBy") );
 				String RejectedDT  = c.getString( c.getColumnIndex("RejectedDt") );
 				String SupporterName  = c.getString( c.getColumnIndex("SupporterName") );
+				String networkCode  = c.getString( c.getColumnIndex("NetworkCode") );
 				alertsItemBean = new AlertsItemBean();
 				alertsItemBean.setAlertId(AlertId);;
 				alertsItemBean.setAlertDesc(AlertDesc);
@@ -741,7 +746,8 @@ public class AlrtListActivity extends Activity {
 				alertsItemBean.setRejectedBy(RejectedBy);
 				alertsItemBean.setRejectedDt(RejectedDT);
 				alertsItemBean.setSupporterName(SupporterName);
-				alertsItemBeanlist.add(alertsItemBean);				
+				//alertsItemBean.setNetworkCode(networkCode);
+				alertsItemBeanlist.add(alertsItemBean);
 			}while(c.moveToNext());
 			c.close();
 			/*sql.close();

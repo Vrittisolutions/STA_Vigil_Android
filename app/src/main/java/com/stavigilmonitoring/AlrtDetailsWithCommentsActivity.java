@@ -37,6 +37,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.support.multidex.BuildConfig;
 import android.support.v4.content.FileProvider;
 import android.util.Base64;
 import android.util.Log;
@@ -131,7 +132,7 @@ public class AlrtDetailsWithCommentsActivity extends Activity{
 			updatelist();
 		} else if (ut.isnet(AlrtDetailsWithCommentsActivity.this)) {
 			fetchdataforlist();
-			} 
+			}
 		else {
 			try{
 				ut.showD(AlrtDetailsWithCommentsActivity.this, "nonet");
@@ -397,7 +398,7 @@ public class AlrtDetailsWithCommentsActivity extends Activity{
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 			// File file = new File(AppGlobal.URI_CAPTURED_IMAGE.getPath());
 			try {
-				fileUri = FileProvider.getUriForFile(parent,BuildConfig.APPLICATION_ID + ".provider", createImageFile());
+				fileUri = FileProvider.getUriForFile(parent, BuildConfig.APPLICATION_ID + ".provider", createImageFile());
 			}catch (IOException ex) {               return;            }
 		}  else        {
 			try {
@@ -450,7 +451,8 @@ public class AlrtDetailsWithCommentsActivity extends Activity{
 					// failed to capture image
 					Toast.makeText(parent,"Sorry! Failed to capture image", Toast.LENGTH_SHORT).show();
 				}
-			} else if (requestCode == IMG_RESULT && resultCode == RESULT_OK
+			}
+			else if (requestCode == IMG_RESULT && resultCode == RESULT_OK
 					&& null != data) {
 				Uri URI = data.getData();
 				String[] FILE = { MediaStore.Images.Media.DATA };
@@ -671,7 +673,7 @@ public class AlrtDetailsWithCommentsActivity extends Activity{
 			button_resolve.setVisibility(View.VISIBLE);
 			button_accept.setVisibility(View.GONE);
 			button_reject.setVisibility(View.GONE);
-		}else if( !(isResolved.equals(null)||isResolved.equalsIgnoreCase(""))&& AlertByMobNo.equalsIgnoreCase(mobno)){
+		}else if( !(isResolved.equals(null) || isResolved.equalsIgnoreCase(""))&& AlertByMobNo.equalsIgnoreCase(mobno)){
 			//Color_Layout.setBackgroundColor(getResources().getColor(R.color.resolvedalert));
 			ResolvebtnLayout.setVisibility(View.GONE);
 			ResolvebtnLayout2.setVisibility(View.VISIBLE);
@@ -679,7 +681,7 @@ public class AlrtDetailsWithCommentsActivity extends Activity{
 			button_accept.setVisibility(View.VISIBLE);
 			button_reject.setVisibility(View.VISIBLE);
 		}
-		else if( !(isResolved.equals(null)||isResolved.equalsIgnoreCase(""))&& !(AlertByMobNo.equalsIgnoreCase(mobno))){
+		else if( !(isResolved.equals(null) || isResolved.equalsIgnoreCase("")) && !(AlertByMobNo.equalsIgnoreCase(mobno))){
 			ResolvebtnLayout.setVisibility(View.GONE);
 			ResolvebtnLayout2.setVisibility(View.GONE);
 			LinearLayout.LayoutParams params = (LinearLayout.LayoutParams)Listlayout.getLayoutParams();
@@ -723,7 +725,7 @@ public class AlrtDetailsWithCommentsActivity extends Activity{
 			isResolved =  extras.getString("isResolved");
 			AlertByMobNo  =  extras.getString("AlertByMobNo");
 			SupporterName = extras.getString("SupporterName");
-			fetchdataforlist();
+			//fetchdataforlist();
 		}
 	}
 
@@ -742,7 +744,7 @@ public class AlrtDetailsWithCommentsActivity extends Activity{
 			isResolved =  extras.getString("isResolved");
 			AlertByMobNo  =  extras.getString("AlertByMobNo");
 			SupporterName = extras.getString("SupporterName");
-			fetchdataforlist();
+			//fetchdataforlist();
 		}else {
 			Toast.makeText(getApplicationContext(),"Extras are null",Toast.LENGTH_SHORT).show();
 		}
@@ -1023,7 +1025,8 @@ public class AlrtDetailsWithCommentsActivity extends Activity{
 							+ ":" + l.getLineNumber() + "	"
 							+ e.getMessage() + " " + Ldate);
 				}
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				responsemsg = "error";
 				e.printStackTrace();
 				dff = new SimpleDateFormat("HH:mm:ss");
@@ -1274,7 +1277,8 @@ public class AlrtDetailsWithCommentsActivity extends Activity{
 							+ e.getMessage() + " " + Ldate);
 				}
 			}
-		} else {
+		}
+		else {
 			if (async.getStatus() == AsyncTask.Status.RUNNING) {
 				Log.e("async", "running");
 				//btnRefresh.setVisibility(View.GONE);
@@ -1404,8 +1408,7 @@ public class AlrtDetailsWithCommentsActivity extends Activity{
 							null);
 					ContentValues values1 = new ContentValues();
 					NodeList nl1 = ut.getnode(responsemsg, "TableResult");
-					Log.e("CommunicationTable data",
-							" fetch data : " + nl1.getLength());
+					Log.e("CommunicationTable data", " fetch data : " + nl1.getLength());
 					for (int i = 0; i < nl1.getLength(); i++) {
 						Element e = (Element) nl1.item(i);
 						for (int j = 0; j < cur.getColumnCount(); j++) {
@@ -1442,7 +1445,8 @@ public class AlrtDetailsWithCommentsActivity extends Activity{
 							+ " " + Ldate);
 				}
 
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 				e.printStackTrace();
 				dff = new SimpleDateFormat("HH:mm:ss");
 				Ldate = dff.format(new Date());
@@ -1471,7 +1475,12 @@ public class AlrtDetailsWithCommentsActivity extends Activity{
 			SPdialog.dismiss();
 			try {
 				if (sop == "valid") {
-					callAllMethods();
+					updatelist();
+					/*alertsCommItemListAdapter = new AlertsCommItemListAdapter(AlrtDetailsWithCommentsActivity.this,
+							alertsCommItemBeanlist);
+					invtlist.setAdapter(alertsCommItemListAdapter);
+					alertsCommItemListAdapter.notifyDataSetChanged();*/
+					//callAllMethods();
 
 				} else {
 					//ut.showD(parent,"nodata");
@@ -1495,7 +1504,8 @@ public class AlrtDetailsWithCommentsActivity extends Activity{
 							+ " " + Ldate);
 				}
 
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				e.printStackTrace();
 				dff = new SimpleDateFormat("HH:mm:ss");
 				Ldate = dff.format(new Date());
@@ -1531,7 +1541,7 @@ public class AlrtDetailsWithCommentsActivity extends Activity{
 			progressDialog.setCanceledOnTouchOutside(false);
 			progressDialog.setCancelable(false);
 			progressDialog.show();*/
-		}		
+		}
 	}
 
 	public void updatelist() {

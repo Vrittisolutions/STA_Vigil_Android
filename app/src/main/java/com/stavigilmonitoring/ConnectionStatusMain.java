@@ -93,6 +93,7 @@ public class ConnectionStatusMain extends Activity {
 	Animation anim;
 	ConnectionstatusAdaptMain listAdapter;
 	DatabaseHandler db;
+	ProgressBar progressBar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -117,7 +118,7 @@ public class ConnectionStatusMain extends Activity {
 		anim = AnimationUtils.loadAnimation(this, R.anim.rotation);
 		// iv.setAnimation(anim);
 		connectionstatus = findViewById(R.id.connectionstatusdetailmain);
-
+		progressBar = findViewById(R.id.progressBar1);
 		db = new DatabaseHandler(getApplicationContext());
 
 		DBInterface dbi = new DBInterface(parent);
@@ -126,12 +127,12 @@ public class ConnectionStatusMain extends Activity {
 		dbi.Close();
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 		StrictMode.setThreadPolicy(policy);
-		if (asyncfetch != null
-				&& asyncfetch.getStatus() == AsyncTask.Status.RUNNING) {
+		if (asyncfetch != null && asyncfetch.getStatus() == AsyncTask.Status.RUNNING) {
 			Log.e("async", "running");
 			iv.setVisibility(View.GONE);
-			((ProgressBar) findViewById(R.id.progressBar1))
-					.setVisibility(View.VISIBLE);
+			/*((ProgressBar) findViewById(R.id.progressBar1))
+					.setVisibility(View.VISIBLE);*/
+			progressBar.setVisibility(View.VISIBLE);
 		}
 		ut.getConnectionStatusUser1();
 		ut.getConnectionStatusUser();
@@ -178,6 +179,7 @@ public class ConnectionStatusMain extends Activity {
 				// TODO Auto-generated method stub
 				if (ut.isnet(parent)) {
 					asyncfetch = null;
+				//	if(progressBar)
 					asyncfetch = new DownloadxmlsDataURL_new();
 					asyncfetch.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 					// fetchdata();
@@ -377,7 +379,7 @@ public class ConnectionStatusMain extends Activity {
 		searchResults = GetDetail();
 		ConnectionstatusHelper sr = new ConnectionstatusHelper();
 		listAdapter = null;
-		listAdapter = new ConnectionstatusAdaptMain(this, searchResults);
+		listAdapter = new ConnectionstatusAdaptMain(this, searchResults, "");
 		connectionstatus.setAdapter(listAdapter);
 
 	}
@@ -762,8 +764,8 @@ public class ConnectionStatusMain extends Activity {
 
 		if (asyncfetch == null) {
 			iv.setVisibility(View.VISIBLE);
-			((ProgressBar) findViewById(R.id.progressBar1))
-					.setVisibility(View.GONE);
+		//	((ProgressBar) findViewById(R.id.progressBar1)).setVisibility(View.GONE);
+			progressBar.setVisibility(View.GONE);
 
 			Log.e("async", "null");
 			asyncfetch = new DownloadxmlsDataURL_new();
@@ -772,14 +774,13 @@ public class ConnectionStatusMain extends Activity {
 			if (asyncfetch.getStatus() == AsyncTask.Status.RUNNING) {
 				Log.e("async", "running");
 				iv.setVisibility(View.GONE);
-				((ProgressBar) findViewById(R.id.progressBar1))
-						.setVisibility(View.VISIBLE);
+				progressBar.setVisibility(View.VISIBLE);
+			//	((ProgressBar) findViewById(R.id.progressBar1)).setVisibility(View.VISIBLE);
 			}
 		}
 	}
 
-	public class DownloadxmlsDataURL_new extends
-			AsyncTask<String, Void, String> {
+	public class DownloadxmlsDataURL_new extends AsyncTask<String, Void, String> {
 
 		@Override
 		protected String doInBackground(String... params) {
@@ -867,7 +868,8 @@ public class ConnectionStatusMain extends Activity {
 							+ ":" + l.getLineNumber() + "	" + e.getMessage()
 							+ " " + Ldate);
 				}
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 				e.printStackTrace();
 				dff = new SimpleDateFormat("HH:mm:ss");
 				Ldate = dff.format(new Date());
@@ -886,7 +888,7 @@ public class ConnectionStatusMain extends Activity {
 							+ " " + Ldate);
 				}
 			}
-url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
+			url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
 					+ mobno;
 
 			Log.e("csn status", "url : " + url);
@@ -1065,8 +1067,9 @@ url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Andr
 				}
 				// iv.clearAnimation();
 				iv.setVisibility(View.VISIBLE);
-				((ProgressBar) findViewById(R.id.progressBar1))
-						.setVisibility(View.GONE);
+				/*((ProgressBar) findViewById(R.id.progressBar1))
+						.setVisibility(View.GONE);*/
+				progressBar.setVisibility(View.GONE);
 			} catch (Exception e) {
 				e.printStackTrace();
 				dff = new SimpleDateFormat("HH:mm:ss");
@@ -1095,8 +1098,9 @@ url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Andr
 
 
 			iv.setVisibility(View.GONE);
-			((ProgressBar) findViewById(R.id.progressBar1))
-					.setVisibility(View.VISIBLE);
+			/*((ProgressBar) findViewById(R.id.progressBar1))
+					.setVisibility(View.VISIBLE);*/
+			progressBar.setVisibility(View.VISIBLE);
 
 		}
 	}

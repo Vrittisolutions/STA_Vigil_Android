@@ -39,10 +39,16 @@
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".UnreleasedAdvertisements"
-            android:theme="@style/AppCompTheme" ></activity>
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".CSNBannerActivity"
+            android:exported="true"
+            android:theme="@style/AppCompTheme"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".UnreleasedAdvertisements"
+            android:theme="@style/AppCompTheme" />
         <activity
             android:name=".LangVideoActivity"
             android:label="@string/app_name"
@@ -112,6 +118,7 @@
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
+            android:enabled="true"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
@@ -982,10 +989,8 @@
             <intent-filter>
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
-        </service>
-
-        <!--alarm play for unreleased advs-->
-        <receiver android:name="com.services.MyAlarmReceiver" ></receiver>
+        </service> <!-- alarm play for unreleased advs -->
+        <receiver android:name="com.services.MyAlarmReceiver" />
 
         <activity
             android:name=".WrkPlanActivitiesList"
@@ -1009,6 +1014,14 @@
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
+
+
+        <service
+            android:name="com.services.AlarmForegroundService"
+            android:enabled="true"
+            android:stopWithTask="false"
+            android:exported="true"></service>
+
     </application>
 
 </manifest>

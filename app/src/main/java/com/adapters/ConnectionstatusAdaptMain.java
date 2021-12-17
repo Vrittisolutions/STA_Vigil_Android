@@ -8,6 +8,7 @@ import com.beanclasses.ConnectionstatusHelper;
 import com.stavigilmonitoring.R;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,116 +17,158 @@ import android.widget.TextView;
 
 public class ConnectionstatusAdaptMain extends BaseAdapter {
 
-	private static ArrayList<ConnectionstatusHelper> searchArrayList;
+    private static ArrayList<ConnectionstatusHelper> searchArrayList;
 
-	private LayoutInflater mInflater;
-	Context context;
-	private ArrayList<ConnectionstatusHelper> arraylist;
-	
-	public ConnectionstatusAdaptMain(Context context1, ArrayList<ConnectionstatusHelper> results) {
-		searchArrayList = results;
-		mInflater = LayoutInflater.from(context1);
-		context = context1;
-		arraylist=new ArrayList<ConnectionstatusHelper>();
-		arraylist.addAll(results);
-	}
+    private LayoutInflater mInflater;
+    Context context;
+    private ArrayList<ConnectionstatusHelper> arraylist;
+    String fromCSNBanner = "";
 
-	@Override
-	public int getCount() {
-		// TODO Auto-generated method stub
-		return searchArrayList.size();
-	}
+    public ConnectionstatusAdaptMain(Context context1, ArrayList<ConnectionstatusHelper> results, String fromCSNBanner) {
+        searchArrayList = results;
+        fromCSNBanner = this.fromCSNBanner;
+        mInflater = LayoutInflater.from(context1);
+        context = context1;
+        arraylist = new ArrayList<ConnectionstatusHelper>();
+        arraylist.addAll(results);
+    }
 
-	@Override
-	public Object getItem(int position) {
-		// TODO Auto-generated method stub
-		return searchArrayList.get(position);
-	}
+    @Override
+    public int getCount() {
+        // TODO Auto-generated method stub
+        return searchArrayList.size();
+    }
 
-	@Override
-	public long getItemId(int position) {
-		// TODO Auto-generated method stub
-		return position;
-	}
+    @Override
+    public Object getItem(int position) {
+        // TODO Auto-generated method stub
+        return searchArrayList.get(position);
+    }
 
-	@Override
-	public View getView(final int position, View convertView, ViewGroup parent) {
-		ViewHolder holder;
-		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.connectionstatusupdatedmain, null);
-			holder = new ViewHolder();
+    @Override
+    public long getItemId(int position) {
+        // TODO Auto-generated method stub
+        return position;
+    }
 
-			holder.installationid = (TextView) convertView
-					.findViewById(R.id.tvinstallationidmain);
-			holder.servertime = (TextView) convertView
-					.findViewById(R.id.tvservertimemain);
-		
-			holder.noReason = (TextView) convertView
-					.findViewById(R.id.tvreasonupdated);
-//		
-			
-			convertView.setTag(holder);
-		} else {
-			holder = (ViewHolder) convertView.getTag();
-		}
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        try {
 
-		String s = searchArrayList.get(position).getinstallationId();
 
-		if (s.equals("")) {
+            ViewHolder holder;
 
-			holder.installationid.setText("No Station Found..");
-			holder.servertime.setText("");
-			holder.noReason.setText("");
+            if (convertView == null) {
+                convertView = mInflater.inflate(R.layout.connectionstatusupdatedmain, null);
+                holder = new ViewHolder();
 
-		} else {
+                holder.installationid = (TextView) convertView.findViewById(R.id.tvinstallationidmain);
+                holder.servertime = (TextView) convertView.findViewById(R.id.tvservertimemain);
+                holder.noReason = (TextView) convertView.findViewById(R.id.tvreasonupdated);
+                holder.card_view = (CardView) convertView.findViewById(R.id.card_view);
+                convertView.setTag(holder);
 
-			holder.installationid.setText(searchArrayList.get(position)
-					.getinstallationId());
-			
-			holder.servertime.setText(searchArrayList.get(position).gettymdiff());
-			String s1 = searchArrayList.get(position).getreason();
-			if (s1.equals("No Reason Found")) {
-				holder.noReason.setText("");
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+            holder.installationid.setText(arraylist.get(position).getinstallationId());
+            holder.noReason.setText(searchArrayList.get(position).getreason());
+            holder.servertime.setText(searchArrayList.get(position).gettymdiff());
 
-			}
-			else{
-			holder.noReason.setText(searchArrayList.get(position)
-					.getreason());
-			}
-		//	holder.starttime.setText(searchArrayList.get(position)
-				//	.getStartTime());
-			
-		}
+            if (!(searchArrayList.get(position).gettymdiff().contains("Month")
+                    || searchArrayList.get(position).gettymdiff().contains("Min")
+                    || searchArrayList.get(position).gettymdiff().contains("hr"))) {
+                String s = searchArrayList.get(position).getinstallationId();
 
-		return convertView;
-	}
+                if (s == null || s.equals("")) {
+                    holder.installationid.setText("No Station Found");
+                    holder.servertime.setText("");
+                    holder.noReason.setText("");
+                } else {
+                    holder.installationid.setText(searchArrayList.get(position).getinstallationId());
+                    holder.servertime.setText(searchArrayList.get(position).gettymdiff());
+                    String s1 = searchArrayList.get(position).getreason();
+                    if (s1.equals("No Reason Found")) {
+                        holder.noReason.setText("");
+                    } else {
+                        holder.noReason.setText(searchArrayList.get(position).getreason());
+                    }
+                }
 
-	static class ViewHolder {
-		
-		TextView installationid;
-		TextView servertime;
-		TextView noReason;
-	
-	}
-	
-	public void filter(String charText) {
-		charText = charText.toLowerCase(Locale.getDefault());
-		searchArrayList.clear();
-		if (charText.length() == 0) {
-			searchArrayList.addAll(arraylist);
-		} 
-		else 
-		{
-			for (ConnectionstatusHelper wp : arraylist) 
-			{
-				if (wp.getinstallationId().toLowerCase(Locale.getDefault()).contains(charText)) 
-				{
-					searchArrayList.add(wp);
-				}
-			}
-		}
-		notifyDataSetChanged();
-	}
-	
+
+            }
+
+
+           /* if (!(searchArrayList.get(position).gettymdiff().contains("Month") ||
+                    searchArrayList.get(position).gettymdiff().contains("Min") ||
+                    searchArrayList.get(position).gettymdiff().contains("hr"))) {
+
+                holder.card_view.setVisibility(View.VISIBLE);
+                String s = searchArrayList.get(position).getinstallationId();
+
+                if (s.equals("")) {
+
+                    holder.installationid.setText("No Station Found..");
+                    holder.servertime.setText("");
+                    holder.noReason.setText("");
+
+                } else {
+
+
+                    holder.installationid.setText(searchArrayList.get(position)
+                            .getinstallationId());
+
+
+                    holder.servertime.setText(searchArrayList.get(position).gettymdiff());
+
+                    String s1 = searchArrayList.get(position).getreason();
+                    if (s1.equals("No Reason Found")) {
+                        holder.noReason.setText("");
+
+                    } else {
+                        holder.noReason.setText(searchArrayList.get(position)
+                                .getreason());
+                    }
+                    //	holder.starttime.setText(searchArrayList.get(position)
+                    //	.getStartTime());
+
+                }
+            }
+            else {
+                holder.card_view.setVisibility(View.GONE);
+            }
+            */
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return convertView;
+    }
+
+    static class ViewHolder {
+
+        TextView installationid;
+        TextView servertime;
+        TextView noReason;
+        CardView card_view;
+
+    }
+
+    public void filter(String charText) {
+        charText = charText.toLowerCase(Locale.getDefault());
+        searchArrayList.clear();
+        if (charText.length() == 0) {
+            searchArrayList.addAll(arraylist);
+        } else {
+            for (ConnectionstatusHelper wp : arraylist) {
+                if (wp.getinstallationId().toLowerCase(Locale.getDefault()).contains(charText)) {
+                    searchArrayList.add(wp);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
 
 }

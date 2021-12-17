@@ -12,6 +12,7 @@
         android:background="#0b6bb7" 
         android:orientation="horizontal">
 
+
             <ImageView
                 android:layout_width="35sp"
                 android:layout_height="35sp"
@@ -50,10 +51,11 @@
         </ImageView>
 
         <ProgressBar
-        android:id="@+id/progressBar1"
-        android:layout_width="60sp"
-        android:layout_height="40sp"
-          android:visibility="gone" />
+            android:id="@+id/progressBar1"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:visibility="gone" />
+
 
         <ImageView
             android:id="@+id/button_filter"
@@ -113,6 +115,7 @@
                
        
     </LinearLayout>
+
 
     <ListView
         android:id="@+id/connectionstatusdetailmain"

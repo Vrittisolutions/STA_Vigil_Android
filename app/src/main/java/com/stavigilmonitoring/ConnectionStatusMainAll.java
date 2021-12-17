@@ -425,7 +425,7 @@ public class ConnectionStatusMainAll extends Activity{
 		searchResults = GetDetail();
 		ConnectionstatusHelper sr = new ConnectionstatusHelper();
 		listAdapter = null;
-		listAdapter = new ConnectionstatusAdaptMain(this, searchResults);
+		listAdapter = new ConnectionstatusAdaptMain(this, searchResults, "");
 		connectionstatus.setAdapter(listAdapter);
 	}
 

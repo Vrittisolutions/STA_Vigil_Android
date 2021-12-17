@@ -3,6 +3,7 @@ package com.stavigilmonitoring;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -16,7 +17,10 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.support.v4.content.FileProvider;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -26,6 +30,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -57,7 +62,13 @@ import org.w3c.dom.NodeList;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -77,17 +88,21 @@ public class DmCSoNoStateStnDetails extends Activity {
     Context parent;
     com.stavigilmonitoring.utility ut;
     DMCStateDetailsAdapter listAdapter;
-    ImageView iv,btnfilter;
+    ImageView iv, btnfilter;
     String sop = "no";
-    String resposmsg ="n";
+    String resposmsg = "n";
     private ArrayList<String> NameList;
-    String AssignToName, AssignToMob, Remark, ClipURLlist, SONumber, Reason, csdate="No info", cedate="No info";
+    String AssignToName, AssignToMob, Remark, ClipURLlist, SONumber, Reason, csdate = "No info", cedate = "No info";
     String sonum, station, subnetwork, installationId, activityId, mobno;
     private static DmCRefresh asynk_new;
     String[] parts;
     DatabaseHandler db;
+    private static final int MEGABYTE = 1024 * 1024;
+    File output;
+    Uri downloadFileUri;
+    private Uri uri;
 
-    public static FirebaseJobDispatcher dispatcher ;
+    public static FirebaseJobDispatcher dispatcher;
     public static Job myJob = null;
     boolean AppCommon = false;
 
@@ -96,7 +111,7 @@ public class DmCSoNoStateStnDetails extends Activity {
     private static int IMG_RESULT = 200;
     private static final String IMAGE_DIRECTORY_NAME = "STA Vigil Images";// directory name to store captured images and videos
     private Uri fileUri; // file url to store image/video
-    String encodedImage, image_encode="NA",Imagefilename, photoName;
+    String encodedImage, image_encode = "NA", Imagefilename, photoName;
     String mCurrentPhotoPath;
     EditText editTextfileName;
 
@@ -109,6 +124,9 @@ public class DmCSoNoStateStnDetails extends Activity {
         this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         //setContentView(com.stavigilmonitoring.R.layout.csnstatewise);
         setContentView(R.layout.dmc_details_activity);
+
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
 
         initView();
 
@@ -131,7 +149,7 @@ public class DmCSoNoStateStnDetails extends Activity {
         iv = (ImageView) findViewById(com.stavigilmonitoring.R.id.button_refresh_nonrepeated_main);
         btnfilter = (ImageView) findViewById(com.stavigilmonitoring.R.id.button_filter);
         btnfilter.setVisibility(View.VISIBLE);
-        lstcsn =  findViewById(R.id.lstcsn);
+        lstcsn = findViewById(R.id.lstcsn);
         header = (TextView) findViewById(com.stavigilmonitoring.R.id.header);
         header.setText("DM Certificate SO Number wise Details");
         searchResults = new ArrayList<StateDetailsList>();
@@ -184,9 +202,9 @@ public class DmCSoNoStateStnDetails extends Activity {
                 installationId = searchResults.get(position).GetInstallationIdForStateDetailsList();
                 activityId = searchResults.get(position).GetActivityId();
                 String word = searchResults.get(position).GetSONumber();
-                String words[] =word.split("/");
-                photoName = words[1]+"_"+station;
-                Log.e("show list", mobno +", "+ installationId +", "+ activityId);
+                String words[] = word.split("/");
+                photoName = words[1] + "_" + station;
+                Log.e("show list", mobno + ", " + installationId + ", " + activityId);
                 showNewPrompt();
             }
         });
@@ -204,12 +222,12 @@ public class DmCSoNoStateStnDetails extends Activity {
                 ClipURLlist = searchResults.get(position).GetAdvertisementPlayURL();
                 activityId = searchResults.get(position).GetActivityId();
                 String dates = searchResults.get(position).GetEffectiveDate();
-                if(dates!=null && !(dates.equalsIgnoreCase("")) ){
+                if (dates != null && !(dates.equalsIgnoreCase(""))) {
                     String[] parts = dates.split("-");
                     csdate = parts[0].replaceAll("-", "");
                     cedate = parts[1].replaceAll("-", "");
                 }
-                Log.e("show list", mobno +", "+ installationId +", "+ activityId);
+                Log.e("show list", mobno + ", " + installationId + ", " + activityId);
                 setPrompt();
                 return true;
             }
@@ -228,14 +246,14 @@ public class DmCSoNoStateStnDetails extends Activity {
 
     private boolean dbvalueforspinner() {
         try {
-           // DatabaseHandler db1 = new DatabaseHandler(getBaseContext());
+            // DatabaseHandler db1 = new DatabaseHandler(getBaseContext());
             SQLiteDatabase sql = db.getWritableDatabase();
             Cursor cursor = sql.rawQuery("SELECT * FROM DMCUsersTable", null);
             if (cursor != null && cursor.getCount() > 0) {
-                cursor.close();	/*sql.close();	db1.close();*/
+                cursor.close();    /*sql.close();	db1.close();*/
                 return true;
             } else {
-                cursor.close();	/*sql.close();	db1.close();*/
+                cursor.close();    /*sql.close();	db1.close();*/
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -284,7 +302,7 @@ public class DmCSoNoStateStnDetails extends Activity {
 
         Log.e("Clip Url", ClipURLlist);
         String[] clips;
-        if (ClipURLlist.equalsIgnoreCase("") || ClipURLlist == null){
+        if (ClipURLlist.equalsIgnoreCase("") || ClipURLlist == null) {
             clips = new String[1];
             clips[0] = "No Clips";
         } else {
@@ -315,7 +333,7 @@ public class DmCSoNoStateStnDetails extends Activity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Reason = tvreason.getText().toString();
-                if(!(tvreason.getText().toString().equalsIgnoreCase(""))){
+                if (!(tvreason.getText().toString().equalsIgnoreCase(""))) {
                     updateReason();
                 }
 
@@ -340,11 +358,11 @@ public class DmCSoNoStateStnDetails extends Activity {
         // TODO Auto-generated method stub
         asynktask = null;
         if (asynktask == null) {
-            try{
+            try {
                 Log.e("asynk", "null");
                 asynktask = new ReasonUpdateURL();
                 asynktask.executeOnExecutor(asynktask.THREAD_POOL_EXECUTOR);
-            }catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
@@ -354,7 +372,8 @@ public class DmCSoNoStateStnDetails extends Activity {
         }
     }
 
-    public class ReasonUpdateURL extends AsyncTask<String, Void, String>{
+
+    public class ReasonUpdateURL extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
         String responsemsg = "m";
         com.stavigilmonitoring.utility ut;
@@ -364,12 +383,12 @@ public class DmCSoNoStateStnDetails extends Activity {
         protected String doInBackground(String... params) {
             // TODO Auto-generated method stub
             ut = new com.stavigilmonitoring.utility();
-           // DatabaseHandler db = new DatabaseHandler(parent);
+            // DatabaseHandler db = new DatabaseHandler(parent);
             SQLiteDatabase sql = db.getWritableDatabase();
             //String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
             String url = "http://vritti.co/imedia/STA_Announcement/DMcertificate.asmx/ReasonUpdate?Mobile="
-                    +mobno
-                    +"&ActivityId="
+                    + mobno
+                    + "&ActivityId="
                     + activityId
                     + "&Remark="
                     + Reason;
@@ -382,7 +401,6 @@ public class DmCSoNoStateStnDetails extends Activity {
 
                 System.out.println("-------------reassign-- " + responsemsg);
                 Log.e("Reassign", responsemsg);
-
 
 
             } catch (NullPointerException e) {
@@ -402,7 +420,7 @@ public class DmCSoNoStateStnDetails extends Activity {
                 if (ut.checkErrLogFile()) {
                     ut.addErrLog(l.getClassName() + "/" + l.getMethodName()
                             + ":" + l.getLineNumber() + "	" + e.getMessage()
-                            + " " );
+                            + " ");
                 }
 
             } catch (IOException e) {
@@ -423,7 +441,7 @@ public class DmCSoNoStateStnDetails extends Activity {
                 if (ut.checkErrLogFile()) {
                     ut.addErrLog(l.getClassName() + "/" + l.getMethodName()
                             + ":" + l.getLineNumber() + "	" + e.getMessage()
-                            + " " );
+                            + " ");
                 }
 
             }
@@ -457,7 +475,7 @@ public class DmCSoNoStateStnDetails extends Activity {
                 if (ut.checkErrLogFile()) {
                     ut.addErrLog(l.getClassName() + "/" + l.getMethodName()
                             + ":" + l.getLineNumber() + "	" + e.getMessage()
-                            + " " );
+                            + " ");
                 }
 
             }
@@ -472,7 +490,7 @@ public class DmCSoNoStateStnDetails extends Activity {
         }
     }
 
-    private void fetchdata(){
+    private void fetchdata() {
         asynk_new = null;
         asynk_new = new DmCRefresh();
         asynk_new.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -480,12 +498,13 @@ public class DmCSoNoStateStnDetails extends Activity {
 
     public class DmCRefresh extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
+
         //String sumdata2;
         @Override
         protected String doInBackground(String... params) {
-            String	responsemsg;
+            String responsemsg;
 
-            String bb= "";
+            String bb = "";
             com.stavigilmonitoring.utility ut = new com.stavigilmonitoring.utility();
             String urls = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDM?Mobile="
                     + mobno;
@@ -498,12 +517,12 @@ public class DmCSoNoStateStnDetails extends Activity {
                 System.out.println("-------------  xx vale of non repeated-- "
                         + responsemsg);
 
-               // DatabaseHandler db = new DatabaseHandler(getBaseContext());
+                // DatabaseHandler db = new DatabaseHandler(getBaseContext());
                 SQLiteDatabase sql = db.getWritableDatabase();
 
                 //sql.execSQL("DROP TABLE IF EXISTS DmCertificateTable");
                 //sql.execSQL(ut.getDmCertificateTable());
-                sql.delete("DmCertificateTable",null,null);
+                sql.delete("DmCertificateTable", null, null);
 
                 Log.e("dm certificate", "resmsg : " + responsemsg);
 
@@ -514,7 +533,7 @@ public class DmCSoNoStateStnDetails extends Activity {
                     ContentValues values1 = new ContentValues();
                     NodeList nl1 = ut.getnode(responsemsg, "Table1");
 
-                    Cursor c = sql.rawQuery("SELECT * FROM DmCertificateTable",null);
+                    Cursor c = sql.rawQuery("SELECT * FROM DmCertificateTable", null);
                     ContentValues values = new ContentValues();
                     NodeList nl = ut.getnode(responsemsg, "Table1");
                     Log.e("DmCertificate data...",
@@ -567,9 +586,9 @@ public class DmCSoNoStateStnDetails extends Activity {
         protected void onPostExecute(String result) {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
-            try{
-                String totalDMC =  DmCstnwiseActivity.dbvalueDMC(getApplicationContext());
-                CharSequence text = "DmCertificate : "+totalDMC;
+            try {
+                String totalDMC = DmCstnwiseActivity.dbvalueDMC(getApplicationContext());
+                CharSequence text = "DmCertificate : " + totalDMC;
                 String z = String.valueOf(totalDMC);
                 SharedPreferences prefDMC = getApplicationContext()
                         .getSharedPreferences("PrefDMC", Context.MODE_PRIVATE);
@@ -581,16 +600,16 @@ public class DmCSoNoStateStnDetails extends Activity {
                 updatelist();
                 progressDialog.dismiss();
                 //Log.e("prgdlg", "Ended");
-            }catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
                 StackTraceElement l = new Exception().getStackTrace()[0];
 
-                ut =new com.stavigilmonitoring.utility();
-                if(!ut.checkErrLogFile()){
+                ut = new com.stavigilmonitoring.utility();
+                if (!ut.checkErrLogFile()) {
                     ut.ErrLogFile();
                 }
-                if (ut.checkErrLogFile()){
-                    ut.addErrLog(l.getClassName()+"/"+l.getMethodName()+":"+l.getLineNumber()+"  "+e.getMessage());
+                if (ut.checkErrLogFile()) {
+                    ut.addErrLog(l.getClassName() + "/" + l.getMethodName() + ":" + l.getLineNumber() + "  " + e.getMessage());
                 }
             }
         }
@@ -623,9 +642,9 @@ public class DmCSoNoStateStnDetails extends Activity {
         editTextAssignTo.setThreshold(1);
         editTextAssignTo.setAdapter(adapter1);
 
-        editTextAssignTo.setOnTouchListener(new View.OnTouchListener(){
+        editTextAssignTo.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event){
+            public boolean onTouch(View v, MotionEvent event) {
                 editTextAssignTo.showDropDown();
                 return false;
             }
@@ -658,10 +677,10 @@ public class DmCSoNoStateStnDetails extends Activity {
                 // TODO Auto-generated method stub
                 AssignToName = editTextAssignTo.getText().toString();
                 Remark = editTextNarration.getText().toString();
-                if(editTextAssignTo.getText().toString().equalsIgnoreCase("")){
+                if (editTextAssignTo.getText().toString().equalsIgnoreCase("")) {
                     editTextAssignTo.setError("Please Select Name");
                     Toast.makeText(parent, "Incorrect Data", Toast.LENGTH_LONG).show();
-                } else if(editTextNarration.getText().toString().equalsIgnoreCase("")){
+                } else if (editTextNarration.getText().toString().equalsIgnoreCase("")) {
                     editTextNarration.setError("Please Enter Remark");
                     Toast.makeText(parent, "Incorrect Data", Toast.LENGTH_LONG).show();
                 } else {
@@ -691,20 +710,24 @@ public class DmCSoNoStateStnDetails extends Activity {
     }
 
     /*
-* Capturing Camera Image will lauch camera app requrest image capture
-*/
+     * Capturing Camera Image will lauch camera app requrest image capture
+     */
     private void captureImage() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             // File file = new File(AppGlobal.URI_CAPTURED_IMAGE.getPath());
             try {
-                fileUri = FileProvider.getUriForFile(parent,BuildConfig.APPLICATION_ID + ".provider", createImageFile());
-            }catch (IOException ex) {               return;            }
-        }  else        {
+                fileUri = FileProvider.getUriForFile(parent, BuildConfig.APPLICATION_ID + ".provider", createImageFile());
+            } catch (IOException ex) {
+                return;
+            }
+        } else {
             try {
                 fileUri = Uri.fromFile(createImageFile());
-            }catch (IOException ex) {                return;            }
+            } catch (IOException ex) {
+                return;
+            }
         }
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
         // start the image capture Intent
@@ -716,12 +739,14 @@ public class DmCSoNoStateStnDetails extends Activity {
         //String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = photoName;
         File storageDir = new File(Environment.getExternalStorageDirectory(), IMAGE_DIRECTORY_NAME);
-        if (!storageDir.exists()){  // Checks that Directory/Folder Doesn't Exists!
+        if (!storageDir.exists()) {  // Checks that Directory/Folder Doesn't Exists!
             boolean result = storageDir.mkdir();
-            if(result){ Toast.makeText(parent, "New Folder created!",Toast.LENGTH_SHORT).show();}
+            if (result) {
+                Toast.makeText(parent, "New Folder created!", Toast.LENGTH_SHORT).show();
+            }
         }
-        File image = new File(storageDir+"/"+imageFileName+".jpg");
-        image. createNewFile();
+        File image = new File(storageDir + "/" + imageFileName + ".jpg");
+        image.createNewFile();
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = "file:" + image.getAbsolutePath();
         return image;
@@ -735,7 +760,7 @@ public class DmCSoNoStateStnDetails extends Activity {
             BitmapFactory.Options options = new BitmapFactory.Options();// bitmap factory
             options.inSampleSize = 2;// downsizing image as it throws OutOfMemory Exception for larger images
             Uri imageUri = Uri.parse(mCurrentPhotoPath);
-            final Bitmap bitmap = BitmapFactory.decodeFile(imageUri.getPath(),options);
+            final Bitmap bitmap = BitmapFactory.decodeFile(imageUri.getPath(), options);
             image_encode = getStringImage(bitmap);
             File f = new File(imageUri.getPath().toString());
             Imagefilename = f.getName();
@@ -755,13 +780,13 @@ public class DmCSoNoStateStnDetails extends Activity {
 
     protected void sendactivityupdatetoserver() {
         // TODO Auto-generated method stub
-                String urlStringToken = "http://ktc.vritti.co/api/Values/Reassignattachpostdata?";
-                new ActivityUpdateAPI().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,urlStringToken);
+        String urlStringToken = "http://ktc.vritti.co/api/Values/Reassignattachpostdata?";
+        new ActivityUpdateAPI().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, urlStringToken);
     }
 
     private void updatelist() {
         searchResults.clear();
-       // DatabaseHandler db = new DatabaseHandler(this);
+        // DatabaseHandler db = new DatabaseHandler(this);
         SQLiteDatabase sql = db.getWritableDatabase();
         Cursor c = sql.rawQuery(
                 "SELECT DMDesc, ActualStartDate, ActualEndDate, Status, InstallationId, ActivityId, GenrateFileName, AdvertisementPlayURL, SoNumber, EffectiveDate  FROM DmCertificateTable WHERE SoNumber='"
@@ -791,7 +816,7 @@ public class DmCSoNoStateStnDetails extends Activity {
 
         }
 
-        listAdapter = new DMCStateDetailsAdapter(parent, searchResults);
+        listAdapter = new DMCStateDetailsAdapter(parent, searchResults, "SoWise");
         lstcsn.setAdapter(listAdapter);
         listAdapter.notifyDataSetChanged();
 
@@ -816,6 +841,7 @@ public class DmCSoNoStateStnDetails extends Activity {
         Object res;
         String responsemsg = "m";
         ProgressDialog progressDialog;
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -823,6 +849,7 @@ public class DmCSoNoStateStnDetails extends Activity {
             progressDialog.setMessage("Processing...");
             progressDialog.show();
         }
+
         @Override
         protected String doInBackground(String... params) {
 
@@ -836,12 +863,12 @@ public class DmCSoNoStateStnDetails extends Activity {
                 jsonObject.put("Remark", Remark);
                 jsonObject.put("attacheddata", image_encode);
 
-                String param ;// = jsonObject.toString();
+                String param;// = jsonObject.toString();
                 param = new Gson().toJson(jsonObject);
-                Log.e("URLPARAM",params[0]+"\n"+param);
+                Log.e("URLPARAM", params[0] + "\n" + param);
 
                 //Log.e("URL",params[0]);
-                res = OpenPostConnectionNow(params[0],param);
+                res = OpenPostConnectionNow(params[0], param);
                 responsemsg = res.toString();
 
                 /*String param = jsonObject.toString();
@@ -849,7 +876,7 @@ public class DmCSoNoStateStnDetails extends Activity {
                 Log.e("URL",params[0]);
                 res = OpenPostConnection(params[0],jsonObject);
                 responsemsg = res.toString();*/
-                Log.e("URL res",responsemsg);
+                Log.e("URL res", responsemsg);
             } catch (NullPointerException e) {
                 responsemsg = "error";
                 e.printStackTrace();
@@ -859,6 +886,7 @@ public class DmCSoNoStateStnDetails extends Activity {
             }
             return responsemsg;
         }
+
         @Override
         protected void onPostExecute(String result) {
             //String table = "";
@@ -909,7 +937,7 @@ public class DmCSoNoStateStnDetails extends Activity {
         protected String doInBackground(String... params) {
             // TODO Auto-generated method stub
             ut = new com.stavigilmonitoring.utility();
-           // DatabaseHandler db = new DatabaseHandler(parent);
+            // DatabaseHandler db = new DatabaseHandler(parent);
             SQLiteDatabase sql = db.getWritableDatabase();
             //String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
             String url = "http://vritti.co/imedia/STA_Announcement/DMcertificate.asmx/ReassignedCertificateNew?Mobile="
@@ -921,7 +949,7 @@ public class DmCSoNoStateStnDetails extends Activity {
                     + "&Remark="
                     + Remark
                     + "&attacheddata="
-                    + image_encode.substring(0,63);
+                    + image_encode.substring(0, 63);
 
             Log.e("ReassignedCertificate", "url : " + url);
             url = url.replaceAll(" ", "%20");
@@ -1067,7 +1095,7 @@ public class DmCSoNoStateStnDetails extends Activity {
 
     private void updateCustomerSpinner() {
         NameList.clear();
-      //  DatabaseHandler db1 = new DatabaseHandler(parent);
+        //  DatabaseHandler db1 = new DatabaseHandler(parent);
         SQLiteDatabase sqldb = db.getWritableDatabase();
 
         Cursor cursor = sqldb.rawQuery(
@@ -1087,15 +1115,14 @@ public class DmCSoNoStateStnDetails extends Activity {
 
     private void getAcCode(String Name) {
         // TODO Auto-generated method stub
-       // DatabaseHandler db1 = new DatabaseHandler(parent);
+        // DatabaseHandler db1 = new DatabaseHandler(parent);
         SQLiteDatabase sqldb = db.getWritableDatabase();
 
         Cursor cursor = sqldb.rawQuery(
-                "Select Mobile from DMCUsersTable where UserName = '"+AssignToName+"'", null);
-        if (cursor.getCount()==0){
+                "Select Mobile from DMCUsersTable where UserName = '" + AssignToName + "'", null);
+        if (cursor.getCount() == 0) {
             Toast.makeText(parent, "Name not available", Toast.LENGTH_SHORT).show();
-        }
-        else if (cursor.getCount() != 0) {
+        } else if (cursor.getCount() != 0) {
             cursor.moveToFirst();
             AssignToMob = cursor.getString(0);
 
@@ -1137,21 +1164,21 @@ public class DmCSoNoStateStnDetails extends Activity {
             if (resposmsg.contains("Record are not Found...!")) {
                 //sumdata2 = "0";
                 sop = "nodata";
-               // DatabaseHandler db = new DatabaseHandler(getBaseContext());
+                // DatabaseHandler db = new DatabaseHandler(getBaseContext());
                 SQLiteDatabase sql = db.getWritableDatabase();
                 sql.execSQL("Delete from DMCUsersTable");
                 //up
 
             } else if (resposmsg.contains("<UserId>")) {
                 sop = "valid";
-               // DatabaseHandler db = new DatabaseHandler(getBaseContext());
+                // DatabaseHandler db = new DatabaseHandler(getBaseContext());
                 SQLiteDatabase sql = db.getWritableDatabase();
 
                 String columnName, columnValue;
 
-               // sql.execSQL("DROP TABLE IF EXISTS DMCUsersTable");
-               // sql.execSQL(ut.getDMCUsersTable());
-                sql.delete("DMCUsersTable",null,null);
+                // sql.execSQL("DROP TABLE IF EXISTS DMCUsersTable");
+                // sql.execSQL(ut.getDMCUsersTable());
+                sql.delete("DMCUsersTable", null, null);
 
                 Cursor cur1 = sql.rawQuery("SELECT * FROM DMCUsersTable", null);
                 int count = cur1.getCount();
@@ -1185,7 +1212,7 @@ public class DmCSoNoStateStnDetails extends Activity {
             super.onPostExecute(result);
             try {
                 if (sop == "valid") {
-                   updateCustomerSpinner();
+                    updateCustomerSpinner();
                 }
                 progressDialog.dismiss();
 
@@ -1201,12 +1228,11 @@ public class DmCSoNoStateStnDetails extends Activity {
     private void setJobShedulder() {
 
         // checkBatteryOptimized();
-        if(myJob == null) {
+        if (myJob == null) {
             dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this));
-                callJobDispacher_DMCertificate();
+            callJobDispacher_DMCertificate();
 
-        }
-        else{
+        } else {
 			/*if(!AppCommon.getInstance(this).isServiceIsStart()){
 				dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this));
 				callJobDispacher();
@@ -1217,16 +1243,16 @@ public class DmCSoNoStateStnDetails extends Activity {
 				callJobDispacher();
 			}*/
 
-            if(AppCommon){
+            if (AppCommon) {
                 dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this));
-                    callJobDispacher_DMCertificate();
+                callJobDispacher_DMCertificate();
 
-            }else {
+            } else {
                 AppCommon = true;
                 dispatcher.cancelAll();
                 dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this));
                 myJob = null;
-                    callJobDispacher_DMCertificate();
+                callJobDispacher_DMCertificate();
 
             }
         }
@@ -1264,7 +1290,7 @@ public class DmCSoNoStateStnDetails extends Activity {
 
     /**
      * Receiving activity result method will be called after closing the camera
-     * */
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         try {
@@ -1282,12 +1308,12 @@ public class DmCSoNoStateStnDetails extends Activity {
                             .show();
                 } else {
                     // failed to capture image
-                    Toast.makeText(parent,"Sorry! Failed to capture image", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(parent, "Sorry! Failed to capture image", Toast.LENGTH_SHORT).show();
                 }
             } else if (requestCode == IMG_RESULT && resultCode == RESULT_OK
                     && null != data) {
                 Uri URI = data.getData();
-                String[] FILE = { MediaStore.Images.Media.DATA };
+                String[] FILE = {MediaStore.Images.Media.DATA};
 
 
                 Cursor cursor = getContentResolver().query(URI,
@@ -1302,7 +1328,7 @@ public class DmCSoNoStateStnDetails extends Activity {
                 options.inSampleSize = 2;
 
                 //imageViewLoad.setImageBitmap(BitmapFactory.decodeFile(ImageDecode));
-                final Bitmap bitmap = BitmapFactory.decodeFile(ImageDecode,options);
+                final Bitmap bitmap = BitmapFactory.decodeFile(ImageDecode, options);
                 image_encode = getStringImage(bitmap);
 
                 //File f = new File(URI.getPath().toString());
@@ -1326,5 +1352,280 @@ public class DmCSoNoStateStnDetails extends Activity {
         startActivity(i);*/
         finish();
     }
+
+    /*******************************************************Attachments*******************************************************************/
+
+
+    public void downloadAttachment(StateDetailsList stateDetailsList, String fileUrl, String fileName) {
+        //  output = commonDocumentDirPathDownload("STAVigil", "DMCertificatepdf");
+        output = commonDocumentDirPathDownload("STAVigil/DMCertificatepdf", fileName);
+        File file2 = new File(output.getAbsolutePath());
+        downloadFileUri = FileProvider.getUriForFile(DmCSoNoStateStnDetails.this,
+                getPackageName() + ".provider", file2);
+        Log.e("URI ", downloadFileUri.toString());
+
+        if (output.exists()) {
+            callAgainApi(output.toString(), fileName, fileUrl);
+        } else {
+            cllDownloadApi1(fileUrl, fileName);
+            // new DownloadFile().execute(fileUrl, fileName);
+        }
+
+
+    }
+
+    public static File commonDocumentDirPathDownload(String newDirName, String FolderName) {
+        File dir = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) +
+                    "/" + newDirName + "/" + FolderName);
+        } else {
+            dir = new File(Environment.getExternalStorageDirectory() + "/" +
+                    newDirName + "/" + FolderName);
+        }
+
+        // Make sure the path directory exists.
+        if (!dir.exists()) {
+            // Make it, if it doesn't exit
+            boolean success = dir.getParentFile().mkdirs();
+            if (!success) {
+                return dir;
+            }
+        }
+        return dir;
+    }
+
+    private void callAgainApi(final String path, final String attachmentName1, String fileUrl) {
+        if (ut.isnet(DmCSoNoStateStnDetails.this)) {
+            Log.e("AttachmentName   ", attachmentName1);
+
+            //final File file1 = new File(copyFileToInternalStorage(downloadFileUri, "HYVA", "FromDownload"));
+            final File file1 = new File(copyFileToInternalStorage(downloadFileUri,
+                    "STAVigil/DMCertificatepdf"));
+
+            if (file1.exists()) {
+
+                Handler handler = new Handler(DmCSoNoStateStnDetails.this.getMainLooper());
+                handler.post(new Runnable() {
+                    public void run() {
+                        Toast.makeText(parent, "File Already downloaded", Toast.LENGTH_SHORT).show();
+                        urlGetMimeType(String.valueOf(file1));
+
+                    }
+                });
+            } else {
+                cllDownloadApi1(path, attachmentName1);
+            }
+
+        }
+    }
+
+    private void cllDownloadApi1(String fileUrl, String fileName) {
+
+        new DownloadFile().execute(fileUrl, fileName);
+    }
+
+    public String downloadFile(String fileUrl, final File directory) {
+        String isdownload;
+        try {
+            URL url = new URL(fileUrl);
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("GET");
+            //urlConnection.setDoOutput(true);
+            //urlConnection.connect();
+
+            InputStream inputStream = urlConnection.getInputStream();
+            FileOutputStream fileOutputStream = new FileOutputStream(directory);
+            int totalSize = urlConnection.getContentLength();
+
+            byte[] buffer = new byte[MEGABYTE];
+            int bufferLength = 0;
+            while ((bufferLength = inputStream.read(buffer, 0, 1024)) > 0) {
+                fileOutputStream.write(buffer, 0, bufferLength);
+            }
+            fileOutputStream.close();
+
+            isdownload = "File Downloaded Successfully";
+            Log.e("Directory Path", String.valueOf(directory));
+
+            Handler handler = new Handler(DmCSoNoStateStnDetails.this.getMainLooper());
+            handler.post(new Runnable() {
+                public void run() {
+
+                    urlGetMimeType(String.valueOf(directory));
+
+
+                }
+            });
+            //holder.btnpdfdownload.setImageResource(R.drawable.dwnldedpdf);
+            //set file downloaded icon
+            //set status of filedownload
+        } catch (FileNotFoundException e) {
+            isdownload = "No File Found";
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            isdownload = "No File Found";
+            e.printStackTrace();
+        } catch (IOException e) {
+            isdownload = "No File Found";
+            e.printStackTrace();
+        } catch (Exception e) {
+            isdownload = "No File Found";
+            e.printStackTrace();
+        }
+        return isdownload;
+    }
+
+    private class DownloadFile extends AsyncTask<String, Void, Void> {
+        String dwnlod;
+        File pdfdown;
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            String fileUrl = strings[0];   // -> http://www.androhub.com/demo/demo.pdf
+            //fileUrl = "http://vritti.ekatm.co.in//certificatepdfs/MSRTCAmbajogaiPSOIM17-18-716.htm";
+            String[] word = fileUrl.split("/");
+            fileUrl = "https:" + "//vritti.ekatm.co.in/" + word[4] + "/" + word[5]; //w
+            String fileNamefull = strings[1];// ord[0]
+            String fileName = strings[1];  // -> demo.pdf
+            //fileName = "MSRTCAmbajogaiPSOIM17-18-716.htm";
+            String[] words = fileName.split("\\.");
+            fileName = words[0];
+            //fileName = "MarDemo";
+            String suffix = words[1];
+            //suffix = "htm";
+            pdfdown = commonDocumentDirPath("STAVigil/DMCertificatepdf", fileNamefull,
+                    DmCSoNoStateStnDetails.this);
+
+
+            //commented by sayali latest
+        /*    File storageDir = new File(Environment.getExternalStorageDirectory(), "DMCertificatepdf");
+            if (!storageDir.exists()){  // Checks that Directory/Folder Doesn't Exists!
+                storageDir.mkdir();
+            }
+            File pdfdown  = new File(storageDir + "/" + "DMCertificatepdf" + "/" + "File" + "/" +
+                    fileName);*/
+            //commented by sayali
+            // fileNew.createNewFile();
+
+            //   File pdfdown = new File(storageDir+"/"+fileName+"."+suffix);
+            try {
+                //pdfdown = File. createTempFile( fileName /* prefix */,".jpg", storageDir  /* directory */ );
+                pdfdown.createNewFile();
+
+
+                dwnlod = downloadFile(fileUrl, pdfdown);
+                //DownloadMP3(fileUrl, Environment.getExternalStorageDirectory()+"/DMCertificatepdf/"+fileName+"."+suffix);
+
+            } catch (IOException e) {
+                dwnlod = "No File Found";
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Toast.makeText(DmCSoNoStateStnDetails.this, dwnlod, Toast.LENGTH_SHORT).show();
+
+			/*if(!dwnlod.equalsIgnoreCase("No File Found")){
+				holder.btnpdfdownload.setImageResource(R.drawable.dwnldedpdf);
+				searchArrayList.get(position).setIsFileDownload(true);
+			}else {
+				searchArrayList.get(position).setIsFileDownload(false);
+			}*/
+        }
+
+
+    }
+
+    public static File commonDocumentDirPath(String newDirName, String FolderName, Context context) {
+        File dir = null;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)
+                    + "/" + newDirName + "/" + FolderName);
+        } else {
+            dir = new File(Environment.getExternalStorageDirectory() + "/" + newDirName + "/" + FolderName);
+        }
+
+        // Make sure the path directory exists.
+        if (!dir.exists()) {
+            // Make it, if it doesn't exit
+            boolean success = dir.getParentFile().mkdirs();
+            if (!success) {
+                return dir;
+            }
+        }
+        Log.d("DirectoryName", dir.toString());
+
+        return dir;
+    }
+
+    private void urlGetMimeType(String path) {
+        File file = new File(path);
+        parent = DmCSoNoStateStnDetails.this;
+        MimeTypeMap myMime = MimeTypeMap.getSingleton();
+        Intent newIntent = new Intent(Intent.ACTION_VIEW);
+        newIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        String extension = android.webkit.MimeTypeMap.getFileExtensionFromUrl(Uri.fromFile(file).toString());
+        String mimeType = myMime.getMimeTypeFromExtension(file.getAbsolutePath());
+        newIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        newIntent.setDataAndType(Uri.fromFile(file), mimeType);
+        try {
+            parent.startActivity(newIntent);
+
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(DmCSoNoStateStnDetails.this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public String copyFileToInternalStorage(Uri uri, String newDirName) {
+
+        Uri returnUri = uri;
+        Cursor returnCursor = null;
+
+
+        returnCursor = getContentResolver().query(returnUri, new String[]{
+                OpenableColumns.DISPLAY_NAME, OpenableColumns.SIZE
+        }, null, null, null);
+
+
+        int nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+        int sizeIndex = returnCursor.getColumnIndex(OpenableColumns.SIZE);
+        returnCursor.moveToFirst();
+        String name = (returnCursor.getString(nameIndex));
+
+        File output;
+        output = commonDocumentDirPath(newDirName, name, DmCSoNoStateStnDetails.this);
+        File myFile = new File(String.valueOf(output));
+        uri = Uri.parse(myFile.getAbsolutePath());
+
+        Log.d("File Output Name", uri.toString());
+        try {
+            InputStream inputStream = DmCSoNoStateStnDetails.this.getContentResolver().openInputStream(uri);
+            FileOutputStream outputStream = new FileOutputStream(output);
+            int read = 0;
+            int bufferSize = 1024;
+            final byte[] buffers = new byte[bufferSize];
+            while ((read = inputStream.read(buffers)) != -1) {
+                outputStream.write(buffers, 0, read);
+            }
+
+            inputStream.close();
+            outputStream.close();
+
+        } catch (Exception e) {
+            //  Toast.makeText(VehicleLoadingActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+
+            Log.e("Exception", e.getMessage());
+        }
+
+
+        return output.getPath();
+    }
+
 
 }

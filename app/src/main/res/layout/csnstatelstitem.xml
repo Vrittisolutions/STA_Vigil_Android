@@ -19,8 +19,8 @@
         android:layout_height="wrap_content"
         android:padding="1dp"
         android:background="@drawable/listitemselector">
-    
-    <ImageView
+
+        <ImageView
         android:id="@+id/imageinsteaddaycount"
         android:layout_width="28sp"
         android:layout_height="28sp"
@@ -30,7 +30,7 @@
         android:layout_marginBottom="0sp"
         android:layout_gravity="center" />
 
-            <TextView
+  <TextView
                 android:layout_width="35sp"
                 android:layout_height="35sp"
                 android:layout_marginTop="0sp"

@@ -166,10 +166,15 @@ public class RegistrationUS extends Activity {
 				edtcv.commit();
 
 				//callforplayStore();
-				Intent i = new Intent(getBaseContext(), com.stavigilmonitoring.SelectMenu.class);
+
+				Intent i = new Intent(getBaseContext(), com.stavigilmonitoring.CSNBannerActivity.class);
 				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				getBaseContext().startActivity(i);
 				finish();
+			/*	Intent i = new Intent(getBaseContext(), com.stavigilmonitoring.SelectMenu.class);
+				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				getBaseContext().startActivity(i);
+				finish();*/
 				//} //		else {	////				ShownochageD();//	//			}
 			}
 		}
@@ -249,7 +254,7 @@ public class RegistrationUS extends Activity {
 			Toast toast = Toast.makeText(context, "PLEASE ALLOW ALL THE PERMISSIONS", Toast.LENGTH_SHORT);
 			View view = toast.getView();
 			//To change the Background of Toast
-			view.setBackgroundColor(Color.RED);
+			//view.setBackgroundColor(Color.RED);
 			// toast.show();
 
 			//Permissions
@@ -1301,13 +1306,19 @@ public class RegistrationUS extends Activity {
 					editor.commit();
 
 					//sendDeviceId();
+					Intent i = new Intent(getBaseContext(), com.stavigilmonitoring.CSNBannerActivity.class);
+					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					getBaseContext().startActivity(i);
+					myDialog.dismiss();
+					finish();
 
-					Intent i = new Intent(getBaseContext(), com.stavigilmonitoring.SelectMenu.class);
+
+					/*Intent i = new Intent(getBaseContext(), com.stavigilmonitoring.SelectMenu.class);
 					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					getBaseContext().startActivity(i);
 
 					myDialog.dismiss();
-					finish();
+					finish();*/
 
 				} else {
 					myDialog.dismiss();

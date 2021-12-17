@@ -593,7 +593,9 @@ public class ConnectionStatusStatewise extends Activity {
 
 					Cursor c1 = sql
 							.rawQuery(
-									"SELECT DISTINCT InstallationId,ServerTime , Remarks,Last7DaysPerFormance,QuickHealStatus,STAVersion ,TVStatus,LatestDowntimeReason,Type  FROM ConnectionStatusUser WHERE Type='"
+									"SELECT DISTINCT InstallationId,ServerTime , " +
+											"Remarks,Last7DaysPerFormance,QuickHealStatus,STAVersion ,TVStatus," +
+											"LatestDowntimeReason,Type  FROM ConnectionStatusUser WHERE Type='"
 											+ c.getString(0)
 											+ "' ORDER BY Type Desc", null);
 					if (c1.getCount() > 0) {
@@ -623,7 +625,8 @@ public class ConnectionStatusStatewise extends Activity {
 								} else {
 									stncnt = stncnt + 1;
 								}
-							} catch (Exception ex) {
+							}
+							catch (Exception ex) {
 								dff = new SimpleDateFormat("HH:mm:ss");
 								Ldate = dff.format(new Date());
 

@@ -110,6 +110,6 @@ public class AlertsItemBean {
 	public void setRejectedBy(String RejectedBy) {
 		this.RejectedBy = RejectedBy;
 	}
-	
-	
+
+
 }

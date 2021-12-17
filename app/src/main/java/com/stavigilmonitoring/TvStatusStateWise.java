@@ -106,8 +106,7 @@ public class TvStatusStateWise extends Activity {
 					finish();
 
 				} else {
-					Intent i = new Intent(TvStatusStateWise.this,
-							TvStatusMain.class);
+					Intent i = new Intent(TvStatusStateWise.this, TvStatusMain.class);
 					i.putExtra("Type", searchResults.get(position)
 							.getNetworkcode());
 					i.putExtra("SubType", searchResults.get(position)

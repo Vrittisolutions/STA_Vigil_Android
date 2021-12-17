@@ -16,11 +16,14 @@ public class MyAlarmReceiver extends BroadcastReceiver {
         mp= MediaPlayer.create(context, R.raw.alarm);
         mp.setLooping(true);
         mp.start();
+        //intent.getData();
         Toast.makeText(context, "Alarm....", Toast.LENGTH_LONG).show();
     }
 
     public static void stopAlarm(){
-        mp.stop();
+        if(mp != null) {
+            mp.stop();
+        }
     }
 
 }

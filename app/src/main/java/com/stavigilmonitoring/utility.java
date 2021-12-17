@@ -225,8 +225,10 @@ public class utility {
 				+ "AddedBy TEXT,AddedDt DATETIME,ResolveBy TEXT,ResolveDt DATETIME,"
 				+ "ConfirmBy TEXT,ConfirmDt DATETIME,ModifiedBy TEXT,ModifiedDt DATETIME,"
 				+ "RejectedBy TEXT,RejectedDt DATETIME, Mobile TEXT, SupporterName TEXT)";
+
 		return AlrtListTable;
 	}
+	/*",NetworkCode TEXT*/
 
 	public String getDmCertificateTable() {
 		String DmCertificateTable = "CREATE TABLE "
@@ -357,8 +359,10 @@ public class utility {
 	public String getSuspected() {
 		String Suspected = "CREATE TABLE IF NOT EXISTS "
 				+ "Suspected"
-				+ "(AdvertisementCode TEXT, AdvertisementName TEXT, StationName TEXT, InstalationId TEXT, EffectiveDateFrom  DATETIME, EffectiveDateTo TEXT, " +
-				"DayRepeatitions TEXT, ActRept TEXT, StationSpots TEXT, TotalSpot TEXT, SpotWisePercentage TEXT, Percentage TEXT, Count INTEGER)";
+				+ "(AdvertisementCode TEXT, AdvertisementName TEXT, StationName TEXT, InstalationId TEXT," +
+				" EffectiveDateFrom  DATETIME, EffectiveDateTo TEXT, " +
+				"DayRepeatitions TEXT, ActRept TEXT, StationSpots TEXT, TotalSpot TEXT, " +
+				"SpotWisePercentage TEXT, Percentage TEXT, Count INTEGER)";
 		return Suspected;
 	}
 
@@ -898,7 +902,7 @@ public class utility {
 			a = a.getParent();
 		}
 
-		final Dialog myDialog = new Dialog(a);
+		final Dialog myDialog = new Dialog(context);
 		myDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		myDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_TOAST);
 		myDialog.setContentView(com.stavigilmonitoring.R.layout.dialoginfosmall);

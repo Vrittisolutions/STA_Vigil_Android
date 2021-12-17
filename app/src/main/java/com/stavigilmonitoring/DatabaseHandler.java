@@ -629,5 +629,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		cv.put("SpotWisePercentage", SpotPerc);
 		cv.put("AdvertisementName", AdvtDesc);
 		long a = db.insert("Suspected", null, cv);
+		Log.e("Add Suspect DEtails",String.valueOf(a));
 	}
 }

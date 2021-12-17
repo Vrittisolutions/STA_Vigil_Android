@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.beanclasses.StateDetailsList;
+import com.stavigilmonitoring.DmCSoNoStateStnDetails;
 import com.stavigilmonitoring.DmCStateStnSoNoDetails;
 
 import java.io.BufferedInputStream;
@@ -41,6 +42,7 @@ public class DMCStateDetailsAdapter extends BaseAdapter {
 	Context context;
 	private ViewHolder holder;
 	private int position;
+	String type="";
 
 	public DMCStateDetailsAdapter(Context c, List<StateDetailsList> data)
 	{
@@ -49,6 +51,17 @@ public class DMCStateDetailsAdapter extends BaseAdapter {
 		searchArrayList=data;
 		arraylist=new ArrayList<StateDetailsList>();
 		arraylist.addAll(data);
+	}
+
+	public DMCStateDetailsAdapter(Context c, List<StateDetailsList> data, String type1) {
+
+		context=c;
+		mInflater = LayoutInflater.from(context);
+		searchArrayList=data;
+		arraylist=new ArrayList<StateDetailsList>();
+		arraylist.addAll(data);
+		this.type = type1;
+
 	}
 
 	public void filter_details(String charText) {
@@ -88,7 +101,7 @@ public class DMCStateDetailsAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(final int position, View convertView, ViewGroup parent) {
 		//ViewHolder holder;
 		//pos= position;
 		if (convertView == null) {
@@ -145,8 +158,8 @@ public class DMCStateDetailsAdapter extends BaseAdapter {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				try{
-					int pos=(Integer)v.getTag();
-					String filename = searchArrayList.get(pos).GetGenrateFileName();
+				//	int pos=(Integer)v.getTag();
+					String filename = searchArrayList.get(position).GetGenrateFileName();
 					if (filename.equalsIgnoreCase("No File Found")||filename.equals("")){
 						Toast.makeText(context,"No File Found",Toast.LENGTH_SHORT).show();
 					} else {
@@ -156,7 +169,15 @@ public class DMCStateDetailsAdapter extends BaseAdapter {
 						String parts[] = filename.split("/");
 						String fileName = parts[5];		//old = HSRTCNuhHRSGSO19-20-045 , new = HSRTCNuhHRSGSO19-20-045-20-01-2020
 						//Toast.makeText(context,filename,Toast.LENGTH_SHORT).show();
-						new DownloadFile().execute(fileUrl, fileName);
+
+						if(type != "" && type == "SoWise"){
+							((DmCSoNoStateStnDetails)context).downloadAttachment(searchArrayList.get(position),fileUrl,fileName);
+						}else{
+							((DmCStateStnSoNoDetails)context).downloadAttachment(searchArrayList.get(position),fileUrl,fileName);
+						}
+
+
+						//new DownloadFile().execute(fileUrl, fileName);
 					/*if (filename.contains("/MSRTC")) {
 						String fileUrlMar = fileUrl.replace(".pdf", ".htm");
 						String fileNameMar = fileName.replace(".pdf", ".htm");
@@ -236,13 +257,15 @@ public class DMCStateDetailsAdapter extends BaseAdapter {
 
 			File storageDir = new File(Environment.getExternalStorageDirectory(), "DMCertificatepdf");
 			if (!storageDir.exists()){  // Checks that Directory/Folder Doesn't Exists!
-				boolean result = storageDir.mkdir();
+				storageDir.mkdir();
 			}
 
 			File pdfdown = new File(storageDir+"/"+fileName+"."+suffix);
 			try {
 				//pdfdown = File. createTempFile( fileName /* prefix */,".jpg", storageDir  /* directory */ );
 				pdfdown.createNewFile();
+
+
 			    dwnlod = downloadFile(fileUrl, pdfdown);
 			   //DownloadMP3(fileUrl, Environment.getExternalStorageDirectory()+"/DMCertificatepdf/"+fileName+"."+suffix);
 
