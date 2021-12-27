@@ -16,6 +16,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -79,6 +80,10 @@ public class JobService_SyncDataCount extends JobService {
 
     long AlarmStopTime;
     boolean setAlarm = false;
+    boolean setAlarmFinal = false;
+    boolean setAlarmFinalNonReportStation = false;
+    boolean setAlarmFinalCSN = false;
+
 
     @Override
     public boolean onStartJob(JobParameters job) {
@@ -110,6 +115,8 @@ public class JobService_SyncDataCount extends JobService {
         db = new DatabaseHandler(getBaseContext());
         sql = db.getWritableDatabase();
 
+
+
         Calendar cal = Calendar.getInstance();
         if (cal.HOUR <= 20 && cal.HOUR >= 6 && isnet())
             if (isnet()){
@@ -122,9 +129,8 @@ public class JobService_SyncDataCount extends JobService {
 
         list_advdata = new ArrayList<AdvVideoDataBean>();
 
-        SharedPreferences sp = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
-        AlarmStopTime = sp.getLong("AlarmStopTime", 0);
-        setAlarm = sp.getBoolean("SetAlarm", true);
+
+
     }
 
     protected boolean isnet() {
@@ -268,7 +274,8 @@ public class JobService_SyncDataCount extends JobService {
                 try {
                     responsemsg = utility.httpGet(url);
                     Log.e("csn status", "resmsg : " + responsemsg);
-                } catch (NullPointerException e) {
+                }
+                catch (NullPointerException e) {
                     e.printStackTrace();
                     dff = new SimpleDateFormat("HH:mm:ss");
                     Ldate = dff.format(new Date());
@@ -287,7 +294,8 @@ public class JobService_SyncDataCount extends JobService {
                                 + e.getMessage() + " " + Ldate);
                     }
 
-                } catch (IOException e) {
+                }
+                catch (IOException e) {
                     e.printStackTrace();
                     dff = new SimpleDateFormat("HH:mm:ss");
                     Ldate = dff.format(new Date());
@@ -429,6 +437,8 @@ public class JobService_SyncDataCount extends JobService {
                     }
 
                 }
+
+                //Connection Status
                 url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
                         + mobno;
 
@@ -562,20 +572,33 @@ public class JobService_SyncDataCount extends JobService {
                                             - Startdate.getTime();
                                     long diffSeconds = diff / 1000 % 60;
                                     long diffMinutes = diff / (60 * 1000) % 60;
-                                    long diffHours = diff / (60 * 60 * 1000)
-                                            % 24;
-                                    long diffDays = diff
-                                            / (24 * 60 * 60 * 1000);
+                                    long diffHours = diff / (60 * 60 * 1000) % 24;
+                                    long diffDays = diff / (24 * 60 * 60 * 1000);
 
 									/*Log.e("getdetails", "sd : " + Startdate
 											+ " ed: " + Enddate + " d: "
 											+ diffDays + " h: " + diffHours
 											+ " m:" + diffMinutes);*/
 
-                                    if (diffDays == 0 && diffHours == 0
-                                            && diffMinutes <= 15) {
+                                    //if time is greater than 1 then ring alarm
+
+                                    if (diffDays == 0 && diffHours == 0 && diffMinutes <= 15) {
 
                                     } else {
+                                        if(setAlarmFinalCSN){
+                                            //play alarm again
+                                            Intent intent = new Intent(JobService_SyncDataCount.this, MyAlarmReceiver.class);
+                                            PendingIntent pendingIntent = PendingIntent.getBroadcast(JobService_SyncDataCount.this, 234324243, intent, 0);
+                                            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                                            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
+                                            Toast.makeText(JobService_SyncDataCount.this, "Alarm set in 1 seconds", Toast.LENGTH_LONG).show();
+                                            Intent serviceIntent = new Intent(JobService_SyncDataCount.this, AlarmForegroundService.class);
+                                            serviceIntent.putExtra("inputExtra",columnName
+                                                    .equalsIgnoreCase("InstallationDesc"));
+
+                                            ContextCompat.startForegroundService(JobService_SyncDataCount.this, serviceIntent);
+                                        }
+
                                         conn = "valid";
                                     }
                                 } catch (Exception ex) {
@@ -797,7 +820,7 @@ public class JobService_SyncDataCount extends JobService {
                     ContentValues values = new ContentValues();
                     NodeList nl = ut.getnode(responsemsg, "Table1");
                     String msg = "";
-                    String columnName, columnValue;
+                    String columnName = null, columnValue;
                     for (int i = 0; i < nl.getLength(); i++) {
                         Element e = (Element) nl.item(i);
                         for (int j = 0; j < c.getColumnCount(); j++) {
@@ -821,6 +844,7 @@ public class JobService_SyncDataCount extends JobService {
                             else if (columnName
                                     .equalsIgnoreCase("EffectiveDateTo"))
                                 ncolumnname = "F";
+                            //G - network code
                             else if (columnName.equalsIgnoreCase("Type"))
                                 ncolumnname = "G";
                             else if (columnName.equalsIgnoreCase("ClipId"))
@@ -859,6 +883,20 @@ public class JobService_SyncDataCount extends JobService {
                             values.put(columnName, columnValue);
                         }
                         sql.insert("NonrepeatedAd", null, values);
+                        if(setAlarmFinalNonReportStation){
+                            Intent intent = new Intent(JobService_SyncDataCount.this, MyAlarmReceiver.class);
+                                            PendingIntent pendingIntent = PendingIntent.getBroadcast(JobService_SyncDataCount.this, 234324243, intent, 0);
+                                           AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                                            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
+                                           Toast.makeText(JobService_SyncDataCount.this, "Alarm set in 1 seconds", Toast.LENGTH_LONG).show();
+                            Intent serviceIntent = new Intent(JobService_SyncDataCount.this, AlarmForegroundService.class);
+                            serviceIntent.putExtra("inputExtra",columnName
+                                    .equalsIgnoreCase("AdvertisementDesc"));
+
+                            ContextCompat.startForegroundService(JobService_SyncDataCount.this, serviceIntent);
+                   
+                        }
+                        //when inserted set alarm
                     }
 
                     c.close();
@@ -1110,15 +1148,40 @@ public class JobService_SyncDataCount extends JobService {
 
                         list_advdata.add(adv);
 
-                        if(setAlarm == true){
-                            if(tstamp > AlarmStopTime){
-                                //play alarm again
-                                Intent intent = new Intent(JobService_SyncDataCount.this, MyAlarmReceiver.class);
-                                PendingIntent pendingIntent = PendingIntent.getBroadcast(JobService_SyncDataCount.this,
-                                        234324243, intent, 0);
-                                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
-                                Toast.makeText(JobService_SyncDataCount.this, "Alarm set in 1 seconds",Toast.LENGTH_LONG).show();
+                        Calendar c1 = Calendar.getInstance();
+                        int hour = c1.get(Calendar.HOUR_OF_DAY);
+                        int minute = c1.get(Calendar.MINUTE);
+                        if(hour > 6 && hour < 19){
+                            if(hour == 6 && minute >= 0) {
+                                if(setAlarm == true) {
+
+                                    if (setAlarmFinal == true) {
+                                        if (tstamp > AlarmStopTime) {
+                                            //play alarm again
+                                            Intent intent = new Intent(JobService_SyncDataCount.this, MyAlarmReceiver.class);
+                                            PendingIntent pendingIntent = PendingIntent.getBroadcast(JobService_SyncDataCount.this, 234324243, intent, 0);
+                                            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                                            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
+                                            Toast.makeText(JobService_SyncDataCount.this, "Alarm set in 1 seconds", Toast.LENGTH_LONG).show();
+                                        }
+                                    }
+                                }
+                            }else if(hour == 19 && minute > 0){
+
+                            }else{
+                                if(setAlarm == true) {
+
+                                    if (setAlarmFinal == true) {
+                                        if (tstamp > AlarmStopTime) {
+                                            //play alarm again
+                                            Intent intent = new Intent(JobService_SyncDataCount.this, MyAlarmReceiver.class);
+                                            PendingIntent pendingIntent = PendingIntent.getBroadcast(JobService_SyncDataCount.this, 234324243, intent, 0);
+                                            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                                            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
+                                            Toast.makeText(JobService_SyncDataCount.this, "Alarm set in 1 seconds", Toast.LENGTH_LONG).show();
+                                        }
+                                    }
+                                }
                             }
                         }
                     }

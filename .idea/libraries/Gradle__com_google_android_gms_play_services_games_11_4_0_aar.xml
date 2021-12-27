@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.android.gms:play-services-games:11.4.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-games-11.4.0.aar/43456f7bc81936006228c397be4c794e/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-games-11.4.0.aar/43456f7bc81936006228c397be4c794e/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-games-11.4.0.aar/43456f7bc81936006228c397be4c794e/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-games-11.4.0.aar/3d3407336b121e5117ee7ac0dadcb29b/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-games-11.4.0.aar/3d3407336b121e5117ee7ac0dadcb29b/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-games-11.4.0.aar/3d3407336b121e5117ee7ac0dadcb29b/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

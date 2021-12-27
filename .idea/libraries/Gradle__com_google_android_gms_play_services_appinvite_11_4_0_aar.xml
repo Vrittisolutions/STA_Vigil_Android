@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.android.gms:play-services-appinvite:11.4.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-appinvite-11.4.0.aar/91f8a789c4e23e0046ae48fe083caa0d/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-appinvite-11.4.0.aar/91f8a789c4e23e0046ae48fe083caa0d/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-appinvite-11.4.0.aar/91f8a789c4e23e0046ae48fe083caa0d/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-appinvite-11.4.0.aar/2012c1a8b97d1139f726e59662357995/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-appinvite-11.4.0.aar/2012c1a8b97d1139f726e59662357995/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-appinvite-11.4.0.aar/2012c1a8b97d1139f726e59662357995/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
