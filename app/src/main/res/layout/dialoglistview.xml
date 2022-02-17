@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    android:background="@color/dialogboxcolor">
+    <!--android:background="#4863A0"-->
+        <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView android:id="@+id/dialoginfogototextsmall1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Country Code..."
+            android:textColor="#111"
+            android:fontFamily="@string/fontfamily"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="11">
+
+
+            <TextView android:id="@+id/dialoginfogototextdatestart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="10dp"
+
+                android:text="startdate"
+                android:textColor="#111"
+                android:fontFamily="@string/fontfamily"
+                />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="-"
+                    android:textColor="#ffffff"
+                    android:fontFamily="@string/fontfamily"
+                    />
+
+                <TextView android:id="@+id/dialoginfogototextdateend"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+
+                    android:text="enddate"
+                    android:textColor="#111"
+                    android:fontFamily="@string/fontfamily"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittext_border"
+                android:gravity="left|center">
+
+                <ListView
+                    android:id="@+id/cliplist"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="left|center"
+                    android:dividerHeight="1dp"
+                    android:divider="#B6B6B4">
+
+                </ListView>
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editTextNarration"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="10dp"
+                android:textColorHint="@android:color/darker_gray"
+                android:background="@drawable/edittext_border"
+                android:gravity="left|center"
+                android:hint="Remark"
+                android:fontFamily="@string/fontfamily"
+                android:inputType="text"
+                android:textColor="#000"
+                android:textSize="15dp"
+                android:padding="10dp" >
+            </EditText>
+
+            <LinearLayout android:layout_width="match_parent"
+            android:id="@+id/btnll"
+             android:layout_height="wrap_content"
+              android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+               android:layout_marginRight="10dp">
+
+                <Button android:id="@+id/yesbtndialogclip"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:text="Reason"
+                    android:textColor="#fff"
+                    android:background="@drawable/btn_pressed_glossy"
+                    android:textAllCaps="false"
+                    android:textSize="16dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@string/fontfamily"
+                    android:layout_weight="1"></Button>
+
+                <Button android:id="@+id/nobtndialogclip"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_pressed_glossy"
+                    android:textAllCaps="false"
+                    android:textSize="16dp"
+                    android:layout_height="45dp"
+                    android:textColor="#fff"
+                    android:text="Cancel"
+                    android:fontFamily="@string/fontfamily"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp" ></Button>
+
+
+            </LinearLayout>
+                 </LinearLayout>
+        
+    </LinearLayout>

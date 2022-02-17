@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:background="@drawable/newborder"
+    android:orientation="vertical" >
+
+	<LinearLayout android:layout_width="fill_parent"
+		android:id="@+id/headerColor" android:layout_height="50dp"
+		android:orientation="horizontal" android:gravity="top" 
+		android:background="#0b6bb7" android:layout_gravity="center_vertical">
+		
+     <LinearLayout
+	        android:id="@+id/headerColor1"
+	  		android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:layout_weight="0.7"
+	        android:orientation="horizontal" >
+
+	        <ImageView
+	            android:layout_width="50dp"
+	            android:layout_height="40dp"
+	           
+	            android:background="@android:color/transparent"
+	            android:src="@drawable/sta_logo" />
+
+	        <TextView
+	            android:id="@+id/vWB"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center"
+	            android:layout_marginTop="0dp"
+	            android:text="@string/app_name"
+	            android:textColor="#ffffff"
+	            android:textSize="18dp"
+	            android:textStyle="normal"
+				android:fontFamily="@string/fontfamily" >
+
+	        </TextView>
+	    </LinearLayout>
+    </LinearLayout>
+
+	<LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+          android:background="#81DAF5"
+        android:orientation="vertical" >
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="TV Status Fill Reason"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                 android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+			android:padding="5dp"
+			android:fontFamily="@string/fontfamily" />
+        
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="2dp"
+            android:background="#B6B6B4" />
+    </LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:layout_margin="10dp"
+		android:padding="10dp"
+		android:background="#ededed">
+
+		<EditText
+			android:id="@+id/edsationname"
+			android:layout_width="fill_parent"
+			android:layout_marginLeft="15sp"
+			android:layout_marginRight="15sp"
+			android:layout_height="40dp"
+			android:hint="Fill Reason"
+			android:textSize="15dp"
+			android:padding="8dp"
+			android:layout_marginTop="50sp"
+			android:layout_gravity="center_horizontal"
+			android:textColor="#000000"
+			android:background="@drawable/edittext_border"
+			android:onClick="StationList"
+			android:fontFamily="@string/fontfamily">
+
+		</EditText>
+
+		<LinearLayout android:orientation="horizontal"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:gravity="center_horizontal" android:layout_marginTop="20dp"
+			>
+			<Button android:layout_width="0dp"
+				android:layout_height="45sp"
+				android:id="@+id/btncsneasonsave1"
+				android:text="Change"
+				android:textSize="18dp"
+				android:layout_marginLeft="8sp"
+				android:background="@drawable/btn_pressed_glossy"
+				android:textColor="#ffffff"
+				android:onClick="updateReason"
+				android:layout_weight="1"
+				android:fontFamily="@string/fontfamily"/>
+
+			<Button
+				android:id="@+id/btncsnncancel1"
+				android:layout_width="0dp"
+				android:layout_height="45sp"
+				android:layout_marginLeft="5dp"
+				android:layout_marginRight="8sp"
+				android:layout_weight="1"
+				android:background="@drawable/btn_pressed_glossy"
+				android:text="Cancel"
+				android:textColor="#ffffff"
+				android:textSize="18dp"
+				android:fontFamily="@string/fontfamily"/>
+		</LinearLayout>
+
+	</LinearLayout>
+
+</LinearLayout>

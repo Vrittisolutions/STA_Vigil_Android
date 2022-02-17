@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="Gradle: cn.jzvd:jiaozivideoplayer:6.3_preview@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jiaozivideoplayer-6.3_preview.aar/ff765e5674802eeb1eee03aa78bc514f/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jiaozivideoplayer-6.3_preview.aar/ff765e5674802eeb1eee03aa78bc514f/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jiaozivideoplayer-6.3_preview.aar/ff765e5674802eeb1eee03aa78bc514f/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jiaozivideoplayer-6.3_preview.aar/953f74297249e6372455f22e2d418558/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jiaozivideoplayer-6.3_preview.aar/953f74297249e6372455f22e2d418558/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jiaozivideoplayer-6.3_preview.aar/953f74297249e6372455f22e2d418558/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.jzvd/jiaozivideoplayer/6.3_preview/6f8c4b6e3946ad1b6c5b8b2168b20da35ef24030/jiaozivideoplayer-6.3_preview-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

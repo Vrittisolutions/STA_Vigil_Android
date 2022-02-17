@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+    <LinearLayout android:layout_width="wrap_content"
+        android:id="@+id/camll"
+        android:background="#fff"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:weightSum="24"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_weight="4"
+                android:id="@+id/btngallery"
+                android:layout_gravity="center|center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_gallery_pics"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="3dp">
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gallery"
+                android:layout_gravity="center"
+                android:fontFamily="@string/fontfamily"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical"       >
+            <ImageView
+                android:layout_weight="4"
+                android:id="@+id/btncam"
+                android:layout_gravity="center|center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_cam_small"
+                android:layout_marginLeft="2dp">
+
+            </ImageView>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Camera"
+                android:fontFamily="@string/fontfamily"
+                    android:layout_gravity="center"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

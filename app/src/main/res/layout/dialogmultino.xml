@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <TextView
+        android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+          android:typeface="serif"
+        android:textColor="#000000"
+           android:text="Select No from following "
+        android:layout_marginLeft="5dp"
+        android:fontFamily="@string/fontfamily"/>
+    
+    
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+          android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp">
+        
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+              android:orientation="horizontal">
+            
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                 android:layout_weight="0.1"
+                android:text="1."
+                android:fontFamily="@string/fontfamily"
+                  android:textColor="#000000"/>
+            
+            
+            
+             <TextView
+                 android:layout_width="0dp"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="0.9"
+                 android:text=""
+                 android:fontFamily="@string/fontfamily"
+                  android:textColor="#000000"
+                 android:id="@+id/txtfirstno"/>
+            
+            
+            
+            
+            
+        </LinearLayout>
+        
+         <LinearLayout
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+              android:orientation="horizontal">
+            
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                 android:layout_weight="0.1"
+                android:text="2."
+                android:fontFamily="@string/fontfamily"
+                  android:textColor="#000000" />
+            
+            
+            
+             <TextView
+                 android:layout_width="0dp"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="0.9"
+                 android:text=""
+                 android:fontFamily="@string/fontfamily"
+                  android:textColor="#000000"
+                 android:id="@+id/txtsecondno"/>
+            
+            
+            
+            
+            
+        </LinearLayout>
+        
+        
+          <LinearLayout
+              android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+              android:orientation="horizontal">
+            
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                 android:layout_weight="0.1"
+                android:text="3."
+                android:fontFamily="@string/fontfamily"
+                  android:textColor="#000000"
+                android:id="@+id/txtthireddis"/>
+            
+            
+            
+             <TextView
+                 android:layout_width="0dp"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="0.9"
+                 android:text=""
+                 android:fontFamily="@string/fontfamily"
+                  android:textColor="#000000"
+                 android:id="@+id/txtthiredno"/>
+            
+            
+            
+            
+            
+        </LinearLayout>
+         
+         
+         
+    </LinearLayout>
+    
+     <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+              android:layout_marginBottom="5dp"
+         android:padding="10dp">
+            
+              <Button android:id="@+id/btnyesmultinodialog"
+                     android:layout_width="0dp"
+                     android:layout_height="wrap_content"
+                     android:text="Yes"
+                    android:background="@drawable/btn_pressed_glossy"
+                     android:textAllCaps="false"
+                    android:textSize="16dp"
+                    android:fontFamily="@string/fontfamily"
+                  android:textColor="#fff"
+                     android:layout_weight="1"></Button>
+
+             <Button android:id="@+id/btnnomultinodialog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="No"
+                 android:background="@drawable/btn_pressed_glossy"
+                 android:textAllCaps="false"
+                 android:textSize="16dp"
+                 android:fontFamily="@string/fontfamily"
+            android:layout_weight="1"
+                 android:textColor="#fff"
+            android:layout_marginLeft="5dp" 
+             ></Button>
+            
+        </LinearLayout>
+    
+
+</LinearLayout>

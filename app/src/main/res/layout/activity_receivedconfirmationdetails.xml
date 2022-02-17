@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+      android:background="@drawable/newborder">
+
+    <LinearLayout
+        android:id="@+id/headerColor"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:background="#0b6bb7"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/siv"
+            android:layout_width="35sp"
+            android:layout_height="35sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="3sp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/sta_logo" />
+
+        <TextView
+            android:id="@+id/vWB"
+            android:layout_width="0sp"
+            android:layout_height="40sp"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@id/siv"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="5sp"
+            android:text="@string/app_name"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:textStyle="normal"
+            android:fontFamily="@string/fontfamily" />
+
+        <ProgressBar
+            android:id="@+id/progressBar__1"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.85"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#dcdcdc"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
+
+ <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+        <TextView
+            android:id="@+id/txtreq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="0dp"
+            android:text="Material name : "
+            android:fontFamily="@string/fontfamily" />
+          <TextView
+            android:id="@+id/txtmaterialname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="0dp"
+            android:text="material"
+            android:textColor="#000000"
+              android:fontFamily="@string/fontfamily" />
+
+</LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/txtreqstation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="0dp"
+                android:text="Station name   :"
+                android:fontFamily="@string/fontfamily" />
+            <TextView
+                android:id="@+id/txtstatnname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="0dp"
+                android:text="pune"
+                android:textColor="#000000"
+                android:fontFamily="@string/fontfamily" />
+
+        </LinearLayout>
+
+ <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+        
+        <TextView
+            android:id="@+id/txtdocket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="5dp"
+            android:text="Docket no.        :"
+            android:fontFamily="@string/fontfamily" />
+         <TextView
+            android:id="@+id/txtdocketno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="5dp"
+            android:text="111111"
+            android:textColor="#000000"
+             android:fontFamily="@string/fontfamily" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/txtcourier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="5dp"
+                android:text="Mode of courier : "
+                android:fontFamily="@string/fontfamily" />
+
+            <TextView
+                android:id="@+id/txtcouriermode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="5dp"
+                android:text="xyz"
+                android:textColor="#000000"
+                android:fontFamily="@string/fontfamily" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/txtsendby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="5dp"
+                android:text="Sent by             :"
+                android:fontFamily="@string/fontfamily" />
+
+            <TextView
+                android:id="@+id/txtmaterialsendby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:text=""
+                android:textColor="#000000"
+                android:fontFamily="@string/fontfamily" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtmaterialdispatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="5dp"
+                android:text="Dispatch date : "
+                android:fontFamily="@string/fontfamily" />
+
+            <TextView
+                android:id="@+id/txtmaterialdispatchdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="5dp"
+                android:text=""
+                android:textColor="#000000"
+                android:fontFamily="@string/fontfamily" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <Button
+                android:id="@+id/btn_received"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/btn_pressed_glossy"
+                android:text="Received"
+                android:fontFamily="@string/fontfamily"
+                android:textColor="#ffffff"
+                />
+
+            <Button
+                android:id="@+id/btn_returnact"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/btn_pressed_glossy"
+                android:text="Cancel"
+                android:fontFamily="@string/fontfamily"
+                android:textColor="#ffffff"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

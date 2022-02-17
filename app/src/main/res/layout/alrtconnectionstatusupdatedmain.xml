@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/listitemselector"
+    android:orientation="vertical"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
+    card_view:cardElevation="1dp"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:background="#ededed">
+
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    
+
+    <TextView
+        android:id="@+id/tvinstallationidmain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:text="InstallationId"
+        android:textColor="#000000"
+        android:fontFamily="@string/fontfamily"
+        android:textSize="13sp"/>
+
+
+        <TextView
+            android:id="@+id/tvaddSupName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:text="Supporter:   "
+            android:textColor="#000000"
+            android:textSize="13sp"
+            android:fontFamily="@string/fontfamily" />
+
+    </RelativeLayout>
+
+    <!-- <TextView
+        android:id="@+id/tvreasonupdated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvservertimemain"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:text=" "
+        android:textColor="#726E6D"
+        android:typeface="serif" /> -->
+        
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:orientation="horizontal">
+    
+    <TextView
+        android:id="@+id/tvaddedby"
+        android:layout_width="0dp"
+        android:layout_weight="0.75"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"        
+    android:layout_below="@id/tvinstallationidmain"
+        android:text="Alert by:   "
+        android:textColor="#000000"
+        android:fontFamily="@string/fontfamily"
+        android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/tvservertimemain"
+            android:layout_weight="0.25"
+            android:layout_width="0dp"
+            android:gravity="right"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="ServerTime"
+            android:textColor="#FE2E2E"
+            android:fontFamily="@string/fontfamily"
+            android:textSize="13sp"/>
+
+
+    </LinearLayout>
+
+        <TextView
+                android:id="@+id/tv_alert_type_desc"
+                android:layout_width="match_parent"
+                android:layout_gravity="center|left"
+                android:gravity="left|center"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:text=""
+                android:textColor="#000000"
+                android:fontFamily="@string/fontfamily"
+                android:textSize="13sp"/>
+
+
+
+
+
+
+        <TextView
+        android:id="@+id/tvAlertDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_below="@id/tvaddSupName"
+        android:maxLines="3"
+        android:textStyle="bold"
+        android:text="Issue :   "
+        android:textColor="#000000"
+        android:fontFamily="@string/fontfamily"
+        android:textSize="13sp"/>
+
+   <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tvaddedby"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="5dp"
+        android:background="#B6B6B4"
+       android:visibility="gone"/>
+</LinearLayout>
+</android.support.v7.widget.CardView>

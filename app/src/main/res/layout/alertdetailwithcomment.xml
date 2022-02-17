@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f7f7"
+    android:orientation="vertical">
+    
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:background="#0b6bb7"
+        android:orientation="horizontal" >
+        
+        <ImageView
+            android:id="@+id/siv1"
+            android:layout_width="35sp"
+            android:layout_height="35sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="3sp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/sta_logo" />
+
+        <TextView
+            android:id="@+id/vWB"
+            android:layout_width="0sp"
+            android:layout_height="40sp"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@id/siv"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="5sp"
+            android:text="@string/app_name"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:textStyle="normal"
+            android:fontFamily="@string/fontfamily" >
+        </TextView>
+
+        <ImageView
+            android:id="@+id/button_alert_add"
+            android:layout_width="50sp"
+            android:layout_height="40sp"
+            android:padding="5dp"
+            android:background="@android:color/transparent"
+            android:onClick="FilterClick"
+            android:src="@drawable/plusaddicon" >
+        </ImageView>
+
+         <ProgressBar
+            android:id="@+id/progressinvent"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/button_refresh_invent"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/btnrefresh" >
+        </ImageView>
+
+    </LinearLayout>
+    
+    <!--<LinearLayout
+        android:id="@+id/color_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="#81DAF5"
+        android:orientation="vertical" >-->
+
+        <!--android:background="#81DAF5"-->
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="0dp"
+        android:background="#81DAF5"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/stationAlert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="Station Alert"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/color_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="#81DAF5"
+        android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <TextView
+            android:id="@+id/txtalertdesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:text="Alert Description"
+            android:textColor="#000000"
+            android:fontFamily="@string/fontfamily" />
+
+        
+    </LinearLayout>
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:layout_marginTop="0dp"
+        android:paddingRight="5dp" >
+
+        <TextView
+            android:id="@+id/txtrequest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="10dp"
+            android:text="Created By :"
+            android:textColor="#000000"
+            android:fontFamily="@string/fontfamily" />
+
+    <TextView
+        android:id="@+id/txtrequestvalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:text="22"
+        android:textColor="#000000"
+        android:fontFamily="@string/fontfamily" />
+
+</LinearLayout>
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:paddingLeft="5dp"
+        android:layout_marginTop="0dp"
+        android:paddingRight="5dp" >
+        
+         <TextView
+            android:id="@+id/txtoverdue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="10dp"
+            android:text="Created on :"
+            android:textColor="#000000"
+             android:fontFamily="@string/fontfamily" />
+
+    <TextView
+            android:id="@+id/txtoverduevalue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:text="22"
+            android:textColor="#000000"
+        android:fontFamily="@string/fontfamily" />
+        
+    </LinearLayout>
+    
+<View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/tvreasonupdated"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="5dp"
+        android:background="#B6B6B4" />
+</LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/LLayoutAddComment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:visibility="gone"
+        android:orientation="vertical"
+        >
+        <!-- <Button
+         android:id="@+id/editTextAddedByName"
+         android:layout_width="match_parent"
+         android:layout_height="50dp"
+         android:layout_marginLeft="10dp"
+         android:layout_marginRight="10dp"
+         android:layout_marginTop="10dp"
+         android:background="@drawable/edittext_border"
+         android:gravity="left|center"
+         android:hint="Added By Name"
+         android:inputType="text"
+         android:padding="10dp" /> -->
+
+
+        <EditText
+            android:id="@+id/editTextCommentBy"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/edittext_border"
+            android:gravity="left|center"
+            android:hint="Comment By"
+            android:visibility="gone"
+            android:inputType="textCapSentences"
+            android:textColor="#000"
+            android:padding="10dp"
+            android:fontFamily="@string/fontfamily">
+        </EditText>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/edittext_border"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/editTextCommentDesc"
+                android:layout_width="0dp"
+                android:layout_weight="0.95"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:minLines="1"
+                android:maxLines="15"
+                android:gravity="left|center"
+                android:hint="Comment"
+                android:inputType="textMultiLine|textCapSentences"
+                android:textColor="#000"
+                android:padding="5dp"
+                android:fontFamily="@string/fontfamily">
+            </EditText>
+
+            <ImageView
+                android:id="@+id/attachalertimg"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="0.05"
+                android:layout_gravity="center|right"
+                android:src="@drawable/attachimg_gray"></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:weightSum="1" >
+
+            <Button
+                android:id="@+id/button_save"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/btn_pressed"
+                android:text="Comment"
+                android:visibility="visible"
+                android:textColor="#ffffff"
+                android:inputType="textCapWords"
+                android:fontFamily="@string/fontfamily"/>
+
+            <Button
+                android:id="@+id/button_return"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/btn_pressed"
+                android:text="Cancel"
+                android:textColor="#ffffff"
+                android:inputType="textCapWords"
+                android:fontFamily="@string/fontfamily"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/tvreasonupdated"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="0dp"
+            android:background="#eeeeee" />
+        <!-- #B6B6B4 -->
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="#EEEEEE"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical"
+        >
+        <!--#0b6bb7"-->
+
+        <LinearLayout
+            android:id="@+id/resolvebtnlayout"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:background="#EEEEEE"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:visibility="visible">
+
+        <Button
+            android:id="@+id/txtResolve"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_pressed_glossy"
+            android:padding="5dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:visibility="visible"
+            android:text="Resolve"
+            android:textColor="#ffffff"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:fontFamily="@string/fontfamily"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/resolvebtnlayout2"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:background="#EEEEEE"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:visibility="visible"
+            >
+
+        <Button
+            android:id="@+id/txtAccept"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/backshape_normal_green"
+            android:layout_marginRight="5dp"
+            android:text="Accept"
+            android:visibility="visible"
+            android:textColor="#ffffff"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:fontFamily="@string/fontfamily" />
+
+        <Button
+            android:id="@+id/txtReject"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/backshape_normal_red"
+            android:text="Reject"
+            android:textColor="#ffffff"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:fontFamily="@string/fontfamily"
+            android:visibility="visible"
+            />
+
+            </LinearLayout>
+    </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/listlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="0dp"
+            android:background="#EEEEEE"
+        android:orientation="vertical">
+        
+            <ListView
+                    android:id="@+id/getpasslist"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                android:divider="#EEEEEE"
+                android:dividerHeight="0dp"
+                android:background="#EEEEEE"
+                    android:layout_marginBottom="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:scrollingCache="false"
+                android:transcriptMode="alwaysScroll"
+               >
+                    <!-- cdcdcd
+                     android:stackFromBottom="true"
+                    android:divider="#EEEEEE"
+                    android:dividerHeight="1dp"-->
+            </ListView>
+
+    </LinearLayout>
+
+</LinearLayout>

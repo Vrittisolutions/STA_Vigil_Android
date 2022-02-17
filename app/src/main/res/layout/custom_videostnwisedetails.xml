@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="2dp"
+    card_view:cardElevation="1dp"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:id="@+id/colorll"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/listitemselector"
+        android:orientation="vertical"
+        android:padding="5dp">
+        <!--android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="10">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <TextView
+            android:id="@+id/txttitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:text=""
+            android:textColor="#000000"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:fontFamily="@string/fontfamily"/>
+
+        <TextView
+            android:id="@+id/txtdmdesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:text="MSRTC"
+            android:textColor="#000000"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:fontFamily="@string/fontfamily"/>
+
+        <!--<TextView
+            android:id="@+id/txtpendingDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
+            android:text="22-Nov"
+            android:textColor="#000000"
+            android:typeface="serif" />-->
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:weightSum="1"
+        android:paddingRight="5dp" >
+
+        <TextView
+            android:id="@+id/txtstartdt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="0.5"
+            android:layout_marginRight="5dp"
+            android:text="Total :"
+            android:textSize="13dp"
+            android:textColor="#000000"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/txtenddt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="0.5"
+            android:layout_marginRight="0dp"
+            android:text="Overdue :"
+            android:textSize="13dp"
+            android:textColor="#000000"
+            android:fontFamily="@string/fontfamily" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <TextView
+            android:id="@+id/txtstatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:text="MSRTC"
+            android:textSize="13dp"
+            android:textColor="#000000"
+            android:fontFamily="@string/fontfamily" />
+
+        <!--<TextView
+            android:id="@+id/txtpendingDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
+            android:text="22-Nov"
+            android:textColor="#000000"
+            android:typeface="serif" />-->
+    </LinearLayout>
+
+        </LinearLayout>
+
+            <ImageView
+                android:id="@+id/btnpdfdownload"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1.5"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/pdfdwnld"/>
+            <!--android:src="@drawable/icon_pdf_download"
+            android:layout_width="0dp"
+                -->
+
+        </LinearLayout>
+        </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/tvreasonupdated"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="3dp"
+        android:background="#B6B6B4"
+        android:visibility="gone"/>
+
+</android.support.v7.widget.CardView>

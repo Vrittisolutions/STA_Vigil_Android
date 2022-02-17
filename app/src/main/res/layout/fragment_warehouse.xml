@@ -1,0 +1,87 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/newborder"
+    tools:context="com.fragments.WarehouseFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/matreq"
+                android:layout_gravity="center_vertical"
+                android:background="#fff"
+                android:padding="2dp"/>
+
+            <Button
+                android:id="@+id/btnMaterialRequest"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_gravity="center_vertical"
+                android:background="#ededed"
+                android:textColor="#2c2c2c"
+                android:text="Material Request"
+                android:textSize="13sp"
+                android:fontFamily="@string/fontfamily"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/matmyords"
+                android:layout_gravity="center_vertical"
+                android:background="#fff"
+                android:padding="2dp"/>
+
+            <Button
+                android:id="@+id/btn_stock"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:text="Material Stock"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:background="#ededed"
+                android:textColor="#2c2c2c"
+                android:textSize="13sp"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@string/fontfamily"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,29 @@
+
+Service for Filter :
+http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMaster
+
+******* Sound Level : 
+1.http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibration_Android?
+Mobile=9890156056&SyncDate=2016/04/07   (Soundlevel)
+
+2.http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibrationNew?
+Mobile=9890156056&NetworkCode=MSRTC     (SoundLevel_new)
+
+3.http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibration_Load?InstallationId="
+						+ InstallationID + "&SyncDate=" + Syncloaddate
+				
+
+******* Non_reported ads :
+http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetNonReportedAdvt_Android_new?Mobile=9579178054
+
+******* WorkDone:
+
+http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/BookWorkType?WorkType=abc&Remarks=Done%20&MaterialName=&StationName=Ahemadnagar-3&InstallationId=560000000000000000&Mobileno=9579178054&currentDate=2016-05-09%2012:34:00&remarksMaterial=&ActivityId=null&currentLocation=Rahul%20Nagar%20Pune%20Maharashtra%20IN&ActivityName=null&latitude=18.5020525&longitude=73.8154513
+
+
+******Downtime
+
+Statewise
+
+http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetCurrentlyStationDowntime_Android?Mobile=9579178054
+

@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Gradle: com.devs:acr:1.0.1@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/acr-1.0.1.aar/3449ea3ac322c88652baa059b3be1aec/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/acr-1.0.1.aar/3449ea3ac322c88652baa059b3be1aec/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/acr-1.0.1.aar/3449ea3ac322c88652baa059b3be1aec/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/acr-1.0.1.aar/a7574170718fb5360e05479ba870b93b/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/acr-1.0.1.aar/a7574170718fb5360e05479ba870b93b/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/acr-1.0.1.aar/a7574170718fb5360e05479ba870b93b/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.devs/acr/1.0.1/260ebde1499a162788214eb903da6da78b5a507b/acr-1.0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.devs/acr/1.0.1/bea36cee39cf99dd99674d7e1131c9baca43317f/acr-1.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

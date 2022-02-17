@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/dialogboxcolor">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Set password for station"
+        android:textStyle="normal"
+        android:textColor="#111"
+        android:textSize="16dp"
+        android:fontFamily="@string/fontfamily"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp">
+
+
+        <Button
+            android:id="@+id/btmsheetedsationname"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            android:paddingLeft="2dp"
+            android:background="@drawable/edittext_border"
+            android:hint="Select station name"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:layout_weight="5"
+            android:textAllCaps="false"
+            android:fontFamily="@string/fontfamily"
+            >
+        </Button>
+
+        <Button
+            android:id="@+id/btngetpwd"
+            android:layout_width="match_parent"
+            android:layout_marginTop="0dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="5dp"
+            android:text="Get Password"
+            android:textSize="16dp"
+            android:background="@drawable/btn_pressed_glossy"
+            android:layout_weight="6"
+            android:textColor="#fff"
+            android:textAllCaps="false"
+            android:fontFamily="@string/fontfamily"/>
+        <!--style="@android:style/ButtonBar"-->
+        <!--android:background="@drawable/btn_pressed"-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="0dp"
+        android:padding="10dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password: "
+            android:textColor="#111"
+            android:textSize="18dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView android:id="@+id/txtgetpwd"
+            android:textStyle="bold"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#2c2c2c"
+            android:textSize="18dp"
+            android:textIsSelectable="true"
+            android:fontFamily="@string/fontfamily" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btndismiss"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Close"
+        android:textAllCaps="false"
+        android:textSize="16dp"
+        android:textColor="#fff"
+        android:background="@drawable/btn_pressed_glossy"
+        android:layout_margin="10dp"/>
+
+</LinearLayout>

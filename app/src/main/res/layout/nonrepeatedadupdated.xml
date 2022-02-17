@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="2dp"
+    card_view:cardElevation="0.5dp"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingRight="3dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="1dp"
+        android:paddingBottom="1dp"
+        android:background="#ededed">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:orientation="horizontal"
+            android:layout_marginRight="5dp" >
+
+            <TextView
+                android:id="@+id/tvadname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="adv desc"
+                android:textColor="#0D47A1"
+                android:textSize="14dp"
+                android:fontFamily="@string/fontfamily"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tvstationname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="0dp"
+                android:text="adv"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:fontFamily="@string/fontfamily" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" >
+
+            <TextView
+                android:id="@+id/tvworkspacewisename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="Released On:"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:fontFamily="@string/fontfamily" />
+
+            <TextView
+                android:id="@+id/tvdatefrom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="0dp"
+                android:text="No"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:fontFamily="@string/fontfamily"/>
+            
+            
+            <TextView
+                android:id="@+id/tvnontimefrom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="0dp"
+                android:text="No"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:fontFamily="@string/fontfamily"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" >
+
+            <TextView
+                android:id="@+id/tvendtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="End Date:"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:fontFamily="@string/fontfamily"/>
+
+            <TextView
+                android:id="@+id/tvdateto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="47dp"
+                android:layout_marginTop="0dp"
+                android:text="No "
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:fontFamily="@string/fontfamily" />
+            
+               <TextView
+                android:id="@+id/tvnontimeto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="0dp"
+                android:text="No"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                   android:fontFamily="@string/fontfamily" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" >
+               
+               <TextView
+                android:id="@+id/tvendtime3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="First Reporting:"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:fontFamily="@string/fontfamily" />
+
+     <!--            </LinearLayout>
+        
+             <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" >  -->            
+
+            <TextView
+                android:id="@+id/tvnonfirstdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:layout_marginLeft="12dp"
+                android:layout_marginTop="0dp"
+                android:text="No info"
+                android:textSize="14dp"
+               android:textColor="#38610B"
+                android:fontFamily="@string/fontfamily" />
+            
+               <TextView
+                android:id="@+id/tvnonfirsttime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="0dp"
+                android:text="No info"
+                  android:textColor="#38610B"
+                android:textSize="14dp"
+                   android:fontFamily="@string/fontfamily" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" >
+               
+                 <TextView
+                android:id="@+id/tvendtime2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="Latest added:"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:fontFamily="@string/fontfamily" />
+               
+  <!--             </LinearLayout>
+        
+              <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" >  -->        
+
+            <TextView
+                android:id="@+id/tvnonlastdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22dp"
+                android:layout_marginTop="0dp"
+                android:text="No info"
+             
+                android:textSize="14dp"
+                 android:textColor="#38610B"
+                android:fontFamily="@string/fontfamily" />
+            
+               <TextView
+                android:id="@+id/tvnonlasttime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:layout_marginTop="0dp"
+                android:text="No info"
+              
+                android:textSize="14dp"
+                  android:textColor="#38610B"
+                   android:fontFamily="@string/fontfamily" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tvworkspacewisename3"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="MasterRecord"
+                android:textColor="#000000"
+                android:textSize="10dp"
+                android:gravity="center_horizontal"
+                android:fontFamily="@string/fontfamily" />
+            
+            <TextView
+                android:id="@+id/tvworkspacewisename1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:text="DetailRecord"
+                android:textColor="#000000"
+                android:textSize="10dp"
+                android:gravity="center_horizontal"
+                android:fontFamily="@string/fontfamily" />
+            
+            <TextView
+                android:id="@+id/tvworkspacewisename2"
+               android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Clip record"
+              android:gravity="center_horizontal"
+                android:textColor="#000000"
+                android:textSize="10dp"
+                android:fontFamily="@string/fontfamily"/>
+
+            <TextView
+                android:id="@+id/tvCSR"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="ClipSend"
+              android:gravity="center_horizontal"
+                android:textColor="#000000"
+                android:textSize="10dp"
+                android:fontFamily="@string/fontfamily" />
+            
+          
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+              <TextView
+                android:id="@+id/tvmasterrecord"
+               android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="no "
+                android:textColor="#000000"
+                android:textSize="12dp"
+                android:gravity="center_horizontal"
+                  android:fontFamily="@string/fontfamily" />
+
+            <TextView
+                android:id="@+id/tvdetailrecord"
+              android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="no"
+                android:textColor="#000000"
+                android:textSize="12dp"
+           android:gravity="center_horizontal"
+                android:fontFamily="@string/fontfamily" />
+            
+            
+            <TextView
+                android:id="@+id/tvclipmaster"
+               android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="no"
+                android:textColor="#000000"
+                android:textSize="12dp"
+               android:gravity="center_horizontal"
+                android:fontFamily="@string/fontfamily" />
+            
+               <TextView
+                android:id="@+id/tvCSRv"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="no"
+                android:textColor="#000000"
+                android:textSize="12dp"
+               android:gravity="center_horizontal"
+                   android:fontFamily="@string/fontfamily" />
+               
+        </LinearLayout>
+
+        <!--<LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" >
+
+        </LinearLayout>-->
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

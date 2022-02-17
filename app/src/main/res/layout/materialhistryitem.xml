@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="1dp"
+    card_view:cardElevation="1dp"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardUseCompatPadding="true">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:background="#ededed"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginTop="1dp"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/mat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="left|center"
+            android:text="Material Name :"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily"/>
+
+        <TextView
+            android:id="@+id/matdisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3sp"
+            android:layout_weight="0.8"
+            android:gravity="left|center"
+            android:paddingLeft="5dp"
+            android:text="sssssss"
+            android:textColor="#e720ad"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/tvsCntc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:paddingLeft="10sp"
+            android:text="22"
+            android:textColor="#ff0000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/StatusDispaly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:paddingRight="5dp"
+            android:text="ssss"
+            android:textColor="#089c7f"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/Status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:text="Status :"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:fontFamily="@string/fontfamily" />
+
+            <TextView
+                android:id="@+id/StatusDispaly_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="ssss"
+                android:textColor="#089c7f"
+                android:textSize="13dp"
+                android:fontFamily="@string/fontfamily"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/reson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reason :"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily"/>
+
+        <TextView
+            android:id="@+id/resondisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="ssss"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily"/>
+
+    </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:orientation="horizontal"
+              android:weightSum="1"
+              android:layout_weight="1">
+
+              <TextView
+                  android:id="@+id/sender"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="0.2"
+                  android:text="Send By :"
+                  android:textColor="#000000"
+                  android:textSize="12dp"
+                  android:fontFamily="@string/fontfamily" />
+
+              <TextView
+                  android:id="@+id/snderdisplay"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10sp"
+                  android:layout_marginStart="10sp"
+                  android:text="ssss"
+                  android:textColor="#000000"
+                  android:textSize="12dp"
+                  android:fontFamily="@string/fontfamily" />
+          </LinearLayout>
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:orientation="horizontal"
+              android:layout_weight="1">
+
+              <TextView
+                  android:id="@+id/reportee"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Send To:"
+                  android:textColor="#000000"
+                  android:textSize="12dp"
+                  android:fontFamily="@string/fontfamily" />
+
+              <TextView
+                  android:id="@+id/reporteedisplay"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10sp"
+                  android:layout_marginStart="10sp"
+                  android:text="ssss"
+                  android:textColor="#000000"
+                  android:textSize="12dp"
+                  android:fontFamily="@string/fontfamily"/>
+          </LinearLayout>
+
+      </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/DAte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Added Date :"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/dateDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="ssss"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+    </LinearLayout>
+
+      <!--status-->
+
+  </LinearLayout>
+
+</android.support.v7.widget.CardView>

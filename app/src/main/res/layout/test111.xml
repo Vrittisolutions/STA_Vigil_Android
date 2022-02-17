@@ -1,0 +1,990 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--first layout of 3 buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/border">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OT"
+            android:textSize="15sp"
+            android:textColor="#111"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_weight="0.52"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#111"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.48"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Physical Fitness"
+            android:textColor="#111"
+            android:textSize="15sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#111"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pre Anesthesia"
+            android:textSize="15sp"
+            android:textColor="#111"
+            android:padding="10dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:layout_weight="0.48"/>
+
+    </LinearLayout>
+
+    <!--2nd layout is scrollview-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--1st is Linear layout-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="5dp">
+
+            <!--1st TextView-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#111"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="#111"
+                android:padding="5dp"
+                android:background="#dcdcdc"
+                android:text="Physical Fitness Form"/>
+
+            <!--3rd Linear Layout Symptoms - Orientation vertical-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#111"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#111"
+                    android:padding="5dp"
+                    android:text="1.Symptoms"/>
+
+                <!--chestpain-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Chest pain : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Palpitation-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Palpitation : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Breathlessness-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Breathlessness : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Fever-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Fever : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Cough-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cough : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Sore Throat-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sore Throat : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Allergy-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Allergy : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--4th Linear Layout Past History - Orientation vertical-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#111"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#111"
+                    android:padding="5dp"
+                    android:text="2.Past History"/>
+
+                <!--HTN-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HTN : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--DM-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DM : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Ischemic Heart disease-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Ischemic Heart disease : "
+                        android:textSize="12sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Cerebrovascular Accident-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Cerebrovascular Accident : "
+                        android:textSize="12sp"
+                        android:paddingLeft="10sp"
+                        android:layout_gravity="center_vertical|top"
+                        android:gravity="center_vertical|top"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Treatment-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Treatment : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Anti Hypertensive-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Anti Hypertensive  : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Insulin-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Insulin : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Treatment-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Treatment : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Anti Hypertensive-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Anti Hypertensive  : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Insulin-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Insulin : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Treatment-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Treatment : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Anti Hypertensive-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Anti Hypertensive  : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Insulin-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Insulin : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Treatment-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Treatment : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Anti Hypertensive-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Anti Hypertensive  : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Insulin-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Insulin : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Treatment-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Treatment : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Anti Hypertensive-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Anti Hypertensive  : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Insulin-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Insulin : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Treatment-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Treatment : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Anti Hypertensive-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Anti Hypertensive  : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+                <!--Insulin-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Insulin : "
+                        android:textSize="13sp"
+                        android:paddingLeft="10sp"
+                        android:layout_weight="0.6"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#111"
+                        android:layout_weight="0.4"
+                        android:padding="5dp"
+                        android:hint="enter value"
+                        android:background="@drawable/border"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--buttons layout - Orientation horizontal-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Save"
+                    android:textSize="16sp"
+                    android:textColor="#ffffff"
+                    android:background="#006600"
+                    android:layout_margin="5dp"
+                    android:layout_weight="0.5"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Next"
+                    android:textSize="16sp"
+                    android:textColor="#ffffff"
+                    android:background="#5497cc"
+                    android:layout_margin="5dp"
+                    android:layout_weight="0.5"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cancel"
+                    android:textSize="16sp"
+                    android:textColor="#ffffff"
+                    android:background="#ff4112"
+                    android:layout_margin="5dp"
+                    android:layout_weight="0.5"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

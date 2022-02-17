@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "947348823673",
+    "firebase_url": "https://indigo-night-123306.firebaseio.com",
+    "project_id": "indigo-night-123306",
+    "storage_bucket": "indigo-night-123306.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947348823673:android:19f513e528f21b1b",
+        "android_client_info": {
+          "package_name": "com.stavigilmonitoring"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "947348823673-trsg6o31ri8vugvqjior5e41vodga1hl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.stavigilmonitoring",
+            "certificate_hash": "ecb5ddec5052c1c6d7de0a13bdb9be8290f07ae9"
+          }
+        },
+        {
+          "client_id": "947348823673-744g6bkkhrv6u7g0c1i8cutnr3c64mik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYtvx4z8YAaa4X1UUjMOBO7ZGvbl6ntWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "947348823673-744g6bkkhrv6u7g0c1i8cutnr3c64mik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="fill_parent"
+   android:layout_height="fill_parent"
+   android:paddingLeft="16dp"
+   android:paddingRight="16dp" >
+   
+   <TextView
+      android:id="@+id/tvdowntimelast1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+   android:textColor="#000000"
+       android:fontFamily="@string/fontfamily"
+      android:text="date"
+       android:textSize="13sp"
+      android:layout_alignParentLeft="true" />
+
+   <TextView
+      android:id="@+id/tvdowntimedateday1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+     android:textColor="#FE2E2E"
+       android:fontFamily="@string/fontfamily"
+         android:text="DayName"
+       android:textSize="13sp"
+      android:layout_centerHorizontal="true" />
+
+    <TextView
+      android:id="@+id/tvdowntimeseven1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="#000000"
+         android:text="Time"
+        android:fontFamily="@string/fontfamily"
+        android:textSize="13sp"
+      android:layout_alignParentRight="true" />
+
+</RelativeLayout>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    <!-- #81DAF5
+    #9400D3 -->
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#BEECFA"
+        >
+
+    <TextView
+        android:id="@+id/txtcmntby"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#BEECFA"
+        android:focusable="false"
+        android:gravity="left"
+        android:paddingLeft="5dp"
+        android:text="12 Jan 2014"
+        android:textColor="#000"
+        android:textSize="14dp"
+        android:fontFamily="@string/fontfamily"/>
+    
+    <!-- #f9f93d  #F3E5F5 -->    
+    </LinearLayout>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#E4F7FD">
+
+    <LinearLayout
+        android:id="@+id/layouttxt1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/cmntDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:text="Time"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+
+            </LinearLayout>
+            
+    <LinearLayout
+        android:id="@+id/layouttxt2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="3dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/cmntDT"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:gravity="right"
+            android:text="Time"
+            android:layout_weight="1"
+        	android:layout_marginBottom="5dp"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:fontFamily="@string/fontfamily" />
+
+            </LinearLayout>
+
+   </LinearLayout>  
+ 
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/tvreasonupdated"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:background="#B6B6B4" />
+
+</LinearLayout>

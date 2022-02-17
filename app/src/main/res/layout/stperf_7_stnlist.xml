@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
+    card_view:cardElevation="0.5dp"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="3dp">
+
+        <TextView
+            android:id="@+id/txtstnname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TestMSRTC"
+            android:textColor="#111"
+            android:textSize="11sp"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:layout_weight="0.9"/>
+
+        <TextView
+            android:id="@+id/txtval1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="100%"
+            android:textColor="@color/buttoncolor"
+            android:textSize="12sp"
+            android:layout_gravity="center|right"
+            android:gravity="center|right"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/txtval2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="60%"
+            android:textColor="@color/buttoncolor"
+            android:textSize="12sp"
+            android:layout_gravity="center|right"
+            android:gravity="center|right"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/txtval3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="111%"
+            android:textColor="@color/buttoncolor"
+            android:textSize="12sp"
+            android:layout_gravity="center|right"
+            android:gravity="center|right"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/txtval4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="99%"
+            android:textColor="@color/buttoncolor"
+            android:textSize="12sp"
+            android:layout_gravity="center|right"
+            android:gravity="center|right"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/txtval5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="300%"
+            android:textColor="@color/buttoncolor"
+            android:textSize="12sp"
+            android:layout_gravity="center|right"
+            android:gravity="center|right"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/txtval6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="456%"
+            android:textColor="@color/buttoncolor"
+            android:textSize="12sp"
+            android:layout_gravity="center|right"
+            android:gravity="center|right"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/txtval7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="15%"
+            android:textColor="@color/buttoncolor"
+            android:textSize="12sp"
+            android:layout_gravity="center|right"
+            android:gravity="center|right"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/txtavg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="119%"
+            android:textColor="#111"
+            android:textSize="12sp"
+            android:layout_gravity="center|right"
+            android:gravity="center|right"
+            android:layout_weight="1"/>
+
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

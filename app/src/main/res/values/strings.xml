@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">STA Vigil</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="button_small">Submit</string>
+    <string name="promt_project">Select Reason</string>
+    <string name="str_btn_chart">Income vs Expense Bar Chart</string>
+    <string name="fontfamily">normal</string>
+
+    <color name="txtc">#cdcdcd</color>
+
+    <string name="scraprepair">Select scrap or repair</string>
+    <string name="edtxtboxheight">40dp</string>
+    <string name="edttxtsize">15dp</string>
+
+    <string-array name="sr_array">
+        <item>Scrap</item>
+        <item>Repair</item>
+    </string-array>
+
+    <string name="worktype_prompt">Select Worktype</string>
+
+    <string-array name="worktype_class">
+        <item>Remote</item>
+        <item>Travel</item>
+    </string-array>
+
+    <string name="Couriermode">Select Type</string>
+    <string-array name="modearray">
+
+        <item>Courier</item>
+        <item>Parcel</item>
+    </string-array>
+    <string name="plant_prompt">Status</string>
+
+    <string-array name="plant_arrays">
+        <item>ASSIGNED</item>
+        <item>CANCELLED</item>
+        <item>COMPLETE</item>
+        <item>PAUSED</item>
+        <item>WIP</item>
+    </string-array>
+
+    <string-array name="alert_type">
+        <item>Problem</item>
+        <item>Change</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="advactivitydesc">You have been assigned an activity of <b>Suhana Papad Masala</b> advertisement for <b>10</b>  station locations.</string>
+    <string name="advactivitydesc2"><b>Chetana Salunkhe</b> had been assigned an activity of <b>Suhana Papad Masala</b> advertisement for
+        <b>10</b> station locations, needs to be completed from <b>19 Mar 2020 to 31 Mar 2020</b>.</string>
+    <string name="advactivityTL">Video recording for - <b>29262 - Vritti Suchana MH_14 Hirkani</b></string>
+    <string name="advactivitySUPP">Video recording for - <b>29262 - Vritti Suchana MH_14 Hirkani</b> for <b>Swarget</b> station</string>
+</resources>

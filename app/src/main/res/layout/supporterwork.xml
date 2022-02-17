@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical|top"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="5dp"
+    android:background="@drawable/listitemselector"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|top"
+        android:layout_marginTop="3sp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        android:weightSum="1" >
+
+        <ImageButton
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginTop="3dp"
+            android:background="#F06292" />
+
+        <TextView
+            android:id="@+id/mat"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:gravity="left"
+            android:text="PuneStation"
+            android:textColor="#0000b2"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.08"
+            android:text="Added Date :"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/dateDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_weight=".92"
+            android:text="ssss"
+            android:textColor="#000000"
+            android:textSize="13dp"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/work"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="18"
+            android:text="Work type :"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/workdisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="20.57"
+            android:text="ssss"
+            android:textColor="#000000"
+            android:textSize="13dp"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/sender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.93"
+            android:text="Remark :"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/wkremdisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginStart="10sp"
+            android:layout_weight="22.07"
+            android:text="ssss"
+            android:textColor="#000000"
+            android:textSize="13dp"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/reportee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Material Used:"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily"/>
+
+        <TextView
+            android:id="@+id/matedisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginStart="10sp"
+            android:text="ssss"
+            android:textColor="#000000"
+            android:textSize="13dp"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/DAte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remark :"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/matremDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="ssss"
+            android:textColor="#000000"
+            android:textSize="13dp"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/mob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.08"
+            android:text="Mobile No :"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/mobDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0.92"
+            android:text="ssss"
+            android:textColor="#000000"
+            android:textSize="13dp"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/Status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.08"
+            android:text="Location :"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/LocationDispaly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0.92"
+            android:text="ssss"
+            android:textColor="#089c7f"
+            android:textSize="13dp"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+</LinearLayout>

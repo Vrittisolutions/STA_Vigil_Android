@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="100dp"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/notify_text_header"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:focusable="false"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="40dp"
+        android:text="12 Jan 2014"
+        android:textColor="#9400D3"
+        android:textSize="17dp"
+        android:fontFamily="@string/fontfamily"/>
+
+    <!--android:background="#9400D3"-->
+
+
+</LinearLayout>

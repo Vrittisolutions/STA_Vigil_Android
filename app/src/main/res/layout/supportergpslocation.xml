@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/newborder">
+
+        <LinearLayout android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:background="#0b6bb7"
+        android:orientation="horizontal">
+
+        <ImageView android:id="@+id/siv1"
+         android:layout_height="35sp"
+            android:layout_width="35sp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/sta_logo"
+            android:layout_marginTop="3sp"
+            android:layout_marginLeft="5sp" 
+           />
+         <TextView
+                android:id="@+id/vWB"
+                android:layout_width="0sp"
+                android:layout_height="40sp"
+                android:layout_weight="1"
+                android:text="@string/app_name"
+                android:textColor="#ffffff"
+                android:textSize="18dp"
+                android:textStyle="normal"
+                android:paddingLeft="5sp"
+             android:fontFamily="@string/fontfamily"
+                android:gravity="center_vertical"
+                android:layout_toRightOf="@id/siv"
+                android:layout_gravity="center_vertical"
+                >
+            </TextView>
+
+           <ProgressBar
+        android:id="@+id/progressBar_gps"
+        android:layout_width="60sp"
+        android:layout_height="40sp"
+          android:visibility="gone" />
+
+
+         <ImageView
+                android:id="@+id/button_refresh_gps_main"
+                android:layout_width="60sp"
+                android:layout_height="40sp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/btnrefresh" 
+               >
+            </ImageView>
+             </LinearLayout>
+  <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         android:background="#81DAF5"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/onactivitynamereassign"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"
+                    android:text="GPS Data"
+                    android:textColor="#000000"
+                    android:textSize="16dp"
+                    android:padding="5dp"
+                    android:fontFamily="@string/fontfamily"
+                   />
+        
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="2dp"
+            android:background="#B6B6B4" />
+    </LinearLayout>
+
+   <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/gpsdetail"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@+id/txtload_earlierdata"
+            android:layout_marginLeft="5sp"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="5sp"
+            android:cacheColorHint="#000000"
+            android:scrollingCache="false" />
+        
+       
+
+        <Button
+            android:id="@+id/txtload_earlierdata"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:background="@drawable/btn_pressed_glossy"
+            android:padding="10dp"
+            android:onClick="reLoadMore"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Load earlier records"
+            android:textColor="#ffffff"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:fontFamily="@string/fontfamily" />
+    </RelativeLayout>
+  
+</LinearLayout>

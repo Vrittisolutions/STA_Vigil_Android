@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="1dp"
+    card_view:cardElevation="0.5dp"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardUseCompatPadding="true">
+
+    <TextView  android:id="@+id/tvReason"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:text="reason"
+        android:paddingLeft="10sp"
+        android:typeface="serif"
+        android:textColor="#000000"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:fontFamily="@string/fontfamily"
+        android:background="@drawable/listitemselector"/>
+
+</android.support.v7.widget.CardView>

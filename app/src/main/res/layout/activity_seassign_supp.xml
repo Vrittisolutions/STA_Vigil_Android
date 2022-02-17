@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/newborder"
+    tools:context=".SEAssignActivity">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:background="#0b6bb7"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/siv1"
+            android:layout_width="35sp"
+            android:layout_height="35sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="3sp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/sta_logo" />
+
+        <TextView
+            android:id="@+id/vWB"
+            android:layout_width="0sp"
+            android:layout_height="40sp"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@id/siv"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="5sp"
+            android:text="@string/app_name"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:textStyle="normal"
+            android:fontFamily="@string/fontfamily" >
+        </TextView>
+
+        <ImageView
+            android:id="@+id/button_invent_delete"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:background="@android:color/transparent"
+
+            android:src="@drawable/ic_menu_delete" >
+        </ImageView>
+
+        <ProgressBar
+            android:id="@+id/progressinvent"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/button_refresh_invent"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/btnrefresh"
+            android:visibility="gone">
+        </ImageView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:background="#81DAF5"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/stationInvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Assign Work"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        android:background="#ededed"
+        android:padding="10dp"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/txtdesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_border"
+            android:text="@string/advactivitySUPP"
+            android:textColor="#111"
+            android:textSize="13sp"
+            android:maxLines="5"
+            android:padding="7dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtsupporter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_border"
+                android:hint="Select Supporter"
+                android:textColor="#111"
+                android:textSize="13sp"
+                android:maxLines="5"
+                android:padding="7dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="0.5"
+                android:layout_marginRight="5dp"/>
+
+            <TextView
+                android:id="@+id/txtstation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_border"
+                android:hint="Select Station"
+                android:textColor="#111"
+                android:textSize="13sp"
+                android:maxLines="5"
+                android:padding="7dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="0.5"
+                android:layout_marginLeft="5dp"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edtremark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_border"
+            android:hint="Remark"
+            android:textColor="#111"
+            android:textSize="13sp"
+            android:maxLines="5"
+            android:padding="7dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="0.5" />
+
+        <Button
+            android:id="@+id/btnadd"
+            android:layout_width="match_parent"
+            android:layout_height="30sp"
+            android:background="@drawable/btn_pressed_glossy"
+            android:text="Add"
+            android:textColor="#ffffff"
+            android:layout_marginTop="10sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/listsupporters"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dividerHeight="0sp"
+            android:divider="@null"
+            android:layout_weight="9.5"/>
+
+        <Button
+            android:id="@+id/btnassign"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/btn_pressed_glossy"
+            android:fontFamily="@string/fontfamily"
+            android:text="Assign"
+            android:textStyle="bold"
+            android:visibility="visible"
+            android:textColor="#ffffff"
+            android:layout_weight="0.5"/>
+
+    </LinearLayout>
+
+</LinearLayout>

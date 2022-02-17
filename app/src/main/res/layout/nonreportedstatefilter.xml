@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/newborder"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="#0b6bb7"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="34sp"
+            android:layout_height="34sp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/sta_logo" />
+
+        <TextView
+            android:layout_width="0sp"
+            android:layout_height="40sp"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@id/siv"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="5sp"
+            android:text="@string/app_name"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:textStyle="normal"
+            android:fontFamily="@string/fontfamily">
+        </TextView>
+
+        <ImageView
+            android:id="@+id/button_alert_add"
+            android:layout_width="50sp"
+            android:layout_height="40sp"
+            android:padding="5dp"
+            android:visibility="gone"
+            android:background="@android:color/transparent"
+            android:src="@drawable/plusaddicon" >
+        </ImageView>
+
+        <ProgressBar
+            android:id="@+id/nonrepstFilterState"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/button_refresh_nonrep_filter"
+            android:layout_width="60sp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/btnrefresh" >
+        </ImageView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#81DAF5"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/nonrepfilt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:text="Non Reported Stations-SubNetwork"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:fontFamily="@string/fontfamily"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/networksumnonrep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/listitemselector"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+
+        <ImageView
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_marginLeft="5sp"
+            android:background="@drawable/announcement"
+            android:layout_gravity="center_vertical" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tvsNamenonrep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10sp"
+                android:text="aa"
+                android:textColor="#000000"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:fontFamily="@string/fontfamily" />
+
+            <TextView
+                android:id="@+id/tvsCntnonrep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5sp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical|right"
+                android:text="aa"
+                android:textColor="#ff0000"
+                android:textSize="13sp"
+                android:fontFamily="@string/fontfamily" />
+
+            <TextView
+                android:id="@+id/tvsAdcntnonrep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvsNamenonrep"
+                android:layout_marginBottom="0sp"
+                android:layout_marginTop="5sp"
+                android:paddingBottom="10sp"
+                android:paddingLeft="10sp"
+                android:text="Non-Reported Ads : "
+                android:textColor="#726E6D"
+                android:textSize="11sp"
+                android:fontFamily="@string/fontfamily"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/listFiternonrep"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="#000000"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:scrollingCache="false"
+        android:numColumns="2"/>
+
+</LinearLayout>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/newborder"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+        android:background="#0b6bb7"
+        android:gravity="top"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.7"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/sta_logo" />
+
+            <TextView
+                android:id="@+id/vWB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:text="@string/app_name"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                android:textStyle="normal"
+                android:fontFamily="@string/fontfamily" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.3"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/button_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:onClick="menu"
+                android:paddingRight="5dp"
+                android:src="@drawable/menu"
+                android:visibility="invisible" >
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/button_refresh_inspection_main"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:padding="7dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:paddingLeft="0dp"
+                android:src="@drawable/refresh" >
+            </ImageView>
+        </LinearLayout>
+    </LinearLayout>
+    
+    	<LinearLayout android:layout_width="fill_parent"
+		android:id="@+id/activecolorex" android:layout_height="wrap_content"
+		android:orientation="horizontal" android:gravity="top" 
+		android:background="#ffffff">
+
+	</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/onactivitynamereassign"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:text="Inspection"
+                    android:textColor="#000000"
+                      android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:fontFamily="@string/fontfamily" />
+
+                <ListView
+                    android:id="@+id/lvinspection"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:cacheColorHint="#000000"
+                    android:divider="#000000"
+                    android:scrollingCache="false" >
+                </ListView>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="#B6B6B4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</LinearLayout>

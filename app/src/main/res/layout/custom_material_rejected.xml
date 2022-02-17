@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="0dp"
+    card_view:cardElevation="0dp"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:background="@drawable/listitemselector"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:padding="3dp">
+
+        <TextView
+            android:id="@+id/txtname_rejected"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:text="material"
+            android:textSize="13dp"
+            android:textColor="#000000"
+            android:fontFamily="@string/fontfamily"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:layout_weight="0.25"/>
+
+        <TextView
+            android:id="@+id/txtforstn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:text="station"
+            android:textSize="13dp"
+            android:textColor="#000000"
+            android:fontFamily="@string/fontfamily"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:layout_weight="0.3"/>
+
+        <TextView
+            android:id="@+id/txtrejby"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:text="Rejected by"
+            android:textSize="11dp"
+            android:fontFamily="@string/fontfamily"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:layout_weight="0.3"/>
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>

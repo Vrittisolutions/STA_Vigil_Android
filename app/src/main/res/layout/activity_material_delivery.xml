@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/newborder"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/headerColor"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:background="#0b6bb7"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/siv"
+            android:layout_width="35sp"
+            android:layout_height="35sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="3sp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/sta_logo" />
+
+        <TextView
+            android:id="@+id/vWB"
+            android:layout_width="0sp"
+            android:layout_height="40sp"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@id/siv"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="5sp"
+            android:text="@string/app_name"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:textStyle="normal"
+            android:fontFamily="@string/fontfamily" >
+        </TextView>
+
+        <ImageView
+            android:id="@+id/filtr_pendmaterialdisptch"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/btnfilter"></ImageView>
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/button_refresh_connection"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/btnrefresh" >
+        </ImageView>
+    </LinearLayout>
+
+    <EditText android:id="@+id/edfiter_pendmatdisptch"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:background="@drawable/edback"
+        android:textSize="14dp"
+        android:hint="Search here..."
+        android:textColor="#000000"
+        android:visibility="gone"
+        android:fontFamily="@string/fontfamily"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:background="#81DAF5"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/materialreq_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="5dp"
+            android:text="Pending Dispatch Materials List"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:fontFamily="@string/fontfamily" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+       android:padding="5dp"
+        android:background="#dcdcdc">
+
+        <TextView
+            android:id="@+id/txtname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Material"
+            android:layout_weight="0.6"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:paddingLeft="5dp"
+            android:textColor="#000000"
+            android:textSize="13dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/txtforstn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="For Station"
+            android:layout_weight="0.6"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:textColor="#000000"
+            android:textSize="13dp"
+            android:paddingLeft="20dp"
+            android:fontFamily="@string/fontfamily" />
+
+        <TextView
+            android:id="@+id/txtbysupporter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:text="By Supporter"
+            android:layout_weight="0.6"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:textSize="13dp"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:paddingRight="5dp"
+            android:fontFamily="@string/fontfamily" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:background="#ededed">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_weight="0.5">
+
+                <ImageView
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:src="@drawable/mat0" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Material"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_weight="0.5">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/newmat" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_weight="0.5">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/repairmat" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Repair"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/materialreq_delivered"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="#000000"
+            android:dividerHeight="0dp"
+            android:divider="@null"
+            android:scrollingCache="false" />
+
+    </LinearLayout>
+
+</LinearLayout>
