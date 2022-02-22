@@ -293,6 +293,7 @@ String alertId="";
                         String AlrtAddedByName = c1.getString(c1.getColumnIndex("AddedBy"));
                         String AlertDesc = c1.getString(c1.getColumnIndex("AlertDesc"));
                         StnSupName = c1.getString(c1.getColumnIndex("SupporterName"));
+                        String AlertType = c1.getString(c1.getColumnIndex("AlertType"));
                         Log.e("Alrt ka time id", c1.getString(c1.getColumnIndex("AlertId")));
                         Log.e("Added Date", column1);
                         Log.e("AlrtAddedByName", AlrtAddedByName);
@@ -342,6 +343,7 @@ String alertId="";
                                 sitem.setStnSupName(StnSupName);
                                 sitem.setAlrtAddedByName(AlrtAddedByName);
                                 sitem.setAlertDesc(AlertDesc);
+                                sitem.setAlertType(AlertType);
                                 Log.e("StnSupName", StnSupName);
                                 sitem.Setcount(count);
                                 searchResults.add(sitem);
@@ -539,6 +541,8 @@ String alertId="";
                         String AlertDesc = c1.getString(c1.getColumnIndex("AlertDesc"));
                         StnSupName = c1.getString(c1.getColumnIndex("SupporterName"));
                         alertId = c1.getString(c1.getColumnIndex("AlertId"));
+                        alertId = c1.getString(c1.getColumnIndex("AlertId"));
+                        String AlertType = c1.getString(c1.getColumnIndex("AlertType"));
                         Log.e("Alrt ka time id", c1.getString(c1.getColumnIndex("AlertId")));
                         Log.e("Added Date", column1);
                         Log.e("Alert Description", AlertDesc);
@@ -585,6 +589,7 @@ String alertId="";
                                 sitem.setAlrtAddedByName(AlrtAddedByName);
                                 sitem.setAlertDesc(AlertDesc);
                                 sitem.setAlertId(alertId);
+                                sitem.setAlertType(AlertType);
                                 Log.e("Alert Description",AlertDesc);
                                 sitem.Setcount(count);
 
@@ -1031,6 +1036,7 @@ String alertId="";
                 String RejectedDT = c.getString(c.getColumnIndex("RejectedDt"));
                 String Mobile = c.getString(c.getColumnIndex("Mobile"));
                 String SupporterName = c.getString(c.getColumnIndex("SupporterName"));
+                String AlertType = c.getString(c.getColumnIndex("AlertType"));
 
                 dataBundle.putString("Type", mType);
                 dataBundle.putString("AlertId", AlertId);
@@ -1042,6 +1048,7 @@ String alertId="";
                 dataBundle.putString("isResolved", ResolveBy);
                 dataBundle.putString("AlertByMobNo", Mobile);
                 dataBundle.putString("SupporterName", SupporterName);
+                dataBundle.putString("AlertType", AlertType);
                 if(alertId.equals(AlertId)) {
                     AlertDetails(dataBundle);
                 }

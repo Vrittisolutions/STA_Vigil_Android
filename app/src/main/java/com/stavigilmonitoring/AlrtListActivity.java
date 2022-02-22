@@ -730,6 +730,7 @@ public class AlrtListActivity extends Activity {
 				String RejectedDT  = c.getString( c.getColumnIndex("RejectedDt") );
 				String SupporterName  = c.getString( c.getColumnIndex("SupporterName") );
 				String networkCode  = c.getString( c.getColumnIndex("NetworkCode") );
+				String AlertType  = c.getString( c.getColumnIndex("AlertType") );
 				alertsItemBean = new AlertsItemBean();
 				alertsItemBean.setAlertId(AlertId);;
 				alertsItemBean.setAlertDesc(AlertDesc);
@@ -746,6 +747,7 @@ public class AlrtListActivity extends Activity {
 				alertsItemBean.setRejectedBy(RejectedBy);
 				alertsItemBean.setRejectedDt(RejectedDT);
 				alertsItemBean.setSupporterName(SupporterName);
+				alertsItemBean.setAlertType(AlertType);
 				//alertsItemBean.setNetworkCode(networkCode);
 				alertsItemBeanlist.add(alertsItemBean);
 			}while(c.moveToNext());

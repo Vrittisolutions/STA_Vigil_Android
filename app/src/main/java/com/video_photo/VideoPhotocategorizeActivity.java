@@ -1,11 +1,10 @@
-package com.stavigilmonitoring;
+package com.video_photo;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
@@ -18,6 +17,9 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.database.DBInterface;
+import com.stavigilmonitoring.DatabaseHandler;
+import com.stavigilmonitoring.R;
+import com.stavigilmonitoring.utility;
 
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -28,13 +30,13 @@ import java.io.IOException;
  * Created by Admin-3 on 11/8/2017.
  */
 
-public class DmCcategorizeActivity extends Activity {
+public class VideoPhotocategorizeActivity extends Activity {
 
     LinearLayout  dmcstnwise, dmcsonowise,dmcstnwise_video,dmcsonowise_video;
     private static DmCRefresh asynk_new;
     private ProgressBar mprogressBar;
     private ImageView btnrefresh;
-    private com.stavigilmonitoring.utility ut;
+    private utility ut;
     Context parent;
     String mobno;
     DatabaseHandler db;
@@ -43,7 +45,7 @@ public class DmCcategorizeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        setContentView(com.stavigilmonitoring.R.layout.activity_dmc_category);
+        setContentView(R.layout.activity_videophoto_category);
 
         initViews();
         setListeners();
@@ -58,11 +60,11 @@ public class DmCcategorizeActivity extends Activity {
     }
 
     private void setListeners() {
-        dmcstnwise.setOnClickListener(new View.OnClickListener() {
+        dmcstnwise_video.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(getApplicationContext(), com.stavigilmonitoring.DmCstnwiseActivity.class);
+                Intent intent = new Intent(getApplicationContext(), VideoPhotostnwiseActivity.class);
                // intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 //Intent.FLAG_ACTIVITY_CLEAR_TOP|
                 startActivity(intent);
@@ -70,11 +72,11 @@ public class DmCcategorizeActivity extends Activity {
             }
         });
 
-        dmcsonowise.setOnClickListener(new View.OnClickListener() {
+        dmcsonowise_video.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(getApplicationContext(), DmCsonowiseActivity.class);
+                Intent intent = new Intent(getApplicationContext(), VideoPhotosonowiseActivity.class);
                 startActivity(intent);
                 //finish();
             }
@@ -112,8 +114,8 @@ public class DmCcategorizeActivity extends Activity {
             String	responsemsg;
 
             String bb= "";
-            com.stavigilmonitoring.utility ut = new com.stavigilmonitoring.utility();
-            String urls = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDM?Mobile="
+            utility ut = new utility();
+            String urls = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDMPhotoVideo?Mobile="
                     + mobno;
             urls = urls.replaceAll(" ", "%20");
 
@@ -129,19 +131,19 @@ public class DmCcategorizeActivity extends Activity {
 
                 //sql.execSQL("DROP TABLE IF EXISTS DmCertificateTable");
                //sql.execSQL(ut.getDmCertificateTable());
-                sql.delete("DmCertificateTable",null,null);
+                sql.delete("VideoPhotoTable",null,null);
 
                 Log.e("dm certificate", "resmsg : " + responsemsg);
 
-                if (responsemsg.contains("<DMHeaderId>")) {
+                if (responsemsg.contains("<DMPhotoVideoHeaderId>")) {
                     //	sop = "valid";
 
                     String columnName, columnValue;
-                    Cursor cur = sql.rawQuery("SELECT * FROM DmCertificateTable", null);
+                    Cursor cur = sql.rawQuery("SELECT * FROM VideoPhotoTable", null);
                     ContentValues values1 = new ContentValues();
                     NodeList nl1 = ut.getnode(responsemsg, "Table1");
 
-                    Cursor c = sql.rawQuery("SELECT * FROM DmCertificateTable",null);
+                    Cursor c = sql.rawQuery("SELECT * FROM VideoPhotoTable",null);
                     ContentValues values = new ContentValues();
                     NodeList nl = ut.getnode(responsemsg, "Table1");
                     Log.e("DmCertificate data...",
@@ -156,7 +158,7 @@ public class DmCcategorizeActivity extends Activity {
 
                             // Log.e("DownloadxmlsDataURL_new...on back...."," count i: "+i+"  j:"+j);
                         }
-                        sql.insert("DmCertificateTable",
+                        sql.insert("VideoPhotoTable",
                                 null, values1);
                     }
 
@@ -185,7 +187,7 @@ public class DmCcategorizeActivity extends Activity {
         protected void onPreExecute() {
             // TODO Auto-generated method stub
             super.onPreExecute();
-            progressDialog = new ProgressDialog(DmCcategorizeActivity.this);
+            progressDialog = new ProgressDialog(VideoPhotocategorizeActivity.this);
             progressDialog.setMessage("Loading...");
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.setCancelable(false);
@@ -201,23 +203,23 @@ public class DmCcategorizeActivity extends Activity {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
             try{
-                String totalDMC =  DmCstnwiseActivity.dbvalueDMC(getApplicationContext());
-                CharSequence text = "DmCertificate : "+totalDMC;
-                String z = String.valueOf(totalDMC);
-                SharedPreferences prefDMC = getApplicationContext()
+              //  String totalDMC =  DmCstnwiseActivity.dbvalueDMC(getApplicationContext());
+
+              /*  SharedPreferences prefDMC = getApplicationContext()
                         .getSharedPreferences("PrefDMC", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editorDMC = prefDMC.edit();
 
                 editorDMC.putString("DMC",
                         String.valueOf(totalDMC));
                 editorDMC.commit();
-                progressDialog.dismiss();
+
+*/                progressDialog.dismiss();
                 //Log.e("prgdlg", "Ended");
             }catch(Exception e){
                 e.printStackTrace();
                 StackTraceElement l = new Exception().getStackTrace()[0];
 
-                ut =new com.stavigilmonitoring.utility();
+                ut =new utility();
                 if(!ut.checkErrLogFile()){
                     ut.ErrLogFile();
                 }
@@ -231,13 +233,13 @@ public class DmCcategorizeActivity extends Activity {
 
 
     private void initViews() {
-        parent = DmCcategorizeActivity.this;
-        dmcstnwise = (LinearLayout) findViewById(com.stavigilmonitoring.R.id.dmcstnwise);
-        dmcsonowise = (LinearLayout) findViewById(com.stavigilmonitoring.R.id.dmcsonowise);
-        dmcsonowise_video = (LinearLayout) findViewById(com.stavigilmonitoring.R.id.dmcsonowise_video);
-        dmcstnwise_video = (LinearLayout) findViewById(com.stavigilmonitoring.R.id.dmcstnwise_video);
-        btnrefresh = (ImageView) findViewById(com.stavigilmonitoring.R.id.button_refresh_alert);
-        mprogressBar = (ProgressBar) findViewById(com.stavigilmonitoring.R.id.progressinvent1);
+        parent = VideoPhotocategorizeActivity.this;
+        dmcstnwise = (LinearLayout) findViewById(R.id.dmcstnwise);
+        dmcsonowise = (LinearLayout) findViewById(R.id.dmcsonowise);
+        dmcsonowise_video = (LinearLayout) findViewById(R.id.dmcsonowise_video);
+        dmcstnwise_video = (LinearLayout) findViewById(R.id.dmcstnwise_video);
+        btnrefresh = (ImageView) findViewById(R.id.button_refresh_alert);
+        mprogressBar = (ProgressBar) findViewById(R.id.progressinvent1);
 
         db = new DatabaseHandler(getBaseContext());
         ut = new utility();

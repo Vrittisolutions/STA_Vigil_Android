@@ -65,6 +65,9 @@ public class AlrtStnAdap extends BaseAdapter{
 					.findViewById(com.stavigilmonitoring.R.id.tvaddSupName);
 			holder.tvAlertDesc = (TextView) convertView
 					.findViewById(com.stavigilmonitoring.R.id.tvAlertDesc);
+			holder.tv_alert_type_desc = (TextView) convertView
+					.findViewById(com.stavigilmonitoring.R.id.tv_alert_type_desc);
+
 			
 			convertView.setTag(holder);
 		} else {
@@ -79,12 +82,18 @@ public class AlrtStnAdap extends BaseAdapter{
 		Log.e("Sprt ka naam",list.get(position).getStnSupName().toString());
 		holder.addSupName.setText(list.get(position).getStnSupName());
 		holder.tvAlertDesc.setText("Issue:"+   "   "+list.get(position).getAlertDesc());
-
+		if(list.get(position).getAlertType().equalsIgnoreCase("")||list.get(position).
+				getAlertType().equalsIgnoreCase("null")||list.get(position).getAlertType()==null){
+			holder.tv_alert_type_desc.setVisibility(View.GONE);
+		}else {
+			holder.tv_alert_type_desc.setVisibility(View.VISIBLE);
+			holder.tv_alert_type_desc.setText("Alert Type:" + "   " + list.get(position).getAlertType());
+		}
 		return convertView;
 	}
 
 	static class ViewHolder {
-		TextView installationid, time, alrtaddedby, addSupName, tvAlertDesc ;
+		TextView installationid, time, alrtaddedby, addSupName, tvAlertDesc,tv_alert_type_desc ;
 
 	}
 

@@ -3,8 +3,16 @@ package com.beanclasses;
 public class AlertsItemBean {
 	String AlertId="",	AlertDesc="",	StationName="",	InstallationId="",
 	AddedBy="",	AddedDt="",	ResolveBy="",	ResolveDt="",	ConfirmBy="",	ConfirmDt="",
-	ModifiedDt="",	ModifiedBy="",	RejectedBy="",	RejectedDt="", SupporterName="";
-	
+	ModifiedDt="",	ModifiedBy="",	RejectedBy="",	RejectedDt="", SupporterName="",AlertType;
+
+	public String getAlertType() {
+		return AlertType;
+	}
+
+	public void setAlertType(String alertType) {
+		AlertType = alertType;
+	}
+
 	public String getAlertId() {
 		return AlertId;
 	}

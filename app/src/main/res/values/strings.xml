@@ -43,6 +43,11 @@
         <item>WIP</item>
     </string-array>
 
+    <string-array name="alert_type">
+        <item>Problem</item>
+        <item>Change</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="advactivitydesc">You have been assigned an activity of <b>Suhana Papad Masala</b> advertisement for <b>10</b>  station locations.</string>

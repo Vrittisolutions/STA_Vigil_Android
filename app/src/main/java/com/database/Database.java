@@ -16,7 +16,7 @@ public class Database {
 	private Context HCtx = null;
 
 	private static final String DATABASE_NAME = "VWB_STA";
-	private static final int DATABASE_VERSION = 4;
+	private static final int DATABASE_VERSION = 5;
 	static final String Setting_table = "tbl_setting";// //
 	static final String Gcm_table = "tbl_gcm";
 	static final String OldData_table = "tbl_old";

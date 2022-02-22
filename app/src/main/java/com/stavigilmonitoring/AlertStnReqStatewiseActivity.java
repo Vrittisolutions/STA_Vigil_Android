@@ -15,6 +15,7 @@ import com.database.DBInterface;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -46,7 +47,7 @@ public class AlertStnReqStatewiseActivity extends Activity {
     String sop = "", resposmsg = "", mobno = "";
     DownloadStation asyncfetch_csnstate;
     GridView lstcsn;
-    com.stavigilmonitoring.utility ut;
+    com.stavigilmonitoring.utility ut = new com.stavigilmonitoring.utility();
     DatabaseHandler db;
 
     @Override
@@ -177,7 +178,6 @@ public class AlertStnReqStatewiseActivity extends Activity {
             StackTraceElement l = new Exception().getStackTrace()[0];
             System.out.println(l.getClassName() + "/" + l.getMethodName() + ":"
                     + l.getLineNumber());
-            ut = new com.stavigilmonitoring.utility();
             if (!ut.checkErrLogFile()) {
 
                 ut.ErrLogFile();
@@ -214,6 +214,131 @@ public class AlertStnReqStatewiseActivity extends Activity {
 
     }
 
+    public class DownloadStation extends AsyncTask<String, Void, String> {
+        String sumdata2 = "1";
+        ProgressDialog progressDialog;
+
+        @Override
+        protected String doInBackground(String... params) {
+            // TODO Auto-generated method stub
+
+            String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMasterMobile?Mobile="+mobno;
+            Log.e("All Station", "Url=" + Url);
+
+            try {
+                resposmsg = ut.httpGet(Url);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            if (resposmsg.contains("<InstalationId>")) {
+                sop = "valid";
+                //DatabaseHandler db = new DatabaseHandler(AlrtListActivity.this);
+                SQLiteDatabase sql = db.getWritableDatabase();
+                String columnName, columnValue;
+
+                //sql.execSQL("DROP TABLE IF EXISTS ConnectionStatusFiltermob");
+                //sql.execSQL(ut.getConnectionStatusFiltermob());
+                sql.delete("ConnectionStatusFiltermob",null,null);
+
+                Cursor cur1 = sql.rawQuery(
+                        "SELECT * FROM ConnectionStatusFiltermob", null);
+                cur1.getCount();
+                ContentValues values2 = new ContentValues();
+                NodeList nl2 = ut.getnode(resposmsg, "Table");
+
+                //Log.e("All Station Data ", "get length : " + nl2.getLength());
+                for (int i = 0; i < nl2.getLength(); i++) {
+                    //Log.e("All Station Data ", "length : " + nl2.getLength());
+                    Element e = (Element) nl2.item(i);
+                    for (int j = 0; j < cur1.getColumnCount(); j++) {
+                        columnName = cur1.getColumnName(j);
+                        columnValue = ut.getValue(e, columnName);
+						/*Log.e("All Station Data ", "column Name : "
+								+ columnName);
+						Log.e("All Station Data ", "column value : "
+								+ columnValue);*/
+
+                        values2.put(columnName, columnValue);
+
+                    }
+                    sql.insert("ConnectionStatusFiltermob", null, values2);
+                }
+
+                cur1.close();
+				/*sql.close();
+				db.close();*/
+
+            } else {
+                sop = "invalid";
+                System.out.println("--------- invalid for project list --- ");
+            }
+            return sop;
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(AlertStnReqStatewiseActivity.this);
+            progressDialog.setMessage("Loading...");
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+            //mRefresh.setVisibility(View.GONE);
+            //mprogress.setVisibility(View.VISIBLE);
+
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            try {
+                if (sop.equals("valid")) {
+                    updatelist();
+                } else if (sop.equals("nodata")) {
+                    updatelist();
+                } else {
+                    try{
+                        ut.showD(AlertStnReqStatewiseActivity.this, "invalid");
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+                //mRefresh.setVisibility(View.VISIBLE);
+                //mprogress.setVisibility(View.GONE);
+                progressDialog.dismiss();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                // dff = new SimpleDateFormat("HH:mm:ss");
+                // Ldate = dff.format(new Date());
+
+                StackTraceElement l = new Exception().getStackTrace()[0];
+                System.out.println(l.getClassName() + "/" + l.getMethodName()
+                        + ":" + l.getLineNumber());
+                ut = new utility();
+                if (!ut.checkErrLogFile()) {
+
+                    ut.ErrLogFile();
+                }
+                if (ut.checkErrLogFile()) {
+                    ut.addErrLog(l.getClassName() + "/" + l.getMethodName()
+                            + ":" + l.getLineNumber() + "	" + e.getMessage()
+                            + " " + Ldate);
+                }
+
+            }
+
+        }
+
+    }
+
+
+/*
     public class DownloadStation extends AsyncTask<String, Void, String> {
 
         @Override
@@ -259,30 +384,35 @@ public class AlertStnReqStatewiseActivity extends Activity {
                         "SELECT * FROM ConnectionStatusFiltermob", null);
                 cur1.getCount();
                 ContentValues values2 = new ContentValues();
-                NodeList nl2 = ut.getnode(resposmsg, "Table");
+                try {
+                    NodeList nl2 = ut.getnode(resposmsg, "Table");
 
-                Log.e("All Station Data ", "get length : " + nl2.getLength());
-                for (int i = 0; i < nl2.getLength(); i++) {
-                    Log.e("All Station Data ", "length : " + nl2.getLength());
-                    Element e = (Element) nl2.item(i);
-                    for (int j = 0; j < cur1.getColumnCount(); j++) {
-                        columnName = cur1.getColumnName(j);
-                        columnValue = ut.getValue(e, columnName);
-                        Log.e("All Station Data ", "column Name : "
-                                + columnName);
-                        Log.e("All Station Data ", "column value : "
-                                + columnValue);
+                    Log.e("All Station Data ", "get length : " + nl2.getLength());
+                    for (int i = 0; i < nl2.getLength(); i++) {
+                        Log.e("All Station Data ", "length : " + nl2.getLength());
+                        Element e = (Element) nl2.item(i);
+                        for (int j = 0; j < cur1.getColumnCount(); j++) {
+                            columnName = cur1.getColumnName(j);
+                            columnValue = ut.getValue(e, columnName);
+                            Log.e("All Station Data ", "column Name : "
+                                    + columnName);
+                            Log.e("All Station Data ", "column value : "
+                                    + columnValue);
 
-                        values2.put(columnName, columnValue);
+                            values2.put(columnName, columnValue);
 
+                        }
+                        sql.insert("ConnectionStatusFiltermob", null, values2);
                     }
-                    sql.insert("ConnectionStatusFiltermob", null, values2);
+
+                    cur1.close();
+                */
+/*sql.close();
+                db.close();*//*
+
+                }catch (Exception e){
+                    e.printStackTrace();
                 }
-
-                cur1.close();
-                /*sql.close();
-                db.close();*/
-
             } else {
                 sop = "invalid";
                 System.out.println("--------- invalid for project list --- ");
@@ -339,6 +469,7 @@ public class AlertStnReqStatewiseActivity extends Activity {
         }
 
     }
+*/
 
     protected void showD(String string) {
         // TODO Auto-generated method stub

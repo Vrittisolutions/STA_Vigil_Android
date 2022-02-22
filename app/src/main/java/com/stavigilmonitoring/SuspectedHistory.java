@@ -67,11 +67,13 @@ public class SuspectedHistory extends Activity {
 	private TextView susstnname;
 	private String advName;
 	private String advCode;
+	private String Total="";
 	private TextView setadvcode;
 	private TextView setadvname;
 	DatabaseHandler db;
 	ArrayList<SuspectedHelper> searchResults;
 	String[] advnames;
+	String[] Total_Count;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +91,7 @@ public class SuspectedHistory extends Activity {
 		stnnAme = extras.getString("Stationname");
 		System.out.println("................stnname on sh" + stnnAme);
 		advCode = extras.getString("advCodes");
+		Total = extras.getString("Total");
 		susstnname.setText(stnnAme+" Advertisements");
 		iv = (ImageView) findViewById(R.id.button_refresh_suspectedhistory);
 		suspectedHistory = (ListView) findViewById(R.id.suspectehistoryddetail);
@@ -102,9 +105,12 @@ public class SuspectedHistory extends Activity {
 		dbi.Close();
 
 		advnames = advName.split(",");
+		//Total_Count = Total.split(",");
+
 		for(int i=0; i<advnames.length;i++){
 			SuspectedHelper sus = new SuspectedHelper();
 			sus.setAdvertisementName(advnames[i]);
+			//sus.setTotalSpot(Total_Count[i]);
 
 			searchResults.add(sus);
 		}

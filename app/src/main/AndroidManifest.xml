@@ -31,13 +31,14 @@
 
     <application
         android:name=".MyApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:hardwareAccelerated="false"
         android:icon="@drawable/sta_logo"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
+        tools:replace="android:allowBackup"
         android:usesCleartextTraffic="true"
 
         tools:ignore="GoogleAppIndexingWarning">
@@ -158,6 +159,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".DmCcategorizeActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.video_photo.VideoPhotocategorizeActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
@@ -964,6 +969,7 @@
         </service>
         <service
             android:name="com.services.JobService_SyncDataCount"
+            android:enabled="true"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
@@ -1019,8 +1025,44 @@
         <service
             android:name="com.services.AlarmForegroundService"
             android:enabled="true"
-            android:stopWithTask="false"
             android:exported="true"></service>
+
+
+        <activity
+            android:name="com.video_photo.VideoPhotosonowiseActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.video_photo.VideoPhotostnwiseActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.video_photo.VideoPhotoStateFilter"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.video_photo.VideoPhotoStateStnFilter"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.video_photo.VideoPhotoStateStnSoNoDetails"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.video_photo.VideoPhotoSonoFilter"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.video_photo.VideoPhotoSonoStnFilter"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.video_photo.VideoPhotoSoNoStateStnDetails"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
 
     </application>
 

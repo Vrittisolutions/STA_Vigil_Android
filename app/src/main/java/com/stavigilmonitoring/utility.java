@@ -224,7 +224,7 @@ public class utility {
 				+ "(AlertId TEXT, AlertDesc TEXT,StationName TEXT,InstallationId TEXT ,"
 				+ "AddedBy TEXT,AddedDt DATETIME,ResolveBy TEXT,ResolveDt DATETIME,"
 				+ "ConfirmBy TEXT,ConfirmDt DATETIME,ModifiedBy TEXT,ModifiedDt DATETIME,"
-				+ "RejectedBy TEXT,RejectedDt DATETIME, Mobile TEXT, SupporterName TEXT)";
+				+ "RejectedBy TEXT,RejectedDt DATETIME, Mobile TEXT, SupporterName TEXT,AlertType TEXT)";
 
 		return AlrtListTable;
 	}
@@ -298,7 +298,7 @@ public class utility {
 
 		String ConnectionStatusFilter = "CREATE TABLE IF NOT EXISTS "
 				+"ConnectionStatusFiltermob"
-				+ "(InstalationId TEXT, InstalationName  TEXT,  InstallationDesc TEXT, Address TEXT, SubNetworkCode TEXT , NetworkCode TEXT,LastbusReporting TEXT,LastAdvDate TEXT,ServerTime TEXT)";// NetworkCode
+				+ "(InstalationId TEXT,InstalationName TEXT,InstallationDesc TEXT,Address TEXT,SubNetworkCode TEXT,NetworkCode TEXT,LastbusReporting TEXT,LastAdvDate TEXT,ServerTime TEXT)";// NetworkCode
 		return ConnectionStatusFilter;
 	}
 
@@ -968,5 +968,16 @@ public class utility {
 			val = false;
 		}
 		return val;
+	}
+
+	public String getVideoPhotoTable() {
+		String VideoPhotoTable = "CREATE TABLE "
+				+ "VideoPhotoTable"
+				+ "(DMPhotoVideoHeaderId TEXT, DMDesc TEXT,SoNumber TEXT,AdvertisementCode TEXT ,"
+				+ "ActivityId TEXT,ActivityName TEXT,UserMasterId TEXT,UserName TEXT,"
+				+ "ActualStartDate TEXT,ActualEndDate TEXT,IssuedTo TEXT,IssuedUserName TEXT,"
+				+ "Status TEXT,StationName TEXT, InstallationId TEXT, NetworkCode TEXT, "
+				+ "SubNetworkCode TEXT, AdvertisementPlayURL TEXT,EffectiveDate TEXT)";
+		return VideoPhotoTable;
 	}
 }

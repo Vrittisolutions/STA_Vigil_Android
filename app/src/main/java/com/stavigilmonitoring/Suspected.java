@@ -143,7 +143,9 @@ public class Suspected extends Activity {
 
 				Object o = suspectedDetails.getItemAtPosition(position);
 				SuspectedHelper fullObject = (SuspectedHelper) o;
-				editActivity(searchResults.get(position).getStationName(),searchResults.get(position).getInstalationId(),
+				editActivity(searchResults.get(position).getStationName(),
+						searchResults.get(position).getInstalationId(),
+						/*searchResults.get(position).getTotalSpot(),*/
 						searchResults.get(position).getAdvertisementName());
 
 				/*if (dbvalue()) {
@@ -182,13 +184,13 @@ public class Suspected extends Activity {
 		dataBundle.putString("Advertisementname", Advertisementname);
 		dataBundle.putString("Stationname", stName);
 		dataBundle.putString("StationId", instId);
+		//dataBundle.putString("Total", Total);
 		Intent myIntent = new Intent();
 		myIntent.setClass(getApplicationContext(), SuspectedHistory.class);
 
 		myIntent.putExtras(dataBundle);
 		startActivity(myIntent);
-		//finish();
-		System.out.println("------------- 1");
+
 
 	}
 	private boolean dbvalue() {
@@ -235,7 +237,7 @@ public class Suspected extends Activity {
 		SQLiteDatabase sql = db.getWritableDatabase();
 		String[] params = new String[1];
 		params[0] = Stationname;
-		Cursor c2 = sql.rawQuery("SELECT * FROM Suspected ORDER BY StationName ASC", null);
+		Cursor c2 = sql.rawQuery("SELECT * FROM Suspected ORDER BY SpotWisePercentage ASC", null);
 		if (c2.getCount() == 0) {
 			SuspectedHelper sr = new SuspectedHelper();
 			//sr.setcsId("");

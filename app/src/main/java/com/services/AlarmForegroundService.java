@@ -12,6 +12,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 
 import com.stavigilmonitoring.R;
+import com.stavigilmonitoring.SelectMenu;
 
 
 public class AlarmForegroundService extends Service {
@@ -30,7 +31,12 @@ public class AlarmForegroundService extends Service {
         createNotificationChannel();
 
         String Desc=intent.getStringExtra("inputExtra");
-      //  MyAlarmReceiver.stopAlarm();
+
+        Intent notificationIntent = new Intent(this, SelectMenu.class);
+        notificationIntent.putExtra("menu","Menu");
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        pendingIntent = PendingIntent.getActivity(this,
+                0, notificationIntent, 0);
 
 
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
@@ -61,7 +67,7 @@ public class AlarmForegroundService extends Service {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel serviceChannel = new NotificationChannel(
                     CHANNEL_ID,
-                    "alram_notification",
+                    "alarm_notification",
                     NotificationManager.IMPORTANCE_DEFAULT
             );
             NotificationManager manager = getSystemService(NotificationManager.class);

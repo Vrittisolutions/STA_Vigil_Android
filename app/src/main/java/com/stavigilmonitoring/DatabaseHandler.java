@@ -14,7 +14,7 @@ import com.beanclasses.Contact;
 import com.beanclasses.SoundLevelBeanSort;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
-	private static final int DATABASE_VERSION = 39;
+	private static final int DATABASE_VERSION = 41;
 
 	// Database Name
 	private static final String DATABASE_NAME = "vWB";
@@ -85,6 +85,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_TEAMLEADERS);
 		db.execSQL(ut.getSoundLevel_new());
 		db.execSQL(ut.getDmCertificateTable()); 	//newly added
+		db.execSQL(ut.getVideoPhotoTable()); 	//newly added //Nilesh
 		db.execSQL(ut.getAllStation());
 		db.execSQL(ut.getConnectionStatusUser());
 		db.execSQL(ut.getNonrepeatedAd());
@@ -197,6 +198,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL(" DROP TABLE IF EXISTS Settings");
 		db.execSQL(" DROP TABLE IF EXISTS SoundLevel_new");
 		db.execSQL(" DROP TABLE IF EXISTS DmCertificateTable"); 	//newly added
+		db.execSQL(" DROP TABLE IF EXISTS VideoPhotoTable"); 	//newly added //nilesh
 		db.execSQL(" DROP TABLE IF EXISTS ConnectionStatusUser");
 		db.execSQL(" DROP TABLE IF EXISTS AllStation");
 		db.execSQL(" DROP TABLE IF EXISTS SoundLevel");
@@ -258,30 +260,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		//db.execSQL(" DROP TABLE IF EXISTS TableNotifications");
 		db.execSQL(" DROP TABLE IF EXISTS WorkAssignedTable");
 
-		db.execSQL("alter table " + TABLE_GPSRECORDS + " RENAME TO temp;");
+	//	db.execSQL("alter table " + TABLE_GPSRECORDS + " RENAME TO temp;");
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_GPSRECORDS);
-		db.execSQL(CREATE_GPSRECORDS_TABLE);//TABLE_GPSRECORDS
-		db.execSQL("insert into " + TABLE_GPSRECORDS + " select * from temp;");
-		db.execSQL("DROP TABLE IF EXISTS temp ");
+	//	db.execSQL(CREATE_GPSRECORDS_TABLE);//TABLE_GPSRECORDS
+	//	db.execSQL("insert into " + TABLE_GPSRECORDS + " select * from temp;");
+	//	db.execSQL("DROP TABLE IF EXISTS temp ");
 
-		db.execSQL("alter table " + TABLE_ADD_GPSRECORDS + " RENAME TO temp;");
+	//	db.execSQL("alter table " + TABLE_ADD_GPSRECORDS + " RENAME TO temp;");
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_ADD_GPSRECORDS);
-		db.execSQL(CREATE_GPSRECORDS_ADD_TABLE);//TABLE_ADD_GPSRECORDS
-		db.execSQL("insert into " + TABLE_ADD_GPSRECORDS + " select * from temp;");
-		db.execSQL("DROP TABLE IF EXISTS temp ");
+	//	db.execSQL(CREATE_GPSRECORDS_ADD_TABLE);//TABLE_ADD_GPSRECORDS
+//		db.execSQL("insert into " + TABLE_ADD_GPSRECORDS + " select * from temp;");
+//		db.execSQL("DROP TABLE IF EXISTS temp ");
 
-		db.execSQL("alter table " + TABLE_GPS_SEND_NOTIFICATION + " RENAME TO temp;");
+//		db.execSQL("alter table " + TABLE_GPS_SEND_NOTIFICATION + " RENAME TO temp;");
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_GPS_SEND_NOTIFICATION);
-		db.execSQL(CREATE_TABLE_GPS_SEND_NOTIFICATION);//TABLE_GPS_SEND_NOTIFICATION
-		db.execSQL("insert into " + TABLE_GPS_SEND_NOTIFICATION + " select * from temp;");
-		db.execSQL("DROP TABLE IF EXISTS temp ");
+//		db.execSQL(CREATE_TABLE_GPS_SEND_NOTIFICATION);//TABLE_GPS_SEND_NOTIFICATION
+//		db.execSQL("insert into " + TABLE_GPS_SEND_NOTIFICATION + " select * from temp;");
+//		db.execSQL("DROP TABLE IF EXISTS temp ");
 
 
-		db.execSQL("alter table " + TABLE_LEAVE_REPORTING_TO + " RENAME TO temp;");
+	//	db.execSQL("alter table " + TABLE_LEAVE_REPORTING_TO + " RENAME TO temp;");
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_LEAVE_REPORTING_TO);
-		db.execSQL(CREATE_LEAVE_REPORTING_TO_TABLE);//TABLE_LEAVE_REPORTING_TO
-		db.execSQL("insert into " + TABLE_LEAVE_REPORTING_TO + " select * from temp;");
-		db.execSQL("DROP TABLE IF EXISTS temp ");
+	//	db.execSQL(CREATE_LEAVE_REPORTING_TO_TABLE);//TABLE_LEAVE_REPORTING_TO
+	//	db.execSQL("insert into " + TABLE_LEAVE_REPORTING_TO + " select * from temp;");
+	//	db.execSQL("DROP TABLE IF EXISTS temp ");
 
 		// Create tables again
 		onCreate(db);

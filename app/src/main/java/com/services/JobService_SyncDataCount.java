@@ -16,6 +16,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
@@ -115,6 +116,18 @@ public class JobService_SyncDataCount extends JobService {
         db = new DatabaseHandler(getBaseContext());
         sql = db.getWritableDatabase();
 
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        setAlarmFinal=pref.getBoolean("SetAlarmFinal",false);
+        Log.d("Final", String.valueOf(setAlarmFinal));
+        setAlarm = pref.getBoolean("SetAlarm", false);
+        Log.d("Final-1", String.valueOf(setAlarm));
+
+        setAlarmFinalCSN = pref.getBoolean("setAlarmFinalCSN", false);
+        Log.d("Final-2", String.valueOf(setAlarmFinalCSN));
+
+        setAlarmFinalNonReportStation = pref.getBoolean("setAlarmFinalNonReportStation", false);
+        Log.d("Final-3", String.valueOf(setAlarmFinalNonReportStation));
 
 
         Calendar cal = Calendar.getInstance();
@@ -590,8 +603,13 @@ public class JobService_SyncDataCount extends JobService {
                                             Intent intent = new Intent(JobService_SyncDataCount.this, MyAlarmReceiver.class);
                                             PendingIntent pendingIntent = PendingIntent.getBroadcast(JobService_SyncDataCount.this, 234324243, intent, 0);
                                             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                                            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
-                                            Toast.makeText(JobService_SyncDataCount.this, "Alarm set in 1 seconds", Toast.LENGTH_LONG).show();
+                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                                alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
+                                            }else {
+                                                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
+
+                                            }
+                                         //   Toast.makeText(JobService_SyncDataCount.this, "Alarm set in 1 seconds", Toast.LENGTH_LONG).show();
                                             Intent serviceIntent = new Intent(JobService_SyncDataCount.this, AlarmForegroundService.class);
                                             serviceIntent.putExtra("inputExtra",columnName
                                                     .equalsIgnoreCase("InstallationDesc"));
@@ -887,8 +905,13 @@ public class JobService_SyncDataCount extends JobService {
                             Intent intent = new Intent(JobService_SyncDataCount.this, MyAlarmReceiver.class);
                                             PendingIntent pendingIntent = PendingIntent.getBroadcast(JobService_SyncDataCount.this, 234324243, intent, 0);
                                            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                                            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
-                                           Toast.makeText(JobService_SyncDataCount.this, "Alarm set in 1 seconds", Toast.LENGTH_LONG).show();
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
+                            }else {
+                                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
+
+                            }
+                         //   Toast.makeText(JobService_SyncDataCount.this, "Alarm set in 1 seconds", Toast.LENGTH_LONG).show();
                             Intent serviceIntent = new Intent(JobService_SyncDataCount.this, AlarmForegroundService.class);
                             serviceIntent.putExtra("inputExtra",columnName
                                     .equalsIgnoreCase("AdvertisementDesc"));
@@ -1161,8 +1184,15 @@ public class JobService_SyncDataCount extends JobService {
                                             Intent intent = new Intent(JobService_SyncDataCount.this, MyAlarmReceiver.class);
                                             PendingIntent pendingIntent = PendingIntent.getBroadcast(JobService_SyncDataCount.this, 234324243, intent, 0);
                                             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                                            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
-                                            Toast.makeText(JobService_SyncDataCount.this, "Alarm set in 1 seconds", Toast.LENGTH_LONG).show();
+                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                                alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
+                                            }else {
+                                                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
+
+                                            }
+                                            Intent serviceIntent = new Intent(JobService_SyncDataCount.this, AlarmForegroundService.class);
+                                            serviceIntent.putExtra("inputExtra", AdvertisementDesc);
+                                            ContextCompat.startForegroundService(JobService_SyncDataCount.this,serviceIntent);
                                         }
                                     }
                                 }
@@ -1177,9 +1207,15 @@ public class JobService_SyncDataCount extends JobService {
                                             Intent intent = new Intent(JobService_SyncDataCount.this, MyAlarmReceiver.class);
                                             PendingIntent pendingIntent = PendingIntent.getBroadcast(JobService_SyncDataCount.this, 234324243, intent, 0);
                                             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                                            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
-                                            Toast.makeText(JobService_SyncDataCount.this, "Alarm set in 1 seconds", Toast.LENGTH_LONG).show();
-                                        }
+                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                                alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
+                                            }else {
+                                                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
+
+                                            }
+                                            Intent serviceIntent = new Intent(JobService_SyncDataCount.this, AlarmForegroundService.class);
+                                            serviceIntent.putExtra("inputExtra", AdvertisementDesc);
+                                            ContextCompat.startForegroundService(JobService_SyncDataCount.this,serviceIntent);                                        }
                                     }
                                 }
                             }
@@ -2022,7 +2058,7 @@ public class JobService_SyncDataCount extends JobService {
         protected void onPostExecute(String result) {
             //String table = "";
             if (result.contains("error")||result.contains("E")) {
-                Toast.makeText(getBaseContext(), "error!", Toast.LENGTH_LONG).show();
+               // Toast.makeText(getBaseContext(), "error!", Toast.LENGTH_LONG).show();
             } else if (result.contains("Y")) {
                 try{
 					/*Log.e("URL",urlStringToken2);
@@ -2058,9 +2094,9 @@ public class JobService_SyncDataCount extends JobService {
 
             // Showing received message
             // lblMessage.append(newMessage + "\n");
-            Toast.makeText(getApplicationContext(),
+           /* Toast.makeText(getApplicationContext(),
                     "New Message: " + newMessage, Toast.LENGTH_LONG).show();
-
+*/
             // Releasing wake lock
             WakeLocker.release();
         }

@@ -1,6 +1,8 @@
 package com.stavigilmonitoring;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -32,10 +34,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,6 +68,8 @@ public class AlrtCreateActivity extends Activity {
 	DatabaseHandler db;
 	GPSTracker gps;
 	double sup_latitude, sup_longitude, stn_latitude, stn_longitude;
+	Spinner spinner_alert;
+	String Alert_Type;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +133,18 @@ public class AlrtCreateActivity extends Activity {
 				}
 			}
 
+		});
+
+		spinner_alert.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				Alert_Type=parent.getSelectedItem().toString();
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+
+			}
 		});
 
 	}
@@ -236,6 +254,7 @@ public class AlrtCreateActivity extends Activity {
 		EdtDesc = (EditText) findViewById(com.stavigilmonitoring.R.id.editTextAlertDesc);
 		BtnRtn = (Button) findViewById(com.stavigilmonitoring.R.id.button_return);
 		BtnDelete = (ImageView) findViewById(com.stavigilmonitoring.R.id.button_invent_delete);
+		spinner_alert = (Spinner) findViewById(R.id.spinner_alert);
 		BtnDelete.setVisibility(View.GONE);
 		Intent intent = getIntent();
 
@@ -248,7 +267,7 @@ public class AlrtCreateActivity extends Activity {
 	
 	public class DownloadxmlsDataURL_new extends AsyncTask<String, Void, String> {
 		ProgressDialog progressDialog;
-		
+		String url;
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
@@ -268,22 +287,27 @@ public class AlrtCreateActivity extends Activity {
 		protected String doInBackground(String... params) {
 			com.stavigilmonitoring.utility ut = new com.stavigilmonitoring.utility();
 
-			String url;
 			//currDate = system.get
 
-			url ="http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AlertInsert?"+"AddedBy="
-					+ mobno
-					+ "&AddedDt="
-					+ ""
-					+ "&StationName="
-					+ edtSTN
-					+ "&InstallationId="
-					+ installationid					
-					+ "&AlertDesc="
-					+ edtDesc;
-			
-			
-				Log.e("material ", "url : " + url);
+			try {
+				url ="http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AlertInsert?"+"AddedBy="
+						+ mobno
+						+ "&AddedDt="
+						+ ""
+						+ "&StationName="
+						+ edtSTN
+						+ "&InstallationId="
+						+ installationid
+						+ "&AlertDesc="
+						+ URLEncoder.encode(edtDesc,"UTF-8")
+						+ "&AlertType="
+						+ Alert_Type;
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+
+
+			Log.e("material ", "url : " + url);
 				url = url.replaceAll(" ", "%20");
 			try {
 				System.out.println("-------  activity url --- " + url);

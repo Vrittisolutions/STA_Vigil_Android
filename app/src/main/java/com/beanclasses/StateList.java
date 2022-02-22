@@ -19,6 +19,16 @@ public class StateList {
 	String notificationCnt = "0";
 	String userId = "";
 	String alertId="";
+	String AlertType="";
+
+
+	public String getAlertType() {
+		return AlertType;
+	}
+
+	public void setAlertType(String alertType) {
+		AlertType = alertType;
+	}
 
 	public Date getDdate() {
 		return ddate;

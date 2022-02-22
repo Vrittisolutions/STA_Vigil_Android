@@ -776,8 +776,11 @@ public class StationEnquiry extends Activity {
 		@Override
 		protected String doInBackground(Void... params) {
 			// TODO Auto-generated method stub
-			String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/ClikToCall" +
+			/*String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/ClikToCall" +
 					"?agentnumber=+91"+Mobile+"&callernumber=+91"+mobno;
+*/
+			String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/ClikToCall" +
+					"?agentnumber="+Mobile+"&callernumber="+mobno;
 
 			Url = Url.replaceAll(" ", "%20");
 

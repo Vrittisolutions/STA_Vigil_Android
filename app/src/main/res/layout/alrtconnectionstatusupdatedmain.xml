@@ -101,7 +101,25 @@
 
     </LinearLayout>
 
-    <TextView
+        <TextView
+                android:id="@+id/tv_alert_type_desc"
+                android:layout_width="match_parent"
+                android:layout_gravity="center|left"
+                android:gravity="left|center"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:text=""
+                android:textColor="#000000"
+                android:fontFamily="@string/fontfamily"
+                android:textSize="13sp"/>
+
+
+
+
+
+
+        <TextView
         android:id="@+id/tvAlertDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

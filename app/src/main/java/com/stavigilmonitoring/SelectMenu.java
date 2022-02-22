@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -20,7 +19,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import com.beanclasses.AdvVideoDataBean;
-import com.beanclasses.AlrtStateList;
 import com.beanclasses.StatelevelList;
 import com.beanclasses.TvStatusStateBean;
 import com.firebase.jobdispatcher.Constraint;
@@ -32,6 +30,7 @@ import com.firebase.jobdispatcher.RetryStrategy;
 import com.firebase.jobdispatcher.Trigger;
 import com.receiver.AlarmManagerBroadcastReceiver;
 import com.receiver.SoundLevelBrodcastReciver;
+import com.services.AlarmForegroundService;
 import com.services.JobService_DMCertificate;
 import com.services.JobService_PaidLocationFusedLocationTracker1;
 import com.services.JobService_SyncDataCount;
@@ -39,6 +38,7 @@ import com.services.JobService_Test;
 import com.services.MyAlarmReceiver;
 import com.services.WakeLocker;
 import com.database.DBInterface;
+import com.video_photo.VideoPhotocategorizeActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -72,9 +72,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
-import android.os.SystemClock;
 import android.support.design.widget.BottomSheetDialog;
-import android.support.v4.content.FileProvider;
 import android.support.v7.widget.SwitchCompat;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -86,19 +84,12 @@ import android.view.animation.AnimationUtils;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
-import android.webkit.URLUtil;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import static android.provider.CalendarContract.CalendarCache.URI;
-import static com.stavigilmonitoring.FileHelper.c;
-import static com.stavigilmonitoring.SelectMenu.btmsheetedsationname;
-import static com.stavigilmonitoring.SelectMenu.myJob;
 
 public class SelectMenu extends Activity {
     Dialog dialog;
@@ -467,8 +458,8 @@ public class SelectMenu extends Activity {
         PDCClipwise = (LinearLayout) findViewById(R.id.pendingclipsClipwise);
         Advclip_1stplayrprt_sewise = (LinearLayout) findViewById(R.id.clipdtlsewise);
         stnperformance = (LinearLayout) findViewById(R.id.stnperformance);
-        stnperformance.setVisibility(View.VISIBLE);
-        stnperformance.setEnabled(false);
+      //  stnperformance.setVisibility(View.VISIBLE);
+       // stnperformance.setEnabled(false);
         advdetails = findViewById(R.id.advdetails);
         lay_unrel_advs = findViewById(R.id.lay_unrel_advs);
 
@@ -493,6 +484,12 @@ public class SelectMenu extends Activity {
         txtmob = findViewById(R.id.txtmob);
         btnsetalarm = findViewById(R.id.btnsetalarm);
         btncancelalarm = findViewById(R.id.btncancelalarm);
+
+             if (getIntent().hasExtra("menu")){
+                 MyAlarmReceiver.stopAlarm();
+                 Intent serviceIntent = new Intent(SelectMenu.this, AlarmForegroundService.class);
+                  stopService(serviceIntent);
+             }
 
 
         if (setAlarm == true) {
@@ -614,6 +611,17 @@ public class SelectMenu extends Activity {
                 startActivity(intent);
             }
         });
+
+        stnperformance.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent(getApplicationContext(), VideoPhotocategorizeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         connectinStatus.setOnClickListener(new OnClickListener() {
 
@@ -3524,8 +3532,8 @@ public class SelectMenu extends Activity {
                     }
                 }
                 //iv.setVisibility(View.VISIBLE);
-                ((ProgressBar) findViewById(R.id.progressBar1))
-                        .setVisibility(View.GONE);
+               /* ((ProgressBar) findViewById(R.id.progressBar1))
+                        .setVisibility(View.GONE);*/
 
                 DateFormat dateFormat = new SimpleDateFormat(
                         "dd-MMM-yyyy HH:mm:ss aa", Locale.ENGLISH);

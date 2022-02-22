@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:gravity="left"
-            android:text="DM Certificate"
+            android:text="Photo/Video"
             android:textColor="#000000"
             android:textSize="14dp"
             android:textStyle="bold"
@@ -82,142 +82,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-       <!-- <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:id="@+id/dmcstnwise"
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:onClick="leave"
-                android:orientation="horizontal"
-                android:weightSum="1"
-                android:background="@drawable/cardlayout2_border"
-                android:elevation="0dp"
-                android:padding="3dp">
-                &lt;!&ndash;ndroid:background="@drawable/cardlayout_border"
-                android:elevation="1dp"&ndash;&gt;
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.9"
-                    android:orientation="vertical"
-                    android:padding="3dp">
-
-                    <TextView
-                        android:id="@+id/tvstnwise"
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:text="DM Certificate Stations wise"
-                        android:textColor="#726E6D"
-                        android:gravity="center_vertical"
-                        android:textSize="16dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvpendingstncount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5sp"
-                        android:text="vvv"
-                        android:textColor="#726E6D"
-                        android:textSize="14dp"
-                        android:visibility="gone" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/tvstncount"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="0.1"
-                    android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textColor="#FE2E2E"
-                    android:textSize="16dp"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
-                android:background="#B6B6B4"
-                android:visibility="gone"/>
-
-            <LinearLayout
-                android:id="@+id/dmcsonowise"
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:layout_marginTop="8dp"
-                android:onClick="leave"
-                android:orientation="horizontal"
-                android:weightSum="1"
-                android:background="@drawable/cardlayout2_border"
-                android:elevation="0dp"
-                android:padding="3dp">
-                &lt;!&ndash;&ndash;&gt;
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.9"
-                    android:orientation="vertical"
-                    android:padding="3dp">
-
-                    <TextView
-                        android:id="@+id/tvsonowise"
-                        android:layout_width="match_parent"
-                        android:layout_height="fill_parent"
-                        android:text="DM Certificate SO No. wise"
-                        android:textColor="#726E6D"
-                        android:gravity="center_vertical"
-                        android:textSize="16dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvpendingsocount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5sp"
-                        android:text="vvv"
-                        android:textColor="#726E6D"
-                        android:textSize="14dp"
-                        android:visibility="gone" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/tvsonocount"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="0.1"
-                    android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textColor="#FE2E2E"
-                    android:textSize="16dp"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
-                android:background="#B6B6B4"
-                android:visibility="gone"/>
-        </LinearLayout>-->
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -225,6 +89,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
+            android:visibility="gone"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -383,7 +248,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
-            android:visibility="gone"
+            android:visibility="visible"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -422,7 +287,7 @@
                         android:id="@+id/tvstnwise_video"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Photo/Video"
+                        android:text="Station Photo/Video"
                         android:textColor="#726E6D"
                         android:gravity="center"
                         android:layout_gravity="center"
@@ -497,7 +362,7 @@
                         android:id="@+id/tvsonowise_video"
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:text="Photo/Video"
+                        android:text="SO Wise Photo/Video"
                         android:textColor="#726E6D"
                         android:gravity="center"
                         android:layout_gravity="center"
