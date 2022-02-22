@@ -1,4 +1,4 @@
-package com;
+package com.stavigilmonitoring;
 
 import android.app.ActivityManager;
 import android.content.Context;
