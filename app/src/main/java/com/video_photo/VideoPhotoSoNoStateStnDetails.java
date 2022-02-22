@@ -25,6 +25,7 @@ import android.support.v4.content.FileProvider;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
+import android.util.Base64OutputStream;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -68,6 +69,7 @@ import org.w3c.dom.NodeList;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -81,7 +83,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import static android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO;
 import static com.stavigilmonitoring.utility.OpenPostConnectionNow;
+import static com.video_photo.VideoPhotoStateStnSoNoDetails.getOutputMediaFileUri;
 
 /**
  * Created by Admin-3 on 11/13/2017.
@@ -123,6 +127,10 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
 
     List<StateDetailsList> searchResults;
     //private static ActivityUpdateURL asynk;
+
+
+    private int CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE=101;
+    private Uri videoUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -637,7 +645,8 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
         quest.setText(" Do you want to complete activity ?");
         final ImageButton btnPhotoAttachmentcam = (ImageButton) myDialog.findViewById(R.id.btncam);
         final ImageButton btnPhotoAttachmentgal = (ImageButton) myDialog.findViewById(R.id.btngallery);
-
+        final ImageButton btn_video = (ImageButton) myDialog.findViewById(R.id.btn_video);
+        btn_video.setVisibility(View.VISIBLE);
         final AutoCompleteTextView editTextAssignTo = (AutoCompleteTextView) myDialog.findViewById(R.id.editTextAssignTo);
         final EditText editTextNarration = (EditText) myDialog.findViewById(R.id.editTextNarration);
         editTextfileName = (EditText) myDialog.findViewById(R.id.editTextpath);
@@ -673,6 +682,17 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
                 //captureImage();]
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, IMG_RESULT);
+            }
+        });
+
+        btn_video.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+                uri = getOutputMediaFileUri(MEDIA_TYPE_VIDEO);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+                intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+                startActivityForResult(intent, CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE);
             }
         });
 
@@ -1312,7 +1332,8 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
                     // failed to capture image
                     Toast.makeText(parent, "Sorry! Failed to capture image", Toast.LENGTH_SHORT).show();
                 }
-            } else if (requestCode == IMG_RESULT && resultCode == RESULT_OK
+            }
+            else if (requestCode == IMG_RESULT && resultCode == RESULT_OK
                     && null != data) {
                 Uri URI = data.getData();
                 String[] FILE = {MediaStore.Images.Media.DATA};
@@ -1338,6 +1359,48 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
                 editTextfileName.setText(ImageDecode);
 
             }
+            else if (requestCode == CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE ) {
+
+                if (resultCode == RESULT_OK) {
+                    videoUri = data.getData();
+
+                    File f = new File(videoUri.getPath().toString());
+                    editTextfileName.setText(f.getName());
+                    InputStream inputStream = null;
+                    try {
+                        inputStream = new FileInputStream(f.getAbsolutePath());
+
+                        byte[] buffer = new byte[10240]; //specify the size to allow
+                        int bytesRead;
+                        ByteArrayOutputStream output = new ByteArrayOutputStream();
+                        Base64OutputStream output64 = new Base64OutputStream(output, Base64.DEFAULT);
+
+                        while ((bytesRead = inputStream.read(buffer)) != -1) {
+                            output64.write(buffer, 0, bytesRead);
+                        }
+
+
+                        output64.close();
+
+
+                        image_encode = output.toString();
+
+                    } catch (FileNotFoundException e1) {
+                        e1.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else if (resultCode == RESULT_CANCELED) {
+
+                    // User cancelled the video capture
+                    Toast.makeText(VideoPhotoSoNoStateStnDetails.this, "User cancelled the video capture.", Toast.LENGTH_LONG).show();
+
+                } else {
+                    // Video capture failed, advise user
+                    Toast.makeText(VideoPhotoSoNoStateStnDetails.this, "Video capture failed.", Toast.LENGTH_LONG).show();
+                }
+            }
+
         } catch (Exception e) {
             Toast.makeText(this, "Please try again", Toast.LENGTH_LONG)
                     .show();
