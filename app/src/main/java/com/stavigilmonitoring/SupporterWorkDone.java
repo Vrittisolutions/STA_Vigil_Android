@@ -223,7 +223,8 @@ public class SupporterWorkDone extends Activity {
 		//DatabaseHandler db = new DatabaseHandler(this);
 		SQLiteDatabase sql = db.getWritableDatabase();
 
-		Cursor c1 = sql.rawQuery("SELECT * FROM WorkMaterialSupporter WHERE Mobileno ='"+SupporterMob+"'", null);
+		Cursor c1 = sql.rawQuery("SELECT * FROM WorkMaterialSupporter WHERE " +
+				"Mobileno ='"+SupporterMob+"'", null);
 
 		if (c1.getCount() == 0) {
 

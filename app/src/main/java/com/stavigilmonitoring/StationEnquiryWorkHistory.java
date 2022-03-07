@@ -124,7 +124,7 @@ public class StationEnquiryWorkHistory extends AppCompatActivity  {
 
 		Cursor c = sql
 				.rawQuery(
-						"SELECT DISTINCT WorkType,Remarks,MaterialName,StationName,Mobileno,currentDate,remarksMaterial,currentLocation,ActivityName FROM WorkTypeHistory WHERE StationName='"+conn+"' ORDER BY currentDate", null);
+						"SELECT DISTINCT WorkType,Remarks,MaterialName,StationName,Mobileno,currentDate,remarksMaterial,currentLocation,ActivityName FROM WorkTypeHistory WHERE StationName='"+conn+"' ORDER BY currentDate desc", null);
 		
 		//c.moveToFirst();
 		int cnt = 0;
@@ -350,7 +350,7 @@ public class StationEnquiryWorkHistory extends AppCompatActivity  {
 
 			//DatabaseHandler db = new DatabaseHandler(getBaseContext());
 			SQLiteDatabase sql = db.getWritableDatabase();
-			String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getWorkDoneHistory?mobileno="
+			String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getWorkDoneHistory?mobileno="
 					+mobno+"&stationname="+conn;
 
 			Log.e("csn status", "url : " + url);
