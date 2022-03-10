@@ -123,7 +123,7 @@ public class BusReportingDetails extends Activity {
         @Override
         protected String doInBackground(String... params) {
 
-            String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetBusreportingDetail?installationid="
+            String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetBusreportingDetail?installationid="
                     + InstallationId + "&dt="+date;
 
             Log.e("csn status", "url : " + url);

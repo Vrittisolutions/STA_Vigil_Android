@@ -521,7 +521,7 @@ public class SuspectedMain extends Activity {
 
 			String xx = "";
 
-			String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetSuspectedStn_android?Mobile="
+			String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetSuspectedStn_android?Mobile="
 					+ mobno;
 
 			url = url.replaceAll(" ", "%20");
@@ -736,7 +736,7 @@ public class SuspectedMain extends Activity {
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
 
-			String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMasterMobile?Mobile="+mobno;
+			String Url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMasterMobile?Mobile="+mobno;
 			Log.e("All Station", "Url=" + Url);
 
 			try {

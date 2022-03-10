@@ -891,7 +891,7 @@ public class WorkDoneFillDetail extends Activity {
 
 			String url;
 
-			url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/BookWorkType?WorkType="
+			url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/BookWorkType?WorkType="
 					+ aWorkType
 					+ "&Remarks="
 					+ aWorkRemark

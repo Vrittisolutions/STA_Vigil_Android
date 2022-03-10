@@ -155,7 +155,7 @@ public class StationEnquiryAdvSchedule extends Activity {
 
           //  DatabaseHandler db = new DatabaseHandler(getBaseContext());
             SQLiteDatabase sql = db.getWritableDatabase();
-            String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetAdvertisementscheduler?InstallationId="+type;
+            String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetAdvertisementscheduler?InstallationId="+type;
 
             Log.e("csn status", "url : " + url);
             url = url.replaceAll(" ", "%20");

@@ -112,7 +112,7 @@ public class WrkPlanActivitiesList extends Activity {
 
             sop = "valid";
 
-            String url = "http://vritti.co/iMedia/STA_Announcement/DmCertificate.asmx/GetworkPlanSupporterWise" +
+            String url = "http://sta.vritti.co/iMedia/STA_Announcement/DmCertificate.asmx/GetworkPlanSupporterWise" +
                     "?UserMasterId="+SuppUserID+"&Date="+DateToPass;
 
             Log.e("csn status", "url : " + url);

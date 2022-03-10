@@ -141,7 +141,7 @@ public class DT_Analysis_Details extends Activity {
             ut = new utility();
 
            //down time count for EC
-            String url_EC = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetDowntimeAnalysisforstationstartandclose?" +
+            String url_EC = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetDowntimeAnalysisforstationstartandclose?" +
                     "downtype=EC&noofdays="+DaysInstKey+"&NetworkCode="+NW_CodeName;
 
             Log.e("EC count", "url : " + url_EC);
@@ -167,7 +167,7 @@ public class DT_Analysis_Details extends Activity {
             }
 
             //down time count for LS
-            String url_LS = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetDowntimeAnalysisforstationstartandclose?" +
+            String url_LS = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetDowntimeAnalysisforstationstartandclose?" +
                     "downtype=LS&noofdays="+DaysInstKey+"&NetworkCode="+NW_CodeName;
 
             Log.e("LS count", "url : " + url_LS);
@@ -194,7 +194,7 @@ public class DT_Analysis_Details extends Activity {
             }
 
             //down time count for DT instance
-            String url_DT_Instance =  "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetDownTimeAnalysisfroInstances?"+
+            String url_DT_Instance =  "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetDownTimeAnalysisfroInstances?"+
                     "Netwrokcode="+NW_CodeName+"&Noofdays="+DaysInstKey;
 
             Log.e("EC count", "url : " + url_EC);

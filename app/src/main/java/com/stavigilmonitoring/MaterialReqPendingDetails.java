@@ -320,7 +320,7 @@ public class MaterialReqPendingDetails extends Activity {
 
 			String url;
 
-			url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/ackRequest?orderHeaderId="+ orderHeaderId
+			url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/ackRequest?orderHeaderId="+ orderHeaderId
 					+"&reportingid="+reportingid+"&ApproveCategory="+matApproveCategory;
 
 			Log.e("material ", "url : " + url);
@@ -460,7 +460,7 @@ public class MaterialReqPendingDetails extends Activity {
 
 			String url;
 
-			url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/RejectOrder?orderHeaderId="
+			url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/RejectOrder?orderHeaderId="
 
 				+ orderHeaderId+"&reportingid="+reportingid;
 

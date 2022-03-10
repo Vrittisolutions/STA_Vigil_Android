@@ -1109,7 +1109,7 @@ public class SelectMenu_TEST extends Activity {
             //SQLiteDatabase sql = db.getWritableDatabase();
             String xx = "";
 
-            String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AlertCount?Mobile="
+            String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AlertCount?Mobile="
                     + mobno;
 
             Log.e("Alert Count", "url : " + url);
@@ -1198,8 +1198,8 @@ public class SelectMenu_TEST extends Activity {
             //updateAlertCount();
 
             // String
-            // url="http://vritti.co/iMedia/STA_Vigile_AndroidService_Test/WdbIntMgmtNew.asmx/GetCSNStatus_Android_new?Mobile="+mobno;
-            url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
+            // url="http://sta.vritti.co/iMedia/STA_Vigile_AndroidService_Test/WdbIntMgmtNew.asmx/GetCSNStatus_Android_new?Mobile="+mobno;
+            url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
                     + mobno;
             Log.e("connection status...", "url : " + url);
 
@@ -1303,9 +1303,9 @@ public class SelectMenu_TEST extends Activity {
 
             /*********************************************************************************************/
 
-            // url="http://vritti.co/iMedia/STA_Vigile_AndroidService_Test/WdbIntMgmtNew.asmx/GetCSNStatus_Android_new?Mobile="+mobno;
+            // url="http://sta.vritti.co/iMedia/STA_Vigile_AndroidService_Test/WdbIntMgmtNew.asmx/GetCSNStatus_Android_new?Mobile="+mobno;
             // url =
-            // "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibration_Android?Mobile="
+            // "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibration_Android?Mobile="
             // + mobno;
 
             date = new Date();
@@ -1313,7 +1313,7 @@ public class SelectMenu_TEST extends Activity {
 
             String bb = "";
 
-            String urls = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibrationNew?Mobile="
+            String urls = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibrationNew?Mobile="
                     + mobno + "&NetworkCode=" + bb + "&InstallationId=" + bb;
             url = url.replaceAll(" ", "%20");
 
@@ -1462,7 +1462,7 @@ public class SelectMenu_TEST extends Activity {
 
             }
 
-            url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetTVStatus_Android_new?Mobile="
+            url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetTVStatus_Android_new?Mobile="
                     + mobno;
 
             Log.e("csn status", "url : " + url);
@@ -1563,7 +1563,7 @@ public class SelectMenu_TEST extends Activity {
 
             }
 
-            url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStation_Android";
+            url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStation_Android";
 
             Log.e("csn status", "url : " + url);
             url = url.replaceAll(" ", "%20");
@@ -1640,7 +1640,7 @@ public class SelectMenu_TEST extends Activity {
             }
 
 
-            url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetListOfPendingDownloadingAdvertisment?Mobile="
+            url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetListOfPendingDownloadingAdvertisment?Mobile="
                     + mobno + "&NetworkCode='ksrtc'";
 
             url = url.replaceAll(" ", "%20");
@@ -1713,8 +1713,8 @@ public class SelectMenu_TEST extends Activity {
 
             }
 
-            // url="http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetNonReportedAdvt_Android_new?Mobile="+mobno;
-            url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetNonReportedAdvt_Android_new?Mobile="
+            // url="http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetNonReportedAdvt_Android_new?Mobile="+mobno;
+            url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetNonReportedAdvt_Android_new?Mobile="
                     + mobno;
 
             url = url.replaceAll(" ", "%20");
@@ -1804,7 +1804,7 @@ public class SelectMenu_TEST extends Activity {
             }
             // ////////////////////////////////////////////////////////////////////////////////////
 
-            url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertGet?InstallationId="
+            url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertGet?InstallationId="
                     + ""
                     + "&AddedBy="
                     + mobno;
@@ -1893,7 +1893,7 @@ public class SelectMenu_TEST extends Activity {
             /********************************************************************************/
 
 
-            url = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDM?Mobile="
+            url = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDM?Mobile="
                     + mobno;
 
             Log.e("dm certificate", "dm certificate : " + url);
@@ -1978,7 +1978,7 @@ public class SelectMenu_TEST extends Activity {
             }
 
             /*****************************************************************************************/
-            url = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetWorkAssignList?Mobile="
+            url = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetWorkAssignList?Mobile="
                     + mobno;
 
             url = url.replaceAll(" ", "%20");
@@ -2057,7 +2057,7 @@ public class SelectMenu_TEST extends Activity {
 
 
 
-            url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNForWebLMS";
+            url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNForWebLMS";
             url = url.replaceAll(" ", "%20");
             Log.e("lms connection", "5th" + url);
             int Lmsconnectioncount = 0;
@@ -2178,7 +2178,7 @@ public class SelectMenu_TEST extends Activity {
                 }
             }
 
-            url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMaster";
+            url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMaster";
             url = url.replaceAll(" ", "%20");
             Log.e("installation for Subnet", "6th" + url);
 
@@ -2240,7 +2240,7 @@ public class SelectMenu_TEST extends Activity {
                 }
             }
 
-            String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMasterMobile?Mobile="+mobno;
+            String Url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMasterMobile?Mobile="+mobno;
             Log.e("All Station", "Url=" + Url);
 
             try {
@@ -2305,7 +2305,7 @@ public class SelectMenu_TEST extends Activity {
                 }
             }
 
-            url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetBGPlaylistContent?MobileNo="
+            url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetBGPlaylistContent?MobileNo="
                     + mobno;
 
             Log.e("csn status", "url : " + url);
@@ -3044,7 +3044,7 @@ public class SelectMenu_TEST extends Activity {
             //DatabaseHandler db = new DatabaseHandler(getBaseContext());
             //SQLiteDatabase sql = db.getWritableDatabase();
 
-            String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
+            String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
                     + mobno;
 
             Log.e("csn status", "url : " + url);
@@ -3317,7 +3317,7 @@ public class SelectMenu_TEST extends Activity {
         protected String doInBackground(String... params) {
 
             String result = "";
-            @SuppressLint("WrongThread") String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetStationPassword_Android?Mobile="+
+            @SuppressLint("WrongThread") String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetStationPassword_Android?Mobile="+
                     mobno+"&Station="+ btmsheetedsationname.getTag().toString();
 
             url = url.replaceAll(" ", "%20");

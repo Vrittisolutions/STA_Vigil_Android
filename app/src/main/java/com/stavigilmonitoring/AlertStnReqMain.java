@@ -319,7 +319,7 @@ public class AlertStnReqMain extends Activity {
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
 
-			String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMasterMobile?Mobile="+mobno;
+			String Url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMasterMobile?Mobile="+mobno;
 			Log.e("All Station", "Url=" + Url);
 
 			try {

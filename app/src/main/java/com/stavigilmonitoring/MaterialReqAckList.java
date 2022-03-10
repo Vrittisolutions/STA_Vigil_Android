@@ -554,7 +554,7 @@ public class MaterialReqAckList extends Activity {
 
 			String xx = "";
 
-			String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/Myorders?sendMobileNo=" +mobno;
+			String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/Myorders?sendMobileNo=" +mobno;
 			url = url.replaceAll(" ", "%20");
 
 			System.out.println("============ internet reg url " + url);

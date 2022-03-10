@@ -811,7 +811,7 @@ public class InsspectionMain extends Activity {
 	// private void fetchData() {
 	//
 	// String
-	// url="http://vritti.co/imedia/WdbIntMgmtNew.asmx/GetCSNStatus_Android?UserName="+link+"&Mobile="+mobno;
+	// url="http://sta.vritti.co/imedia/WdbIntMgmtNew.asmx/GetCSNStatus_Android?UserName="+link+"&Mobile="+mobno;
 	//
 	// url = url.replaceAll(" ", "%20");
 	//
@@ -922,8 +922,8 @@ public class InsspectionMain extends Activity {
 		protected String doInBackground(String... params) {
 			String xx = "";
 			// String
-			// url="http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetCSNStatus_Android_new?Mobile="+mobno;
-			String url = "http://vritti.co/iMedia/STA_Vigile_AndroidService_Test/WdbIntMgmtNew.asmx/GetCSNStatus_Android_new?Mobile="
+			// url="http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetCSNStatus_Android_new?Mobile="+mobno;
+			String url = "http://sta.vritti.co/iMedia/STA_Vigile_AndroidService_Test/WdbIntMgmtNew.asmx/GetCSNStatus_Android_new?Mobile="
 					+ mobno;
 
 			url = url.replaceAll(" ", "%20");

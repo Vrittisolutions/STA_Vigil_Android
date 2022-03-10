@@ -112,7 +112,7 @@ public class WorkDoneTypeselect extends Activity{
 			//DatabaseHandler db = new DatabaseHandler(getBaseContext());
 			SQLiteDatabase sql = db.getWritableDatabase();
 			String columnName, columnValue;
-			String urlnet = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getWorkType";
+			String urlnet = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getWorkType";
 
 			urlnet = urlnet.replaceAll(" ", "%20");
 			Log.e("work type", "6th" + urlnet);

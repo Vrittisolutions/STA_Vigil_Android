@@ -705,7 +705,7 @@ String alertId="";
         @Override
         protected String doInBackground(String... params) {
             // TODO Auto-generated method stub
-            String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AlertCount?Mobile=" + mobno;
+            String Url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AlertCount?Mobile=" + mobno;
 
             Log.e("Alert Count", "url : " + Url);
             Url = Url.replaceAll(" ", "%20");
@@ -837,7 +837,7 @@ String alertId="";
             com.stavigilmonitoring.utility ut = new com.stavigilmonitoring.utility();
             //DatabaseHandler db = new DatabaseHandler(AlrtsStnListAll.this);
             SQLiteDatabase sql = db.getWritableDatabase();
-            String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertGet?InstallationId="
+            String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertGet?InstallationId="
                     + ""
                     + "&AddedBy="
                     + mobno;

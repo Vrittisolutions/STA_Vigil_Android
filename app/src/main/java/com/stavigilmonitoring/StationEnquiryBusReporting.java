@@ -306,7 +306,7 @@ public class StationEnquiryBusReporting extends Activity {
 
 			//DatabaseHandler db = new DatabaseHandler(getBaseContext());
 			SQLiteDatabase sql = db.getWritableDatabase();
-			String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetBustreportingsavendatecount?InstallationId="
+			String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetBustreportingsavendatecount?InstallationId="
 					+ type + "&days="+DAYS_cnt;
 
 			Log.e("csn status", "url : " + url);

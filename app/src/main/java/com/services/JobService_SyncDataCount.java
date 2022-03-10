@@ -172,7 +172,7 @@ public class JobService_SyncDataCount extends JobService {
                 Cursor cusers = sql.rawQuery(
                         "SELECT *   FROM ConnectionStatusUser1", null);
                 if (cusers.getCount() == 0) {
-                    String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStationWithUserName_Android?Mobile="
+                    String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStationWithUserName_Android?Mobile="
                             + mobno;
 
                     Log.e("csn status", "url : " + url);
@@ -279,7 +279,7 @@ public class JobService_SyncDataCount extends JobService {
 
                 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStation_Android";
+                String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStation_Android";
 
                 Log.e("csn status", "url : " + url);
                 Log.e("Tag", " ******* WORKING ON SYNCDATA *********");
@@ -373,7 +373,7 @@ public class JobService_SyncDataCount extends JobService {
 
                 // utility ut = new utility();
 
-                url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetListOfPendingDownloadingAdvertisment?Mobile="
+                url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetListOfPendingDownloadingAdvertisment?Mobile="
                         + mobno + "&NetworkCode='ksrtc'";
                 Log.e("Tag", " ******* WORKING ON SYNCDATA *********");
 
@@ -452,7 +452,7 @@ public class JobService_SyncDataCount extends JobService {
                 }
 
                 //Connection Status
-                url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
+                url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
                         + mobno;
 
                 Log.e("csn status", "url : " + url);
@@ -662,7 +662,7 @@ public class JobService_SyncDataCount extends JobService {
             }
             /*--------------------------------------------------------------------------------------------------------------------------------*/
 
-            url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetTVStatus_Android_new?Mobile="
+            url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetTVStatus_Android_new?Mobile="
                     + mobno;
 
             Log.e("csn status", "url : " + url);
@@ -772,7 +772,7 @@ public class JobService_SyncDataCount extends JobService {
             try {
 
                 String xx = "";
-                String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetNonReportedAdvt_Android_new?Mobile="
+                String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetNonReportedAdvt_Android_new?Mobile="
                         + mobno;
 
                 url = url.replaceAll(" ", "%20");
@@ -947,7 +947,7 @@ public class JobService_SyncDataCount extends JobService {
 
 
             // **********************************************************************************************************/
-            url  = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AlertCount?Mobile="
+            url  = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AlertCount?Mobile="
                     +mobno;
 
             Log.e("Alert Count", "url : " + url);
@@ -1042,7 +1042,7 @@ public class JobService_SyncDataCount extends JobService {
 
             //////////////////////////////////////////////////////////////////////////////////////
             String sop;
-            url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertGet?InstallationId=" +"" +"&AddedBy=" + mobno;
+            url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertGet?InstallationId=" +"" +"&AddedBy=" + mobno;
 
             Log.e("csn status", "url : " + url);
             url = url.replaceAll(" ", "%20");
@@ -1124,7 +1124,7 @@ public class JobService_SyncDataCount extends JobService {
 // **********************************************************************************************************/
             /*unreleased advs*/
             list_advdata.clear();
-            url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetUnreleasedAdv";
+            url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetUnreleasedAdv";
 
             Log.e("unreleased advs", "url : " + url);
             url = url.replaceAll(" ", "%20");

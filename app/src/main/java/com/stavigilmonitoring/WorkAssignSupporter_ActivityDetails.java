@@ -102,7 +102,7 @@ public class WorkAssignSupporter_ActivityDetails extends Activity {
         @Override
         protected String doInBackground(String... params) {
             // TODO Auto-generated method stub
-            String Url = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetWorkAssignList?Mobile=" + mobno;
+            String Url = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetWorkAssignList?Mobile=" + mobno;
             Url = Url.replaceAll(" ", "%20");
             try {
                 resposmsg = ut.httpGet(Url);
@@ -433,7 +433,7 @@ public class WorkAssignSupporter_ActivityDetails extends Activity {
         //if (IssuedToName.equalsIgnoreCase(mobileUserName)) {
         if (actIssuedToPersonName.equalsIgnoreCase(mobileUserName)) {
 
-            String urlStringToken = "http://vritti.co/imedia/STA_Announcement/DMcertificate.asmx/ReassignedWork?UserId="
+            String urlStringToken = "http://sta.vritti.co/imedia/STA_Announcement/DMcertificate.asmx/ReassignedWork?UserId="
                     + mobi
                     + "&ActivityId="
                     + activityId
@@ -453,7 +453,7 @@ public class WorkAssignSupporter_ActivityDetails extends Activity {
     protected void reasonUpdate() {
         // TODO Auto-generated method stub
 
-        String urlStringToken = "http://vritti.co/imedia/STA_Announcement/DMcertificate.asmx/WorkReasonUpdate?Mobile="
+        String urlStringToken = "http://sta.vritti.co/imedia/STA_Announcement/DMcertificate.asmx/WorkReasonUpdate?Mobile="
                 + mobno
                 + "&ActivityId="
                 + activityId
@@ -474,7 +474,7 @@ public class WorkAssignSupporter_ActivityDetails extends Activity {
             ut = new com.stavigilmonitoring.utility();
           //  DatabaseHandler db = new DatabaseHandler(parent);
             SQLiteDatabase sql = db.getWritableDatabase();
-            //String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
+            //String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
             String url = params[0];
 
             Log.e("ReassignedWork", "url : " + url);
@@ -694,7 +694,7 @@ public class WorkAssignSupporter_ActivityDetails extends Activity {
         protected String doInBackground(String... params) {
             // TODO Auto-generated method stub
 
-            String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/Getlatlantofstation?Installationid="+StationID;
+            String Url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/Getlatlantofstation?Installationid="+StationID;
             Url = Url.replaceAll(" ", "%20");
             try {
                 resposmsg = ut.httpGet(Url);

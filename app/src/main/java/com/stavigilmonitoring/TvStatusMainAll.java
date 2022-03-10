@@ -512,7 +512,7 @@ public class TvStatusMainAll extends Activity {
 		@Override
 		protected String doInBackground(String... params) {
 
-			String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetTVStatus_Android_new?Mobile="
+			String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetTVStatus_Android_new?Mobile="
 					+ mobno;
 
 			Log.e("csn status", "url : " + url);
@@ -839,7 +839,7 @@ public class TvStatusMainAll extends Activity {
 			Log.e("Details", "" + installationId + "" + reasonCode + ""
 					+ reasonDesc + "" + mobno);
 			if (ut.isnet(getApplicationContext())) {
-				String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/UpdateTVStatusReason_Android?InstallationId="
+				String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/UpdateTVStatusReason_Android?InstallationId="
 						+ installationId
 						+ "&MobileNo="
 						+ mobno
@@ -918,7 +918,7 @@ public class TvStatusMainAll extends Activity {
 
 		@Override
 		protected String doInBackground(String... params) {
-			String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetTVStatus_Android_new?Mobile="
+			String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetTVStatus_Android_new?Mobile="
 					+ mobno;
 
 			Log.e("csn status", "url : " + url);

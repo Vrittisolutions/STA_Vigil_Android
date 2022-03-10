@@ -741,8 +741,8 @@ public class RegistrationUS extends Activity {
 						+ strmobileno);
 
 				String pas = URLEncoder.encode(strpassword, "UTF-8");
-				//String url = "http://vritti.co/imedia/UserAuthentication_STA/UserAuthenticate.asmx/AuthenticateUser?"
-				String url = "http://vritti.co/imedia/UserAuthentication/UserAuthenticate.asmx/AuthenticateUser?"
+				//String url = "http://sta.vritti.co/imedia/UserAuthentication_STA/UserAuthenticate.asmx/AuthenticateUser?"
+				String url = "http://sta.vritti.co/imedia/UserAuthentication/UserAuthenticate.asmx/AuthenticateUser?"
 						+ "Mobile_No="
 						+ strmobileno
 						+ "&LoginId="
@@ -999,7 +999,7 @@ public class RegistrationUS extends Activity {
 		link = link.replaceAll("\\s", "");
 
 		if (link.contains("vritti.co")) {
-			strurldb = "http://vritti.co/Vrittiportal";
+			strurldb = "http://sta.vritti.co/Vrittiportal";
 			strurl = "intranet.vritti.co";
 		} else if (link.contains("vworkbench.com")) {
 			if (link.contains("http://")) {
@@ -1332,7 +1332,7 @@ public class RegistrationUS extends Activity {
 	}
 
 	/*public void getCSNCountURL() {
-		String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AddDeviceRegId?"
+		String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AddDeviceRegId?"
 				+ "mobileno=" + mobno + "&deviceregid=" + regId;
 
 		try {
@@ -1371,7 +1371,7 @@ public class RegistrationUS extends Activity {
 		protected String doInBackground(String... params) {
 
 			try {
-				String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AddDeviceRegId?"
+				String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AddDeviceRegId?"
 						+ "mobileno=" + mobno + "&deviceregid=" + regId;
 
 				try {

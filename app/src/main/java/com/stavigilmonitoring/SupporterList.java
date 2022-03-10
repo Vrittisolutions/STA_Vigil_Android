@@ -482,7 +482,7 @@ public class SupporterList extends Activity {
 			try {
 				String respons = "";
 
-				String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getHideUserList";
+				String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getHideUserList";
 
 				Log.e("csn status", "url : " + url);
 				url = url.replaceAll(" ", "%20");
@@ -529,7 +529,7 @@ public class SupporterList extends Activity {
 			try {
 				String xx = "";
 
-				String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStationWithUserName_Android?Mobile="
+				String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStationWithUserName_Android?Mobile="
 						+ mobno;
 
 				Log.e("csn status", "url : " + url);
@@ -599,7 +599,7 @@ public class SupporterList extends Activity {
 				sop = "invalid";
 			}
 
-			String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMasterMobile?Mobile="
+			String Url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMasterMobile?Mobile="
 					+ mobno;
 			Log.e("All Station", "Url=" + Url);
 			String resposmsg = "";

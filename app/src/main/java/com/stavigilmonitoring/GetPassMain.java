@@ -208,7 +208,7 @@ public class GetPassMain extends Activity {
 			String mobno = dbi.GetPhno();
 
 			String result = "";
-			String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetStationPassword_Android?Mobile="+
+			String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetStationPassword_Android?Mobile="+
 					mobno+"&Station="+ edname.getTag().toString();
 
 			url = url.replaceAll(" ", "%20");

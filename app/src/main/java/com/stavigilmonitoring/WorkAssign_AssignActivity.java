@@ -426,7 +426,7 @@ public class WorkAssign_AssignActivity extends Activity {
         protected String doInBackground(String... params) {
             com.stavigilmonitoring.utility ut = new com.stavigilmonitoring.utility();
             String url;
-            url ="http://vritti.co/imedia/STA_Announcement/DMcertificate.asmx/AssignWorkActivities?"+"InstallationId="
+            url ="http://sta.vritti.co/imedia/STA_Announcement/DMcertificate.asmx/AssignWorkActivities?"+"InstallationId="
                     + installationid
                     + "&AssignTo="
                     + trnassignto
@@ -545,7 +545,7 @@ public class WorkAssign_AssignActivity extends Activity {
         @Override
         protected String doInBackground(String... params) {
             // TODO Auto-generated method stub
-            String Url = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetWorkAssignList?Mobile="
+            String Url = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetWorkAssignList?Mobile="
                     + mobno;
             Url = Url.replaceAll(" ", "%20");
             try {
@@ -805,7 +805,7 @@ public class WorkAssign_AssignActivity extends Activity {
         @Override
         protected String doInBackground(Void... params) {
             // TODO Auto-generated method stub
-            String Url = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetWorkAssignSupporter?Mobile=" + mobno;
+            String Url = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetWorkAssignSupporter?Mobile=" + mobno;
             Url = Url.replaceAll(" ", "%20");
             try {
                 resposmsg = ut.httpGet(Url);

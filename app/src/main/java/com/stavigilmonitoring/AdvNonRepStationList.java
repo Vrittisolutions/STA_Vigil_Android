@@ -822,7 +822,7 @@ public class AdvNonRepStationList extends Activity {
 		@Override
 		protected String doInBackground(String... params) {
 
-			String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetNonReportedAdvt_Android_new?Mobile="
+			String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetNonReportedAdvt_Android_new?Mobile="
 					+ mobno;
 
 			url = url.replaceAll(" ", "%20");

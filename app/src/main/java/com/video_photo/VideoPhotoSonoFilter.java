@@ -148,7 +148,7 @@ public  class VideoPhotoSonoFilter extends Activity {
 
             String bb= "";
             utility ut = new utility();
-            String urls = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDM?Mobile="
+            String urls = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDM?Mobile="
                     + mobno;
             urls = urls.replaceAll(" ", "%20");
 
@@ -267,7 +267,7 @@ public  class VideoPhotoSonoFilter extends Activity {
 
             String bb= "";
             utility ut = new utility();
-            String urls = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDMPhotoVideo?Mobile="
+            String urls = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDMPhotoVideo?Mobile="
                     + mobno;
             urls = urls.replaceAll(" ", "%20");
 

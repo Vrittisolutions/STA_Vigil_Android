@@ -130,7 +130,7 @@ public class DT_StationDetails extends Activity {
 
             if(LS_EC_Key.contains("LS") || LS_EC_Key.contains("EC")){
 
-                String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationStartcloseStationWiseDetails" +
+                String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationStartcloseStationWiseDetails" +
                         "?downtimetype="+LS_EC_Key+"&InstallationId="+InstallationId+"&noofdays="+DaysInstKey;
 
                 Log.e("csn status", "url : " + url);
@@ -210,7 +210,7 @@ public class DT_StationDetails extends Activity {
 
             }else if(LS_EC_Key.contains("DT_INSTANCE")){
 
-                String url_DT_Inst = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetDowntimeInstancesStationwise" +
+                String url_DT_Inst = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetDowntimeInstancesStationwise" +
                         "?InstllationId="+InstallationId+"&noofdays="+DaysInstKey+"&networkcode="+NW_CodeName;
 
                 Log.e("csn status", "url : " + url_DT_Inst);

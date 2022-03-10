@@ -162,7 +162,7 @@ public class DowntimeStateWise extends Activity {
 			com.stavigilmonitoring.utility ut = new com.stavigilmonitoring.utility();
 			//DatabaseHandler db = new DatabaseHandler(getBaseContext());
 			SQLiteDatabase sql = db.getWritableDatabase();
-			String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStation_Android";
+			String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStation_Android";
 
 			Log.e("csn status", "url : " + url);
 			url = url.replaceAll(" ", "%20");
@@ -206,7 +206,7 @@ public class DowntimeStateWise extends Activity {
 					cur.close();
 					//GetStationDowntime30Days_Android
 
-					url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetStationDowntime_Android?Mobile="
+					url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetStationDowntime_Android?Mobile="
 							+ mobno;
 
 					Log.e("csn status", "url : " + url);

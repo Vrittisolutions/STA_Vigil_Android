@@ -120,7 +120,7 @@ public class AdvTimingDtlsReport extends Activity {
 
             sop = "valid";
 
-            String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetAdvDateTimeDetailReport" +
+            String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetAdvDateTimeDetailReport" +
                     "?installationid="+InstallationID+"&mobileno="+mobno+"&clipid="+ClipNo+"&date="+DateToPass;
 
             Log.e("csn status", "url : " + url);

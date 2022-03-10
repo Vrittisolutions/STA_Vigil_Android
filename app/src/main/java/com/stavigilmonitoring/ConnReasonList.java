@@ -321,7 +321,7 @@ public class ConnReasonList extends Activity {
 			String result1 = "Invalid";
 			// Log.e("GetStationPassword",""+params[0]);
 			String result = "";
-			String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetReasonDownTime_Android?Mobile="
+			String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetReasonDownTime_Android?Mobile="
 					+ mobno;
 
 			url = url.replaceAll(" ", "%20");

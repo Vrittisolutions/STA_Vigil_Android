@@ -335,8 +335,8 @@ public class NonrepeatedAdFilter extends Activity {
 			String xx = "";
 
 			// String
-			// url="http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetNonReportedAdvt_Android_new?Mobile="+mobno;
-			String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetNonReportedAdvt_Android_new?Mobile="
+			// url="http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetNonReportedAdvt_Android_new?Mobile="+mobno;
+			String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetNonReportedAdvt_Android_new?Mobile="
 					+ mobno;
 			url = url.replaceAll(" ", "%20");
 			try {
@@ -531,7 +531,7 @@ public class NonrepeatedAdFilter extends Activity {
 		//	DatabaseHandler db = new DatabaseHandler(getBaseContext());
 			SQLiteDatabase sql = db.getWritableDatabase();
 			String columnName, columnValue;
-			urlnet = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMaster";
+			urlnet = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMaster";
 			urlnet = urlnet.replaceAll(" ", "%20");
 			Log.e("installation for Subnet", "6th" + urlnet);
 

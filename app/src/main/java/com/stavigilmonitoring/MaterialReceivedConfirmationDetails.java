@@ -136,7 +136,7 @@ public class MaterialReceivedConfirmationDetails extends Activity {
 
 			String url;
 
-			url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/ReceivedDispatch?orderHeaderId="
+			url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/ReceivedDispatch?orderHeaderId="
 
 					+ fkorderid+"&mobileno="+mobno;
 

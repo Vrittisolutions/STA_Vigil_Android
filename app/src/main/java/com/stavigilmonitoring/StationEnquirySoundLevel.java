@@ -836,7 +836,7 @@ public class StationEnquirySoundLevel extends Activity {
 
 			String xx = "";
 			//
-			String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibrationNew?Mobile="
+			String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibrationNew?Mobile="
 					+ mobno
 					+ "&NetworkCode="
 					+ mNet

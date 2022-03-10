@@ -549,7 +549,7 @@ public class Inspection extends Activity {
 		//
 		// final String NAMESPACE = "vWorkbench";
 		// String URL =
-		// "http://vritti.co/VrittiPortal/webservice/vwbservice.asmx?wsdl";
+		// "http://sta.vritti.co/VrittiPortal/webservice/vwbservice.asmx?wsdl";
 		// final String SOAP_ACTION = "vWorkbench/UploadFile_new";
 		// final String METHOD_NAME = "UploadFile_new";
 		// try{

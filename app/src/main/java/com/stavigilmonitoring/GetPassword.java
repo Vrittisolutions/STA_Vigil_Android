@@ -71,7 +71,7 @@ public class GetPassword extends Activity {
 		@Override
 		protected String doInBackground(String... params) {
 			String result = "";
-			String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStation_Android";
+			String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStation_Android";
 
 			url = url.replaceAll(" ", "%20");
 			try {
@@ -183,7 +183,7 @@ public class GetPassword extends Activity {
 		protected String doInBackground(String... params) {
 			Log.e("GetStationPassword", "" + params[0]);
 			String result = "";
-			String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetStationPassword_Android?&Station="
+			String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetStationPassword_Android?&Station="
 					+ params[0];
 
 			url = url.replaceAll(" ", "%20");

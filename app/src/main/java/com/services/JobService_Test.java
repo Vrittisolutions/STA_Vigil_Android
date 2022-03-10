@@ -94,7 +94,7 @@ public class JobService_Test extends JobService {
 
             String bb= "";
             utility ut = new utility();
-            String urls = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibrationNew?Mobile="
+            String urls = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibrationNew?Mobile="
                     + mobno + "&NetworkCode="+bb+"&InstallationId="+bb;
             urls = urls.replaceAll(" ", "%20");
 

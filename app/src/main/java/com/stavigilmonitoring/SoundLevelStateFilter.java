@@ -232,7 +232,7 @@ public class SoundLevelStateFilter extends Activity {
 
 			String xx = "";
 //http://192.168.1.108:70
-			String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibrationNew?Mobile="
+			String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibrationNew?Mobile="
 					+ mobno + "&NetworkCode=&InstallationId=";
 			url = url.replaceAll(" ", "%20");
 
@@ -405,7 +405,7 @@ public class SoundLevelStateFilter extends Activity {
 			DatabaseHandler db = new DatabaseHandler(getBaseContext());
 			SQLiteDatabase sql = db.getWritableDatabase();
 			String columnName, columnValue;
-			urlnet = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMaster";
+			urlnet = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMaster";
 			urlnet = urlnet.replaceAll(" ", "%20");
 			Log.e("installation for Subnet", "6th" + urlnet);
 

@@ -288,7 +288,7 @@ public class WrkPlan_stationRelatedActivities extends Activity {
 
             sop = "valid";
 
-            String url = "http://vritti.co/iMedia/STA_Announcement/DmCertificate.asmx/GetWorkPlanstationWise" +
+            String url = "http://sta.vritti.co/iMedia/STA_Announcement/DmCertificate.asmx/GetWorkPlanstationWise" +
                     "?Installationid="+InstallationID+"&Date="+SelectedDate;
 
             Log.e("csn status", "url : " + url);
@@ -418,7 +418,7 @@ public class WrkPlan_stationRelatedActivities extends Activity {
 
             sop = "valid";
 
-                String url = "http://vritti.co/iMedia/STA_Announcement/DmCertificate.asmx/GetWorkplanNetwrokWise?" +
+                String url = "http://sta.vritti.co/iMedia/STA_Announcement/DmCertificate.asmx/GetWorkplanNetwrokWise?" +
                         "NetworkCode="+Type+"&Date="+SelectedDate;
 
                 Log.e("csn status", "url : " + url);

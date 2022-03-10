@@ -181,7 +181,7 @@ public class AdvDetailActivity extends AppCompatActivity {
 
             sop = "valid";
 
-            String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AdvertisementVideoData";
+            String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AdvertisementVideoData";
 
             Log.e("csn status", "url : " + url);
             url = url.replaceAll(" ", "%20");

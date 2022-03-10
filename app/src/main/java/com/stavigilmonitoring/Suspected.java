@@ -453,7 +453,7 @@ public class Suspected extends Activity {
 
 				String xx = "";
 
-				String url="http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetSuspectedStation?Flg="+NetworkCode;
+				String url="http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetSuspectedStation?Flg="+NetworkCode;
 
 				url = url.replaceAll(" ", "%20");
 

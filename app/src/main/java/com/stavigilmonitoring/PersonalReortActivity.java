@@ -249,7 +249,7 @@ public class PersonalReortActivity extends Activity {
             //Toast.makeText(PersonalReortActivity.this,"URl is about to hit",Toast.LENGTH_LONG).show();
 
             // Making a request to url and getting response
-            String url = "http://vritti.co/iMedia/STA_Announcement/DmCertificate.asmx/DailyReport?Mobileno="+Mobno;
+            String url = "http://sta.vritti.co/iMedia/STA_Announcement/DmCertificate.asmx/DailyReport?Mobileno="+Mobno;
             //String jsonStr = sh.makeServiceCall(url);
 
             url = url.replaceAll(" ", "%20");

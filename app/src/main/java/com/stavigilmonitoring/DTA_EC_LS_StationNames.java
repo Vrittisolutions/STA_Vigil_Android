@@ -282,7 +282,7 @@ public class DTA_EC_LS_StationNames extends Activity {
             if(LS_EC_Key.contains("LS") || LS_EC_Key.contains("EC")){
 
                 //get stations list
-                String url_LS = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationStartCloseDetailsStationWiseCount" +
+                String url_LS = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationStartCloseDetailsStationWiseCount" +
                         "?Dwntype="+LS_EC_Key+"&noofdays="+DaysInstKey+"&NetworkCode="+NW_CodeName;
 
                 Log.e("csn status", "url : " + url_LS);
@@ -361,7 +361,7 @@ public class DTA_EC_LS_StationNames extends Activity {
             }else if(LS_EC_Key.contains("DT_INSTANCE")){
                 //get stations list
 
-                String url_DT_INSTANCE = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetDowntimeInstancesSuppoterwise" +
+                String url_DT_INSTANCE = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetDowntimeInstancesSuppoterwise" +
                         "?Mobileno="+mobno+"&Noofdays="+DaysInstKey+"&networkcode="+NW_CodeName;
 
                 Log.e("csn status", "url : " + url_DT_INSTANCE);

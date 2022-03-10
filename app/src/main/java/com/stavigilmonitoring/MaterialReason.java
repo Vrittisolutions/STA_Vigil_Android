@@ -311,7 +311,7 @@ public class MaterialReason extends Activity {
 			sop = "valid";
 			String columnName, columnValue;
 
-			url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getreasonmaster";
+			url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getreasonmaster";
 
 			Log.e("material ", "url : " + url);
 			url = url.replaceAll(" ", "%20");

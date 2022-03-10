@@ -214,7 +214,7 @@ public class Adv_StationsList extends Activity {
 
             sop = "valid";
 
-            String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetAdvFirstPlayReport" +
+            String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetAdvFirstPlayReport" +
                     "?networkcode="+Network+"&clipid="+ClipNo+"&mobileno="+mobno;
 
                 Log.e("csn status", "url : " + url);

@@ -263,8 +263,8 @@ public class StationVisitForm extends Activity {
         @Override
         protected String doInBackground(String... params) {
             // TODO Auto-generated method stub
-            //String Url = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetWorkAssignList?Mobile="
-            String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetQuestions";
+            //String Url = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetWorkAssignList?Mobile="
+            String Url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetQuestions";
             Url = Url.replaceAll(" ", "");
             try {
                 responsemsg = ut.httpGet(Url);
@@ -654,7 +654,7 @@ public class StationVisitForm extends Activity {
             String columnName, columnValue;
             Log.e("Tag", " ******* WORKING ON SYNCDATA *********");
 
-            url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getreportingTo?Mobileno="
+            url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getreportingTo?Mobileno="
                     + mobno;
 
             Log.e("material", "url : " + url);

@@ -390,7 +390,7 @@ public class AlrtListActivity extends Activity {
 		@Override
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AlertCount?Mobile="+mobno;
+			String Url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AlertCount?Mobile="+mobno;
 
 			Log.e("Alert Count", "url : " + Url);
 			Log.e("Tag", " ******* WORKING ON ALertCOUNT *********");
@@ -543,7 +543,7 @@ public class AlrtListActivity extends Activity {
 			Log.e("Tag", " ******* WORKING ON AlertGET *********");
 			//DatabaseHandler db = new DatabaseHandler(AlrtListActivity.this);
 			SQLiteDatabase sql = db.getWritableDatabase();
-			String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertGet?InstallationId="
+			String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertGet?InstallationId="
 			+""
 			+"&AddedBy="
 			+ mobno;
@@ -765,7 +765,7 @@ public class AlrtListActivity extends Activity {
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
 
-			String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMasterMobile?Mobile="+mobno;
+			String Url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMasterMobile?Mobile="+mobno;
 			Log.e("All Station", "Url=" + Url);
 
 			try {

@@ -90,7 +90,7 @@ public class DmCertificateService extends Service {
 		@Override
 		protected String doInBackground(Void... params) {
 			// TODO Auto-generated method stub
-			String Url = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetDMCertifcateUser?Mobile=" + mobno;
+			String Url = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetDMCertifcateUser?Mobile=" + mobno;
 			ut= new utility();
 			Log.e("DMCertificateUser", "url : " + Url);
 			Log.e("Tag", " ******* WORKING ON DMCertificateUser *********");
@@ -165,7 +165,7 @@ public class DmCertificateService extends Service {
 				
            String bb= "";
            utility ut = new utility();
-		   String urls = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDM?Mobile="
+		   String urls = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDM?Mobile="
 				   + mobno;
 			 urls = urls.replaceAll(" ", "%20");
 			//DatabaseHandler db = new DatabaseHandler(getBaseContext());

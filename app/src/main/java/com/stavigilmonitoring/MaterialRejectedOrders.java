@@ -424,7 +424,7 @@ public class MaterialRejectedOrders extends Activity {
 
 			String xx = "";
 
-			String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getRejectedrequest?mobileno="
+			String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getRejectedrequest?mobileno="
 					+ mobno;
 			url = url.replaceAll(" ", "%20");
 

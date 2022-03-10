@@ -113,7 +113,7 @@ public class DmCcategorizeActivity extends Activity {
 
             String bb= "";
             com.stavigilmonitoring.utility ut = new com.stavigilmonitoring.utility();
-            String urls = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDM?Mobile="
+            String urls = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDM?Mobile="
                     + mobno;
             urls = urls.replaceAll(" ", "%20");
 

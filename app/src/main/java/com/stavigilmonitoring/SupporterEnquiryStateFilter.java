@@ -371,7 +371,7 @@ public class SupporterEnquiryStateFilter extends Activity {
 			try {
 				String xx = "";
 
-				String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStationWithUserName_Android?Mobile="
+				String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStationWithUserName_Android?Mobile="
 						+ mobno;
 
 				Log.e("csn status", "url : " + url);
@@ -441,7 +441,7 @@ public class SupporterEnquiryStateFilter extends Activity {
 			}
 			
 		
-			String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMasterMobile?Mobile="+mobno;
+			String Url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMasterMobile?Mobile="+mobno;
 			Log.e("All Station", "Url=" + Url);
 			String	resposmsg= "";
 			try {

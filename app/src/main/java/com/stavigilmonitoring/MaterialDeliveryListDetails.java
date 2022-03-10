@@ -315,7 +315,7 @@ public class MaterialDeliveryListDetails extends Activity {
 		protected String doInBackground(String... paramss) {
 
 			try {
-				String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx";
+				String Url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx";
 				SoapObject request = new SoapObject(NAMESPACE, METHOD);
 				PropertyInfo propInfo = new PropertyInfo();
 				propInfo.type = PropertyInfo.STRING_CLASS;

@@ -376,7 +376,7 @@ public class MaterialRequest extends Activity {
 			Reporting_managerName = "Sachin Khedekar";
 			Reporting_managerID = "26";
 
-			/*url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/bookOrder?mobileno="
+			/*url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/bookOrder?mobileno="
 					+ mobno
 					+ "&stationame="
 					+ stationname
@@ -400,7 +400,7 @@ public class MaterialRequest extends Activity {
 
 				/*'Sachin Khedekar'*/
 
-			 url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/bookOrder?mobileno=" + mobno
+			 url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/bookOrder?mobileno=" + mobno
 					+ "&stationame="+ stationname + "&stationmasterid="+ stationid	+"&itemmasterid="+ MaterialID
 					+ "&materialname="+ materialname + "&reason="+ reason + "&scraprepair="+ scraprepair
 					+ "&reporteename="+ reportingname + "&reportingid="+ reportingid + "&qty="+ Quantity

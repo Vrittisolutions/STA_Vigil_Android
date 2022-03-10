@@ -488,13 +488,13 @@ public class DowntimeReasonMain extends Activity {
 
 			// String url;
 
-			// http://vritti.co/vrittiportal/webservice/DepartmentwiseActWebService.asmx/FillOldGrid?Mobileno=9922708394&DeptId=Report&DeptName=Employee%20Reporting%20to%20Me
+			// http://sta.vritti.co/vrittiportal/webservice/DepartmentwiseActWebService.asmx/FillOldGrid?Mobileno=9922708394&DeptId=Report&DeptName=Employee%20Reporting%20to%20Me
 			// url =
 			// "http://intranet.vritti.co/VWBTest/webservice/ActivityWebService.asmx/WorkspaceWiseActivities?"
 			// + "Mobileno=" + mobno;
 			// String
-			// url="http://vritti.co/imedia/WdbIntMgmtNew.asmx/GetNonReportedAdvt_Android?UserName="+link+"&Mobile="+mobno;
-			String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetCurrentlyStationDowntime_Android?Mobile="
+			// url="http://sta.vritti.co/imedia/WdbIntMgmtNew.asmx/GetNonReportedAdvt_Android?UserName="+link+"&Mobile="+mobno;
+			String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetCurrentlyStationDowntime_Android?Mobile="
 					+ mobno;
 			url = url.replaceAll(" ", "%20");
 

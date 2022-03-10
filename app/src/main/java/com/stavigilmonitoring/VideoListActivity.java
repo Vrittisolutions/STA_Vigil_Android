@@ -187,7 +187,7 @@ public class VideoListActivity extends Activity {
         protected String doInBackground(Void... arg0) {
             com.stavigilmonitoring.utility ut = new utility();
 
-            String url = "http://vritti.co/iMedia/STA_Announcement/DmCertificate.asmx/GetTrainingVideo?LangCode="+LangCode;
+            String url = "http://sta.vritti.co/iMedia/STA_Announcement/DmCertificate.asmx/GetTrainingVideo?LangCode="+LangCode;
             //String jsonStr = sh.makeServiceCall(url);
 
             url = url.replaceAll(" ", "%20");

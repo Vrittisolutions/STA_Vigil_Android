@@ -469,7 +469,7 @@ public class MaterialDeliveredListActivity extends Activity {
 
 			String xx = "";
 
-			String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getAcknowledgedrequest?Mobileno="
+			String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getAcknowledgedrequest?Mobileno="
 					+ mobno;
 			url = url.replaceAll(" ", "%20");
 			// ,getDeliveredRequests

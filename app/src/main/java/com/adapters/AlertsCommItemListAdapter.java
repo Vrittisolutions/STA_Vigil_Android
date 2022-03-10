@@ -381,7 +381,7 @@ public class AlertsCommItemListAdapter extends BaseAdapter {
 				com.stavigilmonitoring.utility ut = new com.stavigilmonitoring.utility();
 				DatabaseHandler db = new DatabaseHandler(context);
 				SQLiteDatabase sql = db.getWritableDatabase();
-				String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
+				String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
 				+AlertId
 				+"&ResolveBy="
 				+ ResolveBy

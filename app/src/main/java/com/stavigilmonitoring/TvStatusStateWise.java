@@ -322,7 +322,7 @@ public class TvStatusStateWise extends Activity {
 			com.stavigilmonitoring.utility ut = new com.stavigilmonitoring.utility();
 			//DatabaseHandler db = new DatabaseHandler(getBaseContext());
 			SQLiteDatabase sql = db.getWritableDatabase();
-			String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStation_Android";
+			String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStation_Android";
 
 			Log.e("csn status", "url : " + url);
 			url = url.replaceAll(" ", "%20");
@@ -360,7 +360,7 @@ public class TvStatusStateWise extends Activity {
 
 					cur.close();
 
-					url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetTVStatus_Android_new?Mobile="
+					url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetTVStatus_Android_new?Mobile="
 							+ mobno;
 
 					Log.e("csn status", "url : " + url);
@@ -697,7 +697,7 @@ c.close();
 			//DatabaseHandler db = new DatabaseHandler(getBaseContext());
 			SQLiteDatabase sql = db.getWritableDatabase();
 			String columnName, columnValue;
-			String urlnet = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMaster";
+			String urlnet = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationiMaster";
 			urlnet = urlnet.replaceAll(" ", "%20");
 			Log.e("installation for Subnet", "6th" + urlnet);
 

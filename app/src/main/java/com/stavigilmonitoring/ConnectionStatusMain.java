@@ -786,7 +786,7 @@ public class ConnectionStatusMain extends Activity {
 		protected String doInBackground(String... params) {
 			String xx = "";
 
-			String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStationWithUserName_Android?Mobile="
+			String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStationWithUserName_Android?Mobile="
 					+ mobno;
 			//DatabaseHandler db = new DatabaseHandler(parent);
 			SQLiteDatabase sql = db.getWritableDatabase();
@@ -888,7 +888,7 @@ public class ConnectionStatusMain extends Activity {
 							+ " " + Ldate);
 				}
 			}
-			url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
+			url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
 					+ mobno;
 
 			Log.e("csn status", "url : " + url);

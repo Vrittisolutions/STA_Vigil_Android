@@ -390,7 +390,7 @@ public class MaterialReceivedConfirmation extends Activity {
 
 			String xx = "";
 
-			String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getConfirmedSentOrder?mobileno="
+			String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getConfirmedSentOrder?mobileno="
 					+ mobno;
 			url = url.replaceAll(" ", "%20");
 

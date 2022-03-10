@@ -191,7 +191,7 @@ public class MaterialReqSendTo extends Activity {
 			String columnName, columnValue;
 			Log.e("Tag", " ******* WORKING ON SYNCDATA *********");
 
-			url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getreportingTo?Mobileno="
+			url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getreportingTo?Mobileno="
 					+ MobileNo;
 
 			Log.e("material", "url : " + url);

@@ -228,7 +228,7 @@ public class MaterialReqStatewiseActivity extends Activity {
 
 			sop = "valid";
 			String columnName, columnValue;
-			String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStation_Android";
+			String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStation_Android";
 
 			Log.e("csn status", "url : " + url);
 			url = url.replaceAll(" ", "%20");

@@ -270,7 +270,7 @@ public class SoundLevelStateWise extends Activity {
 
 			String xx = "";
 //http://192.168.1.108:70
-			String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibrationNew?Mobile="
+			String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibrationNew?Mobile="
 					+ mobno + "&NetworkCode="+xx+"&InstallationId="+xx;
 			url = url.replaceAll(" ", "%20");
 

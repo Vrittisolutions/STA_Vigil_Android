@@ -3,7 +3,7 @@ package com.stavigilmonitoring;
 public class Config {
 
 	// CONSTANTS
-	public static final String SERVER_URL = "http://vritti.co/webservice/gcmservice/GCMService.asmx";
+	public static final String SERVER_URL = "http://sta.vritti.co/webservice/gcmservice/GCMService.asmx";
 	// YOUR_SERVER_URL : Server url where you have placed your server files
 	// Google project id
 	public static final String GOOGLE_SENDER_ID = "45832259023"; // Place here

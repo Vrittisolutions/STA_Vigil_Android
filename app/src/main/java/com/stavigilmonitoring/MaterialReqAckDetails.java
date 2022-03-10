@@ -396,7 +396,7 @@ public class MaterialReqAckDetails extends Activity {
 
 			String url;
 			try {
-				url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/deleteOrder?pkorderid="
+				url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/deleteOrder?pkorderid="
 
 						+ orderHeaderId;
 
@@ -692,7 +692,7 @@ public class MaterialReqAckDetails extends Activity {
 			Reporting_managerID = "26";
 			SelectedDate = ButtonSeldate.getText().toString();
 
-			/*url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/editOrder?pkorderid="
+			/*url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/editOrder?pkorderid="
 					+ orderHeaderId
 					+ "&mobileno="
 					+ mobno
@@ -709,7 +709,7 @@ public class MaterialReqAckDetails extends Activity {
 					+ "&reporteename="+ btnMaterialedtReqTO.getText().toString()
 					+ "&reportingid=" + reportingid + "&qty=" + qty;*/
 
-			url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/editOrder?pkorderid="
+			url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/editOrder?pkorderid="
 					+ orderHeaderId+ "&mobileno="+ mobno+ "&stationame="+ stationname
 					+ "&stationmasterid="+ stationid+ "&materialname="+ materialname
 					+ "&reason="+ reason+ "&scraprepair="+ scraprepair

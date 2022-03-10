@@ -978,7 +978,7 @@ public class StationEnquiryDowntimeHistory extends Activity{
 		@Override
 		protected String doInBackground(String... params) {
 		
-				String url="http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetStationDowntime30Days_Android?Mobile="+mobno;
+				String url="http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetStationDowntime30Days_Android?Mobile="+mobno;
                url = url.replaceAll(" ", "%20");
 				
 				

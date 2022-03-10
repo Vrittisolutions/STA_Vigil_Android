@@ -1107,7 +1107,7 @@ public class AlrtDetailsWithCommentsActivity extends Activity{
 			String url;
 			//currDate = system.get
 
-			url ="http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/CommunicationInsert?"
+			url ="http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/CommunicationInsert?"
 					+"AlertId="
 					+ cmntAlertId
 					+ "&CommentDescription="
@@ -1382,8 +1382,8 @@ public class AlrtDetailsWithCommentsActivity extends Activity{
 			com.stavigilmonitoring.utility ut = new com.stavigilmonitoring.utility();
 			//DatabaseHandler db = new DatabaseHandler(AlrtDetailsWithCommentsActivity.this);
 			SQLiteDatabase sql = db.getWritableDatabase();
-			//String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/CommunicationGet?AlertId="
-			String url = "http://vritti.co/STAVigilURL/TimeTable.asmx/CommunicationGet?AlertId="
+			//String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/CommunicationGet?AlertId="
+			String url = "http://sta.vritti.co/STAVigilURL/TimeTable.asmx/CommunicationGet?AlertId="
 			+AlertId
 			+"&InstallationId="
 			+InstallationId;
@@ -1668,8 +1668,8 @@ public class AlrtDetailsWithCommentsActivity extends Activity{
 			com.stavigilmonitoring.utility ut = new com.stavigilmonitoring.utility();
 			//DatabaseHandler db = new DatabaseHandler(AlrtDetailsWithCommentsActivity.this);
 			SQLiteDatabase sql = db.getWritableDatabase();
-			//String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
-					String url = "http://vritti.co/STAVigilURL/TimeTable.asmx/AlertApproveAndRejected?AlertId="
+			//String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
+					String url = "http://sta.vritti.co/STAVigilURL/TimeTable.asmx/AlertApproveAndRejected?AlertId="
 			+AlertId
 			+"&ResolveBy="
 			+ ResolveBy
@@ -1806,7 +1806,7 @@ public class AlrtDetailsWithCommentsActivity extends Activity{
 			com.stavigilmonitoring.utility ut = new com.stavigilmonitoring.utility();
 			//DatabaseHandler db = new DatabaseHandler(parent);
 			SQLiteDatabase sql = db.getWritableDatabase();
-			String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertGet?InstallationId="
+			String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertGet?InstallationId="
 			+""
 			+"&AddedBy="
 			+ mobno;

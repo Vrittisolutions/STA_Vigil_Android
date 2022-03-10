@@ -320,7 +320,7 @@ public class TvStatusReasonList extends Activity {
 			String result1 = "Invalid";
 			// Log.e("GetStationPassword",""+params[0]);
 			String result = "";
-			String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetTVStatusReason?Mobile="
+			String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetTVStatusReason?Mobile="
 					+ mobno;
 
 			url = url.replaceAll(" ", "%20");

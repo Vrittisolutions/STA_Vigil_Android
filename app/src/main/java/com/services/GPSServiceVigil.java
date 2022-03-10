@@ -291,7 +291,7 @@ public class GPSServiceVigil extends Service implements LocationListener {
 					String[] aLocation = LocationName.split(",");
 					LocationName = aLocation[2] + "," + aLocation[3] + ","
 							+ aLocation[4];
-					String url = "http://vritti.co/imedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/InsertGPSData?"
+					String url = "http://sta.vritti.co/imedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/InsertGPSData?"
 							+ "MobileNo="
 							+ mobno
 							+ "&LocationName="
@@ -434,7 +434,7 @@ public class GPSServiceVigil extends Service implements LocationListener {
 	 * +"&Latitude="+finalLattitude+"&Longitude="+finalLongitude);
 	 * 
 	 * String url=
-	 * "http://vritti.co/imedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/InsertGPSData?"
+	 * "http://sta.vritti.co/imedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/InsertGPSData?"
 	 * +eUrl;
 	 * System.out.println("....GPSServiceVigil..........1>>GPS  >>>>>>>>>>>>>>"
 	 * ); System.out.println(".............."+url); //url = url.replaceAll(" ",

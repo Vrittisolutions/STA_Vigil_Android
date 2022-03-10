@@ -457,7 +457,7 @@ public class BackgroundPlaylistAll extends Activity {
 			//DatabaseHandler db = new DatabaseHandler(getBaseContext());
 			SQLiteDatabase sql = db.getWritableDatabase();
 
-			String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetBGPlaylistContent?MobileNo="
+			String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetBGPlaylistContent?MobileNo="
 					+ mobno;
 
 			Log.e("csn status", "url : " + url);

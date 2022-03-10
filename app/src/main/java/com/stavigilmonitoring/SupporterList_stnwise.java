@@ -449,7 +449,7 @@ public class SupporterList_stnwise extends Activity {
 			ut = new com.stavigilmonitoring.utility();
 
 			//connection status and tv status url
-			String url_stn_details = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationDetails?Installationid="+Installationid+"&mobileno="+mobno;
+			String url_stn_details = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationDetails?Installationid="+Installationid+"&mobileno="+mobno;
 
 			Log.e("Data", url_stn_details);
 			url_stn_details = url_stn_details.replaceAll(" ", "%20");

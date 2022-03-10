@@ -271,7 +271,7 @@ public class ConnectionStatusFillreason extends Activity {
 			}
 			String xx = "";
 
-			String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/UpdateTemporaryReason_Android?InstallationId="
+			String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/UpdateTemporaryReason_Android?InstallationId="
 					+ installationId
 					+ "&MobileNo="
 					+ mobno
@@ -763,7 +763,7 @@ public class ConnectionStatusFillreason extends Activity {
 	 * 
 	 * @Override protected String doInBackground(String... params) { try {
 	 * String xx = ""; String url=
-	 * "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetReasonDownTime_Android?Mobile="
+	 * "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetReasonDownTime_Android?Mobile="
 	 * +mobno; url = url.replaceAll(" ", "%20"); try {
 	 * System.out.println("-------  activity url --- " + url); responsemsg =
 	 * ut.httpGet(url);
@@ -939,7 +939,7 @@ public class ConnectionStatusFillreason extends Activity {
 			//DatabaseHandler Sql = new DatabaseHandler(parent);
 			SQLiteDatabase sqldb = db.getWritableDatabase();
 
-			String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
+			String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
 					+ mobno;
 			url = url.replaceAll(" ", "%20");
 			try {

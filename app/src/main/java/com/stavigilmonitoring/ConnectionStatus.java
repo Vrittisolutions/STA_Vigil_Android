@@ -864,7 +864,7 @@ public class ConnectionStatus extends Activity {
 			try {
 				String xx = "";
 
-				String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStationWithUserName_Android?Mobile="
+				String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStationWithUserName_Android?Mobile="
 						+ mobno;
 
 				Log.e("csn status", "url : " + url);
@@ -938,7 +938,7 @@ public class ConnectionStatus extends Activity {
 
 				}
 
-				url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
+				url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
 						+ mobno;
 				url = url.replaceAll(" ", "%20");
 				try {
@@ -1363,7 +1363,7 @@ public class ConnectionStatus extends Activity {
 			}
 			String xx = "";
 
-			String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/UpdateTemporaryReason_Android?InstallationId="
+			String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/UpdateTemporaryReason_Android?InstallationId="
 					+ installationId
 					+ "&MobileNo="
 					+ mobno
@@ -1443,7 +1443,7 @@ public class ConnectionStatus extends Activity {
 			//DatabaseHandler Sql = new DatabaseHandler(parent);
 			SQLiteDatabase sqldb = db.getWritableDatabase();
 
-			String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
+			String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
 					+ mobno;
 			url = url.replaceAll(" ", "%20");
 			try {

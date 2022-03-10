@@ -132,7 +132,7 @@ public class SynchCSNnNonRepoCount extends Service {
 				Cursor cusers = sql.rawQuery(
 						"SELECT *   FROM ConnectionStatusUser1", null);
 				if (cusers.getCount() == 0) {
-					String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStationWithUserName_Android?Mobile="
+					String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStationWithUserName_Android?Mobile="
 							+ mobno;
 
 					Log.e("csn status", "url : " + url);
@@ -241,7 +241,7 @@ public class SynchCSNnNonRepoCount extends Service {
 
 				// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				
-				String url = "http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStation_Android";
+				String url = "http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetAllStation_Android";
 
 				Log.e("csn status", "url : " + url);
 				Log.e("Tag", " ******* WORKING ON SYNCDATA *********");
@@ -323,7 +323,7 @@ public class SynchCSNnNonRepoCount extends Service {
 
 				// utility ut = new utility();
 
-				/*url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetListOfPendingDownloadingAdvertisment?Mobile="
+				/*url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetListOfPendingDownloadingAdvertisment?Mobile="
 						+ mobno + "&NetworkCode='ksrtc'";
 				Log.e("Tag", " ******* WORKING ON SYNCDATA *********");
 
@@ -405,7 +405,7 @@ public class SynchCSNnNonRepoCount extends Service {
 					}
 
 				}*/
-				url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
+				url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
 						+ mobno;
 
 				Log.e("csn status", "url : " + url);
@@ -596,7 +596,7 @@ public class SynchCSNnNonRepoCount extends Service {
 			}
 			/*--------------------------------------------------------------------------------------------------------------------------------*/
 
-			/*url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetTVStatus_Android_new?Mobile="
+			/*url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetTVStatus_Android_new?Mobile="
 					+ mobno;
 
 			Log.e("csn status", "url : " + url);
@@ -707,7 +707,7 @@ public class SynchCSNnNonRepoCount extends Service {
 			try {
 
 				String xx = "";
-				String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetNonReportedAdvt_Android_new?Mobile="
+				String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetNonReportedAdvt_Android_new?Mobile="
 						+ mobno;
 
 				url = url.replaceAll(" ", "%20");
@@ -862,7 +862,7 @@ public class SynchCSNnNonRepoCount extends Service {
 			}
 			// **********************************************************************************************************/
 
-			/*url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNForWebLMS";
+			/*url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNForWebLMS";
 
 			Log.e("Lms status", "url : " + url);
 			Log.e("Tag", " ******* WORKING ON SYNCDATA *********");
@@ -988,7 +988,7 @@ public class SynchCSNnNonRepoCount extends Service {
 			*/
 			
 			// **********************************************************************************************************/
-			/*url  = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AlertCount?Mobile="
+			/*url  = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AlertCount?Mobile="
 					+mobno;
 
 			Log.e("Alert Count", "url : " + url);
@@ -1083,7 +1083,7 @@ public class SynchCSNnNonRepoCount extends Service {
 				
 				// ////////////////////////////////////////////////////////////////////////////////////
 			/*	String sop;
-				url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertGet?InstallationId="
+				url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertGet?InstallationId="
 						+""
 						+"&AddedBy="
 						+ mobno;
@@ -1174,7 +1174,7 @@ public class SynchCSNnNonRepoCount extends Service {
 
 */
 			// **********************************************************************************************************/
-			/*String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetBGPlaylistContent?MobileNo="
+			/*String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetBGPlaylistContent?MobileNo="
 					+ mobno;
 
 			Log.e("csn status", "url : " + url);

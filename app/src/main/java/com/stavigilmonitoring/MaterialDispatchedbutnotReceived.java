@@ -443,7 +443,7 @@ public class MaterialDispatchedbutnotReceived extends Activity {
 
 			String xx = "";
 
-			String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getDispatchedbuNotReceived?mobileno="
+			String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getDispatchedbuNotReceived?mobileno="
 					+ mobno;
 			url = url.replaceAll(" ", "%20");
 

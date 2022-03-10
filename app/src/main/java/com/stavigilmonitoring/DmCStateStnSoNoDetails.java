@@ -370,8 +370,8 @@ public class DmCStateStnSoNoDetails extends Activity {
             ut = new com.stavigilmonitoring.utility();
             //DatabaseHandler db = new DatabaseHandler(parent);
             SQLiteDatabase sql = db.getWritableDatabase();
-            //String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
-            String url = "http://vritti.co/imedia/STA_Announcement/DMcertificate.asmx/ReasonUpdate?Mobile="
+            //String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
+            String url = "http://sta.vritti.co/imedia/STA_Announcement/DMcertificate.asmx/ReasonUpdate?Mobile="
                     +mobno
                     +"&ActivityId="
                     + activityId
@@ -522,17 +522,18 @@ public class DmCStateStnSoNoDetails extends Activity {
                 Remark = editTextNarration.getText().toString();
                 if(editTextAssignTo.getText().toString().equalsIgnoreCase("")){
                     editTextAssignTo.setError("Please Select Name");
-                    Toast.makeText(parent, "Incorrect Data", Toast.LENGTH_LONG).show();
+                    Toast.makeText(parent, "Please Select Name", Toast.LENGTH_LONG).show();
                 } else if(editTextNarration.getText().toString().equalsIgnoreCase("")){
                     editTextNarration.setError("Please Enter Remark");
-                    Toast.makeText(parent, "Incorrect Data", Toast.LENGTH_LONG).show();
+                    Toast.makeText(parent, "Please Enter Remark", Toast.LENGTH_LONG).show();
                 } else {
+                    myDialog.dismiss();
                     getAcCode(AssignToName);
                     if (AssignToMob != null) {
                         sendactivityupdatetoserver();
                     }
                 }
-                myDialog.dismiss();
+
                 // finish();
             }
         });
@@ -733,7 +734,7 @@ public class DmCStateStnSoNoDetails extends Activity {
 
             String bb= "";
             com.stavigilmonitoring.utility ut = new com.stavigilmonitoring.utility();
-            String urls = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDM?Mobile="
+            String urls = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDM?Mobile="
                     + mobno;
             urls = urls.replaceAll(" ", "%20");
 
@@ -1177,7 +1178,7 @@ public class DmCStateStnSoNoDetails extends Activity {
             ut = new com.stavigilmonitoring.utility();
           //  DatabaseHandler db = new DatabaseHandler(parent);
             SQLiteDatabase sql = db.getWritableDatabase();
-            //String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
+            //String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
             String url = "vritti.co/imedia/STA_Announcement/DMcertificate.asmx/ReassignedCertificateNew?Mobile="
                     + mobno
                     + "&ActivityId="
@@ -1391,7 +1392,7 @@ public class DmCStateStnSoNoDetails extends Activity {
         @Override
         protected String doInBackground(Void... params) {
             // TODO Auto-generated method stub
-            String Url = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetDMCertifcateUser?Mobile=" + mobno;
+            String Url = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetDMCertifcateUser?Mobile=" + mobno;
 
             Log.e("DMCertificateUser", "url : " + Url);
             Log.e("Tag", " ******* WORKING ON DMCertificateUser *********");

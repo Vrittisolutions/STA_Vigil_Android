@@ -341,7 +341,7 @@ public class LmsConnectionStatusMain extends Activity {
 			//DatabaseHandler db = new DatabaseHandler(getBaseContext());
 			SQLiteDatabase sql = db.getWritableDatabase();
 
-			String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNForWebLMS";
+			String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNForWebLMS";
 
 			Log.e("Lms status", "url : " + url);
 			url = url.replaceAll(" ", "%20");

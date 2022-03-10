@@ -264,7 +264,7 @@ public class PendingClipsMain extends Activity {
 			com.stavigilmonitoring.utility ut = new com.stavigilmonitoring.utility();
 			//DatabaseHandler db = new DatabaseHandler(getBaseContext());
 			SQLiteDatabase sql = db.getWritableDatabase();
-			String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetListOfPendingDownloadingAdvertisment?Mobile="
+			String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetListOfPendingDownloadingAdvertisment?Mobile="
 					+ mobno + "&NetworkCode='ksrtc'";
 
 			Log.e("csn status", "url : " + url);

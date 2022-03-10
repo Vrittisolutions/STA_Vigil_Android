@@ -109,7 +109,7 @@ public class AdvStationDayCount extends Activity {
 
             sop = "valid";
 
-            String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetAdvStationDayCount" +
+            String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetAdvStationDayCount" +
                     "?NetworkCode="+Network+"&mobileno="+mobno+"&clipid="+ClipNo+"&date="+SelectedDate;
 
             Log.e("csn status", "url : " + url);

@@ -242,14 +242,14 @@ public class StationEnquiry extends Activity {
 			String SupporteeNumber = "9764179265";
 			String SanketNumber = mobno ;
 
-			String URL = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/ClikToCall" +
+			String URL = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/ClikToCall" +
 					"?agentnumber=+91"+Mobile+"&callernumber=+91"+mobno;
 
 			new CallTriggerXML().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
 			//Intent callIntent = new Intent(Intent.ACTION_DIAL);
 			//remove this line and add api hit (parameters  - num )
-				//http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/ClikToCall?agentnumber= + Mobile + &callernumber=+SupporteeNumber;
+				//http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/ClikToCall?agentnumber= + Mobile + &callernumber=+SupporteeNumber;
 			//callIntent.setData(Uri.parse("tel:+91" + Num + PhoneNumberUtils.WAIT + ext1 + PhoneNumberUtils.PAUSE + ext2));
 
 				//startActivity(callIntent);
@@ -418,7 +418,7 @@ public class StationEnquiry extends Activity {
 			// TODO Auto-generated method stub
 			//DatabaseHandler db = new DatabaseHandler(getBaseContext());
 			SQLiteDatabase sql = db.getWritableDatabase();
-			String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationMasterforPerticular?Installationid="
+			String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationMasterforPerticular?Installationid="
 					+ InstId;
 			Log.e("station wise data", "url : " + url);
 			url = url.replaceAll(" ", "%20");
@@ -475,7 +475,7 @@ public class StationEnquiry extends Activity {
 
 			// /////////////////////////////////////////////////////////////////////////
 
-			url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationMasterAnnouncementScheduleHistory_V1?Installationid="
+			url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationMasterAnnouncementScheduleHistory_V1?Installationid="
 					+ InstId;
 
 			Log.e("last 3 ADV", "url : " + url);
@@ -528,7 +528,7 @@ public class StationEnquiry extends Activity {
 				sop = "invalid";
 			}
 			// //////////////////////////////////////////////////////////////////////////////////////////////
-			url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationMasterBusReporting?Installationid="
+			url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetInstallationMasterBusReporting?Installationid="
 					+ InstId;
 
 			Log.e("last 3 ann", "url : " + url);
@@ -631,7 +631,7 @@ public class StationEnquiry extends Activity {
         @Override
         protected String doInBackground(Void... params) {
             // TODO Auto-generated method stub
-            String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationExtension?InstallationId=" + InstId;
+            String Url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationExtension?InstallationId=" + InstId;
 
             Url = Url.replaceAll(" ", "%20");
 
@@ -776,10 +776,10 @@ public class StationEnquiry extends Activity {
 		@Override
 		protected String doInBackground(Void... params) {
 			// TODO Auto-generated method stub
-			/*String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/ClikToCall" +
+			/*String Url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/ClikToCall" +
 					"?agentnumber=+91"+Mobile+"&callernumber=+91"+mobno;
 */
-			String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/ClikToCall" +
+			String Url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/ClikToCall" +
 					"?agentnumber="+Mobile+"&callernumber="+mobno;
 
 			Url = Url.replaceAll(" ", "%20");

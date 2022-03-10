@@ -290,7 +290,7 @@ public class AlrtCreateActivity extends Activity {
 			//currDate = system.get
 
 			try {
-				url ="http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AlertInsert?"+"AddedBy="
+				url ="http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AlertInsert?"+"AddedBy="
 						+ mobno
 						+ "&AddedDt="
 						+ ""
@@ -476,7 +476,7 @@ public class AlrtCreateActivity extends Activity {
 		@Override
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AlertCount?Mobile="+mobno;
+			String Url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AlertCount?Mobile="+mobno;
 
 			Log.e("Alert Count", "url : " + Url);
 			Url = Url.replaceAll(" ", "%20");
@@ -736,7 +736,7 @@ public class AlrtCreateActivity extends Activity {
 			com.stavigilmonitoring.utility ut = new com.stavigilmonitoring.utility();
 			//DatabaseHandler db = new DatabaseHandler(AlrtCreateActivity.this);
 			SQLiteDatabase sql = db.getWritableDatabase();
-			String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertGet?InstallationId="
+			String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertGet?InstallationId="
 			+""
 			+"&AddedBy="
 			+ mobno;
@@ -933,7 +933,7 @@ public class AlrtCreateActivity extends Activity {
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
 
-			String Url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/Getlatlantofstation?Installationid="+installationid;
+			String Url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/Getlatlantofstation?Installationid="+installationid;
 			Url = Url.replaceAll(" ", "%20");
 			try {
 				resposmsg = ut.httpGet(Url);

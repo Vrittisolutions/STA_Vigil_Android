@@ -290,7 +290,7 @@ protected String doInBackground(String... params) {
 	sop = "valid";
 	String columnName, columnValue;
 
-	url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getmateriallist";
+	url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getmateriallist";
 
 	Log.e("material", "url : " + url);
 	url = url.replaceAll(" ", "%20");

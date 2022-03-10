@@ -257,7 +257,7 @@ public class StationInvFragment extends Fragment {
             com.stavigilmonitoring.utility ut = new com.stavigilmonitoring.utility();
             //DatabaseHandler db = new DatabaseHandler(getBaseContext());
             SQLiteDatabase sql = db.getWritableDatabase();
-            String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetStaInventory?InstallationId="
+            String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetStaInventory?InstallationId="
                     +InstallationID1 +"&Mobile=" + "";
 
             Log.e("csn status", "url : " + url);

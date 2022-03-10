@@ -696,7 +696,7 @@ public class SoundLevel extends Activity {
 			String xx = params[0];
 			// InstallationId
 			try {
-				String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibration_Load?InstallationId="
+				String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibration_Load?InstallationId="
 						+ InstallationId						
 						+ "&SyncDate="
 						+ xx;
@@ -893,7 +893,7 @@ public class SoundLevel extends Activity {
 	 * Auto-generated method stub
 	 * 
 	 * String xx = ""; // InstallationId try { String url =
-	 * "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibration_Android?Mobile="
+	 * "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibration_Android?Mobile="
 	 * + mobno + "&SyncDate=" + xx + "&InstallationId=" + InstallationId + "";
 	 * url = url.replaceAll(" ", "%20"); // date = new Date();
 	 * System.out.println("============ internet reg url " + url);
@@ -998,7 +998,7 @@ public class SoundLevel extends Activity {
 	 * @Override protected String doInBackground(String... params) { // TODO
 	 * Auto-generated method stub String Syncloaddate = getMindate(); String
 	 * InstallationID = GetInstallation(); try { String url =
-	 * "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibration_Load?InstallationId="
+	 * "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationCallibration_Load?InstallationId="
 	 * + InstallationID + "&SyncDate=" + Syncloaddate; url = url.replaceAll(" ",
 	 * "%20"); // date = new Date();
 	 * System.out.println("============ internet reg url " + url);

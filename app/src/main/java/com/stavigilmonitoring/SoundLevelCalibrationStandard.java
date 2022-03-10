@@ -406,7 +406,7 @@ public class SoundLevelCalibrationStandard extends Activity {
 			// TODO Auto-generated method stub
 			String xx = "";
 
-			String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationAudioMonitorDetails?Mobile="
+			String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetStationAudioMonitorDetails?Mobile="
 					+ mMobNo + "&InstallationId=" + mInstallation;
 			url = url.replaceAll(" ", "%20");
 

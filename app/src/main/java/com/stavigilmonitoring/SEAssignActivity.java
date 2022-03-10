@@ -376,7 +376,7 @@ public class SEAssignActivity extends AppCompatActivity {
 
             sop = "valid";
 
-            String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetTLName";
+            String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetTLName";
 
             Log.e("csn status", "url : " + url);
             url = url.replaceAll(" ", "%20");
@@ -446,7 +446,7 @@ public class SEAssignActivity extends AppCompatActivity {
         protected String doInBackground(String... params) {
             com.stavigilmonitoring.utility ut = new com.stavigilmonitoring.utility();
             String url;
-            url ="http://vritti.co/imedia/STA_Announcement/DMcertificate.asmx/AssignWorkActivities?"+"InstallationId="+ "&AssignTo=" + TL_Mobile
+            url ="http://sta.vritti.co/imedia/STA_Announcement/DMcertificate.asmx/AssignWorkActivities?"+"InstallationId="+ "&AssignTo=" + TL_Mobile
                     + "&ActivityDescription=" + trnassigndesc + "&StartDate=" + trnstartDate + "&EndDate=" + trnendDate
                     + "&AssignedBy=" + mobno + "&Remark=" + trnremark;
             url = url.replaceAll(" ", "%20");
@@ -548,7 +548,7 @@ public class SEAssignActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             // TODO Auto-generated method stub
-            String Url = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetWorkAssignList?Mobile="
+            String Url = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetWorkAssignList?Mobile="
                     + mobno;
             Url = Url.replaceAll(" ", "%20");
             try {

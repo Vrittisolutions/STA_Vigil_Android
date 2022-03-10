@@ -391,8 +391,8 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
             ut = new utility();
             // DatabaseHandler db = new DatabaseHandler(parent);
             SQLiteDatabase sql = db.getWritableDatabase();
-            //String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
-            String url = "http://vritti.co/imedia/STA_Announcement/DMcertificate.asmx/ReasonUpdate?Mobile="
+            //String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
+            String url = "http://sta.vritti.co/imedia/STA_Announcement/DMcertificate.asmx/ReasonUpdate?Mobile="
                     + mobno
                     + "&ActivityId="
                     + activityId
@@ -511,7 +511,7 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
 
             String bb= "";
             utility ut = new utility();
-            String urls = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDMPhotoVideo?Mobile="
+            String urls = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDMPhotoVideo?Mobile="
                     + mobno;
             urls = urls.replaceAll(" ", "%20");
 
@@ -944,8 +944,8 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
             ut = new utility();
             // DatabaseHandler db = new DatabaseHandler(parent);
             SQLiteDatabase sql = db.getWritableDatabase();
-            //String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
-            String url = "http://vritti.co/imedia/STA_Announcement/DMcertificate.asmx/ReassignedCertificateNew?Mobile="
+            //String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
+            String url = "http://sta.vritti.co/imedia/STA_Announcement/DMcertificate.asmx/ReassignedCertificateNew?Mobile="
                     + mobno
                     + "&ActivityId="
                     + activityId
@@ -1152,7 +1152,7 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
         @Override
         protected String doInBackground(Void... params) {
             // TODO Auto-generated method stub
-            String Url = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetDMCertifcateUser?Mobile=" + mobno;
+            String Url = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetDMCertifcateUser?Mobile=" + mobno;
 
             Log.e("DMCertificateUser", "url : " + Url);
             Log.e("Tag", " ******* WORKING ON DMCertificateUser *********");

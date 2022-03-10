@@ -98,7 +98,7 @@ public class UploadingData extends AsyncTask<String, Void, String> {
 
 		String url;
 
-		url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/BookWorkType?WorkType="
+		url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/BookWorkType?WorkType="
 				+ Worktype
 				+ "&Remarks="
 				+ WrkRemrk

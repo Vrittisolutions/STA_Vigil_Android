@@ -436,7 +436,7 @@ public class MaterialReqPendingList extends Activity {
 
 			String xx = "";
 			try {
-				String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getPendingRequests?Mobileno=" + mobno;
+				String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getPendingRequests?Mobileno=" + mobno;
 				url = url.replaceAll(" ", "%20");
 
 				System.out.println("============ internet reg url " + url);

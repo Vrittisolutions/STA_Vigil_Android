@@ -293,7 +293,7 @@ public class SupporterMaterialDisplay extends Activity {
 			try {
 				String respons = "";
 
-				String url = "http://vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getWorkDoneMaterialUsedSupporter?mobileno="
+				String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/getWorkDoneMaterialUsedSupporter?mobileno="
 						+ SupporterMob;
 				Log.e("csn status", "url : " + url);
 				url = url.replaceAll(" ", "%20");

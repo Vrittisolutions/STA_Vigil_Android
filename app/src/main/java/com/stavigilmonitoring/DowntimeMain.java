@@ -1002,7 +1002,7 @@ DowntimeAdaptMain listAdapter;
 		protected String doInBackground(String... params) {
 			//GetStationDowntime30Days_Android
 		
-				String url="http://vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetStationDowntime_Android?Mobile="+mobno;
+				String url="http://sta.vritti.co/iMedia/STA_Android_Webservice/WdbIntMgmtNew.asmx/GetStationDowntime_Android?Mobile="+mobno;
 url = url.replaceAll(" ", "%20");
 				
 				
