@@ -1,12 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.android.support:documentfile:28.0.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/cb00afcbc916a3ee21c0c51974c0ff79/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/cb00afcbc916a3ee21c0c51974c0ff79/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/cb00afcbc916a3ee21c0c51974c0ff79/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/c315601abd204f9dc297a2aec86d0edc/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/c315601abd204f9dc297a2aec86d0edc/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/c315601abd204f9dc297a2aec86d0edc/res" />
+      <root url="jar://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/e1895f25bbdb8cdc3616eabc46aa6b0f/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/e1895f25bbdb8cdc3616eabc46aa6b0f/res" />
+      <root url="file://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/e1895f25bbdb8cdc3616eabc46aa6b0f/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

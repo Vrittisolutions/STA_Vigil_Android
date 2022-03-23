@@ -1,16 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.android.support:support-media-compat:27.1.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/88bbd553766734be013cc1a8e571eec5/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/88bbd553766734be013cc1a8e571eec5/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/88bbd553766734be013cc1a8e571eec5/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/8a832b7cbe4be550eca8ab1252d7c919/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/8a832b7cbe4be550eca8ab1252d7c919/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/8a832b7cbe4be550eca8ab1252d7c919/res" />
+      <root url="jar://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/699f400c5cbb23a0ae9b1a03e3047282/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/699f400c5cbb23a0ae9b1a03e3047282/res" />
+      <root url="file://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/699f400c5cbb23a0ae9b1a03e3047282/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-media-compat/27.1.1/3ab3f968d7cd675d2f97e67a3e9fc0ac63618f46/support-media-compat-27.1.1-sources.jar!/" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>

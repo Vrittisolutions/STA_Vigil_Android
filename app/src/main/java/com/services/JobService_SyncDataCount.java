@@ -55,7 +55,7 @@ public class JobService_SyncDataCount extends JobService {
     private static final int NOTIFICATION = 1337;
     private NotificationManager mNotificationManager;
     String urlStringToken="", urlStringToken2="";
-    private int notificationID = 100;
+    private final int notificationID = 100;
     String url, mobno, activityid, projectid, curdate, fromtime, totime, desc,
             iscomplete;
     String InstallationId = " ";
@@ -89,6 +89,9 @@ public class JobService_SyncDataCount extends JobService {
     @Override
     public boolean onStartJob(JobParameters job) {
         Log.e("Back Timer : ","JobServiceStarted");
+        Log.e("JobServiceAlarm 00 : ","JobServiceStarted");
+
+        Toast.makeText(getApplicationContext(), "Job started successfully", Toast.LENGTH_LONG).show();
 
         init();
 
@@ -120,18 +123,22 @@ public class JobService_SyncDataCount extends JobService {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         setAlarmFinal=pref.getBoolean("SetAlarmFinal",false);
         Log.d("Final", String.valueOf(setAlarmFinal));
+        Log.d("JobServiceAlarm", String.valueOf(setAlarmFinal));
         setAlarm = pref.getBoolean("SetAlarm", false);
         Log.d("Final-1", String.valueOf(setAlarm));
+        Log.d("JobServiceAlarm   1", String.valueOf(setAlarm));
 
         setAlarmFinalCSN = pref.getBoolean("setAlarmFinalCSN", false);
         Log.d("Final-2", String.valueOf(setAlarmFinalCSN));
+        Log.d("JobServiceAlarm  -2", String.valueOf(setAlarmFinalCSN));
 
         setAlarmFinalNonReportStation = pref.getBoolean("setAlarmFinalNonReportStation", false);
         Log.d("Final-3", String.valueOf(setAlarmFinalNonReportStation));
+        Log.d("JobServiceAlarm  -3", String.valueOf(setAlarmFinalNonReportStation));
 
 
         Calendar cal = Calendar.getInstance();
-        if (cal.HOUR <= 20 && cal.HOUR >= 6 && isnet())
+        if (Calendar.HOUR <= 20 && Calendar.HOUR >= 6 && isnet())
             if (isnet()){
                 new UploadTS_new().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 				/*if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
@@ -152,10 +159,7 @@ public class JobService_SyncDataCount extends JobService {
         ConnectivityManager cm = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-            return true;
-        }
-        return false;
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
     public class UploadTS_new extends AsyncTask<String, Void, String> {
@@ -178,7 +182,7 @@ public class JobService_SyncDataCount extends JobService {
                     Log.e("csn status", "url : " + url);
                     url = url.replaceAll(" ", "%20");
                     try {
-                        responsemsg = ut.httpGet(url);
+                        responsemsg = utility.httpGet(url);
                         Log.e("csn status", "resmsg : " + responsemsg);
                     } catch (NullPointerException e) {
                         e.printStackTrace();
@@ -375,6 +379,8 @@ public class JobService_SyncDataCount extends JobService {
 
                 url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetListOfPendingDownloadingAdvertisment?Mobile="
                         + mobno + "&NetworkCode='ksrtc'";
+
+                Log.e("CSN_STATUS --> "," 11 --> "+url);
                 Log.e("Tag", " ******* WORKING ON SYNCDATA *********");
 
                 Log.e("csn status", "url : " + url);
@@ -455,11 +461,14 @@ public class JobService_SyncDataCount extends JobService {
                 url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile="
                         + mobno;
 
+                Log.e("CSN_STATUS --> "," 12 --> "+url);
+
+
                 Log.e("csn status", "url : " + url);
                 Log.e("Tag", " ******* WORKING ON SYNCDATA *********");
                 url = url.replaceAll(" ", "%20");
                 try {
-                    responsemsg = ut.httpGet(url);
+                    responsemsg = utility.httpGet(url);
                     Log.e("csn status", "resmsg : " + responsemsg);
                 } catch (NullPointerException e) {
                     e.printStackTrace();
@@ -665,11 +674,14 @@ public class JobService_SyncDataCount extends JobService {
             url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetTVStatus_Android_new?Mobile="
                     + mobno;
 
+            Log.e("CSN_STATUS --> "," 33 --> "+url);
+
+
             Log.e("csn status", "url : " + url);
             Log.e("Tag", " ******* WORKING ON SYNCDATA *********");
             url = url.replaceAll(" ", "%20");
             try {
-                responsemsg = ut.httpGet(url);
+                responsemsg = utility.httpGet(url);
                 Log.e("csn status", "resmsg : " + responsemsg);
                 // db = new DatabaseHandler(getBaseContext());
                 //sql = db.getWritableDatabase();
@@ -775,11 +787,14 @@ public class JobService_SyncDataCount extends JobService {
                 String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/GetNonReportedAdvt_Android_new?Mobile="
                         + mobno;
 
+                Log.e("CSN_STATUS --> "," 44 --> "+url);
+
+
                 url = url.replaceAll(" ", "%20");
                 Log.e("Tag", " ******* WORKING ON SYNCDATA *********");
 
                 try {
-                    responsemsg = ut.httpGet(url);
+                    responsemsg = utility.httpGet(url);
                 } catch (NullPointerException e) {
                     e.printStackTrace();
                     dff = new SimpleDateFormat("HH:mm:ss");
@@ -950,6 +965,9 @@ public class JobService_SyncDataCount extends JobService {
             url  = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/AlertCount?Mobile="
                     +mobno;
 
+            Log.e("CSN_STATUS --> "," 66 --> "+url);
+
+
             Log.e("Alert Count", "url : " + url);
             url = url.replaceAll(" ", "%20");
 
@@ -1044,11 +1062,14 @@ public class JobService_SyncDataCount extends JobService {
             String sop;
             url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertGet?InstallationId=" +"" +"&AddedBy=" + mobno;
 
+            Log.e("CSN_STATUS --> "," 77 --> "+url);
+
+
             Log.e("csn status", "url : " + url);
             url = url.replaceAll(" ", "%20");
 
             try {
-                String responsemsg = ut.httpGet(url);
+                String responsemsg = utility.httpGet(url);
                 //sql.execSQL("DROP TABLE IF EXISTS AlrtListTable");
                 //sql.execSQL(ut.getAlrtListTable());
                 sql.delete("AlrtListTable",null,null);
@@ -1119,6 +1140,7 @@ public class JobService_SyncDataCount extends JobService {
                             + ":" + l.getLineNumber() + "	" + e.getMessage()
                             + " " + Ldate);
                 }
+
             }
 
 // **********************************************************************************************************/
@@ -1126,11 +1148,15 @@ public class JobService_SyncDataCount extends JobService {
             list_advdata.clear();
             url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetUnreleasedAdv";
 
+            Log.e("CSN_STATUS --> "," 88 --> "+url);
+
             Log.e("unreleased advs", "url : " + url);
             url = url.replaceAll(" ", "%20");
 
+            Log.e("JobServiceAlarm"," 1 Try--> "+url);
+
             try {
-                String responsemsg = ut.httpGet(url);
+                String responsemsg = utility.httpGet(url);
 
                 if (responsemsg.contains("<AdvertisementCode>")) {
                     sop = "valid";
@@ -1174,7 +1200,30 @@ public class JobService_SyncDataCount extends JobService {
                         Calendar c1 = Calendar.getInstance();
                         int hour = c1.get(Calendar.HOUR_OF_DAY);
                         int minute = c1.get(Calendar.MINUTE);
-                        if(hour > 6 && hour < 19){
+
+
+                        if(setAlarm) {
+
+                            if (setAlarmFinal) {
+                                if (tstamp > AlarmStopTime) {
+                                    //play alarm again
+                                    Intent intent = new Intent(JobService_SyncDataCount.this, MyAlarmReceiver.class);
+                                    PendingIntent pendingIntent = PendingIntent.getBroadcast(JobService_SyncDataCount.this, 234324243, intent, 0);
+                                    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
+                                    }else {
+                                        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
+
+                                    }
+                                    Intent serviceIntent = new Intent(JobService_SyncDataCount.this, AlarmForegroundService.class);
+                                    serviceIntent.putExtra("inputExtra", AdvertisementDesc);
+                                    ContextCompat.startForegroundService(JobService_SyncDataCount.this,serviceIntent);                                        }
+                            }
+                        }
+
+
+                       /* if(hour > 6 && hour < 19){
                             if(hour == 6 && minute >= 0) {
                                 if(setAlarm == true) {
 
@@ -1196,12 +1245,13 @@ public class JobService_SyncDataCount extends JobService {
                                         }
                                     }
                                 }
+
                             }else if(hour == 19 && minute > 0){
 
                             }else{
-                                if(setAlarm == true) {
+                                if(setAlarm) {
 
-                                    if (setAlarmFinal == true) {
+                                    if (setAlarmFinal) {
                                         if (tstamp > AlarmStopTime) {
                                             //play alarm again
                                             Intent intent = new Intent(JobService_SyncDataCount.this, MyAlarmReceiver.class);
@@ -1219,16 +1269,19 @@ public class JobService_SyncDataCount extends JobService {
                                     }
                                 }
                             }
-                        }
+                        }*/
                     }
 
                 } else {
                     sop = "invalid";
-                    System.out
-                            .println("--------- invalid for project list --- ");
+                    System.out.println("--------- invalid for project list --- ");
                 }
+
+                Log.e("JobServiceAlarm"," 2 Try--> ");
+
             } catch (Exception e) {
                 e.printStackTrace();
+                Log.e("JobServiceAlarm"," Exception--> "+e);
             }
             /*******************************************************************************************/
 
@@ -1395,20 +1448,20 @@ public class JobService_SyncDataCount extends JobService {
             //SQLiteDatabase sql = db.getWritableDatabase();
             int count = 0;
             //sumdata2 = "0";
-            Log.e("cursor", String.valueOf("get"));
-            Log.e("cursor", String.valueOf("get"));
-            Log.e("cursor", String.valueOf("get"));
-            Log.e("cursor", String.valueOf("get"));
-            Log.e("cursor", String.valueOf("get"));
-            Log.e("cursor", String.valueOf("get"));
-            Log.e("cursor", String.valueOf("get"));
-            Log.e("cursor", String.valueOf("get"));
-            Log.e("cursor", String.valueOf("get"));
-            Log.e("cursor", String.valueOf("get"));
+            Log.e("cursor", "get");
+            Log.e("cursor", "get");
+            Log.e("cursor", "get");
+            Log.e("cursor", "get");
+            Log.e("cursor", "get");
+            Log.e("cursor", "get");
+            Log.e("cursor", "get");
+            Log.e("cursor", "get");
+            Log.e("cursor", "get");
+            Log.e("cursor", "get");
             if (sumdata2.equals("1")){
                 Cursor c = sql.rawQuery(
                         "SELECT SUM(CAST(cnt AS INT)) as sumdata FROM AlrtCountTable", null);
-                Log.e("cursor", String.valueOf("IF Part"));
+                Log.e("cursor", "IF Part");
                 Log.e("COUNT Alert", String.valueOf(c.getCount()));
                 //Log.e("cursor", String.valueOf(c.getString(c.getColumnIndex("sumdata"))));
                 if (c.moveToFirst()){
@@ -1430,7 +1483,7 @@ public class JobService_SyncDataCount extends JobService {
                 }
                 c.close();
             }else if (sumdata2.equals("0")){
-                Log.e("cursor", String.valueOf("ELSE Part"));
+                Log.e("cursor", "ELSE Part");
                 SharedPreferences prefalertcount = getApplicationContext()
                         .getSharedPreferences("Prefalertcount", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editoralertcount = prefalertcount.edit();
@@ -1447,7 +1500,7 @@ public class JobService_SyncDataCount extends JobService {
             // TODO Auto-generated method stub
             // 12/31/2015 7:05:00 AM---
             String time1, time2 = null;
-            String time[];
+            String[] time;
             String k = "";
             // String str = "18/01/2013 5:00:00 pm";
             SimpleDateFormat input = new SimpleDateFormat(
@@ -1821,10 +1874,7 @@ public class JobService_SyncDataCount extends JobService {
         ConnectivityManager cm = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-            return true;
-        }
-        return false;
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
     private int dbvalueCSN() {

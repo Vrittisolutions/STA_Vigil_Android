@@ -1,12 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.android.gms:play-services-games:11.4.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-games-11.4.0.aar/3d3407336b121e5117ee7ac0dadcb29b/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-games-11.4.0.aar/3d3407336b121e5117ee7ac0dadcb29b/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-games-11.4.0.aar/3d3407336b121e5117ee7ac0dadcb29b/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-games-11.4.0.aar/4fe27db1a280fd4eb47fb02df5650d1f/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-games-11.4.0.aar/4fe27db1a280fd4eb47fb02df5650d1f/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-games-11.4.0.aar/4fe27db1a280fd4eb47fb02df5650d1f/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/play-services-games-11.4.0.aar/60ef0a81b05ac5ecf7e65b4fe26fc886/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/play-services-games-11.4.0.aar/60ef0a81b05ac5ecf7e65b4fe26fc886/res" />
+      <root url="file://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/play-services-games-11.4.0.aar/60ef0a81b05ac5ecf7e65b4fe26fc886/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

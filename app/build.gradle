@@ -10,8 +10,8 @@ android {
         applicationId "com.stavigilmonitoring"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 212
-        versionName "115"
+        versionCode 213
+        versionName "116"
         multiDexEnabled true
     }
 
@@ -28,6 +28,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -73,5 +77,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:11.4.0'
     implementation 'com.google.firebase:firebase-core:11.4.0'
     implementation 'com.google.android.gms:play-services:11.4.0'
+
+
+    implementation 'android.arch.work:work-runtime:1.0.0-beta02'
+
 }
 apply plugin: 'com.google.gms.google-services'

@@ -37,6 +37,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Environment;
@@ -55,6 +56,32 @@ public class utility {
 
 	public static DefaultHttpClient httpClient = new DefaultHttpClient();
 	private static final String IMAGE_DIRECTORY_NAME = "VigilLogs";
+	public static utility mInstance = null;
+	private static Context mContext;
+	private static final String My_Preferences = "myPreferences";
+	private static final String Job_Dispacher_start = "Job_Dispacher_start";
+
+	public static utility getInstance( Context context){
+		if (mInstance ==null){
+			mInstance = new utility();
+		}
+		mContext = context;
+		return mInstance;
+	}
+
+
+	public void setServiceStarted(boolean value) {
+		SharedPreferences.Editor editor = mContext.getSharedPreferences(My_Preferences ,Context.MODE_PRIVATE ).edit();
+		editor.putBoolean(Job_Dispacher_start , value);
+		editor.apply();
+	}
+
+	public boolean isServiceIsStart(){
+		SharedPreferences mSharedPreferences = mContext.getSharedPreferences(My_Preferences , Context.MODE_PRIVATE);
+		return mSharedPreferences.getBoolean(Job_Dispacher_start , false);
+	}
+
+
 
 	public static String OpenConnection(String notificationurl) {
 		String res = "";

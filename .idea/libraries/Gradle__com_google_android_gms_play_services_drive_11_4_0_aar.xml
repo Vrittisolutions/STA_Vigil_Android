@@ -1,12 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.android.gms:play-services-drive:11.4.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-drive-11.4.0.aar/b639a26a7dba790ef779e325f33a4687/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-drive-11.4.0.aar/b639a26a7dba790ef779e325f33a4687/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-drive-11.4.0.aar/b639a26a7dba790ef779e325f33a4687/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-drive-11.4.0.aar/14d4468184698f2167c37cc3d639be18/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-drive-11.4.0.aar/14d4468184698f2167c37cc3d639be18/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-drive-11.4.0.aar/14d4468184698f2167c37cc3d639be18/res" />
+      <root url="jar://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/play-services-drive-11.4.0.aar/c58bd31193e43c38f372eb66d3013126/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/play-services-drive-11.4.0.aar/c58bd31193e43c38f372eb66d3013126/res" />
+      <root url="file://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/play-services-drive-11.4.0.aar/c58bd31193e43c38f372eb66d3013126/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

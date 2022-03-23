@@ -263,7 +263,7 @@
                 android:padding="5dp"
                 android:background="@drawable/listitemselector">
                 <!--android:weightSum="1"-->
-                <!--   android:padding="3dp"-->
+                dmcstnwise_video     <!--   android:padding="3dp"-->
                 <!--android:background="@drawable/cardlayout2_border"-->
 
                 <ImageView

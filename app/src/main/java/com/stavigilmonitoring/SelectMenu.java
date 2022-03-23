@@ -1,5 +1,7 @@
 package com.stavigilmonitoring;
 
+import static com.firebase.jobdispatcher.FirebaseJobDispatcher.SCHEDULE_RESULT_SUCCESS;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -12,6 +14,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -36,6 +39,7 @@ import com.services.JobService_PaidLocationFusedLocationTracker1;
 import com.services.JobService_SyncDataCount;
 import com.services.JobService_Test;
 import com.services.MyAlarmReceiver;
+import com.services.SyncDatacountPeriodicWork;
 import com.services.WakeLocker;
 import com.database.DBInterface;
 import com.video_photo.VideoPhotocategorizeActivity;
@@ -90,6 +94,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
 public class SelectMenu extends Activity {
     Dialog dialog;
@@ -179,6 +186,9 @@ public class SelectMenu extends Activity {
     LinearLayout ln_CSN, ln_NonReportStation;
     String sumdata;
 
+    private PeriodicWorkRequest mPeriodicWorkRequest;
+
+
     public void onCreate(Bundle savedInstanceState) {
         // requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
@@ -189,6 +199,13 @@ public class SelectMenu extends Activity {
         init();
 
         AutoRefreshData();
+
+        mPeriodicWorkRequest = new PeriodicWorkRequest.Builder(SyncDatacountPeriodicWork.class,
+                15, TimeUnit.MINUTES)
+                .addTag("periodicWorkRequest")
+                .build();
+
+        WorkManager.getInstance().enqueue(mPeriodicWorkRequest);
 
         //updateAlertCount();
 
@@ -372,7 +389,7 @@ public class SelectMenu extends Activity {
 		/*Common.UserName = GetUserName();
 		GetUserLogin();*/
 
-        //setJobShedulder();		//JobScheduler service for testing
+       // setJobShedulder();		//JobScheduler service for testing
 
         timerMethod();
         timerMethod2();
@@ -3332,14 +3349,12 @@ public class SelectMenu extends Activity {
 
         @Override
         protected String doInBackground(String... params) {
-            com.stavigilmonitoring.utility ut = new com.stavigilmonitoring.utility();
             //DatabaseHandler db = new DatabaseHandler(getBaseContext());
             //SQLiteDatabase sql = db.getWritableDatabase();
 
             String url = "http://sta.vritti.co/iMedia/STA_Announcement/TimeTable.asmx/GetCSNStatus_Android_new?Mobile=" + mobno;
 
             Log.e("csn status", "url : " + url);
-            url = url.replaceAll(" ", "%20");
             try {
                 responsemsg = ut.httpGet(url);
                 Log.i("csn status", "resmsg : " + responsemsg);
@@ -3495,6 +3510,7 @@ public class SelectMenu extends Activity {
                 }
 
             } catch (IOException e) {
+                Log.e("SELECTMENU "," --> Exception "+e);
                 e.printStackTrace();
                 dff = new SimpleDateFormat("HH:mm:ss");
                 Ldate = dff.format(new Date());
@@ -3841,16 +3857,15 @@ public class SelectMenu extends Activity {
     }
 
     private void callJobDispacher_SyncDataCount() {
-        myJob = dispatcher.newJobBuilder()
+       myJob = dispatcher.newJobBuilder()
                 // the JobService that will be called
                 .setService(JobService_SyncDataCount.class)
                 // uniquely identifies the job
-                .setTag("test")
+                .setTag("job")
                 // one-off job
                 .setRecurring(true)
                 // don't persist past a device reboot
                 .setLifetime(Lifetime.FOREVER)
-
                 // start between 0 and 60 seconds from now
                 .setTrigger(Trigger.executionWindow(180, 240))
                 // don't overwrite an existing job with the same tag
@@ -3867,8 +3882,34 @@ public class SelectMenu extends Activity {
                 )
                 .build();
 
-        dispatcher.mustSchedule(myJob);
-        //AppCommon.getInstance(this).setServiceStarted(true);
+        //dispatcher.mustSchedule(myJob);
+        dispatcher.schedule(myJob);
+        //AppCommon.getInstance(this).setServiceStarted(true);*/
+
+
+
+
+//        FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(context));
+        /* myJob = dispatcher.newJobBuilder()
+                .setService(JobService_SyncDataCount.class)
+                .setLifetime(Lifetime.FOREVER)
+                .setRecurring(true)
+                 .setTag("test")
+                .setTrigger(Trigger.executionWindow(0, 10))
+                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                .setReplaceCurrent(false)
+                .build();*//**//*
+        dispatcher.mustSchedule(myJob);*/
+        if (dispatcher.schedule(myJob) == SCHEDULE_RESULT_SUCCESS) {
+            Log.e("SERVIE_STATUs ------>", "job scheduler success");
+        } else {
+            Log.e("SERVIE_STATUs ------>", "job scheduler failure");
+//TODO job schedule failure
+//schedule(context);
+        }
+
+        utility.getInstance(SelectMenu.this).setServiceStarted(true);
+
     }
 
     private void callJobDispacher_PaidLocationFusedLocation() {

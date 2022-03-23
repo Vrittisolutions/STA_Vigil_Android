@@ -5,9 +5,12 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -33,12 +36,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -81,6 +89,13 @@ public class Suspected extends Activity {
 	private Button historysus;
 	DatabaseHandler db;
 	ArrayList<SuspectedHelper> searchResults;
+	ImageView btnfilter;
+	Context parent;
+	SuspectedAdapter_new listAdapter;
+	String sonum;
+	private EditText filtertext;
+	private SuspectedAdapter_new adapterNew;
+	private static Suspected.DownloadxmlsDataURL asynk_new;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +105,15 @@ public class Suspected extends Activity {
 		this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 
 		setContentView(R.layout.suspected);
+
+		filtertext = (EditText)findViewById(R.id.edfitertext);
+
+		filtertext.setVisibility(View.GONE);
+
+		initView();
+		setListener();
+
+
 		//	historysus=(Button)findViewById(R.id.btnsushistory);
 		susstnnsme=(TextView)findViewById(R.id.tvsuspectedstnname);
 		Bundle extras = getIntent().getExtras();
@@ -111,6 +135,7 @@ public class Suspected extends Activity {
 		dbi.Close();
 
 		fetchdata();
+
 
 			/*if (dbvalue()) {
 				updatelist();
@@ -162,6 +187,57 @@ public class Suspected extends Activity {
 			}
 		});
 	}
+
+	private void setListener() {
+		filtertext.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence s, int start,
+									  int before, int count) {
+
+						/*adapterNew
+								.filter_Station(filtertext
+										.getText().toString().trim());*/
+
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start,
+										  int count, int after) {
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+
+				adapterNew.filter_details(filtertext.getText().toString().trim());
+				//adapterNew.notifyDataSetChanged();
+
+			}
+		});
+
+	}
+
+	private void initView() {
+		parent = Suspected.this;
+		//iv = (ImageView) findViewById(com.stavigilmonitoring.R.id.button_refresh_nonrepeated_main);
+
+		//btnfilter = (ImageView) findViewById(com.stavigilmonitoring.R.id.button_filter);
+		findViewById(R.id.button_filter).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(filtertext.getVisibility()==View.GONE){
+					filtertext.setVisibility(View.VISIBLE);
+				}else{
+					filtertext.setVisibility(View.GONE);
+				}
+
+			}
+		});
+
+
+	}
+
+
 
 	private boolean isnet() {
 		// TODO Auto-generated method stub
@@ -222,13 +298,44 @@ public class Suspected extends Activity {
 		}
 
 	}
+	@RequiresApi(api = Build.VERSION_CODES.N)
 	private void updatelist() {
 		// TODO Auto-generated method stub
 
 		searchResults = GetDetail();
 
+		/*List<SuspectedHelper> sortedUsers = searchResults.stream()
+				.sorted(Comparator.comparing(SuspectedHelper::getSpotWisePercentage))
+				.collect(Collectors.toList());*/
+
+
+
+		for (int i = 0; i < searchResults.size(); i++) {
+
+			// Inner nested loop pointing 1 index ahead
+			for (int j = i + 1; j < searchResults.size(); j++) {
+
+				// Checking elements
+				String temp = "0";
+				if (Integer.parseInt(searchResults.get(j).getSpotWisePercentage())
+						< Integer.parseInt(searchResults.get(i).getSpotWisePercentage())) {
+
+					// Swapping
+					temp = searchResults.get(i).getSpotWisePercentage();
+					searchResults.get(i).setSpotWisePercentage(searchResults.get(j).getSpotWisePercentage());
+					searchResults.get(j).setSpotWisePercentage(temp);
+
+
+				}
+			}
+
+
+		}
+
+		adapterNew=new SuspectedAdapter_new(this, searchResults);
+
 		//suspectedDetails.setAdapter(new SuspectedAdapt(this, searchResults));
-		suspectedDetails.setAdapter(new SuspectedAdapter_new(this, searchResults));
+		suspectedDetails.setAdapter(adapterNew);
 	}
 
 	private ArrayList<SuspectedHelper> GetDetail() {

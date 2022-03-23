@@ -662,7 +662,7 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
             options.inSampleSize = 2;// downsizing image as it throws OutOfMemory Exception for larger images
             Uri imageUri = Uri.parse(mCurrentPhotoPath);
             final Bitmap bitmap = BitmapFactory.decodeFile(imageUri.getPath(),options);
-            image_encode = getStringImage(bitmap);
+            image_encode = getStringImage(bitmap);  // here you can get string debug and provide him
             File f = new File(imageUri.getPath().toString());
             Imagefilename = f.getName();
             editTextfileName.setText(Imagefilename);

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/STA_Vigil_Android-development.iml" filepath="$PROJECT_DIR$/.idea/modules/STA_Vigil_Android-development.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/STA_Vigil_Android-development.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/STA_Vigil_Android-development.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/STA_Vigil_Android.iml" filepath="$PROJECT_DIR$/.idea/STA_Vigil_Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/STA_Vigil_Android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/STA_Vigil_Android.app.iml" />
     </modules>
   </component>
 </project>

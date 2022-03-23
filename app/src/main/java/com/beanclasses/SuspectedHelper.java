@@ -1,6 +1,6 @@
 package com.beanclasses;
 
-public class SuspectedHelper {
+public class SuspectedHelper implements Comparable<SuspectedHelper>{
 	
 	private String Advertisementcode = "";
 
@@ -174,4 +174,11 @@ public String getAdvertisementcode() {
 		return Percentage;
 	}
 
+	@Override
+	public int compareTo(SuspectedHelper u) {
+		if (getSpotWisePercentage() == null || u.getSpotWisePercentage() == null) {
+			return 0;
+		}
+		return getSpotWisePercentage().compareTo(u.getSpotWisePercentage());
+	}
 }

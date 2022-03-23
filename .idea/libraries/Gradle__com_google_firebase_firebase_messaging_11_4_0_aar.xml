@@ -1,12 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.firebase:firebase-messaging:11.4.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-messaging-11.4.0.aar/e63580589cd6320909d5dfdabb6d49a9/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-messaging-11.4.0.aar/e63580589cd6320909d5dfdabb6d49a9/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-messaging-11.4.0.aar/e63580589cd6320909d5dfdabb6d49a9/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-messaging-11.4.0.aar/28a8a7bae70a264cdbb13c112efa350e/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-messaging-11.4.0.aar/28a8a7bae70a264cdbb13c112efa350e/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-messaging-11.4.0.aar/28a8a7bae70a264cdbb13c112efa350e/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/firebase-messaging-11.4.0.aar/661ee1182abf8848f9cb713c2021f7a7/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/firebase-messaging-11.4.0.aar/661ee1182abf8848f9cb713c2021f7a7/res" />
+      <root url="file://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/firebase-messaging-11.4.0.aar/661ee1182abf8848f9cb713c2021f7a7/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

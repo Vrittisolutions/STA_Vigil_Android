@@ -1,12 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.android.gms:play-services-tagmanager-api:11.4.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-tagmanager-api-11.4.0.aar/69603eb9cbeaa724672ecb3783e92c42/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-tagmanager-api-11.4.0.aar/69603eb9cbeaa724672ecb3783e92c42/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-tagmanager-api-11.4.0.aar/69603eb9cbeaa724672ecb3783e92c42/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-tagmanager-api-11.4.0.aar/5f8517aa6bee0ed8fdc42a26e9c00451/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-tagmanager-api-11.4.0.aar/5f8517aa6bee0ed8fdc42a26e9c00451/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-tagmanager-api-11.4.0.aar/5f8517aa6bee0ed8fdc42a26e9c00451/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/play-services-tagmanager-api-11.4.0.aar/6f13b212c6772fed0db5fc661a63c23f/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/play-services-tagmanager-api-11.4.0.aar/6f13b212c6772fed0db5fc661a63c23f/res" />
+      <root url="file://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/play-services-tagmanager-api-11.4.0.aar/6f13b212c6772fed0db5fc661a63c23f/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

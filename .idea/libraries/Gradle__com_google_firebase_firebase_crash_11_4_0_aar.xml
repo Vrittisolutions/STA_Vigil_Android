@@ -1,12 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.firebase:firebase-crash:11.4.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-crash-11.4.0.aar/564168d8a03be2b2e5025a13ff7bfd84/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-crash-11.4.0.aar/564168d8a03be2b2e5025a13ff7bfd84/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-crash-11.4.0.aar/564168d8a03be2b2e5025a13ff7bfd84/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-crash-11.4.0.aar/0ea14a4ab1341cb34c76bcec392a521f/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-crash-11.4.0.aar/0ea14a4ab1341cb34c76bcec392a521f/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-crash-11.4.0.aar/0ea14a4ab1341cb34c76bcec392a521f/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/firebase-crash-11.4.0.aar/e7fb5601e4e796e1497124915de8f409/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/firebase-crash-11.4.0.aar/e7fb5601e4e796e1497124915de8f409/res" />
+      <root url="file://$PROJECT_DIR$/../gradle/gradle-6.1.1-all/gradle-6.1.1/bin/caches/transforms-1/files-1.1/firebase-crash-11.4.0.aar/e7fb5601e4e796e1497124915de8f409/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

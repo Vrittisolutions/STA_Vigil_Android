@@ -1,6 +1,7 @@
 package com.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,18 +13,29 @@ import com.beanclasses.SuspectedHelper;
 import com.stavigilmonitoring.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Locale;
 
 public class SuspectedAdapter_new extends BaseAdapter {
 
-	private static ArrayList<SuspectedHelper> searchArrayList;
+	private static List<SuspectedHelper> searchArrayList;
 
 	private LayoutInflater mInflater;
 	Context context;
+	private List<SuspectedHelper> arraylist;
 
-	public SuspectedAdapter_new(Context context1, ArrayList<SuspectedHelper> results) {
-		searchArrayList = results;
+
+
+	public SuspectedAdapter_new(Context context1,List<SuspectedHelper> results) {
+		searchArrayList =  results;
 		mInflater = LayoutInflater.from(context1);
 		context = context1;
+		arraylist=new ArrayList<>();
+		arraylist.addAll(results);
+		Log.e("SUSP_ARRAYLIST"," results--> "+results.size());
+		Log.e("SUSP_ARRAYLIST"," --> "+arraylist.size());
 	}
 
 	@Override
@@ -66,8 +78,39 @@ public class SuspectedAdapter_new extends BaseAdapter {
 		return convertView;
 	}
 
-	static class ViewHolder {
+	public void filter_details(String charText) {
+
+		searchArrayList.clear();
+		if(charText.length()==0)
+		{
+			searchArrayList.addAll(arraylist);
+		} else {
+			for (SuspectedHelper wp : arraylist)
+			{
+				if (wp.getStationName().toLowerCase(Locale.getDefault()).startsWith(charText.toLowerCase(Locale.getDefault()))
+						||
+						wp.getStationName().toLowerCase(Locale.getDefault()).contains(charText.toLowerCase(Locale.getDefault())))
+				{
+					searchArrayList.add(wp);
+				}
+			}
+		}
+		notifyDataSetChanged();
+
+	}
+
+    static class ViewHolder {
 		TextView stname, spotperctg;
 	}
+
+/*	 Collections.sort(arraylist, new Comparator<SuspectedHelper>(){
+		public int compare(SuspectedHelper d1, SuspectedHelper d2){
+
+			return (d1.getDataUsagePercent()) - Integer.parseInt(d2.getDataUsagePercent()));
+		}
+
+	});*/
+
+
 
 }
