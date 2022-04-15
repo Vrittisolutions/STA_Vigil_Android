@@ -3,74 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/activity_adv_clips_reports.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/activity_itemname_list.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/activity_my_dispatch_orders.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/activity_myactivities.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/activity_unreleased_advertisements.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/activity_videophoto_category.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/csnstatewise.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/dialoyesnowithremarkncamera.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/dmc_details_activity.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/notify_child_item.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/reasonitem.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/reporteeitem.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/rowlayout.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/selectmenu.xml" value="0.25" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/stationenqreqvsfilled.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/stationenquiry.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/stationenquiry_.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/stationenquirymaterialrequest.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/stationenquirystatewise.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/stationenquirystatewisefilter.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/stationenquirystationlist.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/stationenquiryworkhistory.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/stationenquiymatitem.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/stn_notify_stations.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/stnenq_adv_item.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/stnperformance.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/stperf_7_stnlist.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/stperformance_stnlist.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/suporterenquirystatewise.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/suporterenquirysubnet.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/supp_list_adapter.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/supp_station_adapter.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/supportergpslocation.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/supporterlistdisplay.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/supporterlistdisplay_stnwise.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/supporterlistitem.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/supportermaterialitem.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/supporterwork.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/suspected.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/suspected_stnlist_dtl.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/suspected_stnlist_one.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/suspectedhistoryupdated.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/suspectedmain.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/suspectedupdated.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/suspectedupdatedmain.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/test111.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/testmenu.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/tvitem.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/tvstatusfillreason.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/tvstatusmain.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/tvstatussatewise.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/tvstatusstatefilter.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/unreleased_advdtl_adapter.xml" value="0.33" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/updateactivitystatus.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/view_spinner_item.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/whatsappcustommessage.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/workassignsupplist.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/workdonestation.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/workdonestationdetail.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/workhistoryitem.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/worktypeitem.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/worktypeselect.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/wrk_assn_activitydtls.xml" value="0.1921875" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/yourview.xml" value="0.1921875" />
+        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/activity_videophoto_category.xml" value="0.16770833333333332" />
+        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/dialoyesnowithremarkncamera.xml" value="0.16770833333333332" />
+        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/dmc_details_activity.xml" value="0.1" />
+        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/selectmenu.xml" value="0.22" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/out" />
-  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>

@@ -49,6 +49,7 @@ import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
@@ -189,6 +190,46 @@ public class SelectMenu extends Activity {
     private PeriodicWorkRequest mPeriodicWorkRequest;
 
 
+
+    @Override
+    public void onNewIntent(Intent intent){
+        Bundle extras = intent.getExtras();
+        if(extras != null){
+            //Toast.makeText(getApplicationContext(), "INTENTFROMNOTIFICATION --> "+intent.getStringExtra("STOPALARM"), Toast.LENGTH_SHORT).show();
+            if(intent.getStringExtra("STOPALARM").
+                    equalsIgnoreCase("STOP")){
+
+                cancelNotification();
+
+                MyAlarmReceiver.stopAlarm();
+
+                btnsetalarm.setVisibility(View.VISIBLE);
+                btncancelalarm.setVisibility(View.GONE);
+
+                Date currentTime = Calendar.getInstance().getTime();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("hh.mm.ss aa");
+                String output = dateFormat.format(currentTime);
+                //Toast.makeText(getApplicationContext(),"Time Is :" + output, Toast.LENGTH_LONG).show();
+
+                SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+                Editor editor = pref.edit();
+                editor.putLong("AlarmStopTime", currentTime.getTime());
+                //editor.putBoolean("SetAlarm", false);
+                editor.apply();
+
+            }
+        }
+    }
+
+    private void cancelNotification() {
+
+        NotificationManager mNotificationManager = (NotificationManager)
+                getSystemService(NOTIFICATION_SERVICE);
+
+        mNotificationManager.cancel(123);
+
+    }
+
     public void onCreate(Bundle savedInstanceState) {
         // requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
@@ -198,18 +239,39 @@ public class SelectMenu extends Activity {
 
         init();
 
+       // Toast.makeText(SelectMenu.this, "ONCREATE --> "+getIntent().getStringExtra("STOPALARM"), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(SelectMenu.this, "ONCREATE --> "+getIntent().getStringExtra("menu"), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(SelectMenu.this, "ONCREATE 123--> "+getIntent().getStringExtra(), Toast.LENGTH_SHORT).show();
+
+        if (getIntent().hasExtra("menu")) {
+            String Menu = getIntent().getStringExtra("menu");
+            Log.d("AlarmselectMenu", "mm1");
+            if (Menu.equalsIgnoreCase("Menu")) {
+                Log.d("AlarmselectMenu 2", "mm");
+                MyAlarmReceiver.stopAlarm();
+                cancelNotification();
+            }
+        }
         AutoRefreshData();
 
-        mPeriodicWorkRequest = new PeriodicWorkRequest.Builder(SyncDatacountPeriodicWork.class,
+        /*mPeriodicWorkRequest = new PeriodicWorkRequest.Builder(SyncDatacountPeriodicWork.class,
                 15, TimeUnit.MINUTES)
                 .addTag("periodicWorkRequest")
-                .build();
+                .build();*/
 
-        WorkManager.getInstance().enqueue(mPeriodicWorkRequest);
+        WorkManager.getInstance().cancelAllWork();
+
+        WorkManager.getInstance().enqueue(
+                new PeriodicWorkRequest.Builder(SyncDatacountPeriodicWork.class,
+                10, TimeUnit.MINUTES)
+                .addTag("periodicWorkRequest")
+                .build());
 
         //updateAlertCount();
 
-        //new DownloadxmlsDataURL_new().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        //new DownloadxmlsDataURL_new().
+        // executeOnExecutor(AsyncTask.
+        // THREAD_POOL_EXECUTOR);
         SharedPreferences sp = getSharedPreferences("SetupPref", Context.MODE_PRIVATE);
         String diayn = sp.getString("Dialog", "NoDialog");
         String dicurDate = sp.getString("TodaysDate", TODAYDATE);
@@ -278,7 +340,7 @@ public class SelectMenu extends Activity {
         bg_palycount.setText(BgPaly);
         // ***********************************************************************//
 
-        /*****************************************************************************/
+        //****************************************************************************/
 
         SharedPreferences spa = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         AlarmStopTime = spa.getLong("AlarmStopTime", 0);
@@ -297,8 +359,8 @@ public class SelectMenu extends Activity {
 
         Common.UserName = GetUserName();
         txtusername.setText(Common.UserName);
-        GetUserLogin();
 
+        GetUserLogin();
 
         ArrayList<String> packagenameArrayList = new ArrayList<String>();
         List<PackageInfo> packageInfoList = getPackageManager().getInstalledPackages(0);
@@ -310,6 +372,7 @@ public class SelectMenu extends Activity {
                 MySTAVigilVersion = packageInfo.versionName;
             }
         }
+
         if (packagenameArrayList.contains("vworkbench7.vritti.com.vworkbench7")) {
 
         } else if (packagenameArrayList.contains("vcrm7.vritti.com.vcrm7")) {
@@ -509,7 +572,7 @@ public class SelectMenu extends Activity {
              }
 
 
-        if (setAlarm == true) {
+        if (setAlarm) {
             btnsetalarm.setVisibility(View.GONE);
             btncancelalarm.setVisibility(View.VISIBLE);
         } else {
@@ -1599,7 +1662,7 @@ public class SelectMenu extends Activity {
             int Tcnt = 0;
             NodeList nl = ut.getnode(responsemsg, "Table1");
             List<String> lstStn = new ArrayList<String>();
-            Log.e("main...back sta..", "len : " + nl.getLength());
+            //Log.e("main...back sta..", "len : " + nl.getLength());
             //Log.e("syncdcnt 1", " " + nl.getLength());
             for (int i = 0; i < nl.getLength(); i++) {
                 Element e = (Element) nl.item(i);
@@ -4055,6 +4118,21 @@ public class SelectMenu extends Activity {
     @Override
     public void onResume() {
         super.onResume();
+
+       // Toast.makeText(SelectMenu.this, "onResume --> "+getIntent().getStringExtra("STOPALARM"), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(SelectMenu.this, "onResume --> "+getIntent().getStringExtra("menu"), Toast.LENGTH_SHORT).show();
+
+
+        if (getIntent().hasExtra("menu")) {
+            String Menu = getIntent().getStringExtra("menu");
+            Log.d("AlarmselectMenu", "mm1");
+            if (Menu.equalsIgnoreCase("Menu")) {
+                Log.d("AlarmselectMenu 2", "mm");
+                MyAlarmReceiver.stopAlarm();
+            }
+        }
+
+
         //refresh data
         AutoRefreshData();
     }

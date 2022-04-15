@@ -25,6 +25,7 @@ import android.support.v4.content.FileProvider;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
+import android.util.Base64OutputStream;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -68,6 +69,7 @@ import org.w3c.dom.NodeList;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -75,13 +77,16 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import static android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO;
 import static com.stavigilmonitoring.utility.OpenPostConnectionNow;
+import static com.video_photo.VideoPhotoStateStnSoNoDetails.getOutputMediaFileUri;
 
 /**
  * Created by Admin-3 on 11/13/2017.
@@ -124,6 +129,11 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
     List<StateDetailsList> searchResults;
     //private static ActivityUpdateURL asynk;
 
+
+    private int CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE=101;
+    private Uri videoUri;
+    private String extension;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -164,6 +174,9 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
         subnetwork = intent.getStringExtra("SubNetwork");
         sonum = intent.getStringExtra("Network");
 
+        Log.e("STATION",station);
+        Log.e("SUBNETWORK",subnetwork);
+
         db = new DatabaseHandler(getBaseContext());
 
         DBInterface dbi = new DBInterface(getApplicationContext());
@@ -202,7 +215,7 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                 DBInterface dbi = new DBInterface(getApplicationContext());
+                DBInterface dbi = new DBInterface(getApplicationContext());
                 mobno = dbi.GetPhno();
                 dbi.Close();
                 installationId = searchResults.get(position).GetInstallationIdForStateDetailsList();
@@ -391,8 +404,8 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
             ut = new utility();
             // DatabaseHandler db = new DatabaseHandler(parent);
             SQLiteDatabase sql = db.getWritableDatabase();
-            //String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
-            String url = "http://sta.vritti.co/imedia/STA_Announcement/DMcertificate.asmx/ReasonUpdate?Mobile="
+            //String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
+            String url = "http://vritti.co/imedia/STA_Announcement/DMcertificate.asmx/ReasonUpdate?Mobile="
                     + mobno
                     + "&ActivityId="
                     + activityId
@@ -511,7 +524,7 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
 
             String bb= "";
             utility ut = new utility();
-            String urls = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDMPhotoVideo?Mobile="
+            String urls = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDMPhotoVideo?Mobile="
                     + mobno;
             urls = urls.replaceAll(" ", "%20");
 
@@ -603,7 +616,7 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
                         String.valueOf(totalDMC));
                 editorDMC.commit();*/
 
-                    updatelist();
+                updatelist();
 
                 progressDialog.dismiss();
                 //Log.e("prgdlg", "Ended");
@@ -637,7 +650,8 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
         quest.setText(" Do you want to complete activity ?");
         final ImageButton btnPhotoAttachmentcam = (ImageButton) myDialog.findViewById(R.id.btncam);
         final ImageButton btnPhotoAttachmentgal = (ImageButton) myDialog.findViewById(R.id.btngallery);
-
+        final ImageButton btn_video = (ImageButton) myDialog.findViewById(R.id.btn_video);
+        btn_video.setVisibility(View.VISIBLE);
         final AutoCompleteTextView editTextAssignTo = (AutoCompleteTextView) myDialog.findViewById(R.id.editTextAssignTo);
         final EditText editTextNarration = (EditText) myDialog.findViewById(R.id.editTextNarration);
         editTextfileName = (EditText) myDialog.findViewById(R.id.editTextpath);
@@ -673,6 +687,17 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
                 //captureImage();]
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, IMG_RESULT);
+            }
+        });
+
+        btn_video.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+                uri = getOutputMediaFileUri(MEDIA_TYPE_VIDEO);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+                intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+                startActivityForResult(intent, CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE);
             }
         });
 
@@ -770,6 +795,7 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
             image_encode = getStringImage(bitmap);
             File f = new File(imageUri.getPath().toString());
             Imagefilename = f.getName();
+            extension = f.getName().split("[.]")[1];
             editTextfileName.setText(Imagefilename);
         } catch (NullPointerException e) {
             e.printStackTrace();
@@ -778,7 +804,7 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
 
     public String getStringImage(Bitmap bmp) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        bmp.compress(Bitmap.CompressFormat.JPEG, 80, baos);
         byte[] imageBytes = baos.toByteArray();
         encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
         return encodedImage;
@@ -786,7 +812,8 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
 
     protected void sendactivityupdatetoserver() {
         // TODO Auto-generated method stub
-        String urlStringToken = "http://ktc.vritti.co/api/Values/Reassignattachpostdata?";
+       // String urlStringToken = "http://ktc.vritti.co/api/Values/Reassignattachpostdata?";
+        String urlStringToken = "https://vritti.ekatm.co.in/api/AudioVideoCreationAPI/UploadPhotoVideoAttachment";
         new ActivityUpdateAPI().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, urlStringToken);
     }
 
@@ -860,20 +887,32 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
 
             try {
 
-                JSONObject jsonObject = new JSONObject();
-                jsonObject.put("Mobile", mobno);
-                Log.e("ActivityId", activityId);
-                jsonObject.put("ActivityId", activityId);
-                jsonObject.put("ReassignedBy", AssignToMob);
-                jsonObject.put("Remark", Remark);
-                jsonObject.put("attacheddata", image_encode);
 
-                String param;// = jsonObject.toString();
-                param = new Gson().toJson(jsonObject);
-                Log.e("URLPARAM", params[0] + "\n" + param);
+               /* {
+                    "ActivityId": "bf77d231-1eb4-40c3-90ce-8497b11856fd",
+                        "ReassignedBy": "999000000000000397",
+                        "Remark": "test",
+                        "NetworkCode": "MSRTC",
+                        "FileExt": "png"
+                }*/
 
-                //Log.e("URL",params[0]);
-                res = OpenPostConnectionNow(params[0], param);
+                Log.e("STATION",station);
+                Log.e("SUBNETWORK",subnetwork);
+
+                JSONObject object = new JSONObject();
+                object.put("ActivityId", activityId);
+                object.put("ReassignedBy", AssignToMob);
+                object.put("Remark", Remark);
+                object.put("attacheddata", image_encode);
+                object.put("NetworkCode", "MSRTC");
+                object.put("FileExt", extension);
+               // String  Final= object.toString().replaceAll("\\\\","");
+
+
+
+
+
+                res = OpenPostConnectionNow(params[0],object.toString());
                 responsemsg = res.toString();
 
                 /*String param = jsonObject.toString();
@@ -908,9 +947,11 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
                     Log.e("Reassign", responsemsg);
                     showD("Data Saved");
                 } else {
-                    Log.e("Reassign", responsemsg);
-                    showD("Error");
+                    Toast.makeText(VideoPhotoSoNoStateStnDetails.this,responsemsg.toString(),Toast.LENGTH_LONG).show();
+                   /* Log.e("Reassign", responsemsg);
+                    showD("Data Saved");*/
                 }
+                Log.e("RESPONSE"," > "+responsemsg);
             } catch (Exception e) {
                 e.printStackTrace();
 
@@ -944,8 +985,8 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
             ut = new utility();
             // DatabaseHandler db = new DatabaseHandler(parent);
             SQLiteDatabase sql = db.getWritableDatabase();
-            //String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
-            String url = "http://sta.vritti.co/imedia/STA_Announcement/DMcertificate.asmx/ReassignedCertificateNew?Mobile="
+            //String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
+            String url = "http://vritti.co/imedia/STA_Announcement/DMcertificate.asmx/ReassignedCertificateNew?Mobile="
                     + mobno
                     + "&ActivityId="
                     + activityId
@@ -1152,7 +1193,7 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
         @Override
         protected String doInBackground(Void... params) {
             // TODO Auto-generated method stub
-            String Url = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetDMCertifcateUser?Mobile=" + mobno;
+            String Url = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetDMCertifcateUser?Mobile=" + mobno;
 
             Log.e("DMCertificateUser", "url : " + Url);
             Log.e("Tag", " ******* WORKING ON DMCertificateUser *********");
@@ -1312,7 +1353,8 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
                     // failed to capture image
                     Toast.makeText(parent, "Sorry! Failed to capture image", Toast.LENGTH_SHORT).show();
                 }
-            } else if (requestCode == IMG_RESULT && resultCode == RESULT_OK
+            }
+            else if (requestCode == IMG_RESULT && resultCode == RESULT_OK
                     && null != data) {
                 Uri URI = data.getData();
                 String[] FILE = {MediaStore.Images.Media.DATA};
@@ -1335,9 +1377,55 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
 
                 //File f = new File(URI.getPath().toString());
                 //Imagefilename = f.getName();
+                 extension = ImageDecode.split("[.]")[1];
+
                 editTextfileName.setText(ImageDecode);
 
             }
+            else if (requestCode == CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE ) {
+
+                if (resultCode == RESULT_OK) {
+                    videoUri = data.getData();
+
+                    File f = new File(videoUri.getPath().toString());
+                    extension = f.getName().split("[.]")[1];
+
+                    editTextfileName.setText(f.getName());
+                    InputStream inputStream = null;
+                    try {
+                        inputStream = new FileInputStream(f.getAbsolutePath());
+
+                        byte[] buffer = new byte[10240]; //specify the size to allow
+                        int bytesRead;
+                        ByteArrayOutputStream output = new ByteArrayOutputStream();
+                        Base64OutputStream output64 = new Base64OutputStream(output, Base64.DEFAULT);
+
+                        while ((bytesRead = inputStream.read(buffer)) != -1) {
+                            output64.write(buffer, 0, bytesRead);
+                        }
+
+
+                        output64.close();
+
+
+                        image_encode = output.toString();
+
+                    } catch (FileNotFoundException e1) {
+                        e1.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else if (resultCode == RESULT_CANCELED) {
+
+                    // User cancelled the video capture
+                    Toast.makeText(VideoPhotoSoNoStateStnDetails.this, "User cancelled the video capture.", Toast.LENGTH_LONG).show();
+
+                } else {
+                    // Video capture failed, advise user
+                    Toast.makeText(VideoPhotoSoNoStateStnDetails.this, "Video capture failed.", Toast.LENGTH_LONG).show();
+                }
+            }
+
         } catch (Exception e) {
             Toast.makeText(this, "Please try again", Toast.LENGTH_LONG)
                     .show();

@@ -10,8 +10,8 @@ android {
         applicationId "com.stavigilmonitoring"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 213
-        versionName "116"
+        versionCode 215
+        versionName "117"
         multiDexEnabled true
     }
 

@@ -88,6 +88,9 @@ public class UnreleasedAdvertisements extends AppCompatActivity {
 
         setListeners();
 
+
+
+
     }
 
     public void init(){
@@ -305,7 +308,8 @@ public class UnreleasedAdvertisements extends AppCompatActivity {
     }
 
 
-    private void setJobShedulder( String key) {
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void setJobShedulder(String key) {
 
         // checkBatteryOptimized();
         if(myJob == null) {

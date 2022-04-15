@@ -1214,14 +1214,12 @@ public class SyncDatacountPeriodicWork extends Worker {
                                         alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
                                     }else {
                                         alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
-
                                     }
                                     Intent serviceIntent = new Intent(getApplicationContext(), AlarmForegroundService.class);
                                     serviceIntent.putExtra("inputExtra", AdvertisementDesc);
                                     ContextCompat.startForegroundService(getApplicationContext(),serviceIntent);                                        }
                             }
                         }
-
 
                        /* if(hour > 6 && hour < 19){
                             if(hour == 6 && minute >= 0) {
@@ -1270,6 +1268,8 @@ public class SyncDatacountPeriodicWork extends Worker {
                                 }
                             }
                         }*/
+
+
                     }
 
                 } else {

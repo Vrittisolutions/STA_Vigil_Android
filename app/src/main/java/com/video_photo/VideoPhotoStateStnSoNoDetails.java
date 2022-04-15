@@ -24,6 +24,7 @@ import android.support.v4.content.FileProvider;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
+import android.util.Base64OutputStream;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -57,6 +58,7 @@ import org.w3c.dom.NodeList;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -70,6 +72,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import static android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO;
 import static com.stavigilmonitoring.utility.OpenPostConnectionNow;
 
 /**
@@ -111,6 +114,8 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
     File output;
     Uri downloadFileUri;
     private Uri uri;
+    private int CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE=101;
+    private Uri videoUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,7 +149,7 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
 
     private boolean dbvalueforspinner() {
         try {
-          // DatabaseHandler db1 = new DatabaseHandler(getBaseContext());
+            // DatabaseHandler db1 = new DatabaseHandler(getBaseContext());
             SQLiteDatabase sql = db.getWritableDatabase();
             Cursor cursor = sql.rawQuery("SELECT * FROM DMCUsersTable", null);
             if (cursor != null && cursor.getCount() > 0) {
@@ -321,7 +326,7 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
                 // TODO Auto-generated method stub
                 Reason = tvreason.getText().toString();
                 if(!(tvreason.getText().toString().equalsIgnoreCase(""))){
-                   // updateReason();
+                    // updateReason();
                 }
 
                 myDialog.dismiss();
@@ -376,8 +381,8 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
             ut = new utility();
             //DatabaseHandler db = new DatabaseHandler(parent);
             SQLiteDatabase sql = db.getWritableDatabase();
-            //String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
-            String url = "http://sta.vritti.co/imedia/STA_Announcement/DMcertificate.asmx/ReasonUpdate?Mobile="
+            //String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
+            String url = "http://vritti.co/imedia/STA_Announcement/DMcertificate.asmx/ReasonUpdate?Mobile="
                     +mobno
                     +"&ActivityId="
                     + activityId
@@ -482,6 +487,8 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
         quest.setText(" Do you want to complete activity ?");
         final ImageButton btnPhotoAttachmentcam = (ImageButton) myDialog.findViewById(R.id.btncam);
         final ImageButton btnPhotoAttachmentgal = (ImageButton) myDialog.findViewById(R.id.btngallery);
+        final ImageButton btn_video = (ImageButton) myDialog.findViewById(R.id.btn_video);
+        btn_video.setVisibility(View.VISIBLE);
         final AutoCompleteTextView editTextAssignTo = (AutoCompleteTextView) myDialog
                 .findViewById(R.id.editTextAssignTo);
         final EditText editTextNarration = (EditText) myDialog
@@ -516,6 +523,17 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
                 Intent intent = new Intent(Intent.ACTION_PICK,
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, IMG_RESULT);
+            }
+        });
+
+        btn_video.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+                uri = getOutputMediaFileUri(MEDIA_TYPE_VIDEO);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+                intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+                startActivityForResult(intent, CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE);
             }
         });
 
@@ -562,8 +580,8 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
     }
 
     /*
-* Capturing Camera Image will lauch camera app requrest image capture
-*/
+     * Capturing Camera Image will lauch camera app requrest image capture
+     */
     private void captureImage() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
@@ -624,7 +642,8 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
                     // failed to capture image
                     Toast.makeText(parent,"Sorry! Failed to capture image", Toast.LENGTH_SHORT).show();
                 }
-            } else if (requestCode == IMG_RESULT && resultCode == RESULT_OK
+            }
+            else if (requestCode == IMG_RESULT && resultCode == RESULT_OK
                     && null != data) {
                 Uri URI = data.getData();
                 String[] FILE = { MediaStore.Images.Media.DATA };
@@ -636,7 +655,7 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
                 cursor.moveToFirst();
 
                 int columnIndex = cursor.getColumnIndex(FILE[0]);
-                 String ImageDecode = cursor.getString(columnIndex);
+                String ImageDecode = cursor.getString(columnIndex);
                 cursor.close();
                 BitmapFactory.Options options = new BitmapFactory.Options();// bitmap factory
                 options.inSampleSize = 2;
@@ -646,6 +665,47 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
                 //File f = new File(URI.getPath().toString());
                 //Imagefilename = f.getName();
                 editTextfileName.setText(ImageDecode);
+            }
+            else if (requestCode == CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE ) {
+
+                if (resultCode == RESULT_OK) {
+                    videoUri = data.getData();
+
+                    File f = new File(videoUri.getPath().toString());
+                    editTextfileName.setText(f.getName());
+                    InputStream inputStream = null;
+                    try {
+                        inputStream = new FileInputStream(f.getAbsolutePath());
+
+                        byte[] buffer = new byte[10240]; //specify the size to allow
+                        int bytesRead;
+                        ByteArrayOutputStream output = new ByteArrayOutputStream();
+                        Base64OutputStream output64 = new Base64OutputStream(output, Base64.DEFAULT);
+
+                        while ((bytesRead = inputStream.read(buffer)) != -1) {
+                            output64.write(buffer, 0, bytesRead);
+                        }
+
+
+                        output64.close();
+
+
+                        image_encode = output.toString();
+
+                    } catch (FileNotFoundException e1) {
+                        e1.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else if (resultCode == RESULT_CANCELED) {
+
+                    // User cancelled the video capture
+                    Toast.makeText(VideoPhotoStateStnSoNoDetails.this, "User cancelled the video capture.", Toast.LENGTH_LONG).show();
+
+                } else {
+                    // Video capture failed, advise user
+                    Toast.makeText(VideoPhotoStateStnSoNoDetails.this, "Video capture failed.", Toast.LENGTH_LONG).show();
+                }
             }
         } catch (Exception e) {
             Toast.makeText(this, "Please try again", Toast.LENGTH_LONG)
@@ -662,7 +722,7 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
             options.inSampleSize = 2;// downsizing image as it throws OutOfMemory Exception for larger images
             Uri imageUri = Uri.parse(mCurrentPhotoPath);
             final Bitmap bitmap = BitmapFactory.decodeFile(imageUri.getPath(),options);
-            image_encode = getStringImage(bitmap);  // here you can get string debug and provide him
+            image_encode = getStringImage(bitmap);
             File f = new File(imageUri.getPath().toString());
             Imagefilename = f.getName();
             editTextfileName.setText(Imagefilename);
@@ -740,7 +800,7 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
 
             String bb= "";
             utility ut = new utility();
-            String urls = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDMPhotoVideo?Mobile="
+            String urls = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetListOfPendingDMPhotoVideo?Mobile="
                     + mobno;
             urls = urls.replaceAll(" ", "%20");
 
@@ -751,10 +811,10 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
                 System.out.println("-------------  xx vale of non repeated-- "
                         + responsemsg);
 
-               // DatabaseHandler db = new DatabaseHandler(getBaseContext());
+                // DatabaseHandler db = new DatabaseHandler(getBaseContext());
                 SQLiteDatabase sql = db.getWritableDatabase();
 
-               // sql.execSQL("DROP TABLE IF EXISTS DmCertificateTable");
+                // sql.execSQL("DROP TABLE IF EXISTS DmCertificateTable");
                 //sql.execSQL(ut.getDmCertificateTable());
                 sql.delete("VideoPhotoTable",null,null);
 
@@ -889,7 +949,7 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
 
     private void updatelist_supenq() {
         searchResults.clear();
-       // DatabaseHandler db = new DatabaseHandler(parent);
+        // DatabaseHandler db = new DatabaseHandler(parent);
         SQLiteDatabase sql = db.getWritableDatabase();
         Cursor c = sql.rawQuery(
                 "SELECT DMDesc, ActualStartDate, ActualEndDate, Status, InstallationId, ActivityId,AdvertisementPlayURL, SoNumber, EffectiveDate FROM VideoPhotoTable WHERE NetworkCode='"
@@ -938,17 +998,17 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
             do {
                 String Type = c.getString(0);
 
-                    StateDetailsList sitem = new StateDetailsList();
-                    sitem.SetDMDesc(c.getString(c.getColumnIndex("DMDesc")));
-                    sitem.Setdmcstatus(c.getString(c.getColumnIndex("Status")));
-                    sitem.SetInstallationIdForStateDetailsList(c.getString(c.getColumnIndex("InstallationId")));
-                    sitem.SetActivityId(c.getString(c.getColumnIndex("ActivityId")));
-                    sitem.SetActualStartDate(ConvertDate(c.getString(c.getColumnIndex("ActualStartDate"))));
-                    sitem.SetActualEndDate(ConvertDate(c.getString(c.getColumnIndex("ActualEndDate"))));
-                    sitem.SetAdvertisementPlayURL(c.getString(c.getColumnIndex("AdvertisementPlayURL")));
-                    sitem.SetSONumber(c.getString(c.getColumnIndex("SoNumber")));
-                    sitem.SetEffectiveDate(c.getString(c.getColumnIndex("EffectiveDate")));
-                    searchResults.add(sitem);
+                StateDetailsList sitem = new StateDetailsList();
+                sitem.SetDMDesc(c.getString(c.getColumnIndex("DMDesc")));
+                sitem.Setdmcstatus(c.getString(c.getColumnIndex("Status")));
+                sitem.SetInstallationIdForStateDetailsList(c.getString(c.getColumnIndex("InstallationId")));
+                sitem.SetActivityId(c.getString(c.getColumnIndex("ActivityId")));
+                sitem.SetActualStartDate(ConvertDate(c.getString(c.getColumnIndex("ActualStartDate"))));
+                sitem.SetActualEndDate(ConvertDate(c.getString(c.getColumnIndex("ActualEndDate"))));
+                sitem.SetAdvertisementPlayURL(c.getString(c.getColumnIndex("AdvertisementPlayURL")));
+                sitem.SetSONumber(c.getString(c.getColumnIndex("SoNumber")));
+                sitem.SetEffectiveDate(c.getString(c.getColumnIndex("EffectiveDate")));
+                searchResults.add(sitem);
 
             } while (c.moveToNext());
         }
@@ -1180,9 +1240,9 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
         protected String doInBackground(String... params) {
             // TODO Auto-generated method stub
             ut = new utility();
-          //  DatabaseHandler db = new DatabaseHandler(parent);
+            //  DatabaseHandler db = new DatabaseHandler(parent);
             SQLiteDatabase sql = db.getWritableDatabase();
-            //String url = "http://sta.vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
+            //String url = "http://vritti.co/imedia/STA_Announcement/TimeTable.asmx/AlertApproveAndRejected?AlertId="
             String url = "vritti.co/imedia/STA_Announcement/DMcertificate.asmx/ReassignedCertificateNew?Mobile="
                     + mobno
                     + "&ActivityId="
@@ -1338,7 +1398,7 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
 
     private void updateCustomerSpinner() {
         NameList.clear();
-       // DatabaseHandler db1 = new DatabaseHandler(parent);
+        // DatabaseHandler db1 = new DatabaseHandler(parent);
         SQLiteDatabase sqldb = db.getWritableDatabase();
 
         Cursor cursor = sqldb.rawQuery(
@@ -1396,7 +1456,7 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
         @Override
         protected String doInBackground(Void... params) {
             // TODO Auto-generated method stub
-            String Url = "http://sta.vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetDMCertifcateUser?Mobile=" + mobno;
+            String Url = "http://vritti.co/imedia/STA_Announcement/DmCertificate.asmx/GetDMCertifcateUser?Mobile=" + mobno;
 
             Log.e("DMCertificateUser", "url : " + Url);
             Log.e("Tag", " ******* WORKING ON DMCertificateUser *********");
@@ -1413,14 +1473,14 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
             if (resposmsg.contains("Record are not Found...!")) {
                 //sumdata2 = "0";
                 sop = "nodata";
-               // DatabaseHandler db = new DatabaseHandler(getBaseContext());
+                // DatabaseHandler db = new DatabaseHandler(getBaseContext());
                 SQLiteDatabase sql = db.getWritableDatabase();
                 sql.execSQL("Delete from DMCUsersTable");
                 //up
 
             } else if (resposmsg.contains("<UserId>")) {
                 sop = "valid";
-               // DatabaseHandler db = new DatabaseHandler(getBaseContext());
+                // DatabaseHandler db = new DatabaseHandler(getBaseContext());
                 SQLiteDatabase sql = db.getWritableDatabase();
                 String columnName, columnValue;
 
@@ -1478,7 +1538,7 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
 
     public void downloadAttachment(StateDetailsList stateDetailsList, String fileUrl, String fileName) {
 
-      //  output = commonDocumentDirPathDownload("STAVigil", "DMCertificatepdf");
+        //  output = commonDocumentDirPathDownload("STAVigil", "DMCertificatepdf");
         output = commonDocumentDirPathDownload("STAVigil/DMCertificatepdf", fileName);
         File file2 = new File(output.getAbsolutePath());
         downloadFileUri = FileProvider.getUriForFile(VideoPhotoStateStnSoNoDetails.this,
@@ -1516,7 +1576,7 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
             //fileName = "MarDemo";
             String suffix = words[1];
             //suffix = "htm";
-             pdfdown  = commonDocumentDirPath("STAVigil/DMCertificatepdf", fileNamefull,
+            pdfdown  = commonDocumentDirPath("STAVigil/DMCertificatepdf", fileNamefull,
                     VideoPhotoStateStnSoNoDetails.this);
 
 
@@ -1528,9 +1588,9 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
             File pdfdown  = new File(storageDir + "/" + "DMCertificatepdf" + "/" + "File" + "/" +
                     fileName);*/
             //commented by sayali
-           // fileNew.createNewFile();
+            // fileNew.createNewFile();
 
-         //   File pdfdown = new File(storageDir+"/"+fileName+"."+suffix);
+            //   File pdfdown = new File(storageDir+"/"+fileName+"."+suffix);
             try {
                 //pdfdown = File. createTempFile( fileName /* prefix */,".jpg", storageDir  /* directory */ );
                 pdfdown.createNewFile();
@@ -1735,10 +1795,10 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
         File dir = null;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
-                        + "/" + newDirName + "/" + FolderName);
+            dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
+                    + "/" + newDirName + "/" + FolderName);
         }else {
-                dir = new File(Environment.getExternalStorageDirectory() + "/" + newDirName + "/" + FolderName);
+            dir = new File(Environment.getExternalStorageDirectory() + "/" + newDirName + "/" + FolderName);
         }
 
         // Make sure the path directory exists.
@@ -1786,6 +1846,44 @@ public class VideoPhotoStateStnSoNoDetails extends Activity {
         }
     }
 
+    static Uri getOutputMediaFileUri(int type){
+        return Uri.fromFile(getOutputMediaFile(type));
+    }
+
+    private static File getOutputMediaFile(int type){
+        // Check that the SDCard is mounted
+        File mediaStorageDir = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+            mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) +"/STA_Video");
+        }
+        // Create the storage directory(MyCameraVideo) if it does not exist
+        if (! mediaStorageDir.exists()){
+
+            if (! mediaStorageDir.mkdirs()){
+
+                Log.d("MyCameraVideo", "Failed to create directory MyCameraVideo.");
+                return null;
+            }
+        }
+
+        // Create a media file name
+        // For unique file name appending current timeStamp with file name
+        java.util.Date date= new java.util.Date();
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(date.getTime());
+
+        File mediaFile;
+        if(type == MEDIA_TYPE_VIDEO) {
+
+            // For unique video file name appending current timeStamp with file name
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+                    "VID_"+ timeStamp + ".mp4");
+
+        } else {
+            return null;
+        }
+
+        return mediaFile;
+    }
 
 
 }
