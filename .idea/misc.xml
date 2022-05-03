@@ -3,13 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/activity_videophoto_category.xml" value="0.16770833333333332" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/dialoyesnowithremarkncamera.xml" value="0.16770833333333332" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/dmc_details_activity.xml" value="0.1" />
-        <entry key="..\:/STA_Vigil_Android/app/src/main/res/layout/selectmenu.xml" value="0.22" />
+        <entry key="..\:/May2022/app/src/main/res/layout/dialoyesnowithremarkncamera.xml" value="0.16512820512820514" />
+        <entry key="..\:/May2022/app/src/main/res/layout/selectmenu.xml" value="0.16770833333333332" />
+        <entry key="..\:/May2022/app/src/main/res/layout/workdonestation.xml" value="0.16770833333333332" />
       </map>
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
 </project>

@@ -119,7 +119,7 @@ public class utility {
 			URL url1 = new URL(url);
 
 			HttpPost httppost = new HttpPost(url.toString());
-			StringEntity se = new StringEntity(FinalObj.toString());
+			StringEntity se = new StringEntity(FinalObj);
 			httppost.setEntity(se);
 			httppost.setHeader("Accept", "application/json");
 			httppost.setHeader("Content-type", "application/json");

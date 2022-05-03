@@ -63,6 +63,7 @@ import com.stavigilmonitoring.DmCstnwiseActivity;
 import com.stavigilmonitoring.R;
 import com.stavigilmonitoring.utility;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -123,8 +124,11 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
     private static final String IMAGE_DIRECTORY_NAME = "STA Vigil Images";// directory name to store captured images and videos
     private Uri fileUri; // file url to store image/video
     String encodedImage, image_encode = "NA", Imagefilename, photoName;
+    JSONArray attachList = new JSONArray();
+    JSONArray extensionList =  new JSONArray();
     String mCurrentPhotoPath;
     EditText editTextfileName;
+    TextView attachmentCount;
 
     List<StateDetailsList> searchResults;
     //private static ActivityUpdateURL asynk;
@@ -140,6 +144,10 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
         this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         //setContentView(com.stavigilmonitoring.R.layout.csnstatewise);
         setContentView(R.layout.dmc_details_activity);
+
+        attachList = new JSONArray();
+        extensionList =  new JSONArray();
+
 
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
@@ -655,7 +663,7 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
         final AutoCompleteTextView editTextAssignTo = (AutoCompleteTextView) myDialog.findViewById(R.id.editTextAssignTo);
         final EditText editTextNarration = (EditText) myDialog.findViewById(R.id.editTextNarration);
         editTextfileName = (EditText) myDialog.findViewById(R.id.editTextpath);
-
+        attachmentCount = myDialog.findViewById(R.id.attachmentCount);
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(parent,
                 android.R.layout.select_dialog_item, NameList);
         //adapter1.setDropDownViewResource(android.R.layout.simple_list_item_1);
@@ -709,19 +717,27 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
                 AssignToName = editTextAssignTo.getText().toString();
                 Remark = editTextNarration.getText().toString();
                 if (editTextAssignTo.getText().toString().equalsIgnoreCase("")) {
-                    editTextAssignTo.setError("Please Select Name");
-                    Toast.makeText(parent, "Incorrect Data", Toast.LENGTH_LONG).show();
-                } else if (editTextNarration.getText().toString().equalsIgnoreCase("")) {
-                    editTextNarration.setError("Please Enter Remark");
+                   // editTextAssignTo.setError("Please Select Name");
+                    Toast.makeText(parent, "Please Select Name", Toast.LENGTH_LONG).show();
+                }  else if (Remark.equalsIgnoreCase("")) {
+                    //editTextNarration.setError("Please Enter Remark");
+                    Toast.makeText(parent, "Please Enter Remark", Toast.LENGTH_LONG).show();
+                }
+                else if (attachList.length()==0) {
+                    //editTextNarration.setError("Please Enter Remark");
+                    Toast.makeText(parent, "Please Attach Some Attachment", Toast.LENGTH_LONG).show();
+                }
+                else if (editTextNarration.getText().toString().equalsIgnoreCase("")) {
+                    //editTextNarration.setError("Please Enter Remark");
                     Toast.makeText(parent, "Incorrect Data", Toast.LENGTH_LONG).show();
                 } else {
                     getAcCode(AssignToName);
                     if (AssignToMob != null) {
                         sendactivityupdatetoserver();
-
+                        myDialog.dismiss();
                     }
                 }
-                myDialog.dismiss();
+
                 // finish();
             }
         });
@@ -797,6 +813,9 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
             Imagefilename = f.getName();
             extension = f.getName().split("[.]")[1];
             editTextfileName.setText(Imagefilename);
+            attachList.put(image_encode);
+            extensionList.put(extension);
+            attachmentCount.setText(String.valueOf(attachList.length()));
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
@@ -812,7 +831,7 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
 
     protected void sendactivityupdatetoserver() {
         // TODO Auto-generated method stub
-       // String urlStringToken = "http://ktc.vritti.co/api/Values/Reassignattachpostdata?";
+        // String urlStringToken = "http://ktc.vritti.co/api/Values/Reassignattachpostdata?";
         String urlStringToken = "https://vritti.ekatm.co.in/api/AudioVideoCreationAPI/UploadPhotoVideoAttachment";
         new ActivityUpdateAPI().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, urlStringToken);
     }
@@ -900,13 +919,16 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
                 Log.e("SUBNETWORK",subnetwork);
 
                 JSONObject object = new JSONObject();
+                object.put("Mobile", mobno);
                 object.put("ActivityId", activityId);
                 object.put("ReassignedBy", AssignToMob);
                 object.put("Remark", Remark);
-                object.put("attacheddata", image_encode);
+                //object.put("attacheddata", image_encode);
+                object.put("attacheddata", attachList);
                 object.put("NetworkCode", "MSRTC");
-                object.put("FileExt", extension);
-               // String  Final= object.toString().replaceAll("\\\\","");
+                object.put("FileExt", extensionList);
+                //object.put("FileExt", extension);
+                // String  Final= object.toString().replaceAll("\\\\","");
 
 
 
@@ -1377,10 +1399,12 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
 
                 //File f = new File(URI.getPath().toString());
                 //Imagefilename = f.getName();
-                 extension = ImageDecode.split("[.]")[1];
+                extension = ImageDecode.split("[.]")[1];
 
                 editTextfileName.setText(ImageDecode);
-
+                attachList.put(image_encode);
+                extensionList.put(extension);
+                attachmentCount.setText(String.valueOf(attachList.length()));
             }
             else if (requestCode == CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE ) {
 
@@ -1409,7 +1433,9 @@ public class VideoPhotoSoNoStateStnDetails extends Activity {
 
 
                         image_encode = output.toString();
-
+                        attachList.put(image_encode);
+                        extensionList.put(extension);
+                        attachmentCount.setText(String.valueOf(attachList.length()));
                     } catch (FileNotFoundException e1) {
                         e1.printStackTrace();
                     } catch (IOException e) {

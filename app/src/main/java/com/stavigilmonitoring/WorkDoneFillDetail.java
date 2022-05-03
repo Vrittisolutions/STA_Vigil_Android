@@ -395,17 +395,13 @@ public class WorkDoneFillDetail extends Activity {
 	private File createImageFile() throws IOException {
 		// Create an image file name
 		//String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-		String Sendingdate = SerDate.replace("-","");
-		Sendingdate = Sendingdate.replace(":","");
-		Sendingdate = Sendingdate.replace(" ","_");
-		photoName = "WD_"+Station+"_"+Sendingdate+".jpg";
 		String imageFileName = photoName;
-		File storageDir = new File(Environment.getExternalStorageDirectory(), IMAGE_DIRECTORY_NAME);
+		File storageDir = new File(Environment.getExternalStorageDirectory(),Environment.DIRECTORY_DCIM);
 		if (!storageDir.exists()){  // Checks that Directory/Folder Doesn't Exists!
 			boolean result = storageDir.mkdir();
 			if(result){ Toast.makeText(parent, "New Folder created!",Toast.LENGTH_SHORT).show();}
 		}
-		File image = new File(storageDir+"/"+imageFileName/*+".jpg"*/);
+		File image = new File(storageDir+"/"+imageFileName+".jpg");
 		image. createNewFile();
 
 		// Save a file: path for use with ACTION_VIEW intents
